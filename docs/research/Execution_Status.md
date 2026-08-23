@@ -1,16 +1,16 @@
 # Publication Roadmap Execution Status
 
-**Updated:** 23 August 2026
+**Updated:** 23 August 2026, Phase 2–4 checkpoint
 
 **Overall state:** In progress; final execution prohibited
 
 | Phase | State | Completed evidence | Next gate |
 |---:|---|---|---|
-| 0. Baseline and governance | Complete for documentation | `Baseline_Reproducibility_Record.md`, `Decision_Log.md`, `Publication_Blocker_Register.md`, dependency snapshot, passing tests and audits | Version-control/archive, concealed-final-split, and backup controls must close before freeze |
-| 1. Scientific protocol | Draft in progress | Endpoint/claim hierarchy, SAP v0.1, threshold/utility policy v0.1, draft machine-readable protocol pointers | Literature and clinical rationale review; implementation-gap tests; formal sign-off later |
-| 2. Literature and novelty | In progress | Search protocol and initial 12-record seed matrix | Complete database searches, full-text extraction, closest-work comparison, and novelty sign-off |
-| 3. Data/split/leakage audit | Phase 0 inventory complete; deeper audit pending | Raw hashes, row flow, deterministic seed-42 manifests | Missingness, survey design, leakage, and concealed-final-split design |
-| 4. Engineering hardening | Pending | Existing 36 tests plus 5 subtests pass | Implement SAP-required inference, concealment, preflight, and artifact checks |
+| 0. Baseline and governance | Complete for current development checkpoint | Reproducibility records plus local Git baseline commit `750bcff`; raw data and outputs excluded | Define immutable off-device/final-artifact backup before freeze |
+| 1. Scientific protocol | Draft in progress | Endpoint/claim hierarchy, SAP v0.1, threshold/utility policy v0.1, machine-readable final lockout | Complete margin/threshold evidence review and formal sign-off later |
+| 2. Literature and novelty | In progress, substantially expanded | Search protocol, 24-record matrix, closest-work comparison, novelty assessment v0.1 | Complete two-database search, extraction, and independent novelty review |
+| 3. Data/split/leakage audit | Audit implemented; one analysis gap remains | Reproducible research-audit command and reviewed data/leakage/applicability report | Add BRFSS survey-aware sensitivity analysis; retain all continuing dataset controls |
+| 4. Engineering hardening | In progress | Outcome-blind manifest format, fail-closed final authorization, participant-level repeated-CV inference, Sylhet cluster bootstrap | Net-benefit uncertainty, matched panel contrasts, ablations, selective prediction, subgroup engine, final preflight |
 | 5. Development full runs and ablations | Pending | Pilot/smoke evidence only | Run only after Phase 1–4 development gates |
 | 6. Selective prediction/subgroups | Pending | No signed-off artifacts | Implement and review on development evidence |
 | 7. Protocol freeze | Locked out | `protocol_frozen=false`, `locked=false` | Requires all pre-final gates and immutable source identifier |
@@ -29,12 +29,12 @@
 
 ## Immediate execution queue
 
-1. Complete the structured database searches and full-text extraction.
+1. Complete the structured database searches, extraction, and independent novelty review.
 2. Review Phase 1 margins and threshold ranges against the resulting evidence.
-3. Audit BRFSS survey-design variables and all dataset missingness/leakage risks.
-4. Specify and test the fresh concealed-final-split control without accessing a final set.
-5. Implement participant-aggregated repeated-CV inference and Sylhet cluster bootstrap.
-6. Implement net-benefit uncertainty, ablations, selective prediction, and subgroup analysis.
+3. Implement the BRFSS survey-aware descriptive and prediction sensitivity path.
+4. Implement paired net-benefit uncertainty and reduced-panel/full-panel contrasts.
+5. Implement ablations, selective prediction, subgroup analysis, and final preflight.
+6. Define the immutable final-artifact backup and recovery procedure.
 
 Final-run commands must not be added to the active queue until the Phase 7 gate is
 signed and the readiness audit has no pre-final protocol blocker.

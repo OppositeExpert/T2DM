@@ -190,3 +190,16 @@ The detailed owner/action mapping is maintained in `docs/research/Publication_Bl
 - [ ] Immutable final-artifact backup strategy completed.
 
 Phase 0 documentation is established. The three unchecked operational controls must be completed before Phase 7 protocol freeze, not before drafting the Phase 1 statistical analysis plan.
+
+## 13. Post-baseline control addendum
+
+On 23 August 2026, a local Git repository was initialized at the project root and
+the source/documentation baseline was committed as `750bcff` (`Establish
+publication pipeline baseline`). Raw data, generated outputs, the virtual
+environment, caches, and Office temporary files are excluded. This closes the
+absence-of-version-control portion of BASE-001 for ongoing development. A frozen
+tag and immutable archive are still required at protocol lock.
+
+The concealed-final control has since been implemented and tested on the known
+seed-42 development partitions. This does not make those partitions final; it
+only verifies the outcome-blind format and authorization path.

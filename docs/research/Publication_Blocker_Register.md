@@ -34,8 +34,8 @@ This register is the operational owner map for `outputs/publication_readiness_au
 
 | Control ID | Issue | Required before | Action |
 |---|---|---|---|
-| CTRL-001 | No version-control metadata exists | Protocol freeze | Initialize/restore version control or create an equivalent immutable source archive; record frozen identifier |
-| CTRL-002 | Seed-42 BRFSS/Hospital130 holdouts are development-contaminated | Final holdout generation | Design concealed fresh-final split workflow; never reuse seed-42 as untouched evidence |
+| CTRL-001 | Local version-control baseline now exists at `750bcff`; frozen tag/archive absent | Protocol freeze | Create reviewed frozen commit/tag and immutable archive at sign-off |
+| CTRL-002 | Outcome-blind manifest and authorization guard implemented on development partitions; fresh final split not created | Final holdout generation | Review control tests, then create a different prespecified final split only after freeze |
 | CTRL-003 | Default Matplotlib cache is unwritable | Development full runs | Standardize `MPLCONFIGDIR=outputs/.matplotlib` in runbook/preflight |
 | CTRL-004 | Final artifacts currently have no immutable backup policy | Final run | Define archive, checksum, and recovery procedure |
 | CTRL-005 | Final profile is unlocked | Protocol freeze | Keep unlocked until every pre-final gate passes |
@@ -47,3 +47,12 @@ This register is the operational owner map for `outputs/publication_readiness_au
 - `Closed` requires the acceptance evidence and a passing readiness-gate result where applicable.
 - Do not close a blocker solely because code exists or a pilot analysis ran.
 - Record the closing artifact path and date in this file when status changes.
+
+## 23 August 2026 implementation evidence
+
+- CTRL-001 development baseline: Git commit `750bcff`.
+- CTRL-002 control test: `python -m diabetes_pipeline.cli test-concealment`
+  succeeded for BRFSS and Hospital130 seed-42 development partitions. Persisted
+  manifests/metadata were outcome-blind and checksum-valid.
+- Final access remains denied because protocol, final profile, final seed,
+  authorization record, and final manifest fields are deliberately unset.

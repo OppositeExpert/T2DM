@@ -39,6 +39,10 @@ from diabetes_pipeline.settings import (
     source_tree_sha256,
 )
 from diabetes_pipeline.splitting.registry import create_and_write_split_manifest
+from diabetes_pipeline.splitting.concealment import (
+    assert_final_execution_authorized,
+    load_authorized_concealed_manifest,
+)
 from diabetes_pipeline.training.tuning import (
     cross_fitted_probabilities,
     positive_class_weight,
@@ -175,17 +179,22 @@ def run_holdout_benchmark(
     unknown_models = sorted(set(models) - set(MODEL_NAMES))
     if unknown_models:
         raise ValueError(f"Unknown models: {unknown_models}")
-    if profile_name != "smoke" and not bool(profile.get("locked", False)):
-        raise RuntimeError(
-            "Held-out test access is disabled for an unlocked profile. Freeze the "
-            "protocol and set locked: true only for the final experiment."
-        )
+    authorized_manifest_path = assert_final_execution_authorized(
+        profile_name=profile_name,
+        profile=profile,
+    )
 
     dataset = load_dataset(dataset_name)
     audit_path, audit_markdown_path, audit = write_audit(dataset)
-    split_path, split_metadata_path, manifest = create_and_write_split_manifest(
-        dataset, seed=int(profile["seed"])
-    )
+    if profile_name == "smoke":
+        split_path, split_metadata_path, manifest = create_and_write_split_manifest(
+            dataset, seed=int(profile["seed"])
+        )
+    else:
+        assert authorized_manifest_path is not None
+        split_path = authorized_manifest_path
+        split_metadata_path = split_path.with_suffix(".json")
+        manifest = load_authorized_concealed_manifest(split_path, dataset)
     full_development_manifest = manifest[manifest["role"] == "development"].copy()
     full_test_manifest = manifest[manifest["role"] == "test"].copy()
     sample_limit = profile.get("sample_limits", {}).get(dataset_name)

@@ -38,6 +38,28 @@ python -m pytest -q
 python -m diabetes_pipeline.cli block-a --dataset all --seed 42
 ```
 
+## Research data and leakage audit
+
+```bash
+python -m diabetes_pipeline.cli research-audit --seed 42
+```
+
+This records outcome-specific missingness, duplicate/profile and patient-group
+integrity, BRFSS survey-design availability, and the fact that ordinary seed-42
+manifests expose outcomes and are development-only.
+
+## Outcome-blind manifest control test
+
+```bash
+python -m diabetes_pipeline.cli test-concealment --dataset brfss --seed 42
+python -m diabetes_pipeline.cli test-concealment --dataset hospital130 --seed 42
+```
+
+These commands test the concealment format on already-known development splits.
+They do not create a final holdout. Scientific holdout execution additionally
+requires a frozen protocol, locked final profile, authorized seed, checksum-locked
+manifest, and signed authorization record.
+
 ## PIDD smoke benchmark
 
 ```bash
@@ -67,6 +89,8 @@ Each study directory contains:
   decision-curve figures in PNG and SVG.
 - Paired fold comparisons with Holm-adjusted Wilcoxon p-values.
 - Complete preprocessor/model/calibrator/threshold bundles.
+- Participant-aggregated repeated-CV predictions, confidence intervals, and paired
+  comparisons; Sylhet uses complete identical-profile cluster resampling.
 - Dataset, split, source-code, and raw-file checksums.
 
 Latest verified development pilot:

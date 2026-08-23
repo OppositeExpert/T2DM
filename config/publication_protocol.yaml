@@ -53,8 +53,11 @@ analysis_plan:
   brfss_resampling_unit: individual
   hospital130_resampling_unit: patient
   multiplicity_method: holm
+  final_split_creation_authorized: false
   final_holdout_seed: null
   final_holdout_manifest: null
+  final_holdout_manifest_sha256: null
+  final_authorization_record: null
   final_execution_authorized: false
 
 reporting_standards:

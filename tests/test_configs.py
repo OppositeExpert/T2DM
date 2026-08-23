@@ -39,8 +39,11 @@ class ConfigurationTests(unittest.TestCase):
         self.assertEqual(analysis_plan["status"], "draft_unlocked")
         self.assertFalse(protocol["protocol_frozen"])
         self.assertFalse(analysis_plan["final_execution_authorized"])
+        self.assertFalse(analysis_plan["final_split_creation_authorized"])
         self.assertIsNone(analysis_plan["final_holdout_seed"])
         self.assertIsNone(analysis_plan["final_holdout_manifest"])
+        self.assertIsNone(analysis_plan["final_holdout_manifest_sha256"])
+        self.assertIsNone(analysis_plan["final_authorization_record"])
         self.assertFalse(final_profile["locked"])
 
     def test_every_dataset_has_a_valid_availability_contract(self) -> None:

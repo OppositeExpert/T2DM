@@ -2,7 +2,7 @@
 
 **Version:** 0.1, 23 August 2026
 
-**Status:** Search initiated; screening incomplete
+**Status:** Search expanded to 24 seed/closest-work records; database-complete screening incomplete
 
 ## 1. Review questions
 

@@ -23,6 +23,9 @@ from diabetes_pipeline.evaluation.comparisons import paired_model_comparisons
 from diabetes_pipeline.evaluation.decision_curve import decision_curve
 from diabetes_pipeline.evaluation.metrics import binary_metrics
 from diabetes_pipeline.evaluation.plots import save_evaluation_plots
+from diabetes_pipeline.evaluation.repeated_cv import (
+    participant_level_repeated_cv_inference,
+)
 from diabetes_pipeline.models.registry import MODEL_NAMES, build_estimator
 from diabetes_pipeline.preprocessing.builders import build_preprocessor, transformed_feature_names
 from diabetes_pipeline.settings import (
@@ -547,6 +550,15 @@ def run_nested_benchmark(
         & (metrics["threshold_policy"] == "fixed_0_5")
     ]
     paired_comparisons = paired_model_comparisons(comparison_metrics)
+    (
+        participant_predictions,
+        participant_confidence_intervals,
+        participant_paired_comparisons,
+    ) = participant_level_repeated_cv_inference(
+        predictions,
+        n_bootstrap=int(profile["n_bootstrap"]),
+        seed=int(profile["seed"]) + 700_000,
+    )
 
     predictions_path = output_dir / "predictions.csv"
     metrics_path = output_dir / "fold_metrics.csv"
@@ -562,6 +574,15 @@ def run_nested_benchmark(
     confidence_intervals.to_csv(output_dir / "confidence_intervals.csv", index=False)
     decision_curves.to_csv(output_dir / "decision_curves.csv", index=False)
     paired_comparisons.to_csv(output_dir / "paired_model_comparisons.csv", index=False)
+    participant_predictions.to_csv(
+        output_dir / "participant_predictions.csv", index=False
+    )
+    participant_confidence_intervals.to_csv(
+        output_dir / "participant_confidence_intervals.csv", index=False
+    )
+    participant_paired_comparisons.to_csv(
+        output_dir / "participant_paired_model_comparisons.csv", index=False
+    )
 
     paper_table_dir = output_dir / "paper_tables"
     paper_table_dir.mkdir(parents=True, exist_ok=True)
@@ -577,6 +598,12 @@ def run_nested_benchmark(
         .to_csv(paper_table_dir / "calibration_method_counts.csv", index=False)
     )
     paired_comparisons.to_csv(paper_table_dir / "paired_model_comparisons.csv", index=False)
+    participant_confidence_intervals.to_csv(
+        paper_table_dir / "participant_confidence_intervals.csv", index=False
+    )
+    participant_paired_comparisons.to_csv(
+        paper_table_dir / "participant_paired_model_comparisons.csv", index=False
+    )
     save_evaluation_plots(
         predictions,
         plotted_decision_curves,
@@ -602,6 +629,7 @@ def run_nested_benchmark(
                 "outer_splits": selected_splits,
                 "inner_folds": inner_folds,
                 "model_n_jobs": model_n_jobs,
+                "primary_repeated_cv_inference": "participant_mean_across_repeats",
             },
             indent=2,
             sort_keys=True,

@@ -102,6 +102,19 @@ def build_parser() -> argparse.ArgumentParser:
     block_a.add_argument("--dataset", default="all")
     block_a.add_argument("--seed", type=int, default=42)
 
+    research_audit = subparsers.add_parser(
+        "research-audit",
+        help="Audit missingness, grouping, survey design, and split leakage controls",
+    )
+    research_audit.add_argument("--seed", type=int, default=42)
+
+    concealment = subparsers.add_parser(
+        "test-concealment",
+        help="Write and validate an outcome-blind development holdout manifest",
+    )
+    concealment.add_argument("--dataset", required=True, choices=("brfss", "hospital130"))
+    concealment.add_argument("--seed", type=int, default=42)
+
     feature_map = subparsers.add_parser(
         "feature-map",
         help="Validate and write the complete cross-dataset feature dictionary",
@@ -270,6 +283,44 @@ def main() -> None:
         command_splits(args.dataset, args.seed)
     elif args.command == "block-a":
         command_block_a(args.dataset, args.seed)
+    elif args.command == "research-audit":
+        from diabetes_pipeline.data.research_audit import write_research_audit
+
+        json_path, md_path, audit = write_research_audit(seed=args.seed)
+        print(
+            json.dumps(
+                {
+                    "evidence_tier": audit["evidence_tier"],
+                    "final_outcome_access_authorized": audit[
+                        "final_outcome_access_authorized"
+                    ],
+                    "json": str(json_path),
+                    "markdown": str(md_path),
+                },
+                sort_keys=True,
+            )
+        )
+    elif args.command == "test-concealment":
+        from diabetes_pipeline.splitting.concealment import (
+            write_development_concealment_test,
+        )
+
+        manifest_path, metadata_path, metadata = write_development_concealment_test(
+            load_dataset(args.dataset), seed=args.seed
+        )
+        print(
+            json.dumps(
+                {
+                    "dataset": args.dataset,
+                    "purpose": metadata["purpose"],
+                    "outcome_blind": metadata["outcome_blind"],
+                    "manifest": str(manifest_path),
+                    "metadata": str(metadata_path),
+                    "manifest_sha256": metadata["manifest_sha256"],
+                },
+                sort_keys=True,
+            )
+        )
     elif args.command == "feature-map":
         from diabetes_pipeline.features import write_feature_ontology
 
