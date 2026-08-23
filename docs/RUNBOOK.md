@@ -159,6 +159,24 @@ precision, Brier score, and log loss with paired percentile intervals and
 metric-wise Holm correction. Positive `observed_degradation` always means the
 reduced panel performed worse, regardless of the metric direction.
 
+### Artifact-based ablation suite
+
+After matched-panel contrasts exist, run the ablations that reuse identical
+held-out predictions without retraining:
+
+```bash
+python -m diabetes_pipeline.cli artifact-ablations \
+  --study-dir outputs/publication_pipeline/studies/pidd_development_pilot_27b9bc88b493
+```
+
+This evaluates selected calibration versus raw probabilities, availability
+routing versus a robust fixed model, Brier-based selection versus AP/log-loss
+selection, and tree families versus Logistic Regression. Every contrast uses
+paired participants, dataset-appropriate participant or cluster resampling, and
+metric-wise Holm adjustment. The inventory remains
+`ablation_study_complete=false` until retraining-dependent and leakage-warning
+ablations are completed and reviewed.
+
 ## Detailed patient research result
 
 Use a local JSON file for patient input so values are not placed directly in

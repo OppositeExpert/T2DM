@@ -119,6 +119,12 @@ def audit_publication_readiness(
             "availability_routing/matched_panel_contrasts.csv",
             "availability_routing/matched_panel_contrast_metadata.json",
             "availability_routing/matched_panel_contrast_report.md",
+            "ablations/calibration_ablation.csv",
+            "ablations/router_baseline_ablation.csv",
+            "ablations/selector_metric_ablation.csv",
+            "ablations/model_family_ablation.csv",
+            "ablations/ablation_inventory.json",
+            "ablations/Ablation_Results.md",
         ]
         if dataset == "brfss":
             required.extend(

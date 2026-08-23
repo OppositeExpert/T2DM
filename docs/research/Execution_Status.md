@@ -11,7 +11,7 @@
 | 2. Literature and novelty | In progress, substantially expanded | Search protocol, 24-record matrix, closest-work comparison, novelty assessment v0.1 | Complete two-database search, extraction, and independent novelty review |
 | 3. Data/split/leakage audit | Engineering complete; full evidence review pending | Reproducible audit plus BRFSS weighted performance and stratified PSU-bootstrap sensitivity path, smoke-validated with 200 replicates | Run/review the survey sensitivity on the later full development study; retain all dataset controls |
 | 4. Engineering hardening | In progress | Outcome-blind manifest, fail-closed authorization, participant-level repeated-CV inference, Sylhet cluster bootstrap, paired decision-curve uncertainty, matched full-versus-reduced panel contrasts | Ablations, selective prediction, subgroup engine, final preflight |
-| 5. Development full runs and ablations | Pending | Pilot/smoke evidence only | Run only after Phase 1–4 development gates |
+| 5. Development full runs and ablations | In progress | Paired artifact ablations implemented for calibration, routing baseline, selector objective, model family, and panels; PIDD/Sylhet/BRFSS paths exercised | Implement retraining-dependent and leakage-warning ablations, then run full development profiles |
 | 6. Selective prediction/subgroups | Pending | No signed-off artifacts | Implement and review on development evidence |
 | 7. Protocol freeze | Locked out | `protocol_frozen=false`, `locked=false` | Requires all pre-final gates and immutable source identifier |
 | 8. Final experiments | Prohibited | None | One authorized run after Phase 7 only |

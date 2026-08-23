@@ -189,6 +189,14 @@ def build_parser() -> argparse.ArgumentParser:
     panel_contrasts.add_argument("--n-bootstrap", type=int)
     panel_contrasts.add_argument("--seed", type=int)
 
+    ablations = subparsers.add_parser(
+        "artifact-ablations",
+        help="Run paired ablations supported by completed prediction artifacts",
+    )
+    ablations.add_argument("--study-dir", type=Path, required=True)
+    ablations.add_argument("--n-bootstrap", type=int)
+    ablations.add_argument("--seed", type=int)
+
     patient_result = subparsers.add_parser(
         "patient-result",
         help="Generate a probability-first research report for one patient",
@@ -480,6 +488,27 @@ def main() -> None:
                     "output_dir": str(result.output_dir),
                     "predictions": str(result.predictions_path),
                     "contrasts": str(result.contrasts_path),
+                    "report": str(result.report_path),
+                },
+                sort_keys=True,
+            )
+        )
+    elif args.command == "artifact-ablations":
+        from diabetes_pipeline.evaluation.ablations import (
+            run_artifact_ablation_suite,
+        )
+
+        result = run_artifact_ablation_suite(
+            args.study_dir,
+            n_bootstrap=args.n_bootstrap,
+            seed=args.seed,
+        )
+        print(
+            json.dumps(
+                {
+                    "study_dir": str(result.study_dir),
+                    "output_dir": str(result.output_dir),
+                    "inventory": str(result.inventory_path),
                     "report": str(result.report_path),
                 },
                 sort_keys=True,

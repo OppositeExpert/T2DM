@@ -71,5 +71,9 @@ performance or a failed final experiment.
   and participants fixed, averages repeated held-out probabilities per person,
   preserves Sylhet profile clusters, and applies metric-wise Holm correction.
   PIDD, Sylhet, and BRFSS development paths passed; final claims remain blocked.
+- Phase 5 artifact ablations: paired calibration, router-baseline, selector-metric,
+  and model-family evaluators passed for PIDD/Sylhet; BRFSS correctly records its
+  missing Logistic Regression baseline. BLK-014 remains open for retraining,
+  random-dropout, applicability, and leakage-demonstration components.
 - Final access remains denied because protocol, final profile, final seed,
   authorization record, and final manifest fields are deliberately unset.
