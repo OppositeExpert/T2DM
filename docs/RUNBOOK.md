@@ -238,6 +238,30 @@ removes correlated feature sets per replicate. It reports performance and the
 fraction of participants still satisfying a named supported panel. It does not
 claim that either simulation validates real-world MNAR behavior.
 
+### Non-deployable leakage demonstrations
+
+```bash
+python -m diabetes_pipeline.cli leakage-demonstration --dataset pidd
+python -m diabetes_pipeline.cli leakage-demonstration --dataset sylhet
+```
+
+These commands intentionally compare fold-local preprocessing with invalid
+global preprocessing and, for Sylhet, group-preserving splits with invalid naive
+row splits. Their outputs are warning evidence only and are prohibited from model
+selection or final efficacy tables.
+
+### Panel-size and explanation-reporting ablations
+
+```bash
+python -m diabetes_pipeline.cli reporting-ablations \
+  --study-dir outputs/publication_pipeline/studies/pidd_development_pilot_27b9bc88b493
+```
+
+This estimates how much named-panel performance is explained by feature count
+alone and records residual panel-composition effects. It also compares encoded
+SHAP ranks with grouped original-feature ranks; grouped original features remain
+the primary interpretation output.
+
 ## Detailed patient research result
 
 Use a local JSON file for patient input so values are not placed directly in

@@ -74,12 +74,32 @@ to 0.246-0.295 and supported-panel coverage fell to 4-6%. This supports explicit
 applicability abstention. These simulations are stress tests, not MNAR or
 real-world deployment validation.
 
+The applicability-guard ablation shows why retained-case metrics must not be
+reported without coverage. Under 75% imposed dropout, the named-panel guard
+retained only about 5.5% of PIDD and 5.0% of Sylhet participants and a similar
+fraction of positive events. Most guarded fold-replicate cells were therefore
+suppressed. The lower retained-case Brier scores do not justify claiming better
+overall performance; the proper behavior is explicit abstention outside a
+supported panel.
+
+The non-deployable leakage demonstrations found negligible change from global
+preprocessing alone in the present data. In contrast, naive row-level Sylhet
+splitting allowed 263 identical-profile overlaps across five folds, inflated
+AUROC from 0.9574 to 0.9735, and reduced Brier from 0.0798 to 0.0565. This
+confirms that group-preserving Sylhet evaluation is necessary.
+
+Panel-size-only fits explain little PIDD named-panel variation (R-squared 0.18
+for Brier and 0.08 for AP), supporting clinically meaningful panel composition
+over feature count alone. Size explains more Sylhet panel variation (R-squared
+0.89-0.91), but the small five-panel design makes this descriptive rather than a
+validated selection rule. Grouped original-feature SHAP retained the leading
+features while collapsing PIDD missing-indicator expansions; it is therefore
+the primary explanation format.
+
 ## Remaining ablations
 
-The ablation blocker remains open. Completion still requires:
-
-- applicability/abstention guard removal, coordinated with selective prediction;
-- a clearly non-deployable global-preprocessing leakage demonstration;
-- a clearly non-deployable grouped-versus-naive Sylhet split demonstration.
+All prespecified engineering ablation paths now have development-pilot artifacts.
+The blocker remains open until they are rerun at the full development budget,
+jointly reviewed, and incorporated into the frozen decision report.
 
 No value in `config/publication_protocol.yaml` is changed by this report.

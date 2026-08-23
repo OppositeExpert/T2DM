@@ -33,6 +33,51 @@ class MissingnessStressResult:
     report_path: Path
 
 
+def applicability_guard_ablation(predictions: pd.DataFrame) -> pd.DataFrame:
+    """Compare always-predict behavior with named-panel applicability abstention."""
+
+    required = {
+        "model", "mechanism", "severity", "mask_replicate", "repeat",
+        "outer_fold", "target", "probability_calibrated", "supported_named_panel",
+    }
+    missing = sorted(required - set(predictions.columns))
+    if missing:
+        raise ValueError(f"Stress predictions lack guard columns: {missing}")
+    records = []
+    keys = ["model", "mechanism", "severity", "mask_replicate", "repeat", "outer_fold"]
+    for values, frame in predictions.groupby(keys, sort=True):
+        model, mechanism, severity, replicate, repeat, fold = values
+        total_events = int(frame["target"].sum())
+        for policy, accepted in (
+            ("always_predict", np.ones(len(frame), dtype=bool)),
+            ("named_panel_guard", frame["supported_named_panel"].astype(bool).to_numpy()),
+        ):
+            retained = frame.loc[accepted]
+            retained_events = int(retained["target"].sum())
+            base = {
+                "model": model, "mechanism": mechanism, "severity": float(severity),
+                "mask_replicate": int(replicate), "repeat": int(repeat),
+                "outer_fold": int(fold), "policy": policy,
+                "coverage": float(len(retained) / len(frame)),
+                "positive_event_coverage": (
+                    float(retained_events / total_events) if total_events else np.nan
+                ),
+                "accepted_n": int(len(retained)), "positive_events": retained_events,
+            }
+            if retained["target"].nunique() < 2:
+                records.append({**base, "status": "suppressed_single_class"})
+            else:
+                records.append({
+                    **base, "status": "estimated",
+                    **binary_metrics(
+                        retained["target"].to_numpy(dtype=int),
+                        retained["probability_calibrated"].to_numpy(dtype=float),
+                        threshold=0.5,
+                    ),
+                })
+    return pd.DataFrame(records)
+
+
 def generate_missing_mask(
     n_rows: int,
     n_features: int,
@@ -204,7 +249,9 @@ def run_missingness_stress(
                             "probability_calibrated": predicted["probability_calibrated"],
                         }))
     metrics = pd.DataFrame(records)
+    stress_predictions = pd.concat(prediction_frames, ignore_index=True)
     summary = _summarize(metrics)
+    guard_ablation = applicability_guard_ablation(stress_predictions)
     output_dir = study_dir / "missingness_stress"
     output_dir.mkdir(parents=True, exist_ok=True)
     metadata = {
@@ -219,11 +266,13 @@ def run_missingness_stress(
     metrics_path = output_dir / "fold_replicate_metrics.csv"
     summary_path = output_dir / "summary_metrics.csv"
     predictions_path = output_dir / "stress_predictions.csv"
+    guard_path = output_dir / "applicability_guard_ablation.csv"
     metadata_path = output_dir / "metadata.json"
     report_path = output_dir / "Missingness_Stress_Analysis.md"
     metrics.to_csv(metrics_path, index=False)
     summary.to_csv(summary_path, index=False)
-    pd.concat(prediction_frames, ignore_index=True).to_csv(predictions_path, index=False)
+    stress_predictions.to_csv(predictions_path, index=False)
+    guard_ablation.to_csv(guard_path, index=False)
     metadata_path.write_text(json.dumps(metadata, indent=2, sort_keys=True))
     report_path.write_text(_render_report(metadata, summary))
     return MissingnessStressResult(study_dir, output_dir, metrics_path, summary_path, report_path)

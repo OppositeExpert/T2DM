@@ -275,6 +275,21 @@ def build_parser() -> argparse.ArgumentParser:
     )
     missingness_stress.add_argument("--replicates", type=int, default=5)
 
+    leakage_demo = subparsers.add_parser(
+        "leakage-demonstration",
+        help="Run clearly invalid global-preprocessing and naive-split demonstrations",
+    )
+    leakage_demo.add_argument("--dataset", required=True, choices=["pidd", "sylhet"])
+    leakage_demo.add_argument("--model", default="logistic_regression", choices=list(MODEL_CHOICES))
+    leakage_demo.add_argument("--seed", type=int, default=42)
+    leakage_demo.add_argument("--n-splits", type=int, default=5)
+
+    reporting_ablations = subparsers.add_parser(
+        "reporting-ablations",
+        help="Evaluate panel-size heuristics and grouped explanation reporting",
+    )
+    reporting_ablations.add_argument("--study-dir", type=Path, required=True)
+
     patient_result = subparsers.add_parser(
         "patient-result",
         help="Generate a probability-first research report for one patient",
@@ -699,6 +714,45 @@ def main() -> None:
                     "output_dir": str(result.output_dir),
                     "metrics": str(result.metrics_path),
                     "summary": str(result.summary_path),
+                    "report": str(result.report_path),
+                },
+                sort_keys=True,
+            )
+        )
+    elif args.command == "leakage-demonstration":
+        from diabetes_pipeline.evaluation.leakage_demonstrations import (
+            run_leakage_demonstrations,
+        )
+
+        result = run_leakage_demonstrations(
+            args.dataset,
+            model_name=args.model,
+            seed=args.seed,
+            n_splits=args.n_splits,
+        )
+        print(
+            json.dumps(
+                {
+                    "output_dir": str(result.output_dir),
+                    "predictions": str(result.predictions_path),
+                    "summary": str(result.summary_path),
+                    "report": str(result.report_path),
+                },
+                sort_keys=True,
+            )
+        )
+    elif args.command == "reporting-ablations":
+        from diabetes_pipeline.evaluation.reporting_ablations import (
+            run_reporting_ablations,
+        )
+
+        result = run_reporting_ablations(args.study_dir)
+        print(
+            json.dumps(
+                {
+                    "output_dir": str(result.output_dir),
+                    "panel_ablation": str(result.panel_path),
+                    "explanation_ablation": str(result.explanation_path),
                     "report": str(result.report_path),
                 },
                 sort_keys=True,

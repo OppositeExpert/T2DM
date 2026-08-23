@@ -174,6 +174,13 @@ def audit_publication_readiness(
                     "missingness_stress/stress_predictions.csv",
                     "missingness_stress/metadata.json",
                     "missingness_stress/Missingness_Stress_Analysis.md",
+                    "missingness_stress/applicability_guard_ablation.csv",
+                    "ablations/reporting_ablations/panel_size_heuristic_ablation.csv",
+                    "ablations/reporting_ablations/panel_size_fit_diagnostics.csv",
+                    "ablations/reporting_ablations/explanation_grouping_ablation.csv",
+                    "ablations/reporting_ablations/metadata.json",
+                    "ablations/reporting_ablations/Reporting_Ablations.md",
+                    "explanations/global_shap_importance_original_features.csv",
                 ]
             )
         missing = [relative for relative in required if not (study_dir / relative).exists()]
@@ -185,6 +192,28 @@ def audit_publication_readiness(
                 "Regenerate the complete metrics, uncertainty, comparison, decision-curve, and routing artifact set.",
             )
         )
+
+    leakage_root = PROJECT_ROOT / "outputs" / "publication_pipeline" / "leakage_demonstrations"
+    leakage_required = [
+        leakage_root / dataset / relative
+        for dataset in ("pidd", "sylhet")
+        for relative in (
+            "predictions.csv",
+            "summary_metrics.csv",
+            "split_diagnostics.csv",
+            "metadata.json",
+            "Leakage_Demonstration.md",
+        )
+    ]
+    missing_leakage = [str(path.relative_to(PROJECT_ROOT)) for path in leakage_required if not path.exists()]
+    checks.append(
+        _check(
+            "leakage_demonstrations",
+            not missing_leakage,
+            f"missing={missing_leakage}",
+            "Generate the prespecified non-deployable preprocessing and split-leakage demonstrations.",
+        )
+    )
 
     protocol_requirements = {
         "protocol_frozen": "Approve and freeze the statistical analysis plan before final execution.",
