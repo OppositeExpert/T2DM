@@ -56,6 +56,15 @@ class RepeatedCvInferenceTests(unittest.TestCase):
         self.assertFalse(comparisons.empty)
         self.assertTrue(comparisons["resampling_unit"].eq("cluster").all())
 
+    def test_empty_group_ids_use_individual_resampling(self) -> None:
+        predictions = _predictions()
+        predictions["group_id"] = ""
+        _, intervals, comparisons = participant_level_repeated_cv_inference(
+            predictions, n_bootstrap=10, seed=42
+        )
+        self.assertTrue(intervals["resampling_unit"].eq("individual").all())
+        self.assertTrue(comparisons["resampling_unit"].eq("individual").all())
+
 
 if __name__ == "__main__":
     unittest.main()

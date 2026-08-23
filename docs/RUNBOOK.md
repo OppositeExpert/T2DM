@@ -87,6 +87,8 @@ Each study directory contains:
 - Fixed, development-Youden, and sensitivity-constrained thresholds.
 - Decision-curve data and ROC, precision-recall, calibration, probability, and
   decision-curve figures in PNG and SVG.
+- Pointwise net-benefit confidence intervals and paired model-vs-model
+  net-benefit contrasts across the prespecified threshold grid.
 - Paired fold comparisons with Holm-adjusted Wilcoxon p-values.
 - Complete preprocessor/model/calibrator/threshold bundles.
 - Participant-aggregated repeated-CV predictions, confidence intervals, and paired
@@ -243,7 +245,8 @@ until the experiment profile is explicitly locked.
 The holdout runner writes development-only tuning/calibration/threshold
 evidence, test predictions and metrics, individual or patient-cluster bootstrap
 intervals, paired bootstrap model comparisons with Holm adjustment, decision
-curves, plots, checksums, and reloadable bundles.
+curves with pointwise uncertainty and paired contrasts, plots, checksums, and
+reloadable bundles.
 
 ## Test-only SHAP for holdout studies
 

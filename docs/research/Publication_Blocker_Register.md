@@ -4,11 +4,16 @@
 
 **Readiness verdict:** `NOT READY`
 
-**Blocking checks:** 16
+**Blocking checks:** 19
 
 **Journal-strength warnings:** 1
 
 This register is the operational owner map for `outputs/publication_readiness_audit.md`. A protocol flag may change only after the acceptance evidence below exists and has been reviewed.
+
+The count increased from 16 to 19 when the gate was strengthened to require
+participant-level repeated-CV artifacts and paired decision-curve uncertainty.
+This records newly enforced evidence requirements; it is not a loss of model
+performance or a failed final experiment.
 
 | ID | Readiness check | Current evidence | Status | Owner phase | Required action | Acceptance evidence |
 |---|---|---|---|---:|---|---|
@@ -54,5 +59,9 @@ This register is the operational owner map for `outputs/publication_readiness_au
 - CTRL-002 control test: `python -m diabetes_pipeline.cli test-concealment`
   succeeded for BRFSS and Hospital130 seed-42 development partitions. Persisted
   manifests/metadata were outcome-blind and checksum-valid.
+- Phase 4 decision-curve control: nested and holdout runners now write pointwise
+  net-benefit confidence intervals and paired model contrasts using identical
+  individual or complete-cluster resamples across models. Development smoke
+  verification succeeded for PIDD and BRFSS; final evidence remains prohibited.
 - Final access remains denied because protocol, final profile, final seed,
   authorization record, and final manifest fields are deliberately unset.

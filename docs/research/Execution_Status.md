@@ -10,7 +10,7 @@
 | 1. Scientific protocol | Draft in progress | Endpoint/claim hierarchy, SAP v0.1, threshold/utility policy v0.1, machine-readable final lockout | Complete margin/threshold evidence review and formal sign-off later |
 | 2. Literature and novelty | In progress, substantially expanded | Search protocol, 24-record matrix, closest-work comparison, novelty assessment v0.1 | Complete two-database search, extraction, and independent novelty review |
 | 3. Data/split/leakage audit | Audit implemented; one analysis gap remains | Reproducible research-audit command and reviewed data/leakage/applicability report | Add BRFSS survey-aware sensitivity analysis; retain all continuing dataset controls |
-| 4. Engineering hardening | In progress | Outcome-blind manifest format, fail-closed final authorization, participant-level repeated-CV inference, Sylhet cluster bootstrap | Net-benefit uncertainty, matched panel contrasts, ablations, selective prediction, subgroup engine, final preflight |
+| 4. Engineering hardening | In progress | Outcome-blind manifest format, fail-closed final authorization, participant-level repeated-CV inference, Sylhet cluster bootstrap, paired decision-curve uncertainty | Matched panel contrasts, ablations, selective prediction, subgroup engine, final preflight |
 | 5. Development full runs and ablations | Pending | Pilot/smoke evidence only | Run only after Phase 1–4 development gates |
 | 6. Selective prediction/subgroups | Pending | No signed-off artifacts | Implement and review on development evidence |
 | 7. Protocol freeze | Locked out | `protocol_frozen=false`, `locked=false` | Requires all pre-final gates and immutable source identifier |
@@ -32,7 +32,7 @@
 1. Complete the structured database searches, extraction, and independent novelty review.
 2. Review Phase 1 margins and threshold ranges against the resulting evidence.
 3. Implement the BRFSS survey-aware descriptive and prediction sensitivity path.
-4. Implement paired net-benefit uncertainty and reduced-panel/full-panel contrasts.
+4. Implement reduced-panel/full-panel contrasts on matched patients and folds.
 5. Implement ablations, selective prediction, subgroup analysis, and final preflight.
 6. Define the immutable final-artifact backup and recovery procedure.
 

@@ -24,6 +24,9 @@ from diabetes_pipeline.evaluation.comparisons import (
     paired_bootstrap_model_comparisons,
 )
 from diabetes_pipeline.evaluation.decision_curve import decision_curve
+from diabetes_pipeline.evaluation.decision_curve_inference import (
+    decision_curve_bootstrap_inference,
+)
 from diabetes_pipeline.evaluation.metrics import binary_metrics
 from diabetes_pipeline.evaluation.plots import save_evaluation_plots
 from diabetes_pipeline.models.registry import MODEL_NAMES, build_estimator
@@ -588,6 +591,18 @@ def run_holdout_benchmark(
         curve.insert(0, "experiment_id", experiment_id)
         decision_frames.append(curve)
     decision_curves = pd.concat(decision_frames, ignore_index=True)
+    (
+        decision_curve_confidence_intervals,
+        decision_curve_paired_contrasts,
+    ) = decision_curve_bootstrap_inference(
+        predictions[["model", "row_id", "target", "probability_calibrated"]],
+        n_bootstrap=int(profile["n_bootstrap"]),
+        seed=int(profile["seed"]) + 700_000,
+        groups=comparison_groups,
+    )
+    decision_curve_confidence_intervals.insert(0, "evaluation_role", "locked_test")
+    if not decision_curve_paired_contrasts.empty:
+        decision_curve_paired_contrasts.insert(0, "evaluation_role", "locked_test")
 
     paths = {
         "development_predictions": output_dir / "development_oof_predictions.csv",
@@ -602,6 +617,9 @@ def run_holdout_benchmark(
         "intervals": output_dir / "confidence_intervals.csv",
         "comparisons": output_dir / "paired_bootstrap_model_comparisons.csv",
         "decision_curves": output_dir / "decision_curves.csv",
+        "decision_curve_intervals": output_dir
+        / "decision_curve_confidence_intervals.csv",
+        "decision_curve_contrasts": output_dir / "decision_curve_paired_contrasts.csv",
     }
     pd.concat(development_prediction_frames, ignore_index=True).to_csv(
         paths["development_predictions"], index=False
@@ -617,6 +635,12 @@ def run_holdout_benchmark(
     confidence_intervals.to_csv(paths["intervals"], index=False)
     paired_comparisons.to_csv(paths["comparisons"], index=False)
     decision_curves.to_csv(paths["decision_curves"], index=False)
+    decision_curve_confidence_intervals.to_csv(
+        paths["decision_curve_intervals"], index=False
+    )
+    decision_curve_paired_contrasts.to_csv(
+        paths["decision_curve_contrasts"], index=False
+    )
     (output_dir / "summary_metrics.md").write_text(
         _markdown_summary(summary), encoding="utf-8"
     )
@@ -626,6 +650,12 @@ def run_holdout_benchmark(
     )
     paired_comparisons.to_csv(
         paper_table_dir / "paired_bootstrap_model_comparisons.csv", index=False
+    )
+    decision_curve_confidence_intervals.to_csv(
+        paper_table_dir / "decision_curve_confidence_intervals.csv", index=False
+    )
+    decision_curve_paired_contrasts.to_csv(
+        paper_table_dir / "decision_curve_paired_contrasts.csv", index=False
     )
     figures = save_evaluation_plots(
         predictions,
@@ -670,6 +700,15 @@ def run_holdout_benchmark(
                 "bootstrap_resampling_unit": (
                     "patient_cluster" if dataset.groups is not None else "individual"
                 ),
+                "decision_curve_inference": {
+                    "estimation_scope": "locked_test",
+                    "paired_bootstrap": True,
+                    "resampling_unit": (
+                        "patient_cluster"
+                        if dataset.groups is not None
+                        else "individual"
+                    ),
+                },
                 "artifacts": [
                     str(path.relative_to(output_dir))
                     for path in [*paths.values(), *figures]

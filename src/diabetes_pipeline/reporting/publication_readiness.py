@@ -111,6 +111,8 @@ def audit_publication_readiness(
         required = [
             "confidence_intervals.csv",
             "decision_curves.csv",
+            "decision_curve_confidence_intervals.csv",
+            "decision_curve_paired_contrasts.csv",
             "availability_routing/summary_metrics.csv",
             "availability_routing/router_selections.csv",
         ]
@@ -119,7 +121,15 @@ def audit_publication_readiness(
                 ["test_predictions.csv", "paired_bootstrap_model_comparisons.csv"]
             )
         else:
-            required.extend(["predictions.csv", "paired_model_comparisons.csv"])
+            required.extend(
+                [
+                    "predictions.csv",
+                    "paired_model_comparisons.csv",
+                    "participant_predictions.csv",
+                    "participant_confidence_intervals.csv",
+                    "participant_paired_model_comparisons.csv",
+                ]
+            )
         missing = [relative for relative in required if not (study_dir / relative).exists()]
         checks.append(
             _check(

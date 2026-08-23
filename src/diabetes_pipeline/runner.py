@@ -21,6 +21,9 @@ from diabetes_pipeline.data.manifests import write_audit
 from diabetes_pipeline.evaluation.bootstrap import bootstrap_metric_intervals
 from diabetes_pipeline.evaluation.comparisons import paired_model_comparisons
 from diabetes_pipeline.evaluation.decision_curve import decision_curve
+from diabetes_pipeline.evaluation.decision_curve_inference import (
+    decision_curve_bootstrap_inference,
+)
 from diabetes_pipeline.evaluation.metrics import binary_metrics
 from diabetes_pipeline.evaluation.plots import save_evaluation_plots
 from diabetes_pipeline.evaluation.repeated_cv import (
@@ -559,6 +562,38 @@ def run_nested_benchmark(
         n_bootstrap=int(profile["n_bootstrap"]),
         seed=int(profile["seed"]) + 700_000,
     )
+    participant_reference_model = sorted(participant_predictions["model"].unique())[0]
+    participant_reference = (
+        participant_predictions[
+            participant_predictions["model"] == participant_reference_model
+        ]
+        .sort_values("row_id")
+        .reset_index(drop=True)
+    )
+    participant_group_values = participant_reference["group_id"].to_numpy(dtype=str)
+    participant_groups = (
+        participant_group_values
+        if np.any(np.char.str_len(participant_group_values) > 0)
+        else None
+    )
+    (
+        decision_curve_confidence_intervals,
+        decision_curve_paired_contrasts,
+    ) = decision_curve_bootstrap_inference(
+        participant_predictions[
+            ["model", "row_id", "target", "probability_calibrated"]
+        ],
+        n_bootstrap=int(profile["n_bootstrap"]),
+        seed=int(profile["seed"]) + 800_000,
+        groups=participant_groups,
+    )
+    decision_curve_confidence_intervals.insert(
+        0, "estimation_scope", "participant_mean_across_repeats"
+    )
+    if not decision_curve_paired_contrasts.empty:
+        decision_curve_paired_contrasts.insert(
+            0, "estimation_scope", "participant_mean_across_repeats"
+        )
 
     predictions_path = output_dir / "predictions.csv"
     metrics_path = output_dir / "fold_metrics.csv"
@@ -583,6 +618,12 @@ def run_nested_benchmark(
     participant_paired_comparisons.to_csv(
         output_dir / "participant_paired_model_comparisons.csv", index=False
     )
+    decision_curve_confidence_intervals.to_csv(
+        output_dir / "decision_curve_confidence_intervals.csv", index=False
+    )
+    decision_curve_paired_contrasts.to_csv(
+        output_dir / "decision_curve_paired_contrasts.csv", index=False
+    )
 
     paper_table_dir = output_dir / "paper_tables"
     paper_table_dir.mkdir(parents=True, exist_ok=True)
@@ -603,6 +644,12 @@ def run_nested_benchmark(
     )
     participant_paired_comparisons.to_csv(
         paper_table_dir / "participant_paired_model_comparisons.csv", index=False
+    )
+    decision_curve_confidence_intervals.to_csv(
+        paper_table_dir / "decision_curve_confidence_intervals.csv", index=False
+    )
+    decision_curve_paired_contrasts.to_csv(
+        paper_table_dir / "decision_curve_paired_contrasts.csv", index=False
     )
     save_evaluation_plots(
         predictions,
@@ -630,6 +677,13 @@ def run_nested_benchmark(
                 "inner_folds": inner_folds,
                 "model_n_jobs": model_n_jobs,
                 "primary_repeated_cv_inference": "participant_mean_across_repeats",
+                "decision_curve_inference": {
+                    "estimation_scope": "participant_mean_across_repeats",
+                    "paired_bootstrap": True,
+                    "resampling_unit": (
+                        "cluster" if participant_groups is not None else "individual"
+                    ),
+                },
             },
             indent=2,
             sort_keys=True,
