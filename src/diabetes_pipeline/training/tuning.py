@@ -60,6 +60,7 @@ def tune_model(
     groups: np.ndarray | None = None,
     predefined_splits: Sequence[tuple[np.ndarray, np.ndarray]] | None = None,
     n_jobs: int = 1,
+    add_numeric_missing_indicators: bool = True,
 ) -> TuningResult:
     resolved_splits = (
         [
@@ -76,7 +77,11 @@ def tune_model(
         suggested = suggest_parameters(trial, model_name, positive_class_weight(y))
         scores: list[float] = []
         for fold, (training, validation) in enumerate(resolved_splits):
-            preprocessor = build_preprocessor(dataset_cfg, model_name)
+            preprocessor = build_preprocessor(
+                dataset_cfg,
+                model_name,
+                add_numeric_missing_indicators=add_numeric_missing_indicators,
+            )
             X_training = preprocessor.fit_transform(X.iloc[training])
             X_validation = preprocessor.transform(X.iloc[validation])
             y_training = y[training]
@@ -122,6 +127,7 @@ def cross_fitted_probabilities(
     groups: np.ndarray | None = None,
     predefined_splits: Sequence[tuple[np.ndarray, np.ndarray]] | None = None,
     n_jobs: int = 1,
+    add_numeric_missing_indicators: bool = True,
 ) -> np.ndarray:
     probabilities = np.full(len(y), np.nan, dtype=float)
     resolved_splits = (
@@ -133,7 +139,11 @@ def cross_fitted_probabilities(
         else list(inner_splits(y, n_splits=n_splits, seed=seed, groups=groups))
     )
     for fold, (training, validation) in enumerate(resolved_splits):
-        preprocessor = build_preprocessor(dataset_cfg, model_name)
+        preprocessor = build_preprocessor(
+            dataset_cfg,
+            model_name,
+            add_numeric_missing_indicators=add_numeric_missing_indicators,
+        )
         X_training = preprocessor.fit_transform(X.iloc[training])
         X_validation = preprocessor.transform(X.iloc[validation])
         y_training = y[training]
@@ -164,6 +174,7 @@ def cross_fitted_probabilities_by_scenario(
     groups: np.ndarray | None = None,
     predefined_splits: Sequence[tuple[np.ndarray, np.ndarray]] | None = None,
     n_jobs: int = 1,
+    add_numeric_missing_indicators: bool = True,
 ) -> dict[str, np.ndarray]:
     """Predict masked validation panels while always fitting on full training data."""
 
@@ -194,7 +205,11 @@ def cross_fitted_probabilities_by_scenario(
         else list(inner_splits(y, n_splits=n_splits, seed=seed, groups=groups))
     )
     for fold, (training, validation) in enumerate(resolved_splits):
-        preprocessor = build_preprocessor(dataset_cfg, model_name)
+        preprocessor = build_preprocessor(
+            dataset_cfg,
+            model_name,
+            add_numeric_missing_indicators=add_numeric_missing_indicators,
+        )
         X_training = preprocessor.fit_transform(X.iloc[training])
         y_training = y[training]
         model = build_estimator(

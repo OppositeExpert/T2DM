@@ -177,6 +177,24 @@ metric-wise Holm adjustment. The inventory remains
 `ablation_study_complete=false` until retraining-dependent and leakage-warning
 ablations are completed and reviewed.
 
+### Missing-indicator retraining ablation
+
+Run the missingness-indicator comparison against an existing repeated nested-CV
+development study:
+
+```bash
+python -m diabetes_pipeline.cli missing-indicator-ablation \
+  --study-dir outputs/publication_pipeline/studies/pidd_development_pilot_27b9bc88b493 \
+  --models logistic_regression random_forest
+```
+
+The command separately tunes indicator-on and indicator-off pipelines while
+holding outer splits, inner folds, trial budgets, search spaces, model families,
+and random seeds fixed. It averages repeated predictions per participant,
+preserves Sylhet profile clusters during bootstrap inference, and reports paired
+AUROC, average-precision, Brier, and log-loss contrasts with Holm adjustment.
+Smoke output is execution evidence only; it cannot close the ablation blocker.
+
 ## Detailed patient research result
 
 Use a local JSON file for patient input so values are not placed directly in

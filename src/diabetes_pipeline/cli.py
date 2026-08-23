@@ -197,6 +197,23 @@ def build_parser() -> argparse.ArgumentParser:
     ablations.add_argument("--n-bootstrap", type=int)
     ablations.add_argument("--seed", type=int)
 
+    missing_indicator_ablation = subparsers.add_parser(
+        "missing-indicator-ablation",
+        help=(
+            "Retrain missing-indicator on/off variants on identical "
+            "development nested-CV splits"
+        ),
+    )
+    missing_indicator_ablation.add_argument(
+        "--study-dir", type=Path, required=True
+    )
+    missing_indicator_ablation.add_argument(
+        "--models",
+        nargs="+",
+        default=["logistic_regression", "random_forest"],
+        choices=list(MODEL_CHOICES),
+    )
+
     patient_result = subparsers.add_parser(
         "patient-result",
         help="Generate a probability-first research report for one patient",
@@ -509,6 +526,27 @@ def main() -> None:
                     "study_dir": str(result.study_dir),
                     "output_dir": str(result.output_dir),
                     "inventory": str(result.inventory_path),
+                    "report": str(result.report_path),
+                },
+                sort_keys=True,
+            )
+        )
+    elif args.command == "missing-indicator-ablation":
+        from diabetes_pipeline.evaluation.retraining_ablations import (
+            run_missing_indicator_retraining_ablation,
+        )
+
+        result = run_missing_indicator_retraining_ablation(
+            args.study_dir,
+            models=args.models,
+        )
+        print(
+            json.dumps(
+                {
+                    "study_dir": str(result.study_dir),
+                    "output_dir": str(result.output_dir),
+                    "predictions": str(result.predictions_path),
+                    "contrasts": str(result.contrasts_path),
                     "report": str(result.report_path),
                 },
                 sort_keys=True,

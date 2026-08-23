@@ -75,5 +75,11 @@ performance or a failed final experiment.
   and model-family evaluators passed for PIDD/Sylhet; BRFSS correctly records its
   missing Logistic Regression baseline. BLK-014 remains open for retraining,
   random-dropout, applicability, and leakage-demonstration components.
+- Phase 5 missing-indicator retraining: indicator-on and indicator-off variants
+  now use identical outer/inner folds, budgets, search spaces, model families,
+  and seeds with separate tuning. PIDD individual and Sylhet cluster smoke and
+  five-fold development-pilot paths passed. A numerical-equivalence guard
+  prevents machine-precision noise from becoming false significance. BLK-014
+  remains open until the remaining ablations are completed and reviewed.
 - Final access remains denied because protocol, final profile, final seed,
   authorization record, and final manifest fields are deliberately unset.

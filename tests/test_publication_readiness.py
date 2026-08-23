@@ -30,6 +30,9 @@ class PublicationReadinessTests(unittest.TestCase):
             if check["id"] == "brfss_required_artifacts"
         )
         self.assertIn("survey_weighted_metrics.csv", brfss_artifacts["evidence"])
+        self.assertNotIn(
+            "missing_indicator_retraining", brfss_artifacts["evidence"]
+        )
         rendered = render_publication_readiness_markdown(result)
         self.assertIn("NOT READY", rendered)
         self.assertIn("TRIPOD", rendered)

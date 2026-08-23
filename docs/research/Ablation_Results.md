@@ -2,7 +2,7 @@
 
 **Updated:** 23 August 2026
 
-**Status:** Artifact-based components complete; retraining-dependent components open
+**Status:** Artifact-based components complete; first retraining component development-validated
 
 ## Scope
 
@@ -43,11 +43,23 @@ BRFSS artifact ablations are smoke-only. The older BRFSS routing study did not
 contain Logistic Regression, so the model-family baseline is correctly recorded
 as unavailable rather than silently omitted or reconstructed post hoc.
 
+The missing-indicator retraining runner has now passed smoke and five-fold
+development-pilot tests on PIDD and Sylhet for Logistic Regression and Random
+Forest. Both variants were separately tuned on identical outer and inner folds,
+trial budgets, search spaces, and seeds. The PIDD development pilot covered all
+768 participants and produced eight complete paired contrasts with individual
+resampling; none showed a Holm-corrected advantage for indicators. Sylhet
+covered all 520 participants with cluster resampling and produced exact null
+contrasts, which is expected because this dataset has no applicable numeric
+missingness for the indicator transformer. A numerical-equivalence guard
+collapses probability differences within `1e-12` before inference, preventing
+machine-precision noise from creating rank or sign-test artifacts. These remain
+reduced-budget development findings and cannot enter the final results table.
+
 ## Remaining ablations
 
 The ablation blocker remains open. Completion still requires:
 
-- missing-indicator on/off retraining on identical folds and budgets;
 - full-panel masked inference versus models trained separately per panel;
 - prespecified random feature-dropout stress experiments;
 - applicability/abstention guard removal, coordinated with selective prediction;
