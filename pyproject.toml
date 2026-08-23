@@ -28,6 +28,10 @@ dev = [
   "pytest==9.1.1",
   "pytest-cov==7.1.0",
 ]
+conference = [
+  "python-docx==1.2.0",
+  "pdf2image==1.17.0",
+]
 
 [project.scripts]
 diabetes-pipeline = "diabetes_pipeline.cli:main"
