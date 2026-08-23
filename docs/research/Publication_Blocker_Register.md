@@ -63,5 +63,9 @@ performance or a failed final experiment.
   net-benefit confidence intervals and paired model contrasts using identical
   individual or complete-cluster resamples across models. Development smoke
   verification succeeded for PIDD and BRFSS; final evidence remains prohibited.
+- Phase 3 BRFSS survey control: `brfss-survey-sensitivity` maps held-out row IDs
+  back to `_LLCPWT`, `_STSTR`, and `_PSU`, reports weighted point estimates, and
+  uses shared stratified PSU replicate weights. A 200-replicate development smoke
+  run passed; full-study review is still required before any population wording.
 - Final access remains denied because protocol, final profile, final seed,
   authorization record, and final manifest fields are deliberately unset.

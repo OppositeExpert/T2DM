@@ -145,6 +145,14 @@ def build_parser() -> argparse.ArgumentParser:
         choices=list(MODEL_CHOICES),
     )
 
+    survey_sensitivity = subparsers.add_parser(
+        "brfss-survey-sensitivity",
+        help="Evaluate a completed BRFSS holdout with survey weights and PSU uncertainty",
+    )
+    survey_sensitivity.add_argument("--study-dir", type=Path, required=True)
+    survey_sensitivity.add_argument("--n-bootstrap", type=int, default=200)
+    survey_sensitivity.add_argument("--seed", type=int, default=42)
+
     explain = subparsers.add_parser(
         "explain", help="Generate held-out SHAP explanations for a completed study"
     )
@@ -363,6 +371,28 @@ def main() -> None:
                     "experiment_id": result.experiment_id,
                     "output_dir": str(result.output_dir),
                     "summary": str(result.summary_path),
+                },
+                sort_keys=True,
+            )
+        )
+    elif args.command == "brfss-survey-sensitivity":
+        from diabetes_pipeline.evaluation.survey_sensitivity import (
+            run_brfss_survey_sensitivity,
+        )
+
+        result = run_brfss_survey_sensitivity(
+            args.study_dir,
+            n_bootstrap=args.n_bootstrap,
+            seed=args.seed,
+        )
+        print(
+            json.dumps(
+                {
+                    "study_dir": str(result.study_dir),
+                    "output_dir": str(result.output_dir),
+                    "metrics": str(result.metrics_path),
+                    "intervals": str(result.intervals_path),
+                    "report": str(result.report_path),
                 },
                 sort_keys=True,
             )

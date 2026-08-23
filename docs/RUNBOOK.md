@@ -248,6 +248,25 @@ intervals, paired bootstrap model comparisons with Holm adjustment, decision
 curves with pointwise uncertainty and paired contrasts, plots, checksums, and
 reloadable bundles.
 
+## BRFSS survey-weighted sensitivity analysis
+
+Run this only against an already completed BRFSS study:
+
+```bash
+python -m diabetes_pipeline.cli brfss-survey-sensitivity \
+  --study-dir outputs/publication_pipeline/studies/brfss_smoke_holdout_238827051db5 \
+  --n-bootstrap 200 \
+  --seed 42
+```
+
+The command maps study row IDs back to `_LLCPWT`, `_STSTR`, and `_PSU`, reports
+unweighted and population-weighted discrimination, calibration, classification,
+and net-benefit estimates, and writes pointwise uncertainty from stratified
+with-replacement PSU bootstrap replicates. It is a secondary sensitivity
+analysis: the random respondent-level holdout was not constructed as a survey
+partition, weights are not used for training, and the output is not an official
+CDC variance estimate or external validation.
+
 ## Test-only SHAP for holdout studies
 
 ```bash

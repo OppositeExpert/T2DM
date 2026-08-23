@@ -42,7 +42,11 @@ resampling are required.
 ## 3. BRFSS complex survey design
 
 The raw retained cohort has complete values for `_LLCPWT`, `_STSTR`, and `_PSU`.
-It contains 53 state/territory codes, 1,306 sampling strata, and 23,081 PSUs.
+It contains 53 state/territory codes and 1,306 sampling strata. There are 23,081
+reusable `_PSU` codes but 429,360 distinct `_STSTR`/`_PSU` pairs: `_PSU` codes
+repeat across strata, while each retained respondent has a unique PSU identifier
+within its stratum. Consequently, design code must nest `_PSU` within `_STSTR`;
+counting globally unique `_PSU` values as the number of clusters is incorrect.
 The CDC documentation specifies `_LLCPWT` as the final core weight, `_STSTR` for
 stratification, and `_PSU` for clustering in complex-survey analyses:
 
@@ -59,11 +63,23 @@ a design-correct standard error.
 - Primary prediction estimates may remain explicitly sample-conditional if that
   target is justified.
 - Weighted cohort description is mandatory.
-- A survey-aware sensitivity analysis must evaluate weighted training and/or
-  weighted held-out performance and design-correct uncertainty where technically
-  supported.
+- The implemented survey-aware sensitivity path evaluates `_LLCPWT`-weighted
+  held-out performance and pointwise stratified PSU-bootstrap uncertainty. It
+  does not currently use weights during model fitting.
 - Population-representative claims are prohibited until that analysis is reviewed.
 - Subgroup/fairness results must disclose whether they are sample-conditional or survey-weighted.
+
+### Development smoke evidence
+
+The two-model BRFSS smoke study `brfss_smoke_holdout_238827051db5` completed 200
+shared stratified PSU bootstrap replicates. The 10,000-row evaluated partition
+contained 1,086 represented strata, 10,000 PSU-within-stratum identifiers, and
+170 represented single-PSU strata. `_LLCPWT` reduced estimated prevalence from
+13.33% to 10.80%; the Kish effective sample size was 2,362.5. These are
+development diagnostics, not manuscript estimates. Single-PSU represented
+strata are held at multiplier one, and the respondent-level random holdout was
+not constructed as a survey-design partition, so the intervals must remain
+labeled an approximate population-weighted sensitivity analysis.
 
 ## 4. Missingness
 

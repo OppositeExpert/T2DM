@@ -75,13 +75,21 @@ def audit_brfss_survey_design(dataset: LoadedDataset) -> dict[str, Any]:
         },
         "state_count": int(retained["_STATE"].nunique(dropna=True)),
         "stratum_count": int(retained["_STSTR"].nunique(dropna=True)),
-        "psu_count": int(retained["_PSU"].nunique(dropna=True)),
+        "psu_code_count": int(retained["_PSU"].nunique(dropna=True)),
+        "psu_within_stratum_count": int(
+            retained[["_STSTR", "_PSU"]].dropna().drop_duplicates().shape[0]
+        ),
+        "duplicate_psu_within_stratum_rows": int(
+            retained.duplicated(["_STSTR", "_PSU"]).sum()
+        ),
         "unweighted_prevalence": float(np.mean(y)),
         "llcpwt_weighted_prevalence": _safe_weighted_prevalence(y, weights),
-        "weights_used_by_current_prediction_pipeline": False,
+        "weights_used_by_model_fitting": False,
+        "survey_weighted_sensitivity_evaluator_available": True,
         "interpretation": (
-            "Design variables are present in the raw file but are not currently "
-            "used by model fitting, performance estimation, or subgroup uncertainty."
+            "Design variables are not used by model fitting. A separate development "
+            "sensitivity evaluator uses weights, strata, and nested PSU identifiers "
+            "for weighted performance and approximate design-aware uncertainty."
         ),
     }
 
@@ -228,7 +236,8 @@ def render_research_audit_markdown(audit: dict[str, Any]) -> str:
         lines.append(
             f"The retained cohort contains {brfss['state_count']} state codes, "
             f"{brfss['stratum_count']} sampling strata, and "
-            f"{brfss['psu_count']} primary sampling units. The raw "
+            f"{brfss['psu_within_stratum_count']} PSU-within-stratum identifiers "
+            f"({brfss['psu_code_count']} reusable `_PSU` codes). The raw "
             "`_LLCPWT` weight is available."
         )
         lines.append(
@@ -238,9 +247,15 @@ def render_research_audit_markdown(audit: dict[str, Any]) -> str:
             "value is not a design-correct variance estimate."
         )
         lines.append(
-            "The current prediction pipeline does not use weights, strata, or PSUs; "
-            "population-representative claims are therefore prohibited unless a "
-            "prespecified survey-aware analysis is added."
+            f"Duplicate respondent rows within an `_STSTR`/`_PSU` pair: "
+            f"{brfss['duplicate_psu_within_stratum_rows']}. `_PSU` codes are reused "
+            "across strata and must therefore be interpreted within `_STSTR`."
+        )
+        lines.append(
+            "Model fitting remains unweighted. A separate survey-sensitivity command "
+            "now evaluates `_LLCPWT`-weighted performance with stratified PSU "
+            "resampling; population claims remain prohibited until full development "
+            "evidence and the variance limitations are reviewed."
         )
     lines.extend(["", "## Dataset-specific controls", ""])
     lines.extend(

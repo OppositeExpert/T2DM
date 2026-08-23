@@ -116,6 +116,15 @@ def audit_publication_readiness(
             "availability_routing/summary_metrics.csv",
             "availability_routing/router_selections.csv",
         ]
+        if dataset == "brfss":
+            required.extend(
+                [
+                    "survey_sensitivity/survey_weighted_metrics.csv",
+                    "survey_sensitivity/survey_weighted_confidence_intervals.csv",
+                    "survey_sensitivity/survey_design_diagnostics.json",
+                    "survey_sensitivity/survey_sensitivity_report.md",
+                ]
+            )
         if runner == "development_locked_holdout":
             required.extend(
                 ["test_predictions.csv", "paired_bootstrap_model_comparisons.csv"]
