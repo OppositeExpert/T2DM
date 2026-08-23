@@ -67,5 +67,9 @@ performance or a failed final experiment.
   back to `_LLCPWT`, `_STSTR`, and `_PSU`, reports weighted point estimates, and
   uses shared stratified PSU replicate weights. A 200-replicate development smoke
   run passed; full-study review is still required before any population wording.
+- Phase 4 panel-degradation control: `matched-panel-contrasts` holds model family
+  and participants fixed, averages repeated held-out probabilities per person,
+  preserves Sylhet profile clusters, and applies metric-wise Holm correction.
+  PIDD, Sylhet, and BRFSS development paths passed; final claims remain blocked.
 - Final access remains denied because protocol, final profile, final seed,
   authorization record, and final manifest fields are deliberately unset.

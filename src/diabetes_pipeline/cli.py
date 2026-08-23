@@ -181,6 +181,14 @@ def build_parser() -> argparse.ArgumentParser:
     routing.add_argument("--dataset", required=True)
     routing.add_argument("--study-dir", type=Path, required=True)
 
+    panel_contrasts = subparsers.add_parser(
+        "matched-panel-contrasts",
+        help="Compare reduced and full feature panels on identical participants",
+    )
+    panel_contrasts.add_argument("--study-dir", type=Path, required=True)
+    panel_contrasts.add_argument("--n-bootstrap", type=int)
+    panel_contrasts.add_argument("--seed", type=int)
+
     patient_result = subparsers.add_parser(
         "patient-result",
         help="Generate a probability-first research report for one patient",
@@ -451,6 +459,28 @@ def main() -> None:
                     "output_dir": str(result.output_dir),
                     "selections": str(result.selections_path),
                     "summary": str(result.summary_path),
+                },
+                sort_keys=True,
+            )
+        )
+    elif args.command == "matched-panel-contrasts":
+        from diabetes_pipeline.routing.panel_contrasts import (
+            run_matched_panel_contrasts,
+        )
+
+        result = run_matched_panel_contrasts(
+            args.study_dir,
+            n_bootstrap=args.n_bootstrap,
+            seed=args.seed,
+        )
+        print(
+            json.dumps(
+                {
+                    "study_dir": str(result.study_dir),
+                    "output_dir": str(result.output_dir),
+                    "predictions": str(result.predictions_path),
+                    "contrasts": str(result.contrasts_path),
+                    "report": str(result.report_path),
                 },
                 sort_keys=True,
             )

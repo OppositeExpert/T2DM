@@ -141,6 +141,24 @@ evaluation, matching their holdout contracts. Both paths save reloadable
 routing bundles, supported-panel inference metadata, and explicit abstention
 when no panel matches.
 
+### Matched reduced-panel contrasts
+
+After routing evaluation, compare every reduced feature panel with the full
+panel on the same participants and within the same model family:
+
+```bash
+python -m diabetes_pipeline.cli matched-panel-contrasts \
+  --study-dir outputs/publication_pipeline/studies/pidd_development_pilot_27b9bc88b493
+```
+
+Repeated-CV studies first average each participant's held-out probabilities
+across repeats; Sylhet then uses complete-profile cluster resampling. Holdout
+studies use identical test respondents and Hospital130 uses patient-cluster
+resampling. The output reports full-versus-reduced changes in AUROC, average
+precision, Brier score, and log loss with paired percentile intervals and
+metric-wise Holm correction. Positive `observed_degradation` always means the
+reduced panel performed worse, regardless of the metric direction.
+
 ## Detailed patient research result
 
 Use a local JSON file for patient input so values are not placed directly in

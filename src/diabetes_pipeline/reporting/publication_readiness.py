@@ -115,6 +115,10 @@ def audit_publication_readiness(
             "decision_curve_paired_contrasts.csv",
             "availability_routing/summary_metrics.csv",
             "availability_routing/router_selections.csv",
+            "availability_routing/participant_panel_predictions.csv",
+            "availability_routing/matched_panel_contrasts.csv",
+            "availability_routing/matched_panel_contrast_metadata.json",
+            "availability_routing/matched_panel_contrast_report.md",
         ]
         if dataset == "brfss":
             required.extend(
