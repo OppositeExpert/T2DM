@@ -1,0 +1,49 @@
+# Publication Blocker Register
+
+**Baseline:** 23 August 2026
+
+**Readiness verdict:** `NOT READY`
+
+**Blocking checks:** 16
+
+**Journal-strength warnings:** 1
+
+This register is the operational owner map for `outputs/publication_readiness_audit.md`. A protocol flag may change only after the acceptance evidence below exists and has been reviewed.
+
+| ID | Readiness check | Current evidence | Status | Owner phase | Required action | Acceptance evidence |
+|---|---|---|---|---:|---|---|
+| BLK-001 | `brfss_final_profile` | `profile=smoke` | Open | 8 | Run the full prespecified BRFSS final profile after freeze | Final metadata reports `profile=final` |
+| BLK-002 | `brfss_profile_locked` | `locked=False` | Open | 7–8 | Approve the protocol and lock the exact final configuration | Signed authorization plus final metadata `locked=true` |
+| BLK-003 | `brfss_full_sample` | `sample_limit_per_partition=10000` | Open | 8 | Remove smoke sample limits in final execution | Final metadata has no sample limit and row flow matches the full cohort |
+| BLK-004 | `brfss_test_access` | Smoke test path already accessed | Open, critical | 3, 4, 7–8 | Implement a new prespecified concealed final partition and access it only once after freeze | Split-control record, concealed-test preflight, and `single_locked_final_evaluation` metadata |
+| BLK-005 | `pidd_final_profile` | `profile=development_pilot` | Open | 8 | Run the full final repeated nested study | Final metadata reports `profile=final` and all 25 outer evaluations |
+| BLK-006 | `pidd_profile_locked` | `locked=False` | Open | 7–8 | Freeze all PIDD analysis choices before the final run | Signed authorization and final metadata `locked=true` |
+| BLK-007 | `sylhet_final_profile` | `profile=development_pilot` | Open | 8 | Run the full grouped final repeated nested study | Final metadata reports `profile=final` and all grouped outer evaluations |
+| BLK-008 | `sylhet_profile_locked` | `locked=False` | Open | 7–8 | Freeze Sylhet grouping, panels, models, calibration, and analysis | Signed authorization and final metadata `locked=true` |
+| BLK-009 | `protocol_frozen` | `false` | Open | 1, 7 | Complete and approve the statistical analysis plan and frozen configuration | Signed/versioned SAP, blank table shells, code/config tag, flag set true |
+| BLK-010 | `novelty_review_complete` | `false` | Open | 2 | Complete structured literature matrix and narrow novelty claim | Reviewed matrix, contribution statement, and flag set true |
+| BLK-011 | `claim_evidence_table_complete` | `false` | Open | 9, 11 | Link every abstract/conclusion claim to frozen evidence | Reviewed claim-to-evidence table and flag set true |
+| BLK-012 | `tripod_ai_checklist_complete` | `false` | Open | 11 | Complete TRIPOD+AI manuscript crosswalk | Completed checklist with page/section references and flag set true |
+| BLK-013 | `probast_ai_assessment_complete` | `false` | Open | 11 | Complete PROBAST+AI risk-of-bias/applicability assessment | Reviewed assessment with evidence and flag set true |
+| BLK-014 | `ablation_study_complete` | `false` | Open | 5 | Run prespecified component ablations on identical folds/budgets | Ablation protocol, results, interpretation, and flag set true |
+| BLK-015 | `selective_prediction_evaluation_complete` | `false` | Open | 6 | Implement risk-coverage and abstention analysis | Coverage curves/tables, failure-reason analysis, reviewed report, flag set true |
+| BLK-016 | `subgroup_analysis_complete` | `false` | Open | 6 | Report supported subgroup performance and coverage with uncertainty | Prespecified subgroup report, suppression audit, and flag set true |
+| WRN-001 | `external_or_temporal_validation` | `false` | Open warning; journal blocker | 13 | Apply a frozen model to an independent or later compatible cohort | External/temporal validation report and flag set true |
+
+## Cross-cutting controls discovered during Phase 0
+
+| Control ID | Issue | Required before | Action |
+|---|---|---|---|
+| CTRL-001 | No version-control metadata exists | Protocol freeze | Initialize/restore version control or create an equivalent immutable source archive; record frozen identifier |
+| CTRL-002 | Seed-42 BRFSS/Hospital130 holdouts are development-contaminated | Final holdout generation | Design concealed fresh-final split workflow; never reuse seed-42 as untouched evidence |
+| CTRL-003 | Default Matplotlib cache is unwritable | Development full runs | Standardize `MPLCONFIGDIR=outputs/.matplotlib` in runbook/preflight |
+| CTRL-004 | Final artifacts currently have no immutable backup policy | Final run | Define archive, checksum, and recovery procedure |
+| CTRL-005 | Final profile is unlocked | Protocol freeze | Keep unlocked until every pre-final gate passes |
+
+## Update rules
+
+- `Open` means no reviewed acceptance evidence exists.
+- `Implemented, awaiting review` means the artifact exists but has not been signed off.
+- `Closed` requires the acceptance evidence and a passing readiness-gate result where applicable.
+- Do not close a blocker solely because code exists or a pilot analysis ran.
+- Record the closing artifact path and date in this file when status changes.

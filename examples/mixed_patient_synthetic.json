@@ -1,0 +1,14 @@
+{
+  "pidd": {
+    "Glucose": 142,
+    "Age": 34
+  },
+  "sylhet": {
+    "Polyuria": 1,
+    "Polydipsia": 0
+  },
+  "brfss": {
+    "GenHlth": 3,
+    "Age": 5
+  }
+}

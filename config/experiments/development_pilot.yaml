@@ -1,0 +1,25 @@
+name: development_pilot
+seed: 42
+optimization_metric: average_precision
+n_trials: 5
+n_bootstrap: 200
+model_n_jobs: 4
+inner_folds_override: 5
+max_repeats: 1
+max_outer_folds: 5
+calibration_methods:
+  - identity
+  - sigmoid
+  - isotonic
+calibration_minimum_samples:
+  isotonic: 1000
+threshold_policies:
+  - fixed_0_5
+  - youden_development
+  - sensitivity_constrained
+sensitivity_target: 0.80
+sample_limits:
+  brfss: null
+  pidd: null
+  sylhet: null
+  hospital130: null

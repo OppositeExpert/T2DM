@@ -1,0 +1,24 @@
+.DS_Store
+.pytest_cache/
+**/__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Local environment
+.venv-pipeline/
+
+# Raw study data and all generated research artifacts are preserved separately
+# with checksums. They must not enter source control or a public repository.
+data/raw/
+outputs/
+
+# Local/editor and coverage artifacts
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+.idea/
+.vscode/
+
+# Office lock/temporary files
+~$*.docx

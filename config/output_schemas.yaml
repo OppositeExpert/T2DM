@@ -1,0 +1,57 @@
+version: 1
+
+prediction_columns:
+  - experiment_id
+  - dataset
+  - task
+  - model
+  - row_id
+  - group_id
+  - repeat
+  - outer_fold
+  - evaluation_role
+  - target
+  - probability_raw
+  - probability_calibrated
+  - threshold_policy
+  - threshold
+  - prediction
+
+metric_identity_columns:
+  - experiment_id
+  - dataset
+  - task
+  - endpoint
+  - model
+  - repeat
+  - outer_fold
+  - evaluation_role
+  - probability_version
+  - threshold_policy
+
+metric_value_columns:
+  - n
+  - positives
+  - prevalence
+  - auroc
+  - average_precision
+  - brier_score
+  - scaled_brier_score
+  - log_loss
+  - calibration_intercept
+  - calibration_slope
+  - observed_expected_ratio
+  - expected_calibration_error
+  - accuracy
+  - balanced_accuracy
+  - sensitivity
+  - specificity
+  - ppv
+  - npv
+  - f1
+  - mcc
+  - tn
+  - fp
+  - fn
+  - tp
+
