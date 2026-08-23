@@ -125,6 +125,16 @@ def audit_publication_readiness(
             "ablations/model_family_ablation.csv",
             "ablations/ablation_inventory.json",
             "ablations/Ablation_Results.md",
+            "selective_prediction/acceptance_decisions.csv",
+            "selective_prediction/risk_coverage_metrics.csv",
+            "selective_prediction/risk_coverage_confidence_intervals.csv",
+            "selective_prediction/metadata.json",
+            "selective_prediction/Selective_Prediction_Analysis.md",
+            "subgroup_analysis/subgroup_metrics.csv",
+            "subgroup_analysis/subgroup_confidence_intervals.csv",
+            "subgroup_analysis/subgroup_membership.csv",
+            "subgroup_analysis/metadata.json",
+            "subgroup_analysis/Subgroup_and_Fairness_Analysis.md",
         ]
         if dataset == "brfss":
             required.extend(
@@ -153,6 +163,12 @@ def audit_publication_readiness(
                     "ablations/missing_indicator_retraining/tuning_summary.csv",
                     "ablations/missing_indicator_retraining/metadata.json",
                     "ablations/missing_indicator_retraining/Missing_Indicator_Ablation.md",
+                    "ablations/panel_specific_training/outer_predictions.csv",
+                    "ablations/panel_specific_training/participant_predictions.csv",
+                    "ablations/panel_specific_training/paired_contrasts.csv",
+                    "ablations/panel_specific_training/tuning_summary.csv",
+                    "ablations/panel_specific_training/metadata.json",
+                    "ablations/panel_specific_training/Panel_Specific_Training_Ablation.md",
                 ]
             )
         missing = [relative for relative in required if not (study_dir / relative).exists()]

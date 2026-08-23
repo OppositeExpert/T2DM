@@ -81,5 +81,15 @@ performance or a failed final experiment.
   five-fold development-pilot paths passed. A numerical-equivalence guard
   prevents machine-precision noise from becoming false significance. BLK-014
   remains open until the remaining ablations are completed and reviewed.
+- Phase 5 panel-specific retraining: Random Forest and XGBoost were separately
+  tuned and calibrated for every reduced PIDD and Sylhet panel and compared with
+  masked full-panel inference on identical participants. No Holm-corrected
+  advantage remained. BLK-014 stays open for the remaining stress and warning
+  ablations.
+- Phase 6 selective prediction and subgroups: outcome-blind probability-certainty
+  coverage analysis, positive-event retention, group-preserving acceptance,
+  subgroup bootstrap uncertainty, and small-cell suppression are implemented.
+  PIDD/Sylhet pilots and BRFSS smoke passed; BLK-015 and BLK-016 remain open until
+  full-development evidence is reviewed.
 - Final access remains denied because protocol, final profile, final seed,
   authorization record, and final manifest fields are deliberately unset.

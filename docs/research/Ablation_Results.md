@@ -56,11 +56,19 @@ collapses probability differences within `1e-12` before inference, preventing
 machine-precision noise from creating rank or sign-test artifacts. These remain
 reduced-budget development findings and cannot enter the final results table.
 
+Panel-specific training versus masked full-panel inference has now been run for
+Random Forest and XGBoost across all five reduced PIDD panels and all four
+reduced Sylhet panels. The analysis produced 40 PIDD individual-resampled and 32
+Sylhet cluster-resampled contrasts. No contrast remained significant after
+metric-wise Holm correction. Brier changes were small and usually crossed zero;
+the largest observed PIDD improvement was 0.0034 for Random Forest on the
+non-laboratory panel. These results do not justify claiming that separate
+per-panel training is superior under the present reduced-budget design.
+
 ## Remaining ablations
 
 The ablation blocker remains open. Completion still requires:
 
-- full-panel masked inference versus models trained separately per panel;
 - prespecified random feature-dropout stress experiments;
 - applicability/abstention guard removal, coordinated with selective prediction;
 - a clearly non-deployable global-preprocessing leakage demonstration;

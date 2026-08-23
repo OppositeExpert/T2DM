@@ -195,6 +195,35 @@ preserves Sylhet profile clusters during bootstrap inference, and reports paired
 AUROC, average-precision, Brier, and log-loss contrasts with Holm adjustment.
 Smoke output is execution evidence only; it cannot close the ablation blocker.
 
+### Panel-specific training ablation
+
+```bash
+python -m diabetes_pipeline.cli panel-training-ablation \
+  --study-dir outputs/publication_pipeline/studies/pidd_development_pilot_27b9bc88b493 \
+  --models random_forest xgboost
+```
+
+This separately tunes and calibrates reduced-panel models, then compares them
+with the existing full-panel models evaluated after masking unavailable inputs.
+Participants, outer splits, tuning budgets, model families, and bootstrap draws
+remain matched. Sylhet uses complete-profile cluster resampling.
+
+### Selective prediction and subgroup analysis
+
+```bash
+python -m diabetes_pipeline.cli selective-prediction \
+  --study-dir outputs/publication_pipeline/studies/pidd_development_pilot_27b9bc88b493
+
+python -m diabetes_pipeline.cli subgroup-analysis \
+  --study-dir outputs/publication_pipeline/studies/pidd_development_pilot_27b9bc88b493
+```
+
+Selective prediction uses an outcome-blind probability-certainty score at
+prespecified coverage levels. Reports include actual coverage, positive-event
+coverage, accepted prevalence, and bootstrap uncertainty. Subgroup analysis
+prespecifies age and supported sex groups, reports abstention coverage, and
+suppresses cells below the configured sample or event thresholds.
+
 ## Detailed patient research result
 
 Use a local JSON file for patient input so values are not placed directly in

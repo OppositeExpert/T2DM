@@ -214,6 +214,53 @@ def build_parser() -> argparse.ArgumentParser:
         choices=list(MODEL_CHOICES),
     )
 
+    panel_training_ablation = subparsers.add_parser(
+        "panel-training-ablation",
+        help=(
+            "Retrain panel-specific models and compare them with full-panel "
+            "masked inference on identical development participants"
+        ),
+    )
+    panel_training_ablation.add_argument("--study-dir", type=Path, required=True)
+    panel_training_ablation.add_argument(
+        "--models",
+        nargs="+",
+        default=["random_forest", "xgboost"],
+        choices=list(MODEL_CHOICES),
+    )
+    panel_training_ablation.add_argument(
+        "--scenarios",
+        nargs="+",
+        help="Reduced availability scenarios; defaults to every non-full panel",
+    )
+
+    selective_prediction = subparsers.add_parser(
+        "selective-prediction",
+        help="Evaluate outcome-blind probability-certainty risk-coverage behavior",
+    )
+    selective_prediction.add_argument("--study-dir", type=Path, required=True)
+    selective_prediction.add_argument(
+        "--systems",
+        nargs="+",
+        default=["availability_router", "robust_single_model"],
+    )
+    selective_prediction.add_argument(
+        "--coverages",
+        nargs="+",
+        type=float,
+        default=[1.0, 0.95, 0.90, 0.80, 0.70],
+    )
+
+    subgroup_analysis = subparsers.add_parser(
+        "subgroup-analysis",
+        help="Evaluate prespecified subgroup performance and abstention coverage",
+    )
+    subgroup_analysis.add_argument("--study-dir", type=Path, required=True)
+    subgroup_analysis.add_argument("--system", default="availability_router")
+    subgroup_analysis.add_argument("--scenarios", nargs="+", default=["full"])
+    subgroup_analysis.add_argument("--minimum-n", type=int, default=50)
+    subgroup_analysis.add_argument("--minimum-events", type=int, default=10)
+
     patient_result = subparsers.add_parser(
         "patient-result",
         help="Generate a probability-first research report for one patient",
@@ -547,6 +594,74 @@ def main() -> None:
                     "output_dir": str(result.output_dir),
                     "predictions": str(result.predictions_path),
                     "contrasts": str(result.contrasts_path),
+                    "report": str(result.report_path),
+                },
+                sort_keys=True,
+            )
+        )
+    elif args.command == "panel-training-ablation":
+        from diabetes_pipeline.evaluation.panel_training_ablations import (
+            run_panel_training_ablation,
+        )
+
+        result = run_panel_training_ablation(
+            args.study_dir,
+            models=args.models,
+            scenarios=args.scenarios,
+        )
+        print(
+            json.dumps(
+                {
+                    "study_dir": str(result.study_dir),
+                    "output_dir": str(result.output_dir),
+                    "predictions": str(result.predictions_path),
+                    "contrasts": str(result.contrasts_path),
+                    "report": str(result.report_path),
+                },
+                sort_keys=True,
+            )
+        )
+    elif args.command == "selective-prediction":
+        from diabetes_pipeline.evaluation.selective_prediction import (
+            run_selective_prediction_analysis,
+        )
+
+        result = run_selective_prediction_analysis(
+            args.study_dir,
+            systems=args.systems,
+            coverages=args.coverages,
+        )
+        print(
+            json.dumps(
+                {
+                    "study_dir": str(result.study_dir),
+                    "output_dir": str(result.output_dir),
+                    "metrics": str(result.metrics_path),
+                    "decisions": str(result.decisions_path),
+                    "report": str(result.report_path),
+                },
+                sort_keys=True,
+            )
+        )
+    elif args.command == "subgroup-analysis":
+        from diabetes_pipeline.evaluation.subgroup_analysis import (
+            run_subgroup_analysis,
+        )
+
+        result = run_subgroup_analysis(
+            args.study_dir,
+            system=args.system,
+            scenarios=args.scenarios,
+            minimum_n=args.minimum_n,
+            minimum_events=args.minimum_events,
+        )
+        print(
+            json.dumps(
+                {
+                    "study_dir": str(result.study_dir),
+                    "output_dir": str(result.output_dir),
+                    "metrics": str(result.metrics_path),
+                    "intervals": str(result.intervals_path),
                     "report": str(result.report_path),
                 },
                 sort_keys=True,
