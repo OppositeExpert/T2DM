@@ -65,11 +65,19 @@ the largest observed PIDD improvement was 0.0034 for Random Forest on the
 non-laboratory panel. These results do not justify claiming that separate
 per-panel training is superior under the present reduced-budget design.
 
+Random missingness stress testing now covers MCAR-like independent masks and
+structured block masks at 0%, 25%, 50%, and 75% imposed severity with shared
+masks across Random Forest and XGBoost. PIDD mean Brier scores worsened from
+approximately 0.155 at baseline to 0.209-0.213 at the highest severity, while
+named-panel coverage fell to 4-7%. Sylhet Brier scores worsened from 0.076-0.080
+to 0.246-0.295 and supported-panel coverage fell to 4-6%. This supports explicit
+applicability abstention. These simulations are stress tests, not MNAR or
+real-world deployment validation.
+
 ## Remaining ablations
 
 The ablation blocker remains open. Completion still requires:
 
-- prespecified random feature-dropout stress experiments;
 - applicability/abstention guard removal, coordinated with selective prediction;
 - a clearly non-deployable global-preprocessing leakage demonstration;
 - a clearly non-deployable grouped-versus-naive Sylhet split demonstration.

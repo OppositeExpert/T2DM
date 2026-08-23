@@ -91,5 +91,10 @@ performance or a failed final experiment.
   subgroup bootstrap uncertainty, and small-cell suppression are implemented.
   PIDD/Sylhet pilots and BRFSS smoke passed; BLK-015 and BLK-016 remain open until
   full-development evidence is reviewed.
+- Phase 5 missingness stress: shared MCAR-like and structured-block masks at four
+  severity levels passed on PIDD and Sylhet pilots. Severe dropout materially
+  worsened Brier/AP and reduced named-panel coverage below 7%, supporting
+  applicability guards. BLK-014 remains open for guard, heuristic, explanation,
+  and leakage-warning components.
 - Final access remains denied because protocol, final profile, final seed,
   authorization record, and final manifest fields are deliberately unset.

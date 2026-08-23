@@ -169,6 +169,11 @@ def audit_publication_readiness(
                     "ablations/panel_specific_training/tuning_summary.csv",
                     "ablations/panel_specific_training/metadata.json",
                     "ablations/panel_specific_training/Panel_Specific_Training_Ablation.md",
+                    "missingness_stress/fold_replicate_metrics.csv",
+                    "missingness_stress/summary_metrics.csv",
+                    "missingness_stress/stress_predictions.csv",
+                    "missingness_stress/metadata.json",
+                    "missingness_stress/Missingness_Stress_Analysis.md",
                 ]
             )
         missing = [relative for relative in required if not (study_dir / relative).exists()]

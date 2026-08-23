@@ -261,6 +261,20 @@ def build_parser() -> argparse.ArgumentParser:
     subgroup_analysis.add_argument("--minimum-n", type=int, default=50)
     subgroup_analysis.add_argument("--minimum-events", type=int, default=10)
 
+    missingness_stress = subparsers.add_parser(
+        "missingness-stress",
+        help="Evaluate MCAR-like and structured-block feature dropout",
+    )
+    missingness_stress.add_argument("--study-dir", type=Path, required=True)
+    missingness_stress.add_argument(
+        "--models", nargs="+", default=["random_forest", "xgboost"],
+        choices=list(MODEL_CHOICES),
+    )
+    missingness_stress.add_argument(
+        "--severities", nargs="+", type=float, default=[0.0, 0.25, 0.50, 0.75]
+    )
+    missingness_stress.add_argument("--replicates", type=int, default=5)
+
     patient_result = subparsers.add_parser(
         "patient-result",
         help="Generate a probability-first research report for one patient",
@@ -662,6 +676,29 @@ def main() -> None:
                     "output_dir": str(result.output_dir),
                     "metrics": str(result.metrics_path),
                     "intervals": str(result.intervals_path),
+                    "report": str(result.report_path),
+                },
+                sort_keys=True,
+            )
+        )
+    elif args.command == "missingness-stress":
+        from diabetes_pipeline.evaluation.missingness_stress import (
+            run_missingness_stress,
+        )
+
+        result = run_missingness_stress(
+            args.study_dir,
+            models=args.models,
+            severities=args.severities,
+            replicates=args.replicates,
+        )
+        print(
+            json.dumps(
+                {
+                    "study_dir": str(result.study_dir),
+                    "output_dir": str(result.output_dir),
+                    "metrics": str(result.metrics_path),
+                    "summary": str(result.summary_path),
                     "report": str(result.report_path),
                 },
                 sort_keys=True,

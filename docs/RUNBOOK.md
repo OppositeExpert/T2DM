@@ -224,6 +224,20 @@ coverage, accepted prevalence, and bootstrap uncertainty. Subgroup analysis
 prespecifies age and supported sex groups, reports abstention coverage, and
 suppresses cells below the configured sample or event thresholds.
 
+### Missingness stress analysis
+
+```bash
+python -m diabetes_pipeline.cli missingness-stress \
+  --study-dir outputs/publication_pipeline/studies/pidd_development_pilot_27b9bc88b493 \
+  --models random_forest xgboost --replicates 5
+```
+
+The command applies identical masks across models at 0%, 25%, 50%, and 75%
+severity. MCAR-like dropout is independent by cell; structured-block dropout
+removes correlated feature sets per replicate. It reports performance and the
+fraction of participants still satisfying a named supported panel. It does not
+claim that either simulation validates real-world MNAR behavior.
+
 ## Detailed patient research result
 
 Use a local JSON file for patient input so values are not placed directly in
