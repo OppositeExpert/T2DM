@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import unittest
+from pathlib import Path
+from tempfile import TemporaryDirectory
 
 import numpy as np
 import pandas as pd
@@ -8,6 +10,8 @@ import pandas as pd
 from diabetes_pipeline.evaluation.panel_training_ablations import (
     MASKED_STRATEGY,
     PANEL_STRATEGY,
+    _load_task_checkpoint,
+    _write_task_checkpoint,
     aggregate_panel_strategy_predictions,
     panel_training_contrasts,
 )
@@ -42,6 +46,48 @@ def _predictions(grouped: bool = False) -> pd.DataFrame:
 
 
 class PanelTrainingAblationTests(unittest.TestCase):
+    def test_task_checkpoint_round_trip_and_signature_guard(self) -> None:
+        predictions = _predictions().head(6)
+        signature = {"study": "toy", "repeat": 0, "fold": 0}
+        tuning = {"model": "random_forest", "best_params": "{}"}
+        with TemporaryDirectory() as temporary:
+            checkpoint = Path(temporary) / "task"
+            _write_task_checkpoint(
+                checkpoint,
+                signature_payload=signature,
+                predictions=predictions,
+                tuning_record=tuning,
+            )
+            loaded = _load_task_checkpoint(
+                checkpoint,
+                signature_payload=signature,
+                expected_rows=len(predictions),
+            )
+            self.assertIsNotNone(loaded)
+            loaded_predictions, loaded_tuning = loaded or (None, None)
+            self.assertEqual(len(loaded_predictions), len(predictions))
+            self.assertEqual(loaded_tuning, tuning)
+            self.assertIsNone(
+                _load_task_checkpoint(
+                    checkpoint,
+                    signature_payload={**signature, "fold": 1},
+                    expected_rows=len(predictions),
+                )
+            )
+
+    def test_incomplete_checkpoint_is_ignored(self) -> None:
+        with TemporaryDirectory() as temporary:
+            checkpoint = Path(temporary) / "task"
+            checkpoint.mkdir()
+            (checkpoint / "metadata.json").write_text("{}", encoding="utf-8")
+            self.assertIsNone(
+                _load_task_checkpoint(
+                    checkpoint,
+                    signature_payload={"study": "toy"},
+                    expected_rows=1,
+                )
+            )
+
     def test_aggregation_returns_one_row_per_strategy_participant(self) -> None:
         aggregated = aggregate_panel_strategy_predictions(_predictions())
         self.assertEqual(len(aggregated), 24)

@@ -208,6 +208,13 @@ with the existing full-panel models evaluated after masking unavailable inputs.
 Participants, outer splits, tuning budgets, model families, and bootstrap draws
 remain matched. Sylhet uses complete-profile cluster resampling.
 
+Each completed model-panel-split task is checkpointed atomically under
+`ablations/panel_specific_training/checkpoints/`. Re-running the identical
+command resumes only checkpoints whose study, split, profile, feature, seed, and
+source-tree signatures match. Incomplete or incompatible checkpoints are ignored
+and recomputed. Final contrast artifacts are still written only after every
+prespecified task is complete.
+
 ### Selective prediction and subgroup analysis
 
 ```bash

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 import logging
 import time
@@ -30,6 +31,7 @@ from diabetes_pipeline.training.tuning import (
 LOGGER = logging.getLogger(__name__)
 MASKED_STRATEGY = "full_panel_masked"
 PANEL_STRATEGY = "panel_specific_trained"
+CHECKPOINT_SCHEMA_VERSION = "1.0"
 
 
 @dataclass(frozen=True)
@@ -39,6 +41,76 @@ class PanelTrainingAblationResult:
     predictions_path: Path
     contrasts_path: Path
     report_path: Path
+
+
+def _checkpoint_signature(payload: dict[str, Any]) -> str:
+    """Return a stable signature for one resumable training task."""
+
+    serialized = json.dumps(payload, sort_keys=True, default=str).encode("utf-8")
+    return hashlib.sha256(serialized).hexdigest()
+
+
+def _write_task_checkpoint(
+    checkpoint_dir: Path,
+    *,
+    signature_payload: dict[str, Any],
+    predictions: pd.DataFrame,
+    tuning_record: dict[str, Any],
+) -> None:
+    """Atomically persist a completed task so interrupted runs can resume."""
+
+    checkpoint_dir.mkdir(parents=True, exist_ok=True)
+    prediction_path = checkpoint_dir / "predictions.csv"
+    metadata_path = checkpoint_dir / "metadata.json"
+    prediction_tmp = checkpoint_dir / "predictions.csv.tmp"
+    metadata_tmp = checkpoint_dir / "metadata.json.tmp"
+    predictions.to_csv(prediction_tmp, index=False)
+    metadata_tmp.write_text(
+        json.dumps(
+            {
+                "checkpoint_schema_version": CHECKPOINT_SCHEMA_VERSION,
+                "signature": _checkpoint_signature(signature_payload),
+                "signature_payload": signature_payload,
+                "prediction_rows": int(len(predictions)),
+                "tuning_record": tuning_record,
+            },
+            indent=2,
+            sort_keys=True,
+            default=str,
+        ),
+        encoding="utf-8",
+    )
+    prediction_tmp.replace(prediction_path)
+    metadata_tmp.replace(metadata_path)
+
+
+def _load_task_checkpoint(
+    checkpoint_dir: Path,
+    *,
+    signature_payload: dict[str, Any],
+    expected_rows: int,
+) -> tuple[pd.DataFrame, dict[str, Any]] | None:
+    """Load a complete compatible task checkpoint, otherwise recompute it."""
+
+    prediction_path = checkpoint_dir / "predictions.csv"
+    metadata_path = checkpoint_dir / "metadata.json"
+    if not prediction_path.exists() or not metadata_path.exists():
+        return None
+    try:
+        metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
+        if metadata.get("checkpoint_schema_version") != CHECKPOINT_SCHEMA_VERSION:
+            return None
+        if metadata.get("signature") != _checkpoint_signature(signature_payload):
+            return None
+        predictions = pd.read_csv(prediction_path, low_memory=False)
+        if len(predictions) != int(expected_rows):
+            return None
+        if int(metadata.get("prediction_rows", -1)) != len(predictions):
+            return None
+        tuning_record = dict(metadata["tuning_record"])
+    except (OSError, ValueError, KeyError, json.JSONDecodeError):
+        return None
+    return predictions, tuning_record
 
 
 def _panel_dataset_config(
@@ -301,10 +373,15 @@ def run_panel_training_ablation(
     model_n_jobs = int(profile.get("model_n_jobs", 1))
     output_dir = study_dir / "ablations" / "panel_specific_training"
     trial_dir = output_dir / "trials"
+    checkpoint_root = output_dir / "checkpoints"
     output_dir.mkdir(parents=True, exist_ok=True)
     trial_dir.mkdir(parents=True, exist_ok=True)
+    checkpoint_root.mkdir(parents=True, exist_ok=True)
     prediction_frames: list[pd.DataFrame] = []
     tuning_records: list[dict[str, Any]] = []
+    resumed_task_count = 0
+    computed_task_count = 0
+    analysis_source_sha256 = source_tree_sha256()
 
     for repeat, outer_fold in selected_outer_splits:
         fold_manifest = manifest[
@@ -344,6 +421,50 @@ def run_panel_training_ablation(
                     repeat,
                     outer_fold,
                 )
+                signature_payload = {
+                    "checkpoint_schema_version": CHECKPOINT_SCHEMA_VERSION,
+                    "source_tree_sha256": analysis_source_sha256,
+                    "source_experiment_id": metadata.get("experiment_id"),
+                    "source_split_manifest_sha256": metadata.get(
+                        "split_manifest_sha256"
+                    ),
+                    "dataset_configuration_sha256": metadata.get(
+                        "dataset_configuration_sha256"
+                    ),
+                    "dataset": dataset_name,
+                    "profile": profile,
+                    "model": model_name,
+                    "scenario": scenario_name,
+                    "features": features,
+                    "repeat": int(repeat),
+                    "outer_fold": int(outer_fold),
+                    "inner_folds": inner_folds,
+                    "seed": split_seed,
+                }
+                checkpoint_dir = (
+                    checkpoint_root
+                    / model_name
+                    / scenario_name
+                    / f"repeat_{repeat}_fold_{outer_fold}"
+                )
+                checkpoint = _load_task_checkpoint(
+                    checkpoint_dir,
+                    signature_payload=signature_payload,
+                    expected_rows=len(validation_manifest),
+                )
+                if checkpoint is not None:
+                    cached_predictions, cached_tuning = checkpoint
+                    prediction_frames.append(cached_predictions)
+                    tuning_records.append(cached_tuning)
+                    resumed_task_count += 1
+                    LOGGER.info(
+                        "Resumed panel-training checkpoint model=%s panel=%s repeat=%d fold=%d",
+                        model_name,
+                        scenario_name,
+                        repeat,
+                        outer_fold,
+                    )
+                    continue
                 started = time.perf_counter()
                 tuning = tune_model(
                     X_training,
@@ -400,42 +521,47 @@ def run_panel_training_ablation(
                 model.fit(transformed_training, y_training)
                 probability_raw = model.predict_proba(transformed_validation)
                 probability_calibrated = calibration.calibrator.predict(probability_raw)
-                prediction_frames.append(
-                    pd.DataFrame(
-                        {
-                            "dataset": dataset_name,
-                            "model": model_name,
-                            "scenario": scenario_name,
-                            "available_feature_count": len(features),
-                            "training_strategy": PANEL_STRATEGY,
-                            "row_id": validation_manifest["row_id"].to_numpy(),
-                            "group_id": validation_manifest["group_id"].to_numpy(),
-                            "repeat": repeat,
-                            "outer_fold": outer_fold,
-                            "target": y_validation,
-                            "probability_raw": probability_raw,
-                            "probability_calibrated": probability_calibrated,
-                            "calibration_method": calibration.method,
-                        }
-                    )
-                )
-                tuning_records.append(
+                task_predictions = pd.DataFrame(
                     {
                         "dataset": dataset_name,
                         "model": model_name,
                         "scenario": scenario_name,
                         "available_feature_count": len(features),
+                        "training_strategy": PANEL_STRATEGY,
+                        "row_id": validation_manifest["row_id"].to_numpy(),
+                        "group_id": validation_manifest["group_id"].to_numpy(),
                         "repeat": repeat,
                         "outer_fold": outer_fold,
-                        "n_trials": int(profile["n_trials"]),
-                        "inner_folds": inner_folds,
-                        "seed": split_seed,
-                        "best_average_precision": tuning.best_score,
-                        "best_params": json.dumps(tuning.best_params, sort_keys=True),
+                        "target": y_validation,
+                        "probability_raw": probability_raw,
+                        "probability_calibrated": probability_calibrated,
                         "calibration_method": calibration.method,
-                        "tuning_seconds": tuning_seconds,
                     }
                 )
+                tuning_record = {
+                    "dataset": dataset_name,
+                    "model": model_name,
+                    "scenario": scenario_name,
+                    "available_feature_count": len(features),
+                    "repeat": repeat,
+                    "outer_fold": outer_fold,
+                    "n_trials": int(profile["n_trials"]),
+                    "inner_folds": inner_folds,
+                    "seed": split_seed,
+                    "best_average_precision": tuning.best_score,
+                    "best_params": json.dumps(tuning.best_params, sort_keys=True),
+                    "calibration_method": calibration.method,
+                    "tuning_seconds": tuning_seconds,
+                }
+                _write_task_checkpoint(
+                    checkpoint_dir,
+                    signature_payload=signature_payload,
+                    predictions=task_predictions,
+                    tuning_record=tuning_record,
+                )
+                prediction_frames.append(task_predictions)
+                tuning_records.append(tuning_record)
+                computed_task_count += 1
 
     panel_predictions = pd.concat(prediction_frames, ignore_index=True)
     masked_predictions = masked_source[
@@ -473,7 +599,11 @@ def run_panel_training_ablation(
         "identical_model_families": True,
         "separate_tuning_panel_specific": True,
         "participant_paired_inference": True,
-        "source_tree_sha256": source_tree_sha256(),
+        "checkpoint_schema_version": CHECKPOINT_SCHEMA_VERSION,
+        "resumed_task_count": resumed_task_count,
+        "computed_task_count": computed_task_count,
+        "completed_task_count": resumed_task_count + computed_task_count,
+        "source_tree_sha256": analysis_source_sha256,
         "ablation_study_complete": False,
         "final_outcome_access_authorized": False,
     }
