@@ -39,9 +39,15 @@ coverage, probability-certainty selection reduced full-panel router Brier score
 from 0.152 to 0.110 but retained only 55.6% of positive events, demonstrating a
 clinically important coverage trade-off. With 75% simulated feature dropout,
 supported-panel coverage fell to approximately 4.8%-6.6%, while Brier score rose
-to approximately 0.208-0.211 for Random Forest and XGBoost. Full-budget Sylhet
-and BRFSS development estimates will replace the explicitly marked provisional
-sections before protocol freeze.
+to approximately 0.208-0.211 for Random Forest and XGBoost. In the grouped Sylhet
+development study (520 participants; 5 x 5 outer folds), CatBoost achieved AUROC
+0.968, average precision 0.982, and Brier score 0.066, but a calibration slope of
+12.65 indicated instability. The full-panel router achieved AUROC 0.965 and Brier
+0.068 versus 0.960 and 0.077 for the robust fixed baseline, without a corrected
+significance claim. Across 32 Sylhet panel-specific-training contrasts, no
+comparison survived Holm correction (minimum adjusted p=0.064). BRFSS scientific estimates remain pending because the next
+full-sample holdout is the protected, one-time final evaluation and cannot be
+accessed before protocol freeze and authorization.
 
 **Conclusion:** The development evidence supports a reliability and applicability
 paper, not a universal-model or algorithm-superiority claim. Availability-aware
@@ -225,6 +231,14 @@ Holm-adjusted p-value below 0.05. The smallest adjusted value was approximately
 0.080 for CatBoost AUROC degradation on the glucose-plus-age panel. This is
 evidence of limited precision and multiplicity, not evidence of equivalence.
 
+Separately training Random Forest and XGBoost for each reduced panel rather than
+masking unavailable inputs in a full-panel model produced several nominal
+improvements, including a 0.009 AUROC gain for XGBoost on glucose-plus-age and a
+0.034 average-precision gain for Random Forest on the non-laboratory panel.
+However, none of the 40 paired comparisons survived Holm correction; the minimum
+adjusted p-value was 0.120. Panel-specific fitting is therefore not supported as
+a superiority claim.
+
 ### 3.3 Selective prediction and subgroup coverage
 
 For the full-panel router, lowering coverage from 100% to 70% improved Brier
@@ -265,13 +279,78 @@ to original features. The reporting ablation retains original-feature grouping
 as primary because it avoids splitting clinical concepts into preprocessing and
 missing-indicator fragments.
 
-### 3.5 Remaining environment-specific development estimates
+In the full 25-fold retraining ablation, enabling missingness indicators did not
+produce a Holm-corrected improvement for Logistic Regression or Random Forest
+on AUROC, average precision, Brier score, or log loss; all adjusted p-values were
+at least 0.200. Indicator handling therefore remains an implementation choice,
+not a supported performance contribution.
 
-Full-budget grouped Sylhet and compute-reviewed BRFSS development results will be
-inserted here before protocol freeze. Existing pilot and smoke studies are
-retained only as engineering evidence and are not promoted into the main result
-table. Hospital130 remains outside the diabetes-screening result family because
-its endpoint is 30-day readmission.
+### 3.5 Grouped Sylhet development results
+
+The full-budget Sylhet study contained 25 outer evaluations for each model and
+cluster-bootstrap uncertainty over identical symptom profiles. CatBoost had the
+lowest fold-mean Brier score (0.066) and highest AUROC (0.968), followed by Random
+Forest (Brier 0.072; AUROC 0.966). However, calibrated slopes were unstable,
+including 12.65 for CatBoost and 2.20 for Random Forest, so the high
+discrimination does not justify an unqualified claim that individual
+probabilities are well calibrated.
+
+**Table 2. Sylhet calibrated grouped-development performance, mean across 25 outer evaluations**
+
+| Model | AUROC | Average precision | Brier | Log loss | Calibration slope | ECE |
+|---|---:|---:|---:|---:|---:|---:|
+| CatBoost | 0.968 | 0.982 | 0.066 | 0.235 | 12.652 | 0.074 |
+| Random Forest | 0.966 | 0.981 | 0.072 | 0.246 | 2.200 | 0.087 |
+| LightGBM | 0.953 | 0.973 | 0.080 | 0.290 | 1.354 | 0.085 |
+| XGBoost | 0.957 | 0.976 | 0.080 | 0.266 | 2.244 | 0.085 |
+| Logistic Regression | 0.957 | 0.976 | 0.086 | 0.285 | 1.431 | 0.091 |
+
+![Sylhet participant-level model discrimination and probability loss across feature-availability panels under grouped development validation.](generated/figures/sylhet_performance_and_panels.png)
+
+**Figure 4.** Sylhet participant-level model discrimination and panel-specific
+probability loss under grouped development validation. Intervals use identical-
+profile cluster resampling.
+
+At participant level, the full-panel router achieved AUROC 0.965 and Brier 0.068,
+whereas the robust fixed model achieved AUROC 0.960 and Brier 0.077. The paired
+router-versus-fixed interval crossed no improvement after cluster resampling, and
+no routing ablation survived Holm correction. Reduced panels showed descriptive
+loss: the 10-feature core questionnaire router had AUROC 0.945 and Brier 0.095,
+while the two-feature polyuria-polydipsia router had AUROC 0.905 and Brier 0.113.
+None of 64 matched full-versus-reduced contrasts survived Holm correction; the
+minimum adjusted p-value was 0.064.
+
+Separately tuned panel-specific Random Forest and XGBoost pipelines were also
+compared with masked full-panel inference across all four reduced panels and all
+25 grouped outer splits. The analysis produced 41,600 held-out prediction rows
+and 32 participant-paired, profile-cluster-resampled metric contrasts. No
+contrast survived metric-wise Holm correction (minimum adjusted p=0.064). The
+largest descriptive Brier improvement was 0.006 for XGBoost on the 10-feature
+core questionnaire panel, with its interval crossing zero. Panel-specific
+training therefore remains an inconclusive engineering option rather than a
+supported superiority result.
+
+The full missing-indicator retraining comparison likewise found no
+Holm-corrected benefit. Random Forest predictions were numerically equivalent
+with indicators on and off, while Logistic Regression differences were small
+and all adjusted p-values were 1.000. This is expected because the Sylhet
+questionnaire does not contain applicable numeric missingness for the indicator
+transformer.
+
+At 70% selective coverage, the full-panel router Brier score improved from 0.062
+to 0.025 while retaining 76.9% of positive events. Subgroup support remained a
+major caveat: the accepted female cell contained no negative events and was
+suppressed, as were the youngest and oldest age groups. Under 75% simulated
+dropout, supported-panel coverage fell to 4.0%-6.2% and Brier score rose to
+0.278-0.289 across Random Forest and XGBoost.
+
+### 3.6 Pending locked BRFSS estimate
+
+Existing BRFSS smoke studies remain engineering evidence and are not promoted
+into the main result table. The next full-sample BRFSS holdout is deliberately
+reserved for a new concealed manifest and one authorized final execution after
+protocol freeze. Hospital130 remains outside the diabetes-screening result family
+because its endpoint is 30-day readmission.
 
 ## 4. Discussion
 

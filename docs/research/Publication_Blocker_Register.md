@@ -1,19 +1,18 @@
 # Publication Blocker Register
 
-**Baseline:** 23 August 2026
+**Baseline:** 24 August 2026, post-development completion audit
 
 **Readiness verdict:** `NOT READY`
 
-**Blocking checks:** 19
+**Blocking checks:** 16
 
 **Journal-strength warnings:** 1
 
 This register is the operational owner map for `outputs/publication_readiness_audit.md`. A protocol flag may change only after the acceptance evidence below exists and has been reviewed.
 
-The count increased from 16 to 19 when the gate was strengthened to require
-participant-level repeated-CV artifacts and paired decision-curve uncertainty.
-This records newly enforced evidence requirements; it is not a loss of model
-performance or a failed final experiment.
+All readiness-required development artifacts now pass the gate. The 16 remaining
+failures are deliberate final-profile, protocol, review, and authorization
+controls; they are not missing software outputs or failed model experiments.
 
 | ID | Readiness check | Current evidence | Status | Owner phase | Required action | Acceptance evidence |
 |---|---|---|---|---:|---|---|
@@ -21,18 +20,18 @@ performance or a failed final experiment.
 | BLK-002 | `brfss_profile_locked` | `locked=False` | Open | 7–8 | Approve the protocol and lock the exact final configuration | Signed authorization plus final metadata `locked=true` |
 | BLK-003 | `brfss_full_sample` | `sample_limit_per_partition=10000` | Open | 8 | Remove smoke sample limits in final execution | Final metadata has no sample limit and row flow matches the full cohort |
 | BLK-004 | `brfss_test_access` | Smoke test path already accessed | Open, critical | 3, 4, 7–8 | Implement a new prespecified concealed final partition and access it only once after freeze | Split-control record, concealed-test preflight, and `single_locked_final_evaluation` metadata |
-| BLK-005 | `pidd_final_profile` | `profile=development_pilot` | Open | 8 | Run the full final repeated nested study | Final metadata reports `profile=final` and all 25 outer evaluations |
+| BLK-005 | `pidd_final_profile` | `profile=development`; complete 5 x 5 study | Open | 8 | Run the frozen final repeated nested study after authorization | Final metadata reports `profile=final` and all 25 outer evaluations |
 | BLK-006 | `pidd_profile_locked` | `locked=False` | Open | 7–8 | Freeze all PIDD analysis choices before the final run | Signed authorization and final metadata `locked=true` |
-| BLK-007 | `sylhet_final_profile` | `profile=development_pilot` | Open | 8 | Run the full grouped final repeated nested study | Final metadata reports `profile=final` and all grouped outer evaluations |
+| BLK-007 | `sylhet_final_profile` | `profile=development`; complete grouped 5 x 5 study | Open | 8 | Run the frozen grouped final repeated nested study after authorization | Final metadata reports `profile=final` and all grouped outer evaluations |
 | BLK-008 | `sylhet_profile_locked` | `locked=False` | Open | 7–8 | Freeze Sylhet grouping, panels, models, calibration, and analysis | Signed authorization and final metadata `locked=true` |
 | BLK-009 | `protocol_frozen` | `false` | Open | 1, 7 | Complete and approve the statistical analysis plan and frozen configuration | Signed/versioned SAP, blank table shells, code/config tag, flag set true |
 | BLK-010 | `novelty_review_complete` | `false` | Open | 2 | Complete structured literature matrix and narrow novelty claim | Reviewed matrix, contribution statement, and flag set true |
-| BLK-011 | `claim_evidence_table_complete` | `false` | Open | 9, 11 | Link every abstract/conclusion claim to frozen evidence | Reviewed claim-to-evidence table and flag set true |
-| BLK-012 | `tripod_ai_checklist_complete` | `false` | Open | 11 | Complete TRIPOD+AI manuscript crosswalk | Completed checklist with page/section references and flag set true |
-| BLK-013 | `probast_ai_assessment_complete` | `false` | Open | 11 | Complete PROBAST+AI risk-of-bias/applicability assessment | Reviewed assessment with evidence and flag set true |
-| BLK-014 | `ablation_study_complete` | `false` | Open | 5 | Run prespecified component ablations on identical folds/budgets | Ablation protocol, results, interpretation, and flag set true |
-| BLK-015 | `selective_prediction_evaluation_complete` | `false` | Open | 6 | Implement risk-coverage and abstention analysis | Coverage curves/tables, failure-reason analysis, reviewed report, flag set true |
-| BLK-016 | `subgroup_analysis_complete` | `false` | Open | 6 | Report supported subgroup performance and coverage with uncertainty | Prespecified subgroup report, suppression audit, and flag set true |
+| BLK-011 | `claim_evidence_table_complete` | Development crosswalk complete; locked results unavailable | Implemented, awaiting final review | 9, 11 | Revalidate every claim against frozen evidence | Reviewed locked claim-to-evidence table and flag set true |
+| BLK-012 | `tripod_ai_checklist_complete` | Development crosswalk drafted | Implemented, awaiting author review | 11 | Complete page/section mapping against the final venue version | Signed checklist and flag set true |
+| BLK-013 | `probast_ai_assessment_complete` | Conservative development assessment drafted | Implemented, awaiting independent review | 11 | Review and disclose the final assessment | Signed assessment with evidence and flag set true |
+| BLK-014 | `ablation_study_complete` | All prespecified development ablation paths executed | Implemented, awaiting scientific review | 5 | Approve retained analyses and freeze the decision report | Reviewed ablation protocol/results and flag set true |
+| BLK-015 | `selective_prediction_evaluation_complete` | Full PIDD/Sylhet and BRFSS smoke risk-coverage artifacts exist | Implemented, awaiting scientific review | 6 | Review coverage, event retention, and failure reasons | Reviewed report and flag set true |
+| BLK-016 | `subgroup_analysis_complete` | Full PIDD/Sylhet and BRFSS smoke subgroup/suppression artifacts exist | Implemented, awaiting scientific review | 6 | Review subgroup uncertainty and suppression | Reviewed report and flag set true |
 | WRN-001 | `external_or_temporal_validation` | `false` | Open warning; journal blocker | 13 | Apply a frozen model to an independent or later compatible cohort | External/temporal validation report and flag set true |
 
 ## Cross-cutting controls discovered during Phase 0
@@ -53,7 +52,7 @@ performance or a failed final experiment.
 - Do not close a blocker solely because code exists or a pilot analysis ran.
 - Record the closing artifact path and date in this file when status changes.
 
-## 23 August 2026 implementation evidence
+## 24 August 2026 implementation evidence
 
 - CTRL-001 development baseline: Git commit `750bcff`.
 - CTRL-002 control test: `python -m diabetes_pipeline.cli test-concealment`
@@ -77,24 +76,30 @@ performance or a failed final experiment.
   random-dropout, applicability, and leakage-demonstration components.
 - Phase 5 missing-indicator retraining: indicator-on and indicator-off variants
   now use identical outer/inner folds, budgets, search spaces, model families,
-  and seeds with separate tuning. PIDD individual and Sylhet cluster smoke and
-  five-fold development-pilot paths passed. A numerical-equivalence guard
+  and seeds with separate tuning. Full 25-split PIDD individual and Sylhet
+  cluster-resampled development paths passed. A numerical-equivalence guard
   prevents machine-precision noise from becoming false significance. BLK-014
-  remains open until the remaining ablations are completed and reviewed.
+  now awaits scientific review only.
 - Phase 5 panel-specific retraining: Random Forest and XGBoost were separately
   tuned and calibrated for every reduced PIDD and Sylhet panel and compared with
   masked full-panel inference on identical participants. No Holm-corrected
-  advantage remained. BLK-014 stays open for the remaining stress and warning
-  ablations.
+  advantage remained. Full Sylhet execution recovered 200 signature-validated
+  tasks, produced 41,600 prediction rows and 32 contrasts, and had minimum
+  adjusted p=0.064. BLK-014 now awaits scientific review only.
 - Phase 6 selective prediction and subgroups: outcome-blind probability-certainty
   coverage analysis, positive-event retention, group-preserving acceptance,
   subgroup bootstrap uncertainty, and small-cell suppression are implemented.
-  PIDD/Sylhet pilots and BRFSS smoke passed; BLK-015 and BLK-016 remain open until
-  full-development evidence is reviewed.
+  full PIDD/Sylhet development studies and current-code BRFSS smoke passed;
+  BLK-015 and BLK-016 now await scientific review only.
 - Phase 5 missingness stress: shared MCAR-like and structured-block masks at four
-  severity levels passed on PIDD and Sylhet pilots. Severe dropout materially
+  severity levels passed on the full PIDD and Sylhet development studies. Severe dropout materially
   worsened Brier/AP and reduced named-panel coverage below 7%, supporting
-  applicability guards. BLK-014 remains open for guard, heuristic, explanation,
-  and leakage-warning components.
+  applicability guards. Guard, heuristic, explanation, and leakage-warning
+  components are also complete; BLK-014 awaits scientific review only.
 - Final access remains denied because protocol, final profile, final seed,
   authorization record, and final manifest fields are deliberately unset.
+- Current audit uses `pidd_development_072cd2104089`,
+  `sylhet_development_b52477910fe6`, and
+  `brfss_smoke_holdout_b3a6ad2aa89e`: all readiness-required artifact checks
+  pass; 16 governance/final-profile blockers and one external-validation warning
+  remain.

@@ -18,7 +18,23 @@ this package should be relabelled as a locked final result.
   ablations, applicability rules, and artifact map.
 - `Submission_Readiness_and_Handoff.md`: exact completion state, human gates,
   final-run sequence, and submission checklist.
+- `Conference_Cover_Letter_Draft.md`: venue-neutral cover letter requiring final
+  author approval.
+- `Author_and_Venue_Inputs.md`: author, declaration, and formatting fields that
+  cannot be inferred from the project.
+- `Claim_to_Evidence_Development_Crosswalk.md`: claim-level traceability and
+  wording constraints.
+- `TRIPOD_AI_Development_Crosswalk.md`: main-item reporting crosswalk and final
+  sign-off procedure.
+- `PROBAST_AI_Development_Assessment.md`: conservative preliminary quality,
+  bias, and applicability assessment.
+- `Reproducibility_and_Final_Run_Handoff.md`: regeneration commands, protected
+  final-run procedure, and recovery rule.
+- `Final_Authorization_Record_Template.md`: blank, non-authorizing record for
+  supervisor/statistical sign-off and immutable final-run identifiers.
 - `generated/`: submission-style DOCX files generated from the reviewed source.
+  It also contains a machine-generated development performance table and
+  provenance hashes tied to immutable study identifiers.
 - `qa/`: internal render and accessibility checks; not submission material.
 
 ## Scientific scope
@@ -40,9 +56,11 @@ satisfies the prespecified superiority rule.
 | Component | State | Submission use |
 |---|---|---|
 | PIDD 5 x 5 nested development benchmark | Complete | Development decision evidence only |
-| PIDD routing, panels, ablations, selective prediction, subgroups, missingness stress, SHAP | Complete or executing as recorded in the handoff | Development decision evidence only |
-| Sylhet grouped development benchmark and dependent analyses | Pending full-budget refresh | Pilot evidence only until refreshed |
-| BRFSS full development holdout and dependent analyses | Pending compute-reviewed run | Smoke/engineering evidence only |
+| PIDD routing, panels, ablations, selective prediction, subgroups, missingness stress, SHAP | Complete | Development decision evidence only |
+| Sylhet grouped development benchmark | Complete | Development decision evidence only |
+| Sylhet routing, robustness, and panel-specific retraining | Complete | Development decision evidence only |
+| BRFSS current-code smoke verification | Complete (`brfss_smoke_holdout_b3a6ad2aa89e`) | Engineering evidence only |
+| BRFSS full-sample final holdout | Protected until protocol freeze and authorization | Required locked evidence |
 | Hospital130 | Engineering complete; separate endpoint | Supplementary methodological analysis only |
 | Mixed-input router | Engineering complete | Software demonstration only |
 | Protocol/sign-off/final run | Not authorized | Required before submission |

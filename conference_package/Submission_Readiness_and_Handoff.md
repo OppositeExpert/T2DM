@@ -24,24 +24,20 @@ guide decisions; it may not be relabelled as final evidence.
 - PIDD routing, matched panels, artifact ablations, missing-indicator retraining,
   selective prediction, age subgroups, missingness stress, leakage demonstration,
   held-out SHAP, and reporting ablations.
-- PIDD panel-specific retraining is an active full-budget job at this cutoff and
-  must be marked complete only after artifact validation.
-- Sylhet grouped pilots and BRFSS smoke studies exist but must not replace the
-  planned full-budget development analyses.
+- PIDD panel-specific retraining is complete and validated across 25 outer
+  folds, two model families, and five reduced panels.
+- The full-budget grouped Sylhet benchmark is complete and validated; dependent
+  routing, robustness, and panel-specific retraining analyses are complete.
+- Current-code BRFSS smoke study `brfss_smoke_holdout_b3a6ad2aa89e` contains all
+  required engineering artifacts but must not replace the protected final holdout.
 
 ## 3. Remaining machine-executable work
 
-1. Validate the completed PIDD panel-specific retraining artifacts.
-2. Run and audit the full-budget grouped Sylhet development benchmark.
-3. Attach routing, matched panels, ablations, selective prediction, subgroups,
-   missingness stress, leakage demonstration, and explanations to that study.
-4. Review BRFSS compute requirements and run a protocol-consistent full
-   development holdout; do not silently substitute the smoke sample.
-5. Generate final development decision tables and figures from immutable study
-   identifiers.
-6. Run the complete test suite and publication-readiness audit.
-7. Rebuild and render the DOCX manuscript and supplement after the development
-   evidence tables stabilize.
+No planned engineering or development analysis remains. The package has been
+regenerated from fixed development study identifiers, structurally audited, and
+tested. The canonical renderer produced 11 manuscript pages and five supplement
+pages; every page and all four figures passed visual inspection. Venue-template
+rendering must still be repeated after the target format and final text are known.
 
 ## 4. Human authorization gates
 
@@ -94,7 +90,7 @@ decisions:
 ## 7. Go/no-go rule
 
 **No-go today:** do not submit the current development package.  
-**Go after gates:** submission is appropriate when the remaining full-budget
-development studies are reviewed, the protocol and novelty position are signed,
+**Go after gates:** submission is appropriate when the completed development
+studies are reviewed, the protocol and novelty position are signed,
 the concealed final run is complete, and independent review confirms that every
 claim matches the locked evidence.

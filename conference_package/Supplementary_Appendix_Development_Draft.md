@@ -52,8 +52,8 @@ inference scope.
 Dependent evidence directories include availability routing, matched panel
 contrasts, artifact ablations, missing-indicator retraining, selective prediction,
 subgroup analysis, missingness stress, explanations, and reporting ablations.
-Panel-specific retraining is recorded in the package handoff until its active
-full-budget run finishes.
+Panel-specific retraining is complete across all 25 outer splits for the
+prespecified Random Forest and XGBoost reduced-panel comparisons.
 
 ## S5. Applicability and abstention contract
 
@@ -92,6 +92,18 @@ reported precision. No matched reduced-panel comparison survived Holm correction
 The core-metabolic panel retained most probability performance, while the
 non-laboratory and glucose-plus-age panels showed larger descriptive loss.
 
+The full missing-indicator retraining study found no corrected benefit for
+indicator-on Logistic Regression or Random Forest across AUROC, average
+precision, Brier score, or log loss. Adjusted p-values ranged from 0.200 to 1.000,
+and all paired intervals crossed no improvement.
+
+Panel-specific Random Forest and XGBoost fitting was evaluated for five reduced
+panels over all 25 outer folds, producing 76,800 prediction rows and 40 paired
+metric contrasts. Several unadjusted intervals favoured panel-specific fitting,
+but no comparison survived Holm correction; the minimum adjusted p-value was
+0.120. The evidence does not justify a claim that retraining a specialist model
+is generally superior to masked full-panel inference.
+
 Selective probability-certainty acceptance improved retained-case Brier score as
 coverage decreased, but retained positive events less often than negative cases.
 Age-group coverage was heterogeneous and the oldest group was too small for
@@ -100,6 +112,23 @@ loss and left fewer than 7% of participants compatible with a named panel. These
 results favour explicit abstention over extrapolation.
 
 ## S8. Reporting and risk-of-bias controls
+
+The full grouped Sylhet benchmark (`sylhet_development_b52477910fe6`) contains
+25 grouped outer splits per model, complete aggregation for all 520 participants,
+cluster-bootstrap intervals, 20 primary summary rows, and no non-finite primary
+metrics. The full router achieved participant-level AUROC 0.965 and Brier 0.068,
+but no routing, model-family, calibration, selector-metric, or matched-panel
+comparison survived Holm correction. Extreme calibration slopes, suppressed
+subgroups, and severe-dropout applicability collapse are retained as limitations
+rather than hidden behind the cohort's high discrimination.
+
+Full Sylhet panel-specific retraining covered four reduced panels, two model
+families, and all 25 grouped outer splits. It produced 41,600 held-out prediction
+rows and 32 paired metric contrasts. No contrast survived Holm correction; the
+minimum adjusted p-value was 0.064. The full missing-indicator retraining family
+also produced no corrected benefit: Random Forest was numerically equivalent,
+and all Logistic Regression adjusted p-values were 1.000. Neither component
+supports a model-superiority claim.
 
 The final package must include a completed TRIPOD+AI checklist and a reviewed
 PROBAST+AI assessment. Key safeguards already implemented are fold-local
@@ -125,15 +154,16 @@ must remain visible even if final internal metrics are strong.
 | Leakage/applicability audit | `docs/research/Data_Leakage_and_Applicability_Audit.md` |
 | Decision log | `docs/research/Decision_Log.md` |
 | PIDD development study | `outputs/publication_pipeline/studies/pidd_development_072cd2104089` |
+| Sylhet development study | `outputs/publication_pipeline/studies/sylhet_development_b52477910fe6` |
 | Command reference | `docs/RUNBOOK.md` |
 | Automated tests | `tests/` |
 
 ## S10. Items reserved for locked evidence
 
-- Final participant-flow counts and exclusions for every primary environment.
-- Full-budget grouped Sylhet and BRFSS development decision tables.
+- Final participant-flow counts, exclusions, and the protected authorized BRFSS
+  decision table.
 - Frozen model/panel choices and justified non-inferiority margins.
-- Authorized concealed final estimates and 2,000-resample intervals.
-- Final decision curves, calibration plots, subgroup tables, and claim-evidence map.
+- Authorized concealed estimates with 2,000-resample intervals, decision curves,
+  calibration plots, subgroup tables, and the claim-evidence map.
 - Repository release tag, archive DOI, author list, affiliations, funding,
   conflicts, ethics wording, and venue-specific formatting.

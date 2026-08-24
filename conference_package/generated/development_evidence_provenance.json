@@ -1,0 +1,42 @@
+{
+  "evidence_role": "development_and_smoke_not_final",
+  "schema_version": "1.0",
+  "studies": {
+    "brfss": {
+      "dataset_configuration_sha256": "d48716267cc6fca23fc5e678280c60064645698fdca2c3334fd3b1dc3c685ef6",
+      "eligible_for_final_claims": false,
+      "metadata_sha256": "d36df3ce170dba2659c6f299f7643372c8fb7a51297b871a5671f1a43163c33f",
+      "profile": "smoke",
+      "profile_locked": false,
+      "raw_data_sha256": "a7d3380aca5aeae94186770983c3089fb6c4b2074aa112418112c11891d16420",
+      "source_tree_sha256": "701cbda9030814a07922b46d087ee3aab27c37c59988e9ac72e0d99b357f070c",
+      "split_manifest_sha256": "047d0a8ad36f229ff1d74c8a2f5531f3123aee9cc480f708287ad2fa4265be1e",
+      "study_id": "brfss_smoke_holdout_b3a6ad2aa89e",
+      "summary_metrics_sha256": "14a5e41c93101f415c3776cdd49950e5b9cbee79a461dda732e50e8279c90a8a"
+    },
+    "pidd": {
+      "dataset_configuration_sha256": "c000944c58f8e2edf5c5ef337bfe7b7243a1f4f9e3e7916a4466594864dd4add",
+      "eligible_for_final_claims": false,
+      "metadata_sha256": "64d9c7a7626b5ee7a3a4a589fd59c23216b8a1f9fbfd83bc0804e871ac2f6482",
+      "profile": "development",
+      "profile_locked": false,
+      "raw_data_sha256": "6bfe5d0f379d17a0e0819b996407e3c09bf80febd4287f2ed212190dfff154af",
+      "source_tree_sha256": "b81aed549be9b19296d32da93b13a2fa1cd005739203b70b8da438189d586bf2",
+      "split_manifest_sha256": "774f1aa295d71e607b555247543a8761662be7ab31ca03db43c355b2ed18d87d",
+      "study_id": "pidd_development_072cd2104089",
+      "summary_metrics_sha256": "e4a4a428e5a7b417e289a4a9359b079068abd7c39f3b0ce5257cdb352e53038b"
+    },
+    "sylhet": {
+      "dataset_configuration_sha256": "88fad5bc58b23d3d3b4bdf861bd35b72a2f450be79a32a8882c3a712aab4e16d",
+      "eligible_for_final_claims": false,
+      "metadata_sha256": "8e1b418ac05c57bbcd7a372537aa551a925e8fb53ff08f00ccec3071f2045526",
+      "profile": "development",
+      "profile_locked": false,
+      "raw_data_sha256": "7889d9d0beb7dd1ccc58da99f72763f16afb259b5dbbaa086f8195366ff66137",
+      "source_tree_sha256": "b81aed549be9b19296d32da93b13a2fa1cd005739203b70b8da438189d586bf2",
+      "split_manifest_sha256": "1c5e2f18959d00d947ebf0248399566cc9535a7307e6692992c8408f8196f496",
+      "study_id": "sylhet_development_b52477910fe6",
+      "summary_metrics_sha256": "0ab1143a2aba46c515c7f4d5633dab4d001d0b469eda4fdddfb555ea7c92f30b"
+    }
+  }
+}

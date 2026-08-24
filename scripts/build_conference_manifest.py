@@ -36,7 +36,13 @@ def main() -> None:
         "manifest_version": 1,
         "created_date": date.today().isoformat(),
         "evidence_role": "development_only_not_submission_authorized",
-        "primary_development_study": "pidd_development_072cd2104089",
+        "development_studies": {
+            "pidd": "pidd_development_072cd2104089",
+            "sylhet": "sylhet_development_b52477910fe6",
+        },
+        "engineering_smoke_study": {
+            "brfss": "brfss_smoke_holdout_b3a6ad2aa89e",
+        },
         "protocol_frozen": False,
         "final_execution_authorized": False,
         "files": included,

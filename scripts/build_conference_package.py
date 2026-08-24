@@ -30,6 +30,7 @@ PACKAGE = ROOT / "conference_package"
 GENERATED = PACKAGE / "generated"
 FIGURES = GENERATED / "figures"
 STUDY = ROOT / "outputs/publication_pipeline/studies/pidd_development_072cd2104089"
+SYLHET_STUDY = ROOT / "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6"
 
 BLUE = "2E74B5"
 DARK_BLUE = "1F4D78"
@@ -76,6 +77,13 @@ def set_repeat_table_header(row):
     tbl_header = OxmlElement("w:tblHeader")
     tbl_header.set(qn("w:val"), "true")
     tr_pr.append(tbl_header)
+
+
+def prevent_row_split(row):
+    tr_pr = row._tr.get_or_add_trPr()
+    cant_split = OxmlElement("w:cantSplit")
+    cant_split.set(qn("w:val"), "true")
+    tr_pr.append(cant_split)
 
 
 def apply_table_geometry(table, widths):
@@ -126,6 +134,8 @@ def table_widths(rows):
     columns = len(rows[0])
     if columns == 7:
         return [1800, 1260, 1260, 1260, 1260, 1260, 1260]
+    if columns == 4:
+        return [1400, 2900, 2200, 2860]
     lengths = []
     for index in range(columns):
         max_len = max(len(str(row[index])) for row in rows)
@@ -247,7 +257,8 @@ def configure_document(doc, short_title):
         style.font.color.rgb = RGBColor.from_string(color)
         style.paragraph_format.space_before = Pt(before)
         style.paragraph_format.space_after = Pt(after)
-        style.paragraph_format.keep_with_next = True
+        style.paragraph_format.keep_with_next = False
+        style.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.LEFT
 
     for style_name, size, italic, color in (
         ("Caption", 9, False, MUTED),
@@ -357,6 +368,8 @@ def add_markdown_table(doc, rows):
     table.alignment = WD_ALIGN_PARAGRAPH.LEFT
     apply_table_geometry(table, widths)
     set_repeat_table_header(table.rows[0])
+    for row in table.rows:
+        prevent_row_split(row)
     for r_idx, row in enumerate(rows):
         for c_idx, value in enumerate(row):
             cell = table.cell(r_idx, c_idx)
@@ -365,12 +378,16 @@ def add_markdown_table(doc, rows):
             p.style = "Table Text"
             numeric = bool(re.fullmatch(r"[-+]?\d+(?:\.\d+)?%?", value.strip()))
             p.alignment = WD_ALIGN_PARAGRAPH.CENTER if numeric or r_idx == 0 else WD_ALIGN_PARAGRAPH.LEFT
-            run = p.add_run(value.strip())
+            display_value = value.strip()
+            if display_value.startswith("`") and display_value.endswith("`"):
+                display_value = display_value[1:-1]
+            run = p.add_run(display_value)
             set_run_font(run, size=8.5, bold=(r_idx == 0), color=(WHITE if r_idx == 0 else BLACK))
             if r_idx == 0:
                 tc_pr = cell._tc.get_or_add_tcPr()
                 tc_pr.append(parse_xml(f'<w:shd {nsdecls("w")} w:fill="{DARK_BLUE}"/>'))
     after = doc.add_paragraph()
+    after.alignment = WD_ALIGN_PARAGRAPH.LEFT
     after.paragraph_format.space_after = Pt(2)
     return table
 
@@ -395,6 +412,7 @@ def render_markdown(doc, source, bullet_num_id, decimal_num_id):
     def flush_paragraph():
         if paragraph_buffer:
             p = doc.add_paragraph()
+            p.alignment = WD_ALIGN_PARAGRAPH.LEFT
             add_inline_runs(p, " ".join(paragraph_buffer))
             paragraph_buffer.clear()
 
@@ -432,6 +450,8 @@ def render_markdown(doc, source, bullet_num_id, decimal_num_id):
             flush_paragraph()
             level = min(len(heading.group(1)) - 1, 3)
             p = doc.add_paragraph(style=f"Heading {level}")
+            p.alignment = WD_ALIGN_PARAGRAPH.LEFT
+            p.paragraph_format.keep_with_next = False
             add_inline_runs(p, heading.group(2))
             index += 1
             continue
@@ -440,11 +460,21 @@ def render_markdown(doc, source, bullet_num_id, decimal_num_id):
         if bullet or numbered:
             flush_paragraph()
             p = doc.add_paragraph()
-            p.paragraph_format.space_after = Pt(8)
-            p.paragraph_format.line_spacing = 1.167
+            p.alignment = WD_ALIGN_PARAGRAPH.LEFT
+            p.paragraph_format.space_after = Pt(4)
+            p.paragraph_format.line_spacing = 1.10
+            p.paragraph_format.left_indent = Inches(0.5)
+            p.paragraph_format.first_line_indent = Inches(-0.25)
             apply_num(p, bullet_num_id if bullet else decimal_num_id)
-            add_inline_runs(p, (bullet or numbered).group(1))
             index += 1
+            item_parts = [(bullet or numbered).group(1)]
+            while index < len(lines):
+                continuation = lines[index]
+                if not continuation.strip() or not continuation[:1].isspace():
+                    break
+                item_parts.append(continuation.strip())
+                index += 1
+            add_inline_runs(p, " ".join(item_parts))
             continue
         paragraph_buffer.append(stripped)
         index += 1
@@ -532,6 +562,37 @@ def build_figures():
     fig.suptitle("PIDD missingness stress (development)", fontweight="bold", color="#0B2545")
     fig.tight_layout()
     save_figure(fig, "pidd_missingness_stress.png")
+
+    sylhet_ci = pd.read_csv(SYLHET_STUDY / "participant_confidence_intervals.csv")
+    sylhet_ci = sylhet_ci[(sylhet_ci["probability_version"] == "calibrated") & (sylhet_ci["threshold_policy"] == "fixed_0_5")]
+    sylhet_routing = pd.read_csv(SYLHET_STUDY / "availability_routing/summary_metrics.csv")
+    fig, axes = plt.subplots(1, 2, figsize=(7.3, 3.15))
+    frame = sylhet_ci[sylhet_ci.metric == "auroc"].set_index("model").loc[order]
+    values = frame.estimate.to_numpy()
+    errors = np.vstack((values - frame.ci_lower.to_numpy(), frame.ci_upper.to_numpy() - values))
+    axes[0].errorbar(range(len(order)), values, yerr=errors, fmt="o", color="#1F4D78", ecolor="#7A9BB8", capsize=3, lw=1.2)
+    axes[0].set_xticks(range(len(order)), labels)
+    axes[0].set_ylim(0.88, 1.005)
+    axes[0].set_ylabel("AUROC")
+    axes[0].set_title("Grouped model discrimination")
+    axes[0].grid(axis="y", color="#E5E7EB", lw=0.7)
+    scenario_order = ["minimal_polyuria_polydipsia", "classic_symptoms", "core_symptoms", "core_questionnaire", "full"]
+    scenario_labels = ["2", "4", "6", "10", "16"]
+    for system, color, marker, label in (
+        ("availability_router", "#1F4D78", "o", "Availability router"),
+        ("robust_single_model", "#9B1C1C", "s", "Robust fixed model"),
+    ):
+        panel = sylhet_routing[sylhet_routing.system == system].set_index("scenario").loc[scenario_order]
+        axes[1].plot(range(len(scenario_order)), panel.brier_score, color=color, marker=marker, label=label)
+    axes[1].set_xticks(range(len(scenario_order)), scenario_labels)
+    axes[1].set_xlabel("Available features")
+    axes[1].set_ylabel("Brier score (lower is better)")
+    axes[1].set_title("Probability loss by panel")
+    axes[1].grid(axis="y", color="#E5E7EB", lw=0.7)
+    axes[1].legend(frameon=False, fontsize=8)
+    fig.suptitle("Sylhet grouped development evidence", fontweight="bold", color="#0B2545")
+    fig.tight_layout()
+    save_figure(fig, "sylhet_performance_and_panels.png")
 
 
 def build_docx(source_name, output_name, title, subtitle, short_title):
