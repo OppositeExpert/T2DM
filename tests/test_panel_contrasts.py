@@ -68,13 +68,13 @@ class PanelContrastTests(unittest.TestCase):
         )
         self.assertTrue(contrasts["resampling_unit"].eq("cluster").all())
 
-    def test_holdout_predictions_keep_one_locked_test_row(self) -> None:
+    def test_holdout_predictions_keep_one_holdout_test_row(self) -> None:
         frame = _predictions()
         frame = frame[frame["repeat"] == 0].drop(columns="repeat")
         aggregated = aggregate_panel_predictions(frame)
         self.assertEqual(len(aggregated), 24)
         self.assertTrue(aggregated["repeat_count"].eq(1).all())
-        self.assertTrue(aggregated["estimation_scope"].eq("locked_test").all())
+        self.assertTrue(aggregated["estimation_scope"].eq("holdout_test").all())
 
     def test_missing_full_panel_is_rejected(self) -> None:
         frame = _predictions()

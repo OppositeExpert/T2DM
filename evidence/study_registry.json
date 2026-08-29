@@ -1,0 +1,2609 @@
+{
+  "environment_used_to_build_registry": {
+    "platform": "macOS-26.4-arm64-arm-64bit",
+    "python": "3.12.0"
+  },
+  "evidence_scope": "development_and_engineering_not_final",
+  "generated_at_utc": "2026-08-29T06:02:50.740356+00:00",
+  "historical_engineering_studies": {
+    "brfss_smoke": {
+      "evidence_tier": "execution_only_smoke",
+      "study_id": "brfss_smoke_holdout_b3a6ad2aa89e"
+    },
+    "hospital130_smoke": {
+      "evidence_tier": "execution_only_smoke",
+      "study_id": "hospital130_smoke_holdout_6640beff7a08"
+    }
+  },
+  "large_artifact_policy": "Study outputs and model bundles remain ignored. This tracked registry identifies their hashes and regeneration commands but does not replace them.",
+  "requirements_lock_sha256": "b58cb163f2a95a6beaba4a2e9119fd70fa0bd867a001ea79b3e990a19c3cd826",
+  "schema_version": "1.0",
+  "studies": {
+    "brfss": {
+      "artifacts": {
+        "artifact_ablation": {
+          "bytes": 1112,
+          "path": "outputs/publication_pipeline/studies/brfss_development_holdout_56407ef53bba/ablations/ablation_inventory.json",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "894c488624fc32aa2d8e29d285bc749d337f02294c0b7a239b1289efd9eb27fc",
+          "tracked_in_git": false
+        },
+        "calibration_selection": {
+          "bytes": 2473,
+          "path": "outputs/publication_pipeline/studies/brfss_development_holdout_56407ef53bba/calibration_selection.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "363ecee279de4cf8e688a79d767469a3f970df630af006ae5a56d08e0fef692f",
+          "tracked_in_git": false
+        },
+        "confidence_intervals": {
+          "bytes": 86232,
+          "path": "outputs/publication_pipeline/studies/brfss_development_holdout_56407ef53bba/confidence_intervals.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "4fe9a516e4544b4742d3d7b172ec2dc22b69eb937e21168e26597a3c7fb3a9bd",
+          "tracked_in_git": false
+        },
+        "decision_curve_intervals": {
+          "bytes": 45456,
+          "path": "outputs/publication_pipeline/studies/brfss_development_holdout_56407ef53bba/decision_curve_confidence_intervals.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "ca979b4bd978e709d849c7f1034ddbe1e3408dc28dcb3bdec2081865c7f68868",
+          "tracked_in_git": false
+        },
+        "decision_curves": {
+          "bytes": 44094,
+          "path": "outputs/publication_pipeline/studies/brfss_development_holdout_56407ef53bba/decision_curves.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "40ce9463899928172e95f5e46118d18852aa1ebe421ea4e84603bae467670dd8",
+          "tracked_in_git": false
+        },
+        "matched_panel_comparisons": {
+          "bytes": 24505,
+          "path": "outputs/publication_pipeline/studies/brfss_development_holdout_56407ef53bba/availability_routing/matched_panel_contrasts.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "774e27011cff5c8f7cde31ac3d2d5fa48f77dc24a54769dac32bdceeb3d06f53",
+          "tracked_in_git": false
+        },
+        "metadata": {
+          "bytes": 3386,
+          "path": "outputs/publication_pipeline/studies/brfss_development_holdout_56407ef53bba/experiment_metadata.json",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "88fe8ddc7dfef15c54a9f6c9230ea51ca1b1fdea8ae85ac7f8f1b14768289219",
+          "tracked_in_git": false
+        },
+        "metrics": {
+          "bytes": 14286,
+          "path": "outputs/publication_pipeline/studies/brfss_development_holdout_56407ef53bba/summary_metrics.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "da8898db8993b786de218879b0ee3ee8d553cc7d226e25c5fa7f716c2d2a9bff",
+          "tracked_in_git": false
+        },
+        "paired_comparisons_holdout": {
+          "bytes": 7623,
+          "path": "outputs/publication_pipeline/studies/brfss_development_holdout_56407ef53bba/paired_bootstrap_model_comparisons.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "20f350b5f92b486580867e6ab661d6edc2b2ea9ffd8a9400d7aff868208d4f07",
+          "tracked_in_git": false
+        },
+        "paired_comparisons_nested_cv": {
+          "bytes": null,
+          "path": "outputs/publication_pipeline/studies/brfss_development_holdout_56407ef53bba/participant_paired_model_comparisons.csv",
+          "present_locally": false,
+          "regeneration_required_after_clone": true,
+          "sha256": null,
+          "tracked_in_git": false
+        },
+        "participant_confidence_intervals": {
+          "bytes": null,
+          "path": "outputs/publication_pipeline/studies/brfss_development_holdout_56407ef53bba/participant_confidence_intervals.csv",
+          "present_locally": false,
+          "regeneration_required_after_clone": true,
+          "sha256": null,
+          "tracked_in_git": false
+        },
+        "predictions_holdout": {
+          "bytes": 82131274,
+          "path": "outputs/publication_pipeline/studies/brfss_development_holdout_56407ef53bba/test_predictions.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "5dabeb82f0a9ac4ec5eb43030a7e39bca5ca7021e73b66ec0717c45bfd6fe8af",
+          "tracked_in_git": false
+        },
+        "predictions_nested_cv": {
+          "bytes": null,
+          "path": "outputs/publication_pipeline/studies/brfss_development_holdout_56407ef53bba/participant_predictions.csv",
+          "present_locally": false,
+          "regeneration_required_after_clone": true,
+          "sha256": null,
+          "tracked_in_git": false
+        },
+        "routing_metrics": {
+          "bytes": 16335,
+          "path": "outputs/publication_pipeline/studies/brfss_development_holdout_56407ef53bba/availability_routing/summary_metrics.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "d9f3e2702451e6e4497415dfda53950215c77428fd0d18350cc971957bae6a80",
+          "tracked_in_git": false
+        },
+        "routing_predictions": {
+          "bytes": 388312035,
+          "path": "outputs/publication_pipeline/studies/brfss_development_holdout_56407ef53bba/availability_routing/system_predictions.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "d87658543cba643f1b17474753f5dbf0ed25fde2d32319ed092010cdebe27065",
+          "tracked_in_git": false
+        },
+        "selective_prediction": {
+          "bytes": 9955,
+          "path": "outputs/publication_pipeline/studies/brfss_development_holdout_56407ef53bba/selective_prediction/risk_coverage_metrics.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "6fb9c1418d11729821c262e8f2c83a6e260cc0a43b20c9116e14c00145c724da",
+          "tracked_in_git": false
+        },
+        "shap_original_features": {
+          "bytes": 9826,
+          "path": "outputs/publication_pipeline/studies/brfss_development_holdout_56407ef53bba/test_explanations/global_shap_importance_original_features.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "b3c67160353bebde5928a2ca370a22bb31cd0dbac0642a3abeadc81416f9bc2f",
+          "tracked_in_git": false
+        },
+        "subgroup_analysis": {
+          "bytes": 8630,
+          "path": "outputs/publication_pipeline/studies/brfss_development_holdout_56407ef53bba/subgroup_analysis/subgroup_metrics.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "c6111cad3100ab74c830629274dfe7dda5417682bf2ba19278bc4ad378e1120e",
+          "tracked_in_git": false
+        },
+        "survey_sensitivity": {
+          "bytes": 22107,
+          "path": "outputs/publication_pipeline/studies/brfss_development_holdout_56407ef53bba/survey_sensitivity/survey_weighted_metrics.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "5f944d021fec5e8d196575c82371a0ac2f18d3ca01c9891646ae879814013e0e",
+          "tracked_in_git": false
+        },
+        "thresholds": {
+          "bytes": 3038,
+          "path": "outputs/publication_pipeline/studies/brfss_development_holdout_56407ef53bba/selected_thresholds.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "291eca779c2105852ad28a9355a71333c730f764dc073d00f5947ff3e9b22417",
+          "tracked_in_git": false
+        }
+      },
+      "command": "python -m diabetes_pipeline.cli benchmark-holdout --dataset brfss --profile development --models logistic_regression random_forest xgboost lightgbm catboost",
+      "dataset": "brfss",
+      "dataset_configuration_sha256": "d48716267cc6fca23fc5e678280c60064645698fdca2c3334fd3b1dc3c685ef6",
+      "eligible_for_final_claims": false,
+      "endpoint": "self_reported_diagnosed_diabetes",
+      "evidence_tier": "full_development",
+      "execution_profile": "development",
+      "metadata_modified_at_utc": "2026-08-28T12:24:54.094663+00:00",
+      "model_bundles": {
+        "catboost": {
+          "bytes": 793209,
+          "path": "outputs/publication_pipeline/studies/brfss_development_holdout_56407ef53bba/models/catboost.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "953aad9aaf6a1afd7ef6782d20e705485b9052a7415b4cdd872f0fc6d36ab1d8",
+          "tracked_in_git": false
+        },
+        "lightgbm": {
+          "bytes": 4158983,
+          "path": "outputs/publication_pipeline/studies/brfss_development_holdout_56407ef53bba/models/lightgbm.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "a3186f9b8e0238cae898450584000214785083c811b41c28061d5f3edc7548c9",
+          "tracked_in_git": false
+        },
+        "logistic_regression": {
+          "bytes": 11379,
+          "path": "outputs/publication_pipeline/studies/brfss_development_holdout_56407ef53bba/models/logistic_regression.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "426803c771d09e2f40d14403086e629d0a461e45eea5d8c5eb978b33eba211e9",
+          "tracked_in_git": false
+        },
+        "random_forest": {
+          "bytes": 475848457,
+          "path": "outputs/publication_pipeline/studies/brfss_development_holdout_56407ef53bba/models/random_forest.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "2f8106e682e931ea75e2132208121ef9df634372baf5161d8635306aa1e06ad4",
+          "tracked_in_git": false
+        },
+        "xgboost": {
+          "bytes": 1158142,
+          "path": "outputs/publication_pipeline/studies/brfss_development_holdout_56407ef53bba/models/xgboost.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "4a7f049a002f16d007261d5acb8fa4b9940803187ef0835adb3c8b3600299978",
+          "tracked_in_git": false
+        }
+      },
+      "profile_locked": false,
+      "raw_data_sha256": "a7d3380aca5aeae94186770983c3089fb6c4b2074aa112418112c11891d16420",
+      "requirements_lock_sha256": "b58cb163f2a95a6beaba4a2e9119fd70fa0bd867a001ea79b3e990a19c3cd826",
+      "source_tree_sha256": "772edea034d6e455409541d212fe0184244f0a7db6780da1875a55647f34fe31",
+      "split_manifest_sha256": "047d0a8ad36f229ff1d74c8a2f5531f3123aee9cc480f708287ad2fa4265be1e",
+      "study_directory": "outputs/publication_pipeline/studies/brfss_development_holdout_56407ef53bba",
+      "study_id": "brfss_development_holdout_56407ef53bba",
+      "test_access": "development_test_previously_accessed_not_final_eligible"
+    },
+    "pidd": {
+      "artifacts": {
+        "artifact_ablation": {
+          "bytes": 1102,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/ablations/ablation_inventory.json",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "c389ed254f49558c86b4da338b2e53016830470ca02afb9e07c0ca2ad124fb09",
+          "tracked_in_git": false
+        },
+        "calibration_selection": {
+          "bytes": 57104,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/calibration_selection.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "50e72963e788451f12804a6439b05a7e8b06eaaa6250f39d343e9f1725d4f711",
+          "tracked_in_git": false
+        },
+        "confidence_intervals": {
+          "bytes": 464532,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/confidence_intervals.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "b982424a9b66d61816d8ae938eb03304f8ba2fe5cc3f4064feed240142badd4c",
+          "tracked_in_git": false
+        },
+        "decision_curve_intervals": {
+          "bytes": 52692,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/decision_curve_confidence_intervals.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "ef2c652a20e768d34aaa56cf27aee6e826780225983d4fe5c9ea8f80fceb0f18",
+          "tracked_in_git": false
+        },
+        "decision_curves": {
+          "bytes": 202388,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/decision_curves.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "e25b6db7c5a1b995363da5aca29749f2fdf072690d9c7d6677f2801cb7e2a416",
+          "tracked_in_git": false
+        },
+        "matched_panel_comparisons": {
+          "bytes": 24997,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/availability_routing/matched_panel_contrasts.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "d432a6589dec5cc31bf2e3b6832b071d9512de32683d22c9c500b004566504c2",
+          "tracked_in_git": false
+        },
+        "metadata": {
+          "bytes": 2781,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/experiment_metadata.json",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "64d9c7a7626b5ee7a3a4a589fd59c23216b8a1f9fbfd83bc0804e871ac2f6482",
+          "tracked_in_git": false
+        },
+        "metrics": {
+          "bytes": 10940,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/summary_metrics.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "e4a4a428e5a7b417e289a4a9359b079068abd7c39f3b0ce5257cdb352e53038b",
+          "tracked_in_git": false
+        },
+        "paired_comparisons_holdout": {
+          "bytes": null,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/paired_bootstrap_model_comparisons.csv",
+          "present_locally": false,
+          "regeneration_required_after_clone": true,
+          "sha256": null,
+          "tracked_in_git": false
+        },
+        "paired_comparisons_nested_cv": {
+          "bytes": 8247,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/participant_paired_model_comparisons.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "87dae0b77bcc8a06d2ba43e092e3310b274d74f4e0ac8c0edc35de60a859ba02",
+          "tracked_in_git": false
+        },
+        "participant_confidence_intervals": {
+          "bytes": 34776,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/participant_confidence_intervals.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "94bfbca61efe7975404414ea2df3159d1f0b38bd923890e593d4c149a5e282a0",
+          "tracked_in_git": false
+        },
+        "predictions_holdout": {
+          "bytes": null,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/test_predictions.csv",
+          "present_locally": false,
+          "regeneration_required_after_clone": true,
+          "sha256": null,
+          "tracked_in_git": false
+        },
+        "predictions_nested_cv": {
+          "bytes": 799996,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/participant_predictions.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "77263d846098c716ab7b0930fc0fdf97327379e124c6fa904fa6d40a32c70abc",
+          "tracked_in_git": false
+        },
+        "routing_metrics": {
+          "bytes": 10804,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/availability_routing/summary_metrics.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "d5b4544927df673df11ff08f46a8b0650e8fe0037bba1c66ff8aeed1c730f05e",
+          "tracked_in_git": false
+        },
+        "routing_predictions": {
+          "bytes": 24047130,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/availability_routing/system_predictions.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "e3a20a922dbe637d93c100c983a6025c7c1a900ed3d49d60dcc6b236afb402f5",
+          "tracked_in_git": false
+        },
+        "selective_prediction": {
+          "bytes": 19195,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/selective_prediction/risk_coverage_metrics.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "146c09e5a4be47029ecd28317b2306dfaea007dd1f2e1f51631292910d48252c",
+          "tracked_in_git": false
+        },
+        "shap_original_features": {
+          "bytes": 3764,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/explanations/global_shap_importance_original_features.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "16c532718b5d73c2b870f84818572f834fe471fdc40ca47834ceccd82b082d69",
+          "tracked_in_git": false
+        },
+        "subgroup_analysis": {
+          "bytes": 4948,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/subgroup_analysis/subgroup_metrics.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "d6161269df5d5e124435870fd1a549bec6a4d61fffdcc7a8a34a5379135bfe18",
+          "tracked_in_git": false
+        },
+        "survey_sensitivity": {
+          "bytes": null,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/survey_sensitivity/survey_weighted_metrics.csv",
+          "present_locally": false,
+          "regeneration_required_after_clone": true,
+          "sha256": null,
+          "tracked_in_git": false
+        },
+        "thresholds": {
+          "bytes": 85824,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/selected_thresholds.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "c879d7f8589bef1b1f4561417f7b459c37f182add68d34d44b7cbf78d0281570",
+          "tracked_in_git": false
+        }
+      },
+      "command": "python -m diabetes_pipeline.cli benchmark --dataset pidd --profile development",
+      "dataset": "pidd",
+      "dataset_configuration_sha256": "c000944c58f8e2edf5c5ef337bfe7b7243a1f4f9e3e7916a4466594864dd4add",
+      "eligible_for_final_claims": false,
+      "endpoint": "diabetes_positive_label",
+      "evidence_tier": "full_development",
+      "execution_profile": "development",
+      "metadata_modified_at_utc": "2026-08-23T18:15:57.125301+00:00",
+      "model_bundles": {
+        "catboost_repeat_0_fold_0": {
+          "bytes": 78481,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/catboost_repeat_0_fold_0.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "e3676211d458aa5698563f8ef4e7a06dd35a5944d3b84e3eb2e9707fa67f478e",
+          "tracked_in_git": false
+        },
+        "catboost_repeat_0_fold_1": {
+          "bytes": 307825,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/catboost_repeat_0_fold_1.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "a1578ae5158261beae2a3023581995667d062a97fdfbff863692cfe34372d52e",
+          "tracked_in_git": false
+        },
+        "catboost_repeat_0_fold_2": {
+          "bytes": 425153,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/catboost_repeat_0_fold_2.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "f3ddb41f4b7d1fb033413fddb2d6234bc04c58566b6c99193a89e52020feda48",
+          "tracked_in_git": false
+        },
+        "catboost_repeat_0_fold_3": {
+          "bytes": 50513,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/catboost_repeat_0_fold_3.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "4349f7f22d5485bba4a2a1197250037f16376c6662a575b2a4e2269ae35011d4",
+          "tracked_in_git": false
+        },
+        "catboost_repeat_0_fold_4": {
+          "bytes": 187649,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/catboost_repeat_0_fold_4.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "68c93c5338fdd5db8bc249aa7fca2e2b05fedfd09845bf6dcfd010c7942a3326",
+          "tracked_in_git": false
+        },
+        "catboost_repeat_1_fold_0": {
+          "bytes": 1548225,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/catboost_repeat_1_fold_0.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "93a27f8c2de4bc76afde7fb32228b9b1fbed121444511f340370efc86765fe5c",
+          "tracked_in_git": false
+        },
+        "catboost_repeat_1_fold_1": {
+          "bytes": 209793,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/catboost_repeat_1_fold_1.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "2206488f91a1cf1cbd8b691f2003d9601a32418d0a5e1bb5f6c885125c4d5cc1",
+          "tracked_in_git": false
+        },
+        "catboost_repeat_1_fold_2": {
+          "bytes": 232673,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/catboost_repeat_1_fold_2.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "a55bf5627280e7d3f92f8178ee924c0ec4f49448ac056ce3129e102b2d43d475",
+          "tracked_in_git": false
+        },
+        "catboost_repeat_1_fold_3": {
+          "bytes": 51073,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/catboost_repeat_1_fold_3.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "13fe7465a0ee53f70971e0548d386ce221b68d57b096052de139e00d14a992c5",
+          "tracked_in_git": false
+        },
+        "catboost_repeat_1_fold_4": {
+          "bytes": 166148,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/catboost_repeat_1_fold_4.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "7175ac9c70cf8456761437bf5eea3a6aa1e0cc99edb97f8ef5b3fb05835aaa91",
+          "tracked_in_git": false
+        },
+        "catboost_repeat_2_fold_0": {
+          "bytes": 363073,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/catboost_repeat_2_fold_0.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "6a9212c968075d62029b8cd9483f94b0567712add2b6b645a6b4b97289826e3f",
+          "tracked_in_git": false
+        },
+        "catboost_repeat_2_fold_1": {
+          "bytes": 78481,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/catboost_repeat_2_fold_1.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "07228c98404cee332541deb8f94a1f7c8d5a89ef286607086bfccc6fe13603e6",
+          "tracked_in_git": false
+        },
+        "catboost_repeat_2_fold_2": {
+          "bytes": 678113,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/catboost_repeat_2_fold_2.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "0dd3844e8d5fbec797443eed036648a1f9ee0db11668646465a0c6c4c82f67a8",
+          "tracked_in_git": false
+        },
+        "catboost_repeat_2_fold_3": {
+          "bytes": 50753,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/catboost_repeat_2_fold_3.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "14cfff0333b45712e2fdee56a078404ed4f4af74a5015a17d5be26c0397e0b23",
+          "tracked_in_git": false
+        },
+        "catboost_repeat_2_fold_4": {
+          "bytes": 248876,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/catboost_repeat_2_fold_4.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "b7083a8f5c620bd6a68f165f60d0c480707aaea387f71ba36612c0c69246720e",
+          "tracked_in_git": false
+        },
+        "catboost_repeat_3_fold_0": {
+          "bytes": 89777,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/catboost_repeat_3_fold_0.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "4012ab4f2c20336fb813f83fdb427d6eaa384b53eb3a4a6e147a73e7b06ab1f0",
+          "tracked_in_git": false
+        },
+        "catboost_repeat_3_fold_1": {
+          "bytes": 143692,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/catboost_repeat_3_fold_1.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "4e775d01885ceaa46d8747f32ad804499ed93a84ded35e8a1b005d578009e5e6",
+          "tracked_in_git": false
+        },
+        "catboost_repeat_3_fold_2": {
+          "bytes": 78321,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/catboost_repeat_3_fold_2.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "b5b59d827cb90faa9a19c0827790790b588d858bda69b24f4594b62c836ad323",
+          "tracked_in_git": false
+        },
+        "catboost_repeat_3_fold_3": {
+          "bytes": 78369,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/catboost_repeat_3_fold_3.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "545f9a0b74d606f3d4266df6c333c896198777aee550222b9d42f2e6910e04f9",
+          "tracked_in_git": false
+        },
+        "catboost_repeat_3_fold_4": {
+          "bytes": 423060,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/catboost_repeat_3_fold_4.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "d93df2981f153fc4d77f991e875662e4847bc44c788ca3b88284bb5c3c905c99",
+          "tracked_in_git": false
+        },
+        "catboost_repeat_4_fold_0": {
+          "bytes": 50122,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/catboost_repeat_4_fold_0.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "134e60a3588db302c432f4fc3afa1d2e4713f23e4125a802515fe27bfc6c647a",
+          "tracked_in_git": false
+        },
+        "catboost_repeat_4_fold_1": {
+          "bytes": 69924,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/catboost_repeat_4_fold_1.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "f13352ddabae551de1904e542cde6045c3840f928480e0240f6da6194188b7bb",
+          "tracked_in_git": false
+        },
+        "catboost_repeat_4_fold_2": {
+          "bytes": 346881,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/catboost_repeat_4_fold_2.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "c739dbeaaa9b52d7ebad82d0cfe11f54df61319466921f01a436e5b3d3af719a",
+          "tracked_in_git": false
+        },
+        "catboost_repeat_4_fold_3": {
+          "bytes": 143921,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/catboost_repeat_4_fold_3.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "06876ebd49fd46635f732e9c97508c86967202561421951bb6b488d2fd4a7b64",
+          "tracked_in_git": false
+        },
+        "catboost_repeat_4_fold_4": {
+          "bytes": 50481,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/catboost_repeat_4_fold_4.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "017ed9ac573b1d730c4b28a23b4ba35046670c2c1cff4d79447ca7f75d1b28ce",
+          "tracked_in_git": false
+        },
+        "lightgbm_repeat_0_fold_0": {
+          "bytes": 270015,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/lightgbm_repeat_0_fold_0.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "5fbe39a270a9c27de573bd47f97c4745efa111271a7dc2db988258fe39f2a49f",
+          "tracked_in_git": false
+        },
+        "lightgbm_repeat_0_fold_1": {
+          "bytes": 395375,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/lightgbm_repeat_0_fold_1.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "d7859db5c1aa9de9c4b53ba3f82f945fbd06b20e26f71d2996b4edc9951b1397",
+          "tracked_in_git": false
+        },
+        "lightgbm_repeat_0_fold_2": {
+          "bytes": 317153,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/lightgbm_repeat_0_fold_2.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "65830d0aff98a05397c79a12f3d767e014261bc9fd0a35704737262e8cf60117",
+          "tracked_in_git": false
+        },
+        "lightgbm_repeat_0_fold_3": {
+          "bytes": 245343,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/lightgbm_repeat_0_fold_3.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "efeeb9d96a18ed060b8053bc40dd2b881ec0d526e3d793f55079e8d45848dec4",
+          "tracked_in_git": false
+        },
+        "lightgbm_repeat_0_fold_4": {
+          "bytes": 312895,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/lightgbm_repeat_0_fold_4.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "97b141c31a7bd40e5cbab36f8973d7b2031a84f9949dbd7e0640a9019dcca1c5",
+          "tracked_in_git": false
+        },
+        "lightgbm_repeat_1_fold_0": {
+          "bytes": 283089,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/lightgbm_repeat_1_fold_0.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "5649f33bb3220bc233c157944c55077c7f880c2f3628de57bb8cee0d2b6affec",
+          "tracked_in_git": false
+        },
+        "lightgbm_repeat_1_fold_1": {
+          "bytes": 387889,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/lightgbm_repeat_1_fold_1.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "e3a089602782e1db9d0ec9c356e3e545f06e8c9c315d947dc32d90e06d8c1a83",
+          "tracked_in_git": false
+        },
+        "lightgbm_repeat_1_fold_2": {
+          "bytes": 327985,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/lightgbm_repeat_1_fold_2.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "72546f2e42e5cfa550c8d00b8af29085591942792884abd0961cdb05e4933c7c",
+          "tracked_in_git": false
+        },
+        "lightgbm_repeat_1_fold_3": {
+          "bytes": 550769,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/lightgbm_repeat_1_fold_3.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "8d637484d7ac16b0fa76cc52200f974c468801b73598daab0e2a3c1b0779e383",
+          "tracked_in_git": false
+        },
+        "lightgbm_repeat_1_fold_4": {
+          "bytes": 249169,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/lightgbm_repeat_1_fold_4.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "fa32d803c49271755cdac8de5d79121ad0decf0e27fd67e1b775a1d71ee411e2",
+          "tracked_in_git": false
+        },
+        "lightgbm_repeat_2_fold_0": {
+          "bytes": 245729,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/lightgbm_repeat_2_fold_0.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "039d6ff7e17cef303c6dd0a37c5581a2bbb8baaa2131bb6210a79aa9111fdeb5",
+          "tracked_in_git": false
+        },
+        "lightgbm_repeat_2_fold_1": {
+          "bytes": 445201,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/lightgbm_repeat_2_fold_1.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "3828f378af6477f3a3efc96e01b61c0d32d43d8993d4987aa0aa4a0c5ff6a8d3",
+          "tracked_in_git": false
+        },
+        "lightgbm_repeat_2_fold_2": {
+          "bytes": 431055,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/lightgbm_repeat_2_fold_2.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "26df621c03509017a5343a860116f28c5510147f2cf739f55db085090c006fbf",
+          "tracked_in_git": false
+        },
+        "lightgbm_repeat_2_fold_3": {
+          "bytes": 321361,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/lightgbm_repeat_2_fold_3.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "afc58383a30319a528415b07d26ee2fb256092c1bf30a64cce3b907c11512b06",
+          "tracked_in_git": false
+        },
+        "lightgbm_repeat_2_fold_4": {
+          "bytes": 208127,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/lightgbm_repeat_2_fold_4.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "1358e0abfb970852244305313347ee7e91e3fe148ebfeb14aef3d35ccff6c65c",
+          "tracked_in_git": false
+        },
+        "lightgbm_repeat_3_fold_0": {
+          "bytes": 644161,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/lightgbm_repeat_3_fold_0.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "2ed6006a3bcb05c756c9bec46ba9de9771a6ebb6808924ba8cf07d8bc88703f3",
+          "tracked_in_git": false
+        },
+        "lightgbm_repeat_3_fold_1": {
+          "bytes": 486401,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/lightgbm_repeat_3_fold_1.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "7621b00171beaab73b36c2d3e764374c38e7f54f24a1356604d34ff93304e43d",
+          "tracked_in_git": false
+        },
+        "lightgbm_repeat_3_fold_2": {
+          "bytes": 393823,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/lightgbm_repeat_3_fold_2.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "5e3dd2a7c2a45e4b770eca2fd8b8a7f6cc0f6b83f21679b1c0e70be5629ac0ac",
+          "tracked_in_git": false
+        },
+        "lightgbm_repeat_3_fold_3": {
+          "bytes": 373393,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/lightgbm_repeat_3_fold_3.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "8598122d8f961ec1b3e9a4e2f2e86e4ac3a9302a575dc61c1a6db6eedf5cbac9",
+          "tracked_in_git": false
+        },
+        "lightgbm_repeat_3_fold_4": {
+          "bytes": 212257,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/lightgbm_repeat_3_fold_4.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "3a90a2e3cd808c06573eb615416f9ce6791d382f2fd719ea201abe3c27b1d9dd",
+          "tracked_in_git": false
+        },
+        "lightgbm_repeat_4_fold_0": {
+          "bytes": 326207,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/lightgbm_repeat_4_fold_0.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "2d5f0d4f607947462065e67fa748a6ed65cea6858f3234dfa915c7f65c05b0ae",
+          "tracked_in_git": false
+        },
+        "lightgbm_repeat_4_fold_1": {
+          "bytes": 182209,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/lightgbm_repeat_4_fold_1.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "0c99b539f3051e47dd12bb02534263d208997bfde5b8cfa04d52517fc815413d",
+          "tracked_in_git": false
+        },
+        "lightgbm_repeat_4_fold_2": {
+          "bytes": 438369,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/lightgbm_repeat_4_fold_2.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "e35efe3a66cf7d2fae06a5cd5ad649afcf285773188fdc921a4a979770c8570f",
+          "tracked_in_git": false
+        },
+        "lightgbm_repeat_4_fold_3": {
+          "bytes": 228207,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/lightgbm_repeat_4_fold_3.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "2d12e6726aa321a8a3513b2f5aefdf21c07d7fcf8c730376a97183b77421769d",
+          "tracked_in_git": false
+        },
+        "lightgbm_repeat_4_fold_4": {
+          "bytes": 222593,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/lightgbm_repeat_4_fold_4.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "ed87b4e909e123c02f5ee8cb02879f650de31d0f6f7c8a828cadc43db6ec6ad4",
+          "tracked_in_git": false
+        },
+        "logistic_regression_repeat_0_fold_0": {
+          "bytes": 4694,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/logistic_regression_repeat_0_fold_0.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "ae344dcb67005ea929c26ee6cc6c294815d05fd4a6ea940c1e3c7a62000dc8c2",
+          "tracked_in_git": false
+        },
+        "logistic_regression_repeat_0_fold_1": {
+          "bytes": 4694,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/logistic_regression_repeat_0_fold_1.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "0bc761eeeb00be7595bf212cafdef0bf4bdfa4c1bf7f8f242dc44156a6acd09e",
+          "tracked_in_git": false
+        },
+        "logistic_regression_repeat_0_fold_2": {
+          "bytes": 4694,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/logistic_regression_repeat_0_fold_2.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "ecb4b75d9b2d50b7f993a424de047f4bdaed6912c320681ade9d07921f65f8f7",
+          "tracked_in_git": false
+        },
+        "logistic_regression_repeat_0_fold_3": {
+          "bytes": 5057,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/logistic_regression_repeat_0_fold_3.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "e7548ae99f3c721049bf5a049490c203693ca8e339037fe240454708fc356d0c",
+          "tracked_in_git": false
+        },
+        "logistic_regression_repeat_0_fold_4": {
+          "bytes": 5057,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/logistic_regression_repeat_0_fold_4.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "ea10ba41d43d862e158847b3b7cdaff8aea48d638f1c67d661091eb6fe1ca4c5",
+          "tracked_in_git": false
+        },
+        "logistic_regression_repeat_1_fold_0": {
+          "bytes": 4694,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/logistic_regression_repeat_1_fold_0.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "044a73fe7c4dcb8489c5498c7c6720cb432b4c85f1e77871b5ffed544307d7f2",
+          "tracked_in_git": false
+        },
+        "logistic_regression_repeat_1_fold_1": {
+          "bytes": 4694,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/logistic_regression_repeat_1_fold_1.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "7a50eec4851aa6381fdaaf0c37d240c0e264acc66feb7f3c1775b83dbb3abfcc",
+          "tracked_in_git": false
+        },
+        "logistic_regression_repeat_1_fold_2": {
+          "bytes": 5057,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/logistic_regression_repeat_1_fold_2.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "c7c1e14c9aba4a8751a209ce8aa9dec12dc1fc1ceb77e8205ef4656c3936498c",
+          "tracked_in_git": false
+        },
+        "logistic_regression_repeat_1_fold_3": {
+          "bytes": 5057,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/logistic_regression_repeat_1_fold_3.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "99a910532c59515f4d0679ccf88d1575a935b4e86777455c5d4f5fe61fd3ad07",
+          "tracked_in_git": false
+        },
+        "logistic_regression_repeat_1_fold_4": {
+          "bytes": 5057,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/logistic_regression_repeat_1_fold_4.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "df4e7eaae6df0422dd113a6f8585b2eaae577ba9e0b837ab1ee832ea029aad52",
+          "tracked_in_git": false
+        },
+        "logistic_regression_repeat_2_fold_0": {
+          "bytes": 4694,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/logistic_regression_repeat_2_fold_0.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "70cfd672bdcda7668be2b2570b8e642af88f7b52b588074792bcdd615eb9915f",
+          "tracked_in_git": false
+        },
+        "logistic_regression_repeat_2_fold_1": {
+          "bytes": 4694,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/logistic_regression_repeat_2_fold_1.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "8d97893b9e659f38aa27b3fe1759190337dcc1924752d21ae21c4d23c51aaf0f",
+          "tracked_in_git": false
+        },
+        "logistic_regression_repeat_2_fold_2": {
+          "bytes": 4694,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/logistic_regression_repeat_2_fold_2.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "7f6d772f9ac3a4408ca5b0c4bb80dd0b9d732ab35015d8f6c9790aa84f7cbee6",
+          "tracked_in_git": false
+        },
+        "logistic_regression_repeat_2_fold_3": {
+          "bytes": 4694,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/logistic_regression_repeat_2_fold_3.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "5f2d5eacdde747d1078a9eac5ca4d098e5188ae59a197bae94314f6f1bda1e6e",
+          "tracked_in_git": false
+        },
+        "logistic_regression_repeat_2_fold_4": {
+          "bytes": 5057,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/logistic_regression_repeat_2_fold_4.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "65ce43b3f7fb34f0fdcdbe72e5aba2f95fd720e51fb6811ea58f8c0cad7274c6",
+          "tracked_in_git": false
+        },
+        "logistic_regression_repeat_3_fold_0": {
+          "bytes": 5057,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/logistic_regression_repeat_3_fold_0.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "a0b1e3cf610833ecf244685b9e721dde5818b5f9a572fb6b535981cdc940272c",
+          "tracked_in_git": false
+        },
+        "logistic_regression_repeat_3_fold_1": {
+          "bytes": 5057,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/logistic_regression_repeat_3_fold_1.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "958bf9d700f69375ec75d6fdce9b552d201ea9a15f16abfdca10e2ea0b4fd7b1",
+          "tracked_in_git": false
+        },
+        "logistic_regression_repeat_3_fold_2": {
+          "bytes": 5057,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/logistic_regression_repeat_3_fold_2.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "3112938da99559279e9deb088365d1e2e6c352080cc0cbc4eacfbb99b2093184",
+          "tracked_in_git": false
+        },
+        "logistic_regression_repeat_3_fold_3": {
+          "bytes": 5057,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/logistic_regression_repeat_3_fold_3.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "bc4d18d78c72deaf0bcbf6546942e7a68673f4b43a936952e13cfdef1311378c",
+          "tracked_in_git": false
+        },
+        "logistic_regression_repeat_3_fold_4": {
+          "bytes": 5057,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/logistic_regression_repeat_3_fold_4.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "02e6eac325d5d19997c381a569a7f1ea1f3dd0faf194c408ef0734761def0434",
+          "tracked_in_git": false
+        },
+        "logistic_regression_repeat_4_fold_0": {
+          "bytes": 4694,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/logistic_regression_repeat_4_fold_0.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "951999a2ebc6648519a68b20f5b162842d8aad7f61f0c5915c4b537b5d6375db",
+          "tracked_in_git": false
+        },
+        "logistic_regression_repeat_4_fold_1": {
+          "bytes": 5057,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/logistic_regression_repeat_4_fold_1.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "09eeb52adbabe72f06d9a350125c72c5e8b20a78bccd9526fc9204ad42aac2d6",
+          "tracked_in_git": false
+        },
+        "logistic_regression_repeat_4_fold_2": {
+          "bytes": 5057,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/logistic_regression_repeat_4_fold_2.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "85f1c2c03c5ddf3056feef2ff34c7ae75dee118fb95a0a1a97c8f175ad57dba3",
+          "tracked_in_git": false
+        },
+        "logistic_regression_repeat_4_fold_3": {
+          "bytes": 4694,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/logistic_regression_repeat_4_fold_3.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "150448c70320bbef6f0c84c8a0c2305fdd5745b15154c60e5572f1f1aec41ee4",
+          "tracked_in_git": false
+        },
+        "logistic_regression_repeat_4_fold_4": {
+          "bytes": 5041,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/logistic_regression_repeat_4_fold_4.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "883f7cb516645de3f9fd542f857e4a5c22937d7a460c0079c23dc98df880c6eb",
+          "tracked_in_git": false
+        },
+        "random_forest_repeat_0_fold_0": {
+          "bytes": 2337963,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/random_forest_repeat_0_fold_0.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "3009ed3de0cd2294212ec1dbd5bf1a5a9f5e0585c0b47164b295957e388a32fb",
+          "tracked_in_git": false
+        },
+        "random_forest_repeat_0_fold_1": {
+          "bytes": 2508113,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/random_forest_repeat_0_fold_1.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "833211317c8b15b6ec0b1141ded7f7cf455405159e93635c2e9519041ed8c56c",
+          "tracked_in_git": false
+        },
+        "random_forest_repeat_0_fold_2": {
+          "bytes": 1741003,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/random_forest_repeat_0_fold_2.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "bc423fa8308f56713e81e6f2a6178f453a5b9972db845730992ed017efc5929d",
+          "tracked_in_git": false
+        },
+        "random_forest_repeat_0_fold_3": {
+          "bytes": 3972843,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/random_forest_repeat_0_fold_3.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "2ff4b43ffa59d05d3a372fdae0da7fe68b9ca8d0d3de2e4188342f932948a6df",
+          "tracked_in_git": false
+        },
+        "random_forest_repeat_0_fold_4": {
+          "bytes": 3857409,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/random_forest_repeat_0_fold_4.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "23753b2f78fe33f04e7c0cd0bbf19a05ee0d1ea7c8a24e2fea973d7baf843f66",
+          "tracked_in_git": false
+        },
+        "random_forest_repeat_1_fold_0": {
+          "bytes": 2962673,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/random_forest_repeat_1_fold_0.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "85d31dd516bc960f115a23f1c367e783fe521c50654734c57e54596fa039901e",
+          "tracked_in_git": false
+        },
+        "random_forest_repeat_1_fold_1": {
+          "bytes": 3333409,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/random_forest_repeat_1_fold_1.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "035738756a344871c6eac844f7509eb4ccf55a34e68e71a9be5432552d027097",
+          "tracked_in_git": false
+        },
+        "random_forest_repeat_1_fold_2": {
+          "bytes": 1046763,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/random_forest_repeat_1_fold_2.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "e985aac245f04282778a7ad365eb36550449660ef120dc1245bc3e5099ea02c6",
+          "tracked_in_git": false
+        },
+        "random_forest_repeat_1_fold_3": {
+          "bytes": 2296593,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/random_forest_repeat_1_fold_3.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "abc80a844f10870adaf5a4586ef3523269af001ec22503784b7e3cad2c99136a",
+          "tracked_in_git": false
+        },
+        "random_forest_repeat_1_fold_4": {
+          "bytes": 2477963,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/random_forest_repeat_1_fold_4.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "066a8231b90b8e5b3d0e9b7985ce83da5f0cc56ca6313cad9a88920b96c962ba",
+          "tracked_in_git": false
+        },
+        "random_forest_repeat_2_fold_0": {
+          "bytes": 5827329,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/random_forest_repeat_2_fold_0.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "a5620796dd19550d8df0c5ac9a8521c92f7d9aa4439652a7598b549b97649135",
+          "tracked_in_git": false
+        },
+        "random_forest_repeat_2_fold_1": {
+          "bytes": 3675169,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/random_forest_repeat_2_fold_1.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "0ca2d582e6e34c174579f483d52208621a2a2503666105737de1b802df580ab8",
+          "tracked_in_git": false
+        },
+        "random_forest_repeat_2_fold_2": {
+          "bytes": 1428683,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/random_forest_repeat_2_fold_2.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "0c5fd7ed1c35e408ce7be090f41780dff9f14ebde58c14247a385bcfc5bfb48f",
+          "tracked_in_git": false
+        },
+        "random_forest_repeat_2_fold_3": {
+          "bytes": 2357163,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/random_forest_repeat_2_fold_3.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "1273ef41d48e03bc2b5f1f0b209f4f17e3fd1bcbe02e3cc5e8cdfa2117fb0379",
+          "tracked_in_git": false
+        },
+        "random_forest_repeat_2_fold_4": {
+          "bytes": 3107169,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/random_forest_repeat_2_fold_4.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "1bb728a654edf600b4b36d2720e0cbb32db69b2bf1b9b49f38eb0db365ebf5a1",
+          "tracked_in_git": false
+        },
+        "random_forest_repeat_3_fold_0": {
+          "bytes": 1572043,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/random_forest_repeat_3_fold_0.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "3a88bc1d773738e04387a8bc0f2d782564e09f7168ddc405f595e1fbeda687f7",
+          "tracked_in_git": false
+        },
+        "random_forest_repeat_3_fold_1": {
+          "bytes": 2325163,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/random_forest_repeat_3_fold_1.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "d809141614007aefdd8bc41fcdb8c9027f813c9d8ad9f7d3938ee3761982ce8d",
+          "tracked_in_git": false
+        },
+        "random_forest_repeat_3_fold_2": {
+          "bytes": 3371723,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/random_forest_repeat_3_fold_2.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "8ab65df511d94fc02b88adcb6d16252981570b6734c77fec26bf13b786e09b07",
+          "tracked_in_git": false
+        },
+        "random_forest_repeat_3_fold_3": {
+          "bytes": 1995723,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/random_forest_repeat_3_fold_3.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "743afea003a3d85691f48a2c9272d194700f597acd33d28c14e6597953448ef5",
+          "tracked_in_git": false
+        },
+        "random_forest_repeat_3_fold_4": {
+          "bytes": 2418993,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/random_forest_repeat_3_fold_4.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "88c595e8a5e7fac48fd1c1c6944813e019a53e9dd321358224d085abf6d0d289",
+          "tracked_in_git": false
+        },
+        "random_forest_repeat_4_fold_0": {
+          "bytes": 1331633,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/random_forest_repeat_4_fold_0.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "94f2eab7175d404b18088a18d9f29d684ba6c85662db801c52671e893a49ad97",
+          "tracked_in_git": false
+        },
+        "random_forest_repeat_4_fold_1": {
+          "bytes": 1380843,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/random_forest_repeat_4_fold_1.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "f3ba3fa0a514b8fb82d76d9eac7c41bbdad934f143d804e967478b9c11cc3cc4",
+          "tracked_in_git": false
+        },
+        "random_forest_repeat_4_fold_2": {
+          "bytes": 3707403,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/random_forest_repeat_4_fold_2.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "d421fabe0aad18c0ed2fcb94941bb42bab5d8d3ec2f15c6b9c1c39f5b779ee22",
+          "tracked_in_git": false
+        },
+        "random_forest_repeat_4_fold_3": {
+          "bytes": 966923,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/random_forest_repeat_4_fold_3.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "4688eaa01e1552067636bb1bff748e996280c8cbefb3b9e159de8c86a0d50bc4",
+          "tracked_in_git": false
+        },
+        "random_forest_repeat_4_fold_4": {
+          "bytes": 3154529,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/random_forest_repeat_4_fold_4.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "e9da61521099018311eb42354b8601d048ce86f5b562d766512037ea36570bb3",
+          "tracked_in_git": false
+        },
+        "xgboost_repeat_0_fold_0": {
+          "bytes": 223649,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/xgboost_repeat_0_fold_0.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "4cd88a485588a1e257c0799e455ee9784102a37424bdc9669628b9c342a42da9",
+          "tracked_in_git": false
+        },
+        "xgboost_repeat_0_fold_1": {
+          "bytes": 311153,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/xgboost_repeat_0_fold_1.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "e7a08b31aa8af750c96347cc9cdd603f127d212065b3bf07837efb2bd46e7d17",
+          "tracked_in_git": false
+        },
+        "xgboost_repeat_0_fold_2": {
+          "bytes": 539101,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/xgboost_repeat_0_fold_2.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "f0b53b437f5aa503e7eeab9851f6fdf57c49a953bc10baa8d61452313d1f2175",
+          "tracked_in_git": false
+        },
+        "xgboost_repeat_0_fold_3": {
+          "bytes": 429918,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/xgboost_repeat_0_fold_3.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "dab8cdd089bb90ef847fe0a5950cd6c95b139df286910affd17fa7d921503c14",
+          "tracked_in_git": false
+        },
+        "xgboost_repeat_0_fold_4": {
+          "bytes": 457481,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/xgboost_repeat_0_fold_4.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "a625cd1eb92e08d907a23020d25beb1639ba1c39fa947d0546df3cbe39456ed2",
+          "tracked_in_git": false
+        },
+        "xgboost_repeat_1_fold_0": {
+          "bytes": 676513,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/xgboost_repeat_1_fold_0.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "5be1de7e9dba2fe6fdf9c4fbd9aeaaf18a65dd0c789a2503b1982cf2860d0a38",
+          "tracked_in_git": false
+        },
+        "xgboost_repeat_1_fold_1": {
+          "bytes": 397809,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/xgboost_repeat_1_fold_1.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "94849a6c7f9dd3994e698d30a5a47461a0ace167de5165c5514f5dd9aaee01f7",
+          "tracked_in_git": false
+        },
+        "xgboost_repeat_1_fold_2": {
+          "bytes": 309121,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/xgboost_repeat_1_fold_2.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "1ab4de8814a377e85232cae8f3cb347103dcdbdd3cc58e5eda93e08e95371750",
+          "tracked_in_git": false
+        },
+        "xgboost_repeat_1_fold_3": {
+          "bytes": 567729,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/xgboost_repeat_1_fold_3.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "93ad4166b93024fd4f65fab09f33d3d328cc729a3287316b5a4b037a0d8418ff",
+          "tracked_in_git": false
+        },
+        "xgboost_repeat_1_fold_4": {
+          "bytes": 231057,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/xgboost_repeat_1_fold_4.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "fe7b1dd0868b98de78ce33891facb055d45b8f73320e0ecb25a9129f1428bf91",
+          "tracked_in_git": false
+        },
+        "xgboost_repeat_2_fold_0": {
+          "bytes": 540865,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/xgboost_repeat_2_fold_0.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "783b8ce05060800c69a3a907c45ea214c868cf9badce3fdc1f1faeb6b9d5a15c",
+          "tracked_in_git": false
+        },
+        "xgboost_repeat_2_fold_1": {
+          "bytes": 405552,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/xgboost_repeat_2_fold_1.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "0a171f2c0a003071e937001fdd4dcd10384c856f12405760b6bfeb694b22d180",
+          "tracked_in_git": false
+        },
+        "xgboost_repeat_2_fold_2": {
+          "bytes": 337190,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/xgboost_repeat_2_fold_2.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "4f35f0d2e1bfabcf9c86e93010c6a71a452d4b90c667441d092240bb428f12a7",
+          "tracked_in_git": false
+        },
+        "xgboost_repeat_2_fold_3": {
+          "bytes": 458093,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/xgboost_repeat_2_fold_3.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "b824e2d757aeee8ab6594efac1ae65695e74c432e6bd856b8caac92ab42aba8a",
+          "tracked_in_git": false
+        },
+        "xgboost_repeat_2_fold_4": {
+          "bytes": 315446,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/xgboost_repeat_2_fold_4.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "1f7f3ef3a2b60479e7fc7b07519a5277cac2f4f1bdc5b29e104844f03fbc4e87",
+          "tracked_in_git": false
+        },
+        "xgboost_repeat_3_fold_0": {
+          "bytes": 523713,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/xgboost_repeat_3_fold_0.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "da073338780869645d7dd677f5df634f0a61115ae373f94132e54a86a3a8a83c",
+          "tracked_in_git": false
+        },
+        "xgboost_repeat_3_fold_1": {
+          "bytes": 648229,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/xgboost_repeat_3_fold_1.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "19f9be9756ad3e7331d181ac88ea4213b18253eed89ff1747a35294366b3cbe8",
+          "tracked_in_git": false
+        },
+        "xgboost_repeat_3_fold_2": {
+          "bytes": 635512,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/xgboost_repeat_3_fold_2.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "22e2d87c97008861bca2c1ba6cd72544c61118c22931c35eaf91ec2aedc29f92",
+          "tracked_in_git": false
+        },
+        "xgboost_repeat_3_fold_3": {
+          "bytes": 619511,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/xgboost_repeat_3_fold_3.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "3234e746362927688787cfdb9fea883a2ed45fece0cf26a0843decfc14530930",
+          "tracked_in_git": false
+        },
+        "xgboost_repeat_3_fold_4": {
+          "bytes": 423729,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/xgboost_repeat_3_fold_4.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "1a89af8a330d333036cc5fc5ffe6213a4df9ce5c3f7de70e1ed82fcb84d5ba5f",
+          "tracked_in_git": false
+        },
+        "xgboost_repeat_4_fold_0": {
+          "bytes": 389575,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/xgboost_repeat_4_fold_0.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "5c785655a6ad0ee5e63c117305d5f3b14c2736898a14ac90840c2f40a8081b97",
+          "tracked_in_git": false
+        },
+        "xgboost_repeat_4_fold_1": {
+          "bytes": 627468,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/xgboost_repeat_4_fold_1.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "c12409e450b48b63d1212f33350f7dd745ee7661216eaf802c858ed1282ee2ac",
+          "tracked_in_git": false
+        },
+        "xgboost_repeat_4_fold_2": {
+          "bytes": 407349,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/xgboost_repeat_4_fold_2.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "fea5d43a6f31baf544b9ba32c6fd493663547af1f86ecb5f40ec5bc6aafa1843",
+          "tracked_in_git": false
+        },
+        "xgboost_repeat_4_fold_3": {
+          "bytes": 231041,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/xgboost_repeat_4_fold_3.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "c02dd08b753dc025ae163862d96e9815348ff78f1e17f4697fe99bb4fbea571f",
+          "tracked_in_git": false
+        },
+        "xgboost_repeat_4_fold_4": {
+          "bytes": 234295,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/models/xgboost_repeat_4_fold_4.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "ea45881706de4fc4272f9fb16e9a0fd093b43ff15d17deee46748405a7cb1f4c",
+          "tracked_in_git": false
+        }
+      },
+      "profile_locked": false,
+      "raw_data_sha256": "6bfe5d0f379d17a0e0819b996407e3c09bf80febd4287f2ed212190dfff154af",
+      "requirements_lock_sha256": "b58cb163f2a95a6beaba4a2e9119fd70fa0bd867a001ea79b3e990a19c3cd826",
+      "source_tree_sha256": "b81aed549be9b19296d32da93b13a2fa1cd005739203b70b8da438189d586bf2",
+      "split_manifest_sha256": "774f1aa295d71e607b555247543a8761662be7ab31ca03db43c355b2ed18d87d",
+      "study_directory": "outputs/publication_pipeline/studies/pidd_development_072cd2104089",
+      "study_id": "pidd_development_072cd2104089",
+      "test_access": null
+    },
+    "sylhet": {
+      "artifacts": {
+        "artifact_ablation": {
+          "bytes": 1131,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/ablations/ablation_inventory.json",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "dcff2fa3476529386361d5e8b1b491b46d8597ca3f6d3408966abc6a3ae3d881",
+          "tracked_in_git": false
+        },
+        "calibration_selection": {
+          "bytes": 58718,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/calibration_selection.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "c61169c6f3302fe4d704cbc7587a25f9281f38cc4cb0e01a27aaef381713e500",
+          "tracked_in_git": false
+        },
+        "confidence_intervals": {
+          "bytes": 462520,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/confidence_intervals.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "5ab433640583af6374cbc86419135705b5acd048d5ba5c33daff7596044f5860",
+          "tracked_in_git": false
+        },
+        "decision_curve_intervals": {
+          "bytes": 50702,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/decision_curve_confidence_intervals.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "ed782afb6bfa6b4c487e6951ce0093bad07b7c3c1c9ce90dc4146b35b6a9c04e",
+          "tracked_in_git": false
+        },
+        "decision_curves": {
+          "bytes": 208097,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/decision_curves.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "0a65c6e6cf138e4c0eab924b7021a68a1cffdd06a10ada1ad7d3643d50e21130",
+          "tracked_in_git": false
+        },
+        "matched_panel_comparisons": {
+          "bytes": 20399,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/availability_routing/matched_panel_contrasts.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "040b6e02d2983a99cfeb352c45f7336e9893a82184c3c2ef534829224efbc357",
+          "tracked_in_git": false
+        },
+        "metadata": {
+          "bytes": 2790,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/experiment_metadata.json",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "8e1b418ac05c57bbcd7a372537aa551a925e8fb53ff08f00ccec3071f2045526",
+          "tracked_in_git": false
+        },
+        "metrics": {
+          "bytes": 10171,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/summary_metrics.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "0ab1143a2aba46c515c7f4d5633dab4d001d0b469eda4fdddfb555ea7c92f30b",
+          "tracked_in_git": false
+        },
+        "paired_comparisons_holdout": {
+          "bytes": null,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/paired_bootstrap_model_comparisons.csv",
+          "present_locally": false,
+          "regeneration_required_after_clone": true,
+          "sha256": null,
+          "tracked_in_git": false
+        },
+        "paired_comparisons_nested_cv": {
+          "bytes": 8290,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/participant_paired_model_comparisons.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "ae67908f25226a51d5734b2db768e68853e6b71d473ac0dce9f11ed03773c0a7",
+          "tracked_in_git": false
+        },
+        "participant_confidence_intervals": {
+          "bytes": 34006,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/participant_confidence_intervals.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "f647cefbfd612630ae211b93b547b5fa1ff651cc180fd3f5e5c793db04a30d8b",
+          "tracked_in_git": false
+        },
+        "predictions_holdout": {
+          "bytes": null,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/test_predictions.csv",
+          "present_locally": false,
+          "regeneration_required_after_clone": true,
+          "sha256": null,
+          "tracked_in_git": false
+        },
+        "predictions_nested_cv": {
+          "bytes": 619769,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/participant_predictions.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "3cf722794c7babbcadc7c51d0b8994094570176a93726783ea0cd4fe0ba5e261",
+          "tracked_in_git": false
+        },
+        "routing_metrics": {
+          "bytes": 8435,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/availability_routing/summary_metrics.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "42a3bf9d6ffffc3792d91b1d5d287afd8f2fad605c17e825601065a233c8e1d5",
+          "tracked_in_git": false
+        },
+        "routing_predictions": {
+          "bytes": 16444908,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/availability_routing/system_predictions.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "97bb0625e58f905f68d1157180392fdb8fb1413181279c9f760cb2b41369c91b",
+          "tracked_in_git": false
+        },
+        "selective_prediction": {
+          "bytes": 15428,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/selective_prediction/risk_coverage_metrics.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "e746fb893311b6d320e37f99946c6c0b693c1eb5511530f5082bdab213cc8df9",
+          "tracked_in_git": false
+        },
+        "shap_original_features": {
+          "bytes": 7469,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/explanations/global_shap_importance_original_features.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "f1b0d085c6c9e9fdfd3971916e15d059d9de04fbfb099d024b07902555cc58ae",
+          "tracked_in_git": false
+        },
+        "subgroup_analysis": {
+          "bytes": 6937,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/subgroup_analysis/subgroup_metrics.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "713b96682733ca266cf971da604df2aa98bad15ab373a9f96c1175d4e2cf67a0",
+          "tracked_in_git": false
+        },
+        "survey_sensitivity": {
+          "bytes": null,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/survey_sensitivity/survey_weighted_metrics.csv",
+          "present_locally": false,
+          "regeneration_required_after_clone": true,
+          "sha256": null,
+          "tracked_in_git": false
+        },
+        "thresholds": {
+          "bytes": 84512,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/selected_thresholds.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "612aac4551866bf243f4507d7283b9ca4f438d738c75730b464171400bddd6b1",
+          "tracked_in_git": false
+        }
+      },
+      "command": "python -m diabetes_pipeline.cli benchmark --dataset sylhet --profile development",
+      "dataset": "sylhet",
+      "dataset_configuration_sha256": "88fad5bc58b23d3d3b4bdf861bd35b72a2f450be79a32a8882c3a712aab4e16d",
+      "eligible_for_final_claims": false,
+      "endpoint": "early_stage_diabetes_positive_label",
+      "evidence_tier": "full_development",
+      "execution_profile": "development",
+      "metadata_modified_at_utc": "2026-08-24T05:11:28.639381+00:00",
+      "model_bundles": {
+        "catboost_repeat_0_fold_0": {
+          "bytes": 125527,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/catboost_repeat_0_fold_0.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "d8b97c1dc8b6581d26894a178e2502db43fc866e5fda1cd70545bc907265af33",
+          "tracked_in_git": false
+        },
+        "catboost_repeat_0_fold_1": {
+          "bytes": 1659564,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/catboost_repeat_0_fold_1.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "8aeae41d08034ef16deb022253e893244562509b393d1cbe991820a7fe5b946f",
+          "tracked_in_git": false
+        },
+        "catboost_repeat_0_fold_2": {
+          "bytes": 397265,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/catboost_repeat_0_fold_2.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "d86a483c49c6b4701222d0d0a49da90ca594b3408c0234c991df5fa69eba861b",
+          "tracked_in_git": false
+        },
+        "catboost_repeat_0_fold_3": {
+          "bytes": 242257,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/catboost_repeat_0_fold_3.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "8ce80308f4ddd08d091de9fab77cff9416d5518da188a42a7d3a4ec1b86112b9",
+          "tracked_in_git": false
+        },
+        "catboost_repeat_0_fold_4": {
+          "bytes": 87905,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/catboost_repeat_0_fold_4.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "67effca84f09ade05b68a77096b7c0301ae7fb6f4983c064bdaf4ba32c498cfc",
+          "tracked_in_git": false
+        },
+        "catboost_repeat_1_fold_0": {
+          "bytes": 887249,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/catboost_repeat_1_fold_0.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "2e5532d4348920c05d0773ec478eaefff3635432afe07fefe795609c96f20bba",
+          "tracked_in_git": false
+        },
+        "catboost_repeat_1_fold_1": {
+          "bytes": 485732,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/catboost_repeat_1_fold_1.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "e579132b664ae433785ecb447b2fee9294a1b43bf987cdd845e3df01611e3339",
+          "tracked_in_git": false
+        },
+        "catboost_repeat_1_fold_2": {
+          "bytes": 1686929,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/catboost_repeat_1_fold_2.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "52257a7f4380c17fbfd62aa2684bb63059cbf2dcc31f4a834d47ae74f95938a7",
+          "tracked_in_git": false
+        },
+        "catboost_repeat_1_fold_3": {
+          "bytes": 1555156,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/catboost_repeat_1_fold_3.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "f5e5672ad8367e1ef304a6d72ba82fdf3012abc471e3356974d425d61fdcaf25",
+          "tracked_in_git": false
+        },
+        "catboost_repeat_1_fold_4": {
+          "bytes": 110529,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/catboost_repeat_1_fold_4.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "8a87010fc927df95c7711ac1b6df3677e76ec36cdd6325e5ef09d305be73490b",
+          "tracked_in_git": false
+        },
+        "catboost_repeat_2_fold_0": {
+          "bytes": 126977,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/catboost_repeat_2_fold_0.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "353fbc56a301d23f8ec7c23bb98f1fbeaee200cfd2a77086f03921cce6a88ca3",
+          "tracked_in_git": false
+        },
+        "catboost_repeat_2_fold_1": {
+          "bytes": 76659,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/catboost_repeat_2_fold_1.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "0c131dc4369b6a31ae63f2fc80fea545c225c0607171462ed2190f830da693e8",
+          "tracked_in_git": false
+        },
+        "catboost_repeat_2_fold_2": {
+          "bytes": 2782065,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/catboost_repeat_2_fold_2.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "7d1c5d5dac638d97f48e376b235170a17877060cef1ef09e850f4a4b3ce9e759",
+          "tracked_in_git": false
+        },
+        "catboost_repeat_2_fold_3": {
+          "bytes": 3399244,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/catboost_repeat_2_fold_3.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "a3fa757813be0a07b0169de6c1ac6a258480fad3fca9e65b9c82bd1072f7e085",
+          "tracked_in_git": false
+        },
+        "catboost_repeat_2_fold_4": {
+          "bytes": 249521,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/catboost_repeat_2_fold_4.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "a0ad83bb8751921df743620116b685b89ab88e01d2e234be814201bcead3dc17",
+          "tracked_in_git": false
+        },
+        "catboost_repeat_3_fold_0": {
+          "bytes": 205859,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/catboost_repeat_3_fold_0.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "9ae14e321cab19509759e83973a07990393910a0196a2a63a975452b0e537efc",
+          "tracked_in_git": false
+        },
+        "catboost_repeat_3_fold_1": {
+          "bytes": 1507876,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/catboost_repeat_3_fold_1.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "878e9862908a750c3b8d60ae0bba229e64da890e532e86a56e59ab34166f1d38",
+          "tracked_in_git": false
+        },
+        "catboost_repeat_3_fold_2": {
+          "bytes": 1663296,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/catboost_repeat_3_fold_2.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "00eaedb441f9550f7fb52bf93c7f7ea17850063a7f5fcbe64c6f3cacfc8740f9",
+          "tracked_in_git": false
+        },
+        "catboost_repeat_3_fold_3": {
+          "bytes": 391073,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/catboost_repeat_3_fold_3.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "612ed264b5a180308fcc5e91bfb10859c43e886bb3c1e8323c07b37545e8957c",
+          "tracked_in_git": false
+        },
+        "catboost_repeat_3_fold_4": {
+          "bytes": 247796,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/catboost_repeat_3_fold_4.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "824b3a9bef736834b3602b219a630e91f3a32258de26639f96da401cf080ae20",
+          "tracked_in_git": false
+        },
+        "catboost_repeat_4_fold_0": {
+          "bytes": 176216,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/catboost_repeat_4_fold_0.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "da462530758f5990ba834066cf5be5d6c1e6c1922e396c67e2e00afbc2e8586a",
+          "tracked_in_git": false
+        },
+        "catboost_repeat_4_fold_1": {
+          "bytes": 5326604,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/catboost_repeat_4_fold_1.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "486d2c178de8be2528103f97c1edb43862cabda4a9da02eb1e6d91b63a88604b",
+          "tracked_in_git": false
+        },
+        "catboost_repeat_4_fold_2": {
+          "bytes": 399075,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/catboost_repeat_4_fold_2.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "7b55a9563ce293b008d290fc93e87b9c0898004c45284266bc6d1cd89b122826",
+          "tracked_in_git": false
+        },
+        "catboost_repeat_4_fold_3": {
+          "bytes": 366321,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/catboost_repeat_4_fold_3.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "892f83cff59d024be7d190a7d7041cca964ebe300de4c2a250e704a6d4ba1785",
+          "tracked_in_git": false
+        },
+        "catboost_repeat_4_fold_4": {
+          "bytes": 607169,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/catboost_repeat_4_fold_4.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "cb45773100d79d912f412457d53d18580d956a30c45883519453af076c6d70a5",
+          "tracked_in_git": false
+        },
+        "lightgbm_repeat_0_fold_0": {
+          "bytes": 221455,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/lightgbm_repeat_0_fold_0.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "b929bb9c7eacaa29896941e5478228e6fc957f88fb763394a89b475697c6868c",
+          "tracked_in_git": false
+        },
+        "lightgbm_repeat_0_fold_1": {
+          "bytes": 156831,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/lightgbm_repeat_0_fold_1.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "a2dc6d5fb53b07a1a7b9af2a571d2e703ed36ee00de636755f129e9f9c932ac0",
+          "tracked_in_git": false
+        },
+        "lightgbm_repeat_0_fold_2": {
+          "bytes": 239183,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/lightgbm_repeat_0_fold_2.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "5ac4d31ad1f857f9144cd2ebdac65ec33dea049d2db28a7f5143bab98f07ced2",
+          "tracked_in_git": false
+        },
+        "lightgbm_repeat_0_fold_3": {
+          "bytes": 428001,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/lightgbm_repeat_0_fold_3.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "a83e73bf9c3d8052356e296fcd72764b421b1ae39ecb9ceec77e50ae965d4711",
+          "tracked_in_git": false
+        },
+        "lightgbm_repeat_0_fold_4": {
+          "bytes": 431759,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/lightgbm_repeat_0_fold_4.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "d1a034a20075fd74b445e8a8a119d58ac6801932891a7cef3098197b5fe2e6f6",
+          "tracked_in_git": false
+        },
+        "lightgbm_repeat_1_fold_0": {
+          "bytes": 1066833,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/lightgbm_repeat_1_fold_0.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "4e7d1789e4e124b8169ab3bd77fce7c931d61cb6368accee4d587a58ac912bce",
+          "tracked_in_git": false
+        },
+        "lightgbm_repeat_1_fold_1": {
+          "bytes": 599375,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/lightgbm_repeat_1_fold_1.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "14fd84bcea2d7c9f9322351d77276c17ba0dc5db4e3400227cbf828880082767",
+          "tracked_in_git": false
+        },
+        "lightgbm_repeat_1_fold_2": {
+          "bytes": 316687,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/lightgbm_repeat_1_fold_2.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "a03df11b8e38ee46708b24948c1459727ddb3dc7b7db47dae377ce366499ad56",
+          "tracked_in_git": false
+        },
+        "lightgbm_repeat_1_fold_3": {
+          "bytes": 677487,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/lightgbm_repeat_1_fold_3.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "13d1a4ac871c684f7e1fbf03ba5d60e8661415b552951eee96e40fa6dffba588",
+          "tracked_in_git": false
+        },
+        "lightgbm_repeat_1_fold_4": {
+          "bytes": 333105,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/lightgbm_repeat_1_fold_4.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "1cccd1778634d7a67a4bbdf1eba9d6a1258d52a66f0b1d2d5a068434807ab73e",
+          "tracked_in_git": false
+        },
+        "lightgbm_repeat_2_fold_0": {
+          "bytes": 549919,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/lightgbm_repeat_2_fold_0.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "13cc3c2f93f65795781fa5dcf25db02e30d8627f9e8dcba774a13fbaa4896422",
+          "tracked_in_git": false
+        },
+        "lightgbm_repeat_2_fold_1": {
+          "bytes": 550865,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/lightgbm_repeat_2_fold_1.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "1392f98db9e6146c831ffa266bdd877432904727185faea81b72fc574d2253af",
+          "tracked_in_git": false
+        },
+        "lightgbm_repeat_2_fold_2": {
+          "bytes": 236833,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/lightgbm_repeat_2_fold_2.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "eb0d93f34bc3d7bc74022e0eee8effdeee1ddd2c26e27efe88effdfbd3e361b8",
+          "tracked_in_git": false
+        },
+        "lightgbm_repeat_2_fold_3": {
+          "bytes": 403071,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/lightgbm_repeat_2_fold_3.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "be265dbda7c4ef2b0e6b54ea130788975cb21489475ffb9acc8f662b524a8fb8",
+          "tracked_in_git": false
+        },
+        "lightgbm_repeat_2_fold_4": {
+          "bytes": 414161,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/lightgbm_repeat_2_fold_4.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "6c711114c751420d6d28034f6ccc07d0eaa8f02db6c41d3ed769c2dd0df83e14",
+          "tracked_in_git": false
+        },
+        "lightgbm_repeat_3_fold_0": {
+          "bytes": 283103,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/lightgbm_repeat_3_fold_0.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "a8af46236756bd41dc2fe1bdaf257a7a1081801558cf227742a297e17ae14db1",
+          "tracked_in_git": false
+        },
+        "lightgbm_repeat_3_fold_1": {
+          "bytes": 348961,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/lightgbm_repeat_3_fold_1.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "2dffeceb657eecd9a9f18276e5985e73c178a4600928437672b10838dd21e441",
+          "tracked_in_git": false
+        },
+        "lightgbm_repeat_3_fold_2": {
+          "bytes": 328481,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/lightgbm_repeat_3_fold_2.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "10ad0294f2f1617873cfde4e807f6b76bb4069e0f8a1429555dd83b3f53f7ab4",
+          "tracked_in_git": false
+        },
+        "lightgbm_repeat_3_fold_3": {
+          "bytes": 487361,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/lightgbm_repeat_3_fold_3.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "4b8efad9e81f45b90191546af22a62b33a3b5905bbd4a69aad2967aa8d69082a",
+          "tracked_in_git": false
+        },
+        "lightgbm_repeat_3_fold_4": {
+          "bytes": 172641,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/lightgbm_repeat_3_fold_4.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "3f40141e595196d99493f9e17ca3267157a4dc668b4e0e712525ac1aa236ddc3",
+          "tracked_in_git": false
+        },
+        "lightgbm_repeat_4_fold_0": {
+          "bytes": 187361,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/lightgbm_repeat_4_fold_0.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "3c81e15c5c393a5bfd1cabb141b03f5a8b741d952e78a277d62d1f3d6ffdfc3a",
+          "tracked_in_git": false
+        },
+        "lightgbm_repeat_4_fold_1": {
+          "bytes": 462543,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/lightgbm_repeat_4_fold_1.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "a0573e1b7b07e8a4928224442980374314b603391ff48c4b38a0805c4d1470a6",
+          "tracked_in_git": false
+        },
+        "lightgbm_repeat_4_fold_2": {
+          "bytes": 186239,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/lightgbm_repeat_4_fold_2.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "299b85ebc5b122346d07a43e76964de58405727b1aa1bac6500edb913509a264",
+          "tracked_in_git": false
+        },
+        "lightgbm_repeat_4_fold_3": {
+          "bytes": 1058657,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/lightgbm_repeat_4_fold_3.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "5bc7240667ac3c27616fec81cc6e649101ff5ee046ac81b18b27dee68771b7b0",
+          "tracked_in_git": false
+        },
+        "lightgbm_repeat_4_fold_4": {
+          "bytes": 203631,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/lightgbm_repeat_4_fold_4.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "dbcca632e1dd5e8eca21af270a08f0f89f0c82dfa7b46262b795d29dbb5b27be",
+          "tracked_in_git": false
+        },
+        "logistic_regression_repeat_0_fold_0": {
+          "bytes": 5569,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/logistic_regression_repeat_0_fold_0.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "b1065e55525c61e8159e7022d53ee1204ce1e4ae3a4a593202a5c9d846e10b35",
+          "tracked_in_git": false
+        },
+        "logistic_regression_repeat_0_fold_1": {
+          "bytes": 5569,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/logistic_regression_repeat_0_fold_1.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "35081d65d47596a4aadede75214f1c22e8259b522ae8764c6d722dcae5fb444f",
+          "tracked_in_git": false
+        },
+        "logistic_regression_repeat_0_fold_2": {
+          "bytes": 5190,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/logistic_regression_repeat_0_fold_2.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "f4c1fc8e0055c35a6a1431e88c0647bb10612128af30f3e579ea7ace1cb84c92",
+          "tracked_in_git": false
+        },
+        "logistic_regression_repeat_0_fold_3": {
+          "bytes": 5190,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/logistic_regression_repeat_0_fold_3.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "7229393bb89759fcb2bf29ddfe717a645c361b170109f37ff0c83f5f03d8e37f",
+          "tracked_in_git": false
+        },
+        "logistic_regression_repeat_0_fold_4": {
+          "bytes": 5206,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/logistic_regression_repeat_0_fold_4.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "bae4a9d2923ee1657fbc2a1abe111d2707cf1f44a480540c71156af030040d87",
+          "tracked_in_git": false
+        },
+        "logistic_regression_repeat_1_fold_0": {
+          "bytes": 5553,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/logistic_regression_repeat_1_fold_0.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "e9e33aca8be1ba2ae197464beea04c9a0d1a572b5f573a7c7d3533bda9f724ed",
+          "tracked_in_git": false
+        },
+        "logistic_regression_repeat_1_fold_1": {
+          "bytes": 5206,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/logistic_regression_repeat_1_fold_1.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "1b4f70d20ff1059d2e303513e9044d6b0f8881ae6fefbcc6599f60d4e69644bd",
+          "tracked_in_git": false
+        },
+        "logistic_regression_repeat_1_fold_2": {
+          "bytes": 5569,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/logistic_regression_repeat_1_fold_2.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "73db87054d1cd7a1cf6185d321f1bca80ffd5ed0f66313f81b1af15dc279e82a",
+          "tracked_in_git": false
+        },
+        "logistic_regression_repeat_1_fold_3": {
+          "bytes": 5553,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/logistic_regression_repeat_1_fold_3.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "ba4a79ef85f7b60017e3b99a3b918f9d972de9637061c65f498c7db0d5442f51",
+          "tracked_in_git": false
+        },
+        "logistic_regression_repeat_1_fold_4": {
+          "bytes": 5569,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/logistic_regression_repeat_1_fold_4.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "96b9c5e145ba5b66cec78d85e31fede676b8444e1bd1074d7afd097cbdf4f513",
+          "tracked_in_git": false
+        },
+        "logistic_regression_repeat_2_fold_0": {
+          "bytes": 5206,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/logistic_regression_repeat_2_fold_0.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "b0f63d41e35cb4737dae943228815e7d7031e7cf8cbdb0a4db8c0f7153de81eb",
+          "tracked_in_git": false
+        },
+        "logistic_regression_repeat_2_fold_1": {
+          "bytes": 5190,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/logistic_regression_repeat_2_fold_1.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "ef7c273fc623ab11a9f864d73d70ee18cad7c16226309cca4402de4064ead7f3",
+          "tracked_in_git": false
+        },
+        "logistic_regression_repeat_2_fold_2": {
+          "bytes": 5553,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/logistic_regression_repeat_2_fold_2.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "fbd71c898f6b68358ffd5b753ff4dd8c5bd53a2c8552eac68ce5b82149f5b1f7",
+          "tracked_in_git": false
+        },
+        "logistic_regression_repeat_2_fold_3": {
+          "bytes": 5206,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/logistic_regression_repeat_2_fold_3.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "77767eaea34afa363848db14769145929f33d04ca1592c5e83d4ba2e8d939df5",
+          "tracked_in_git": false
+        },
+        "logistic_regression_repeat_2_fold_4": {
+          "bytes": 5553,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/logistic_regression_repeat_2_fold_4.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "14a3ad41789ab44eced3f80286dbc0c38a30f4876620487658f217a6c556ceab",
+          "tracked_in_git": false
+        },
+        "logistic_regression_repeat_3_fold_0": {
+          "bytes": 5569,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/logistic_regression_repeat_3_fold_0.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "c71bb3f0826ec25c43adf314fe071e6219dba3d7f87b855018f81c8877ce7130",
+          "tracked_in_git": false
+        },
+        "logistic_regression_repeat_3_fold_1": {
+          "bytes": 5206,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/logistic_regression_repeat_3_fold_1.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "9fbf33fff9ff1b317cc8a30b9cead3ef5de2273e327f5733f6ad6481f6a5e6d0",
+          "tracked_in_git": false
+        },
+        "logistic_regression_repeat_3_fold_2": {
+          "bytes": 5190,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/logistic_regression_repeat_3_fold_2.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "1574fab0958ae19651be36057cf087f08a52d47df4fa05f2944948a25f0168a0",
+          "tracked_in_git": false
+        },
+        "logistic_regression_repeat_3_fold_3": {
+          "bytes": 5569,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/logistic_regression_repeat_3_fold_3.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "5fad688249858d2dac4f760e721a86b891dfd1848e6812cfc62979f05c26ea86",
+          "tracked_in_git": false
+        },
+        "logistic_regression_repeat_3_fold_4": {
+          "bytes": 5569,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/logistic_regression_repeat_3_fold_4.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "149fe0e05a1f2d12f1109dc6b02e4b0bda38c7b92ba3bb1419a9a660a8b0f5f5",
+          "tracked_in_git": false
+        },
+        "logistic_regression_repeat_4_fold_0": {
+          "bytes": 5190,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/logistic_regression_repeat_4_fold_0.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "c1f78cfe415268b44bacb7addb65afbbeb9afae274955f1927d852161a521a4c",
+          "tracked_in_git": false
+        },
+        "logistic_regression_repeat_4_fold_1": {
+          "bytes": 5569,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/logistic_regression_repeat_4_fold_1.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "baeff7593d06fd2a832b4ffdb0a1069a7b05bfe891f990c273f36f63dcb18c2e",
+          "tracked_in_git": false
+        },
+        "logistic_regression_repeat_4_fold_2": {
+          "bytes": 5569,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/logistic_regression_repeat_4_fold_2.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "dfef4c12354922095d8b6b8b11b129c4d6cd11aac3305f67bb7ef92301db6315",
+          "tracked_in_git": false
+        },
+        "logistic_regression_repeat_4_fold_3": {
+          "bytes": 5553,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/logistic_regression_repeat_4_fold_3.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "1fce3dbdf2826f365f89d167e62d6dab1888039dc02bd7544e036aacb7a83a6b",
+          "tracked_in_git": false
+        },
+        "logistic_regression_repeat_4_fold_4": {
+          "bytes": 5190,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/logistic_regression_repeat_4_fold_4.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "23d3ee049b5659a20ae3fc1cd44bc62bb695ec8ecac50518c67ef70aa5058498",
+          "tracked_in_git": false
+        },
+        "random_forest_repeat_0_fold_0": {
+          "bytes": 780177,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/random_forest_repeat_0_fold_0.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "b78139f4b327d8c0f66ffeb9d4a0d6dbdf1c3156343957dc3c5f4d79c49ceecb",
+          "tracked_in_git": false
+        },
+        "random_forest_repeat_0_fold_1": {
+          "bytes": 1377297,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/random_forest_repeat_0_fold_1.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "acbd40325a53f88eb30233fd92456a41c30246943e0760e77df790ba2b70ac4c",
+          "tracked_in_git": false
+        },
+        "random_forest_repeat_0_fold_2": {
+          "bytes": 864977,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/random_forest_repeat_0_fold_2.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "dc98c706869ced21c505d03419dc1edeca89786ad640edb5d15597c3c26c869f",
+          "tracked_in_git": false
+        },
+        "random_forest_repeat_0_fold_3": {
+          "bytes": 1400657,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/random_forest_repeat_0_fold_3.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "e76111d2fc91d4178cc5db90bf6d94f089e860d1a95e7b752d3787aaf250c82d",
+          "tracked_in_git": false
+        },
+        "random_forest_repeat_0_fold_4": {
+          "bytes": 5315307,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/random_forest_repeat_0_fold_4.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "05064eb5a4228e38f1e088b7307d5046450141276568d9faaf4beead7bef6a1b",
+          "tracked_in_git": false
+        },
+        "random_forest_repeat_1_fold_0": {
+          "bytes": 755505,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/random_forest_repeat_1_fold_0.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "821c079998070b543b76d1878b21f631de503e370c77a0096b73eef9b515da3e",
+          "tracked_in_git": false
+        },
+        "random_forest_repeat_1_fold_1": {
+          "bytes": 365457,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/random_forest_repeat_1_fold_1.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "326c1a9ec8afc8b11912071bf268b7a2e07215361da9f68b98c995e812ce1340",
+          "tracked_in_git": false
+        },
+        "random_forest_repeat_1_fold_2": {
+          "bytes": 3691857,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/random_forest_repeat_1_fold_2.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "120cd8f24999d264cff731933a3bbaf121f0983130e2f490393cf001aefd46fa",
+          "tracked_in_git": false
+        },
+        "random_forest_repeat_1_fold_3": {
+          "bytes": 1569297,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/random_forest_repeat_1_fold_3.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "0aada897b40d095e7b68e90626e1d5aa41c9e91b8e6144637f8ccca1c90c14d8",
+          "tracked_in_git": false
+        },
+        "random_forest_repeat_1_fold_4": {
+          "bytes": 1409371,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/random_forest_repeat_1_fold_4.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "8ca72ad4bbd9431812774cfc74ff1cedff6d6e08362490acb945bcb13616aea8",
+          "tracked_in_git": false
+        },
+        "random_forest_repeat_2_fold_0": {
+          "bytes": 2190417,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/random_forest_repeat_2_fold_0.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "d7ee4d1574d1095f719fc0fc6ff4d99f18d6ad6683be56bbc9ed4627152adb8b",
+          "tracked_in_git": false
+        },
+        "random_forest_repeat_2_fold_1": {
+          "bytes": 4287201,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/random_forest_repeat_2_fold_1.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "1d2e56e7f701b8e44d94d77b5a14ad1b8df450a24b5d23bb28d47fd618147192",
+          "tracked_in_git": false
+        },
+        "random_forest_repeat_2_fold_2": {
+          "bytes": 896395,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/random_forest_repeat_2_fold_2.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "88bc1f52dd7a4471596cf449b0e70225ac30b771661855933383ca7ec9b2037a",
+          "tracked_in_git": false
+        },
+        "random_forest_repeat_2_fold_3": {
+          "bytes": 629195,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/random_forest_repeat_2_fold_3.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "7a2ed1c3f3bd76df14f3cdb06bc858e42cb69ac44862a3573ac56fb3063cecf7",
+          "tracked_in_git": false
+        },
+        "random_forest_repeat_2_fold_4": {
+          "bytes": 1894737,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/random_forest_repeat_2_fold_4.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "7765ca1ad36444de70e8d29a671a3e4ebe691d3bda31f6bf05f5c7c83458511f",
+          "tracked_in_git": false
+        },
+        "random_forest_repeat_3_fold_0": {
+          "bytes": 5173297,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/random_forest_repeat_3_fold_0.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "8682094e4fdc35560ac0c75139edd84cbbf172e24be3aa0178f915fdea3da888",
+          "tracked_in_git": false
+        },
+        "random_forest_repeat_3_fold_1": {
+          "bytes": 4594049,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/random_forest_repeat_3_fold_1.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "24475b5bb1e42f6a992c529ddb5da3c2d94d544220612eb7f67ad4f6cdff2803",
+          "tracked_in_git": false
+        },
+        "random_forest_repeat_3_fold_2": {
+          "bytes": 1356001,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/random_forest_repeat_3_fold_2.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "d215af3a45c106e000a24ab624fb72e52c6605230d85af99fc6615f6341c82ba",
+          "tracked_in_git": false
+        },
+        "random_forest_repeat_3_fold_3": {
+          "bytes": 2930225,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/random_forest_repeat_3_fold_3.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "6d2d37ac9c1828a0ed48d550ce94043fb254f7edf8864619c38cd13edc10d27c",
+          "tracked_in_git": false
+        },
+        "random_forest_repeat_3_fold_4": {
+          "bytes": 1213745,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/random_forest_repeat_3_fold_4.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "a9583569e08206631d5cae9d2a1a3bb7977121e47ffe79aea7bcbf593de08fb1",
+          "tracked_in_git": false
+        },
+        "random_forest_repeat_4_fold_0": {
+          "bytes": 3786737,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/random_forest_repeat_4_fold_0.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "a01f0c17896a7c5d4ec6dffb6665393f2c43a2f74273d8b20743a5e20e9e58df",
+          "tracked_in_git": false
+        },
+        "random_forest_repeat_4_fold_1": {
+          "bytes": 4854417,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/random_forest_repeat_4_fold_1.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "a8d4b4ecbaedae36631704064c4a07d8f8c949ea951a9eca7468eb4e7bf5f7a7",
+          "tracked_in_git": false
+        },
+        "random_forest_repeat_4_fold_2": {
+          "bytes": 2330385,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/random_forest_repeat_4_fold_2.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "264d12b1e76a1626383925770ab1afeaa140670c01bce0ef93441a3ccc7522e1",
+          "tracked_in_git": false
+        },
+        "random_forest_repeat_4_fold_3": {
+          "bytes": 1301265,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/random_forest_repeat_4_fold_3.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "6ad720a989be46c136cb10e0cd124c3720e1e57b80ea38be8143cb7d349584b8",
+          "tracked_in_git": false
+        },
+        "random_forest_repeat_4_fold_4": {
+          "bytes": 1717297,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/random_forest_repeat_4_fold_4.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "20653c039a6f53af39bff049e6dc5289ee9817abd439f1b3a775dca57bc15bee",
+          "tracked_in_git": false
+        },
+        "xgboost_repeat_0_fold_0": {
+          "bytes": 318528,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/xgboost_repeat_0_fold_0.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "31712a7e804213977bcfde951342eafe15252464a1b9dd3274c970773e83e626",
+          "tracked_in_git": false
+        },
+        "xgboost_repeat_0_fold_1": {
+          "bytes": 300104,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/xgboost_repeat_0_fold_1.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "ebcde207b1b7db4ad1d4133e0412dfea2134671adf4afe2eabb5ebed4128ddcb",
+          "tracked_in_git": false
+        },
+        "xgboost_repeat_0_fold_2": {
+          "bytes": 177147,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/xgboost_repeat_0_fold_2.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "38c356496735bf148dc767524ba55419540f23ccfb530442f3bc41b715c7b925",
+          "tracked_in_git": false
+        },
+        "xgboost_repeat_0_fold_3": {
+          "bytes": 806126,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/xgboost_repeat_0_fold_3.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "31dd7395fe38bce01bd48a839d7aed165b3f1ec8c6c9f231a2697b4f115bc61a",
+          "tracked_in_git": false
+        },
+        "xgboost_repeat_0_fold_4": {
+          "bytes": 358340,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/xgboost_repeat_0_fold_4.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "559a92031c7d1e2245567814ef97b99912dbb143e2bddd739815314358d2208b",
+          "tracked_in_git": false
+        },
+        "xgboost_repeat_1_fold_0": {
+          "bytes": 232864,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/xgboost_repeat_1_fold_0.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "0ea04d00a3a8ee3773faa9efd0f3bc232d86d2df3f20d9582e15decd83b1c632",
+          "tracked_in_git": false
+        },
+        "xgboost_repeat_1_fold_1": {
+          "bytes": 467445,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/xgboost_repeat_1_fold_1.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "705c0ec8159aa52bda0942677c6ae17d725e08f8c84435b5ab79a41c393ed19d",
+          "tracked_in_git": false
+        },
+        "xgboost_repeat_1_fold_2": {
+          "bytes": 234879,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/xgboost_repeat_1_fold_2.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "5d08d447d2e1a000733432da470679e4f0357e3b60a7c319ecef35e92197aae7",
+          "tracked_in_git": false
+        },
+        "xgboost_repeat_1_fold_3": {
+          "bytes": 242721,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/xgboost_repeat_1_fold_3.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "9b1063b0086efc695c47a5968f5cd19b9d4d04a4d110f97e6373bb8f4f3bf7bb",
+          "tracked_in_git": false
+        },
+        "xgboost_repeat_1_fold_4": {
+          "bytes": 373231,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/xgboost_repeat_1_fold_4.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "435c44f26f8a699c3a23b61669e371a4957e307ecee0e96937f53a3ea92b4473",
+          "tracked_in_git": false
+        },
+        "xgboost_repeat_2_fold_0": {
+          "bytes": 530206,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/xgboost_repeat_2_fold_0.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "fd3bee551e8d27899011657dc207257dc8e6d3a5826edb9b2bc27ad628eb7157",
+          "tracked_in_git": false
+        },
+        "xgboost_repeat_2_fold_1": {
+          "bytes": 522993,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/xgboost_repeat_2_fold_1.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "6c59e05679a7b88f7637ab3987bd7e823f899eef30011c5e75c8a56b7f192f0f",
+          "tracked_in_git": false
+        },
+        "xgboost_repeat_2_fold_2": {
+          "bytes": 388260,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/xgboost_repeat_2_fold_2.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "104931197c2fdbcab5c634a9b10cd5f413b67b860de0d40ac97a94046c142f42",
+          "tracked_in_git": false
+        },
+        "xgboost_repeat_2_fold_3": {
+          "bytes": 493718,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/xgboost_repeat_2_fold_3.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "a2dbf199c657c667ce88df1d3e44c8941e0ab6429a19743f40d453641fb6bae8",
+          "tracked_in_git": false
+        },
+        "xgboost_repeat_2_fold_4": {
+          "bytes": 687729,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/xgboost_repeat_2_fold_4.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "6d5b916fea30cdf47a83be8181d976eb1fd57664dde9e3cd8bde68be7ed94ea9",
+          "tracked_in_git": false
+        },
+        "xgboost_repeat_3_fold_0": {
+          "bytes": 386762,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/xgboost_repeat_3_fold_0.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "b0ee4aa7be2ad3c6f300e57076e850a3218984ec0d587d6d8bbcb8106f39218c",
+          "tracked_in_git": false
+        },
+        "xgboost_repeat_3_fold_1": {
+          "bytes": 282536,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/xgboost_repeat_3_fold_1.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "5b6c71fc635e77406c17f5ca7e84a815c181bd7c0e0bb2df1f298cc67d1f7192",
+          "tracked_in_git": false
+        },
+        "xgboost_repeat_3_fold_2": {
+          "bytes": 391121,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/xgboost_repeat_3_fold_2.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "bc5f21d5420ac574c29de6a184916080cd21c7288699add12a8ad394a00516c3",
+          "tracked_in_git": false
+        },
+        "xgboost_repeat_3_fold_3": {
+          "bytes": 367953,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/xgboost_repeat_3_fold_3.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "6679f74d143a85814df9c09435d21f52217679e79d00833dd805e7270f477bd8",
+          "tracked_in_git": false
+        },
+        "xgboost_repeat_3_fold_4": {
+          "bytes": 450243,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/xgboost_repeat_3_fold_4.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "2c1cf8077dc6d141fd2da546def0a2fc3883fa54fe2baea1155188f267e4122d",
+          "tracked_in_git": false
+        },
+        "xgboost_repeat_4_fold_0": {
+          "bytes": 530531,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/xgboost_repeat_4_fold_0.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "3afc24497ab327458641b7361d66cce495cf74e7a85b9c32c0eb26133cae8571",
+          "tracked_in_git": false
+        },
+        "xgboost_repeat_4_fold_1": {
+          "bytes": 386843,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/xgboost_repeat_4_fold_1.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "a2fed583cb983476d7aeaa0d953f2d37de15ce6a8f45ecf0b5e2dc14659d9b32",
+          "tracked_in_git": false
+        },
+        "xgboost_repeat_4_fold_2": {
+          "bytes": 673987,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/xgboost_repeat_4_fold_2.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "717c5b4b68a889b231623363cc09192a1365d395b091a8c9575eac75456ffcaa",
+          "tracked_in_git": false
+        },
+        "xgboost_repeat_4_fold_3": {
+          "bytes": 355300,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/xgboost_repeat_4_fold_3.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "a73e0519d91f366b82c7ef2711f0ed63c2f6b0ca79fef973a0b8fb0957341856",
+          "tracked_in_git": false
+        },
+        "xgboost_repeat_4_fold_4": {
+          "bytes": 336245,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/models/xgboost_repeat_4_fold_4.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "d6cb3e5d4c6f1b2d10de908e4f30e9e2ad0009001feea607dc4085938163c3d8",
+          "tracked_in_git": false
+        }
+      },
+      "profile_locked": false,
+      "raw_data_sha256": "7889d9d0beb7dd1ccc58da99f72763f16afb259b5dbbaa086f8195366ff66137",
+      "requirements_lock_sha256": "b58cb163f2a95a6beaba4a2e9119fd70fa0bd867a001ea79b3e990a19c3cd826",
+      "source_tree_sha256": "b81aed549be9b19296d32da93b13a2fa1cd005739203b70b8da438189d586bf2",
+      "split_manifest_sha256": "1c5e2f18959d00d947ebf0248399566cc9535a7307e6692992c8408f8196f496",
+      "study_directory": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6",
+      "study_id": "sylhet_development_b52477910fe6",
+      "test_access": null
+    }
+  }
+}

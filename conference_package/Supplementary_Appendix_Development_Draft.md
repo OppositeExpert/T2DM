@@ -143,7 +143,72 @@ status, limited transportability, missingness-mechanism uncertainty, subgroup
 sample size, and absence of external or temporal validation. These limitations
 must remain visible even if final internal metrics are strong.
 
-## S9. Reproducibility artifact map
+## S9. BRFSS full-development evidence
+
+Study `brfss_development_holdout_56407ef53bba` used the full 429,360-row retained
+cohort with the existing seed-42 development contract: 343,488 rows across five
+development folds and 85,872 rows in the development test role. The latter
+contained 11,451 recorded positives. Because seed-42 outcomes were inspected in
+prior development work, this evidence is not eligible for final claims.
+
+All five model families completed 30 development tuning trials, cross-fitted
+calibration selection, three threshold policies, 500 participant-bootstrap
+intervals, paired comparisons, paired decision-curve inference, bundle export,
+and exact reload verification. Development OOF selection chose LightGBM. On the
+development test, XGBoost had calibrated AUROC 0.8430, average precision 0.4436,
+Brier 0.09150, and log loss 0.29581; CatBoost and LightGBM differed by less than
+0.0002 AUROC and 0.00005 Brier. No top-three pairwise metric difference survived
+Holm correction.
+
+The availability router used LightGBM for the 21-feature panel and XGBoost for
+all five reduced panels. Full-panel Brier was 0.09154; the two-feature panel had
+Brier 0.10198. None of 80 matched full-versus-reduced contrasts survived
+metric-wise Holm correction (minimum adjusted p=0.0798), although every
+pointwise degradation interval excluded zero. Matched-panel contrasts, artifact ablations, certainty-based
+selective prediction, subgroup analysis, survey sensitivity, and held-out SHAP
+were executed using the supported holdout paths. Retraining-only missing-
+indicator, panel-training, simulated-missingness, and reporting-ablation engines
+currently apply to repeated nested-CV studies and were not misrepresented as
+BRFSS holdout analyses.
+
+Survey weighting yielded 10.95% prevalence, compared with 13.34% unweighted.
+For XGBoost, weighted AUROC was 0.8707 and Brier 0.07517. The 500-replicate
+stratified PSU bootstrap produced pointwise intervals, but the random respondent
+holdout was not designed as an official survey partition; this remains a
+secondary sensitivity analysis.
+
+At 70% full-panel selective coverage, Brier score improved to 0.0430, but
+positive-event coverage collapsed to 25.0%, accepted prevalence to 4.76%, AUROC
+to 0.784, and average precision to 0.128. These values demonstrate selective
+case-mix change rather than clinical utility and must be presented together.
+
+The BRFSS subgroup analysis estimated 30 age-group and sex cells across five
+coverage targets, with no small-cell suppressions under the configured minimums
+of 50 accepted observations and 10 positive and 10 negative events. At the 70%
+target, observed subgroup coverage ranged from 69.7% to 70.3%; accepted
+prevalence ranged from 4.59% to 4.75% and average precision from 0.125 to 0.133.
+These are within-cohort descriptive estimates, not evidence of population
+representativeness or causal fairness.
+
+In the BRFSS model-family ablation, each tree model improved over Logistic
+Regression on AUROC, average precision, Brier score, and log loss after
+metric-family Holm correction (adjusted p=0.016). Calibration improved CatBoost
+Brier score by 0.07762 and log loss by 0.19890 relative to its uncalibrated raw
+score; LightGBM selected identity calibration and showed no change. Router
+selection by average precision or log loss did not yield corrected improvements
+over the prespecified Brier selector, and routing did not outperform the robust
+single-model comparator after correction. These are development ablations.
+
+Held-out SHAP explanations used 1,000 test-role respondents per model and a
+100-row development-only background. Original-feature aggregation placed
+general health, high blood pressure, age, BMI, and high cholesterol in the top
+five for four models; CatBoost contained the same features in a different order.
+Maximum additive reconstruction error ranged from 2.2e-15 for Logistic
+Regression to 5.6e-6 for XGBoost. The holdout design supplies one explanation
+sample rather than fold-pair stability estimates, and SHAP values are not causal
+effects.
+
+## S10. Reproducibility artifact map
 
 | Artifact | Location |
 |---|---|
@@ -155,13 +220,17 @@ must remain visible even if final internal metrics are strong.
 | Decision log | `docs/research/Decision_Log.md` |
 | PIDD development study | `outputs/publication_pipeline/studies/pidd_development_072cd2104089` |
 | Sylhet development study | `outputs/publication_pipeline/studies/sylhet_development_b52477910fe6` |
+| BRFSS development study | `outputs/publication_pipeline/studies/brfss_development_holdout_56407ef53bba` |
+| Tracked study registry | `evidence/study_registry.json` |
+| Data-source manifest | `config/data_sources.yaml` |
+| Exact environment lock | `requirements.lock` |
 | Command reference | `docs/RUNBOOK.md` |
 | Automated tests | `tests/` |
 
-## S10. Items reserved for locked evidence
+## S11. Items reserved for locked evidence
 
 - Final participant-flow counts, exclusions, and the protected authorized BRFSS
-  decision table.
+  decision table from a new concealed partition, not the seed-42 development test.
 - Frozen model/panel choices and justified non-inferiority margins.
 - Authorized concealed estimates with 2,000-resample intervals, decision curves,
   calibration plots, subgroup tables, and the claim-evidence map.

@@ -8,6 +8,8 @@
 - Frozen repository commit and tag:
 - Source archive SHA-256:
 - Final experiment-profile SHA-256:
+- Executable analysis-configuration SHA-256:
+- Requirements lock SHA-256:
 - Dataset-configuration SHA-256:
 - Raw-data SHA-256 for each authorized dataset:
 - Concealed split-manifest path:
@@ -15,6 +17,7 @@
 - Final holdout seed:
 - Authorized models and panels:
 - Authorized primary/secondary metrics and comparison families:
+- Completed authorization-record path and SHA-256 (record after signatures):
 
 ## Preflight confirmations
 
@@ -56,6 +59,7 @@
 - Rerun authorized: No / Yes, with separate signed justification
 
 The configured `final_authorization_record` must point to a completed, reviewed,
-versioned copy—not this blank template. Final execution remains denied until all
-machine-verifiable configuration fields and human approvals agree.
-
+versioned copy—not this blank template—and the protocol must contain its exact
+SHA-256. Final execution remains denied until the raw-data, concealed-manifest,
+authorized-seed, executable-analysis, and authorization-record hashes agree with
+the locked profile and all human approvals.

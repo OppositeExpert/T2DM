@@ -28,16 +28,19 @@ guide decisions; it may not be relabelled as final evidence.
   folds, two model families, and five reduced panels.
 - The full-budget grouped Sylhet benchmark is complete and validated; dependent
   routing, robustness, and panel-specific retraining analyses are complete.
-- Current-code BRFSS smoke study `brfss_smoke_holdout_b3a6ad2aa89e` contains all
-  required engineering artifacts but must not replace the protected final holdout.
+- Full-sample BRFSS development study
+  `brfss_development_holdout_56407ef53bba` contains the supported routing,
+  robustness, survey-sensitivity, subgroup, selective-prediction, SHAP, and
+  bundle-reload evidence. Its inspected seed-42 test role is permanently
+  ineligible as a protected final holdout.
 
 ## 3. Remaining machine-executable work
 
-No planned engineering or development analysis remains. The package has been
-regenerated from fixed development study identifiers, structurally audited, and
-tested. The canonical renderer produced 11 manuscript pages and five supplement
-pages; every page and all four figures passed visual inspection. Venue-template
-rendering must still be repeated after the target format and final text are known.
+No supported engineering or development analysis remains after the full BRFSS
+run. The package has been regenerated from fixed development study identifiers,
+structurally audited, and tested. The latest rendered page counts and visual QA
+results are recorded in `qa/QA_REPORT.md`. Venue-template rendering must still be
+repeated after the target format and final text are known.
 
 ## 4. Human authorization gates
 
@@ -58,14 +61,18 @@ decisions:
 
 1. Record the signed protocol artifact and hashes.
 2. Set `protocol_frozen: true` only when the signed artifact exists.
-3. Create concealed final manifests without inspecting outcome performance.
-4. Record manifest hashes and the final authorization record.
-5. Set `final_execution_authorized: true` only after independent approval.
-6. Run each final profile once; preserve logs and immutable artifacts.
-7. Run predefined analyses without adding post-hoc panels, models, or metrics.
-8. Perform an independent artifact and claim audit.
-9. Replace development placeholders in the manuscript and supplement.
-10. Tag and archive code, configurations, manifests, and results.
+3. Set a new non-42 seed and separately authorize concealed split creation.
+4. Create the outcome-blind final manifest once; independently verify and record
+   its hash without inspecting outcome performance.
+5. Record raw-data, analysis-configuration, and signed-authorization-record hashes.
+6. Run `scripts/final_preflight.py`; set `final_execution_authorized: true` only
+   after independent approval and require the preflight to pass.
+7. Run each final profile once; preserve the non-overwritable access receipt,
+   logs, and immutable artifacts.
+8. Run predefined analyses without adding post-hoc panels, models, or metrics.
+9. Perform an independent artifact and claim audit.
+10. Replace development placeholders in the manuscript and supplement.
+11. Tag and archive code, configurations, manifests, and results.
 
 ## 6. Submission checklist
 

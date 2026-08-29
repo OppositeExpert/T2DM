@@ -1,16 +1,20 @@
 # Project Structure
 
 ```text
-XGBoost/
+T2DM/
 ├── README.md                   Project overview and starting point
 ├── pyproject.toml              Package metadata and pinned dependencies
-├── .venv-pipeline/             Environment used by the new pipeline
+├── requirements.lock          Resolved Python environment
+├── .python-version            Reference CPython version
+├── .venv-pipeline/            Local environment; never copy between checkouts
 │
 ├── config/                     Reproducible experiment definitions
 │   ├── datasets.yaml           Dataset schemas, endpoints, and raw file paths
 │   ├── availability_scenarios.yaml
 │   ├── feature_ontology.yaml   Cross-dataset feature relationships
 │   ├── output_schemas.yaml
+│   ├── data_sources.yaml      Raw-source, license, and byte-hash manifest
+│   ├── authoritative_studies.yaml
 │   └── experiments/            Smoke, pilot, development, and final profiles
 │
 ├── data/
@@ -37,15 +41,18 @@ XGBoost/
 ├── examples/                   Synthetic, non-identifiable example inputs
 ├── docs/
 │   ├── RUNBOOK.md              How to run each pipeline stage
+│   ├── REPRODUCIBILITY.md      Clean-clone-to-development-evidence path
+│   ├── DATA_ACQUISITION.md     Verified raw-data acquisition
 │   ├── PROJECT_STRUCTURE.md    This map
 │   └── progress_reports/       Human-readable completed-block reports
 │
+├── evidence/                  Tracked registry for ignored study artifacts
 └── outputs/
     └── publication_pipeline/   Reproducible generated research artifacts
         ├── manifests/          Dataset audit records and hashes
         ├── splits/             Immutable split assignments
         ├── feature_ontology/   Generated cross-dataset dictionary
-        └── studies/            Four retained canonical experiment runs
+        └── studies/            Generated studies; ignored, not clone contents
 ```
 
 ## Data flow
@@ -70,13 +77,14 @@ Calibration + threshold selection + model/panel routing
           └──────────────► Detailed patient research result or safe abstention
 ```
 
-## Retained canonical studies
+## Authoritative studies
 
-- `pidd_development_pilot_27b9bc88b493`
-- `sylhet_development_pilot_ed7c05460503`
-- `brfss_smoke_holdout_1f1344dceb63`
-- `hospital130_smoke_holdout_6640beff7a08`
+- `pidd_development_072cd2104089`
+- `sylhet_development_b52477910fe6`
+- `brfss_development_holdout_56407ef53bba`
 
-The BRFSS and Hospital130 studies are smoke runs for engineering verification,
-not final publication estimates. Final experiments remain locked until the
-protocol is frozen.
+The exact mapping is machine-readable in `config/authoritative_studies.yaml` and
+`evidence/study_registry.json`. Historical BRFSS and Hospital130 smoke studies
+remain engineering provenance, not publication estimates. No current study is
+a final locked result; final execution remains prohibited until the protocol is
+frozen and independently authorized.

@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import unittest
+import tempfile
+from pathlib import Path
 
 import numpy as np
 import pandas as pd
@@ -9,11 +11,61 @@ from diabetes_pipeline.evaluation.bootstrap import bootstrap_index_samples
 from diabetes_pipeline.evaluation.comparisons import (
     paired_bootstrap_model_comparisons,
 )
-from diabetes_pipeline.holdout_runner import _predefined_development_splits
+from diabetes_pipeline.holdout_runner import (
+    _claim_final_test_access,
+    _holdout_evidence_tier,
+    _predefined_development_splits,
+)
 from diabetes_pipeline.training.tuning import cross_fitted_probabilities
+from diabetes_pipeline.runner import (
+    _claim_final_nested_execution,
+    _nested_evidence_tier,
+)
 
 
 class HoldoutEvaluationTests(unittest.TestCase):
+    def test_nested_evidence_tiers_are_explicit_and_fail_closed(self) -> None:
+        self.assertEqual(_nested_evidence_tier("smoke", {}), "execution_only_smoke")
+        self.assertEqual(
+            _nested_evidence_tier("development_pilot", {}), "development_pilot"
+        )
+        self.assertEqual(_nested_evidence_tier("development", {}), "full_development")
+        self.assertEqual(
+            _nested_evidence_tier("final", {"locked": True}), "final_locked"
+        )
+        with self.assertRaises(ValueError):
+            _nested_evidence_tier("final", {"locked": False})
+
+    def test_final_nested_execution_receipt_is_one_time_only(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            output_root = Path(temporary)
+            receipt = _claim_final_nested_execution(
+                "pidd", "a" * 64, output_root=output_root
+            )
+            self.assertTrue(receipt.exists())
+            with self.assertRaisesRegex(RuntimeError, "already started"):
+                _claim_final_nested_execution(
+                    "pidd", "a" * 64, output_root=output_root
+                )
+
+    def test_holdout_evidence_tiers_are_explicit_and_fail_closed(self) -> None:
+        self.assertEqual(_holdout_evidence_tier("smoke", {}), "execution_only_smoke")
+        self.assertEqual(_holdout_evidence_tier("development", {}), "full_development")
+        self.assertEqual(
+            _holdout_evidence_tier("final", {"locked": True}), "final_locked"
+        )
+        with self.assertRaises(ValueError):
+            _holdout_evidence_tier("development_pilot", {})
+        with self.assertRaises(ValueError):
+            _holdout_evidence_tier("final", {"locked": False})
+
+    def test_final_test_access_receipt_is_one_time_only(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            output_dir = Path(temporary)
+            receipt = _claim_final_test_access(output_dir, "final-study")
+            self.assertTrue(receipt.exists())
+            with self.assertRaisesRegex(RuntimeError, "already started"):
+                _claim_final_test_access(output_dir, "final-study")
     def test_predefined_manifest_folds_cover_every_development_row(self) -> None:
         manifest = pd.DataFrame(
             {

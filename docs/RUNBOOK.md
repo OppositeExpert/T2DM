@@ -1,13 +1,18 @@
 # Publication Pipeline Commands
 
-Run commands from the `XGBoost` directory.
+Run commands from the standalone `T2DM` repository root.
 
 ## Environment
 
 ```bash
 source .venv-pipeline/bin/activate
 export MPLCONFIGDIR=outputs/.matplotlib
+python scripts/verify_environment.py
+python scripts/acquire_data.py --dataset all
 ```
+
+For a fresh clone, complete `docs/REPRODUCIBILITY.md` and
+`docs/DATA_ACQUISITION.md` before using any command below.
 
 The project-local Matplotlib cache is required in restricted or clean execution
 environments where the default user cache is not writable. Keep this variable
@@ -95,15 +100,15 @@ Each study directory contains:
   comparisons; Sylhet uses complete identical-profile cluster resampling.
 - Dataset, split, source-code, and raw-file checksums.
 
-Latest verified development pilot:
-`outputs/publication_pipeline/studies/pidd_development_pilot_27b9bc88b493/`.
+Authoritative full development study:
+`outputs/publication_pipeline/studies/pidd_development_072cd2104089/`.
 
 ## Held-out SHAP explanations
 
 ```bash
 python -m diabetes_pipeline.cli explain \
   --dataset pidd \
-  --study-dir outputs/publication_pipeline/studies/pidd_development_pilot_27b9bc88b493
+  --study-dir outputs/publication_pipeline/studies/pidd_development_072cd2104089
 ```
 
 The explanation command uses only each bundle's outer-fold validation patients
@@ -118,15 +123,15 @@ baseline and must not be presented as clinical cutoffs.
 ```bash
 python -m diabetes_pipeline.cli evaluate-routing \
   --dataset pidd \
-  --study-dir outputs/publication_pipeline/studies/pidd_development_pilot_27b9bc88b493
+  --study-dir outputs/publication_pipeline/studies/pidd_development_072cd2104089
 
 python -m diabetes_pipeline.cli evaluate-routing \
   --dataset sylhet \
-  --study-dir outputs/publication_pipeline/studies/sylhet_development_pilot_ed7c05460503
+  --study-dir outputs/publication_pipeline/studies/sylhet_development_b52477910fe6
 
 python -m diabetes_pipeline.cli evaluate-routing \
   --dataset brfss \
-  --study-dir outputs/publication_pipeline/studies/brfss_smoke_holdout_1f1344dceb63
+  --study-dir outputs/publication_pipeline/studies/brfss_development_holdout_56407ef53bba
 
 python -m diabetes_pipeline.cli evaluate-routing \
   --dataset hospital130 \
@@ -148,7 +153,7 @@ panel on the same participants and within the same model family:
 
 ```bash
 python -m diabetes_pipeline.cli matched-panel-contrasts \
-  --study-dir outputs/publication_pipeline/studies/pidd_development_pilot_27b9bc88b493
+  --study-dir outputs/publication_pipeline/studies/pidd_development_072cd2104089
 ```
 
 Repeated-CV studies first average each participant's held-out probabilities
@@ -166,7 +171,7 @@ held-out predictions without retraining:
 
 ```bash
 python -m diabetes_pipeline.cli artifact-ablations \
-  --study-dir outputs/publication_pipeline/studies/pidd_development_pilot_27b9bc88b493
+  --study-dir outputs/publication_pipeline/studies/pidd_development_072cd2104089
 ```
 
 This evaluates selected calibration versus raw probabilities, availability
@@ -184,7 +189,7 @@ development study:
 
 ```bash
 python -m diabetes_pipeline.cli missing-indicator-ablation \
-  --study-dir outputs/publication_pipeline/studies/pidd_development_pilot_27b9bc88b493 \
+  --study-dir outputs/publication_pipeline/studies/pidd_development_072cd2104089 \
   --models logistic_regression random_forest
 ```
 
@@ -199,7 +204,7 @@ Smoke output is execution evidence only; it cannot close the ablation blocker.
 
 ```bash
 python -m diabetes_pipeline.cli panel-training-ablation \
-  --study-dir outputs/publication_pipeline/studies/pidd_development_pilot_27b9bc88b493 \
+  --study-dir outputs/publication_pipeline/studies/pidd_development_072cd2104089 \
   --models random_forest xgboost
 ```
 
@@ -219,10 +224,10 @@ prespecified task is complete.
 
 ```bash
 python -m diabetes_pipeline.cli selective-prediction \
-  --study-dir outputs/publication_pipeline/studies/pidd_development_pilot_27b9bc88b493
+  --study-dir outputs/publication_pipeline/studies/pidd_development_072cd2104089
 
 python -m diabetes_pipeline.cli subgroup-analysis \
-  --study-dir outputs/publication_pipeline/studies/pidd_development_pilot_27b9bc88b493
+  --study-dir outputs/publication_pipeline/studies/pidd_development_072cd2104089
 ```
 
 Selective prediction uses an outcome-blind probability-certainty score at
@@ -235,7 +240,7 @@ suppresses cells below the configured sample or event thresholds.
 
 ```bash
 python -m diabetes_pipeline.cli missingness-stress \
-  --study-dir outputs/publication_pipeline/studies/pidd_development_pilot_27b9bc88b493 \
+  --study-dir outputs/publication_pipeline/studies/pidd_development_072cd2104089 \
   --models random_forest xgboost --replicates 5
 ```
 
@@ -261,7 +266,7 @@ selection or final efficacy tables.
 
 ```bash
 python -m diabetes_pipeline.cli reporting-ablations \
-  --study-dir outputs/publication_pipeline/studies/pidd_development_pilot_27b9bc88b493
+  --study-dir outputs/publication_pipeline/studies/pidd_development_072cd2104089
 ```
 
 This estimates how much named-panel performance is explained by feature count
@@ -278,7 +283,7 @@ shell history. The command does not persist the input or output unless
 ```bash
 python -m diabetes_pipeline.cli patient-result \
   --dataset pidd \
-  --routing-dir outputs/publication_pipeline/studies/pidd_development_pilot_27b9bc88b493/availability_routing \
+  --routing-dir outputs/publication_pipeline/studies/pidd_development_072cd2104089/availability_routing \
   --patient-file examples/pidd_patient_synthetic.json \
   --format markdown \
   --output outputs/pidd_patient_synthetic_result.md
@@ -305,9 +310,9 @@ confused: PIDD and Sylhet store years, while BRFSS stores an age-group code. See
 
 ```bash
 python -m diabetes_pipeline.cli mixed-patient-result \
-  --routing-dir pidd=outputs/publication_pipeline/studies/pidd_development_pilot_27b9bc88b493/availability_routing \
-  --routing-dir sylhet=outputs/publication_pipeline/studies/sylhet_development_pilot_ed7c05460503/availability_routing \
-  --routing-dir brfss=outputs/publication_pipeline/studies/brfss_smoke_holdout_1f1344dceb63/availability_routing \
+  --routing-dir pidd=outputs/publication_pipeline/studies/pidd_development_072cd2104089/availability_routing \
+  --routing-dir sylhet=outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/availability_routing \
+  --routing-dir brfss=outputs/publication_pipeline/studies/brfss_development_holdout_56407ef53bba/availability_routing \
   --patient-file examples/mixed_patient_synthetic.json \
   --prefer-dataset pidd \
   --format markdown
@@ -334,9 +339,9 @@ Run the gate before describing any results as final or manuscript-ready:
 
 ```bash
 python -m diabetes_pipeline.cli publication-readiness \
-  --study-dir outputs/publication_pipeline/studies/pidd_development_pilot_27b9bc88b493 \
-  --study-dir outputs/publication_pipeline/studies/sylhet_development_pilot_ed7c05460503 \
-  --study-dir outputs/publication_pipeline/studies/brfss_smoke_holdout_1f1344dceb63 \
+  --study-dir outputs/publication_pipeline/studies/pidd_development_072cd2104089 \
+  --study-dir outputs/publication_pipeline/studies/sylhet_development_b52477910fe6 \
+  --study-dir outputs/publication_pipeline/studies/brfss_development_holdout_56407ef53bba \
   --format markdown \
   --output outputs/publication_readiness_audit.md
 ```
@@ -376,14 +381,35 @@ intervals, paired bootstrap model comparisons with Holm adjustment, decision
 curves with pointwise uncertainty and paired contrasts, plots, checksums, and
 reloadable bundles.
 
+### Full BRFSS development study
+
+The seed-42 BRFSS holdout has already been inspected and can never become a
+concealed final result. It is nevertheless a valid full-development evaluation
+when every model, calibration method, threshold, and champion choice is locked
+using development rows before the complete development test role is evaluated:
+
+```bash
+python -m diabetes_pipeline.cli benchmark-holdout \
+  --dataset brfss \
+  --profile development \
+  --models logistic_regression random_forest xgboost lightgbm catboost
+```
+
+This uses all 343,488 development rows, all 85,872 seed-42 development-test
+rows, 30 Optuna trials per model, five development folds, 500 participant-level
+bootstrap resamples, all configured calibration and threshold policies, paired
+Holm-corrected model comparisons, decision-curve inference, reloadable bundles,
+and model-level resume checkpoints. Its metadata must say `full_development`
+and `development_test_previously_accessed_not_final_eligible`.
+
 ## BRFSS survey-weighted sensitivity analysis
 
 Run this only against an already completed BRFSS study:
 
 ```bash
 python -m diabetes_pipeline.cli brfss-survey-sensitivity \
-  --study-dir outputs/publication_pipeline/studies/brfss_smoke_holdout_238827051db5 \
-  --n-bootstrap 200 \
+  --study-dir outputs/publication_pipeline/studies/brfss_development_holdout_56407ef53bba \
+  --n-bootstrap 500 \
   --seed 42
 ```
 
@@ -400,8 +426,8 @@ CDC variance estimate or external validation.
 ```bash
 python -m diabetes_pipeline.cli explain-holdout \
   --dataset brfss \
-  --study-dir outputs/publication_pipeline/studies/brfss_smoke_holdout_1f1344dceb63 \
-  --maximum-samples-per-model 500
+  --study-dir outputs/publication_pipeline/studies/brfss_development_holdout_56407ef53bba \
+  --maximum-samples-per-model 1000
 ```
 
 The background sample comes only from development rows, while all reported SHAP

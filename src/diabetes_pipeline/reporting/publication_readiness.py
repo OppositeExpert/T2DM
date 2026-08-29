@@ -97,17 +97,22 @@ def audit_publication_readiness(
                 "Use the complete prespecified cohort rather than a smoke sample.",
             )
         )
+        runner = str(metadata.get("runner", "nested_cv"))
         test_access = str(metadata.get("test_access", "not_applicable"))
+        test_access_ok = (
+            test_access == "single_locked_final_evaluation"
+            if runner == "development_locked_holdout"
+            else test_access == "not_applicable"
+        )
         checks.append(
             _check(
                 f"{dataset}_test_access",
-                not test_access.startswith("smoke"),
+                test_access_ok,
                 f"test_access={test_access}",
-                "Create a fresh locked final study whose test set is accessed only after every choice is frozen.",
+                "For holdout studies, create a fresh locked final study whose test set is accessed exactly once after every choice is frozen; nested-CV studies must report test_access=not_applicable.",
             )
         )
 
-        runner = str(metadata.get("runner", "nested_cv"))
         required = [
             "confidence_intervals.csv",
             "decision_curves.csv",

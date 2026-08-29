@@ -4,7 +4,7 @@
 
 **Package state:** Near-complete development package; not authorized for submission
 
-**Evidence cutoff:** 24 August 2026
+**Evidence cutoff:** 29 August 2026
 
 This directory assembles the engineering, analysis, and reporting material for a
 conference submission. It is intentionally labelled as development evidence.
@@ -59,8 +59,9 @@ satisfies the prespecified superiority rule.
 | PIDD routing, panels, ablations, selective prediction, subgroups, missingness stress, SHAP | Complete | Development decision evidence only |
 | Sylhet grouped development benchmark | Complete | Development decision evidence only |
 | Sylhet routing, robustness, and panel-specific retraining | Complete | Development decision evidence only |
-| BRFSS current-code smoke verification | Complete (`brfss_smoke_holdout_b3a6ad2aa89e`) | Engineering evidence only |
-| BRFSS full-sample final holdout | Protected until protocol freeze and authorization | Required locked evidence |
+| BRFSS full-sample development holdout | Complete (`brfss_development_holdout_56407ef53bba`) | Full development decision evidence only; seed-42 test already inspected |
+| Historical BRFSS smoke verification | Preserved (`brfss_smoke_holdout_b3a6ad2aa89e`) | Engineering history only |
+| BRFSS new concealed final holdout | Protected until protocol freeze and authorization | Required locked evidence |
 | Hospital130 | Engineering complete; separate endpoint | Supplementary methodological analysis only |
 | Mixed-input router | Engineering complete | Software demonstration only |
 | Protocol/sign-off/final run | Not authorized | Required before submission |

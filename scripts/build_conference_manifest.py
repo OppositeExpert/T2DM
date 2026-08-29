@@ -39,9 +39,7 @@ def main() -> None:
         "development_studies": {
             "pidd": "pidd_development_072cd2104089",
             "sylhet": "sylhet_development_b52477910fe6",
-        },
-        "engineering_smoke_study": {
-            "brfss": "brfss_smoke_holdout_b3a6ad2aa89e",
+            "brfss": "brfss_development_holdout_56407ef53bba",
         },
         "protocol_frozen": False,
         "final_execution_authorized": False,

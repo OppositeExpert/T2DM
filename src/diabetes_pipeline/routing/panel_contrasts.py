@@ -90,7 +90,8 @@ def aggregate_panel_predictions(predictions: pd.DataFrame) -> pd.DataFrame:
         raise ValueError("Holdout panel predictions contain duplicate participants")
     frame["repeat_count"] = 1
     frame["probability_repeat_sd"] = 0.0
-    frame["estimation_scope"] = "locked_test"
+    roles = frame.get("evaluation_role", pd.Series(dtype=str)).dropna().unique()
+    frame["estimation_scope"] = str(roles[0]) if len(roles) == 1 else "holdout_test"
     return frame[
         [
             "model",

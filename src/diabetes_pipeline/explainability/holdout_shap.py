@@ -61,6 +61,14 @@ def run_holdout_explainability(
     dataset_cfg = get_dataset_config(dataset_name)
     dataset = load_dataset(dataset_name)
     predictions = pd.read_csv(predictions_path)
+    evaluation_roles = predictions.get(
+        "evaluation_role", pd.Series(dtype=str)
+    ).dropna().unique()
+    evaluation_role = (
+        str(evaluation_roles[0])
+        if len(evaluation_roles) == 1
+        else str(metadata.get("evaluation_role", "holdout_test"))
+    )
     development_predictions = pd.read_csv(development_path)
     row_position = {
         str(row_id): position
@@ -156,7 +164,7 @@ def run_holdout_explainability(
                     "model": model_name,
                     "repeat": 0,
                     "outer_fold": -1,
-                    "evaluation_role": "locked_test",
+                    "evaluation_role": evaluation_role,
                     "row_id": np.repeat(frame["row_id"].to_numpy(), feature_count),
                     "target": np.repeat(frame["target"].to_numpy(), feature_count),
                     "probability_raw": np.repeat(
@@ -289,7 +297,7 @@ def run_holdout_explainability(
             {
                 "experiment_id": metadata["experiment_id"],
                 "dataset": dataset_name,
-                "evaluation_role": "locked_test",
+                "evaluation_role": evaluation_role,
                 "held_out_test_only": True,
                 "study_test_access": metadata["test_access"],
                 "maximum_samples_per_model": maximum_samples_per_model,
@@ -303,7 +311,7 @@ def run_holdout_explainability(
                 "explanation_source_tree_sha256": source_tree_sha256(),
                 "shap_version": shap.__version__,
                 "fold_stability_available": False,
-                "fold_stability_reason": "one_locked_test_evaluation_per_model",
+                "fold_stability_reason": f"one_{evaluation_role}_evaluation_per_model",
                 "artifacts": {
                     str(path.relative_to(study_dir)): _sha256(path)
                     for path in artifact_paths

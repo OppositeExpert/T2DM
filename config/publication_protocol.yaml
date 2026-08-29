@@ -57,7 +57,10 @@ analysis_plan:
   final_holdout_seed: null
   final_holdout_manifest: null
   final_holdout_manifest_sha256: null
+  final_raw_data_sha256: {}
+  final_analysis_configuration_sha256: {}
   final_authorization_record: null
+  final_authorization_record_sha256: null
   final_execution_authorized: false
 
 reporting_standards:

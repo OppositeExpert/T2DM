@@ -31,6 +31,7 @@ GENERATED = PACKAGE / "generated"
 FIGURES = GENERATED / "figures"
 STUDY = ROOT / "outputs/publication_pipeline/studies/pidd_development_072cd2104089"
 SYLHET_STUDY = ROOT / "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6"
+BRFSS_STUDY = ROOT / "outputs/publication_pipeline/studies/brfss_development_holdout_56407ef53bba"
 
 BLUE = "2E74B5"
 DARK_BLUE = "1F4D78"
@@ -336,8 +337,15 @@ def add_cover(doc, title, subtitle):
     meta = doc.add_paragraph()
     meta.alignment = WD_ALIGN_PARAGRAPH.CENTER
     meta.paragraph_format.space_after = Pt(10)
-    set_run_font(meta.add_run("Evidence cutoff: 24 August 2026"), size=10, color=MUTED)
+    set_run_font(meta.add_run("Evidence cutoff: 29 August 2026"), size=10, color=MUTED)
     doc.add_page_break()
+    # LibreOffice can collapse the first heading's line box against the first
+    # body paragraph when it follows a bare page-break paragraph. A tiny,
+    # visible-space paragraph preserves the intended heading separation in both
+    # Word and the headless QA renderer.
+    page_top_spacer = doc.add_paragraph()
+    page_top_spacer.paragraph_format.space_after = Pt(1)
+    set_run_font(page_top_spacer.add_run("\u00a0"), size=2, color=WHITE)
 
 
 def add_inline_runs(paragraph, text):
@@ -593,6 +601,56 @@ def build_figures():
     fig.suptitle("Sylhet grouped development evidence", fontweight="bold", color="#0B2545")
     fig.tight_layout()
     save_figure(fig, "sylhet_performance_and_panels.png")
+
+    brfss_ci = pd.read_csv(BRFSS_STUDY / "confidence_intervals.csv")
+    brfss_ci = brfss_ci[
+        (brfss_ci["probability_version"] == "calibrated")
+        & (brfss_ci["threshold_policy"] == "fixed_0_5")
+    ]
+    brfss_routing = pd.read_csv(
+        BRFSS_STUDY / "availability_routing/summary_metrics.csv"
+    )
+    fig, axes = plt.subplots(1, 2, figsize=(7.3, 3.15))
+    frame = brfss_ci[brfss_ci.metric == "auroc"].set_index("model").loc[order]
+    values = frame.estimate.to_numpy()
+    errors = np.vstack(
+        (values - frame.ci_lower.to_numpy(), frame.ci_upper.to_numpy() - values)
+    )
+    axes[0].errorbar(
+        range(len(order)), values, yerr=errors, fmt="o", color="#1F4D78",
+        ecolor="#7A9BB8", capsize=3, lw=1.2,
+    )
+    axes[0].set_xticks(range(len(order)), labels)
+    axes[0].set_ylim(0.825, 0.85)
+    axes[0].set_ylabel("AUROC")
+    axes[0].set_title("Full-panel discrimination")
+    axes[0].grid(axis="y", color="#E5E7EB", lw=0.7)
+    scenario_order = [
+        "minimal_general_health_age",
+        "demographics_health",
+        "health_status",
+        "cardiometabolic_health",
+        "routine_survey",
+        "full",
+    ]
+    panel = brfss_routing[
+        brfss_routing.system == "availability_router"
+    ].set_index("scenario").loc[scenario_order]
+    axes[1].plot(
+        range(len(scenario_order)), panel.brier_score, marker="o", color="#1F4D78"
+    )
+    axes[1].set_xticks(range(len(scenario_order)), ["2", "5", "6", "9", "12", "21"])
+    axes[1].set_xlabel("Available features")
+    axes[1].set_ylabel("Brier score (lower is better)")
+    axes[1].set_title("Router probability loss by panel")
+    axes[1].grid(axis="both", color="#E5E7EB", lw=0.7)
+    fig.suptitle(
+        "BRFSS full-sample development evidence",
+        fontweight="bold",
+        color="#0B2545",
+    )
+    fig.tight_layout()
+    save_figure(fig, "brfss_performance_and_panels.png")
 
 
 def build_docx(source_name, output_name, title, subtitle, short_title):

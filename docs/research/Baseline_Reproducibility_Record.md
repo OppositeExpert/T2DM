@@ -1,5 +1,10 @@
 # Baseline Reproducibility Record
 
+> Historical snapshot. The root, Git state, study IDs, and blocker descriptions
+> below record 23 August 2026 and are superseded for current operation by
+> `README.md`, `docs/REPRODUCIBILITY.md`, `docs/research/Execution_Status.md`,
+> and `evidence/study_registry.json`.
+
 **Baseline ID:** `baseline-2026-08-23-phase0`
 
 **Recorded:** 23 August 2026, Asia/Kolkata

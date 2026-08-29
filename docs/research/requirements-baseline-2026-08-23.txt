@@ -1,3 +1,7 @@
+# Historical environment snapshot. The editable-install note at the end records
+# the old XGBoost checkout and is retained as evidence of the 2026-08-23 state.
+# Current clean-clone installation is governed by ../../requirements.lock and
+# docs/REPRODUCIBILITY.md.
 alembic==1.19.1
 catboost==1.2.10
 cloudpickle==3.1.2

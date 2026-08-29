@@ -1,0 +1,22 @@
+version: 1
+studies:
+  pidd:
+    study_id: pidd_development_072cd2104089
+    evidence_tier: full_development
+    command: python -m diabetes_pipeline.cli benchmark --dataset pidd --profile development
+  sylhet:
+    study_id: sylhet_development_b52477910fe6
+    evidence_tier: full_development
+    command: python -m diabetes_pipeline.cli benchmark --dataset sylhet --profile development
+  brfss:
+    study_id: brfss_development_holdout_56407ef53bba
+    evidence_tier: full_development
+    command: python -m diabetes_pipeline.cli benchmark-holdout --dataset brfss --profile development --models logistic_regression random_forest xgboost lightgbm catboost
+
+historical_engineering_studies:
+  brfss_smoke:
+    study_id: brfss_smoke_holdout_b3a6ad2aa89e
+    evidence_tier: execution_only_smoke
+  hospital130_smoke:
+    study_id: hospital130_smoke_holdout_6640beff7a08
+    evidence_tier: execution_only_smoke

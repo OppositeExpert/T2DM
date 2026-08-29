@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "diabetes-publication-pipeline"
 version = "0.1.0"
 description = "Leakage-free multi-model diabetes screening benchmark pipeline"
-requires-python = ">=3.11"
+requires-python = ">=3.12,<3.13"
 dependencies = [
   "numpy==2.5.2",
   "pandas==3.0.5",

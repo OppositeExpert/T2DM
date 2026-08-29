@@ -1,25 +1,27 @@
 # Publication Blocker Register
 
-**Baseline:** 24 August 2026, post-development completion audit
+**Baseline:** 29 August 2026, post-BRFSS full-development audit
 
 **Readiness verdict:** `NOT READY`
 
-**Blocking checks:** 16
+**Blocking checks:** 15
 
 **Journal-strength warnings:** 1
 
-This register is the operational owner map for `outputs/publication_readiness_audit.md`. A protocol flag may change only after the acceptance evidence below exists and has been reviewed.
+This register is the operational owner map for
+`conference_package/qa/Publication_Readiness_Audit.md`. A protocol flag may
+change only after the acceptance evidence below exists and has been reviewed.
 
-All readiness-required development artifacts now pass the gate. The 16 remaining
+All readiness-required development artifacts now pass the gate. The 15 remaining
 failures are deliberate final-profile, protocol, review, and authorization
 controls; they are not missing software outputs or failed model experiments.
 
 | ID | Readiness check | Current evidence | Status | Owner phase | Required action | Acceptance evidence |
 |---|---|---|---|---:|---|---|
-| BLK-001 | `brfss_final_profile` | `profile=smoke` | Open | 8 | Run the full prespecified BRFSS final profile after freeze | Final metadata reports `profile=final` |
+| BLK-001 | `brfss_final_profile` | `profile=development`; complete full-sample study | Open | 8 | Run the full prespecified BRFSS final profile after freeze | Final metadata reports `profile=final` |
 | BLK-002 | `brfss_profile_locked` | `locked=False` | Open | 7–8 | Approve the protocol and lock the exact final configuration | Signed authorization plus final metadata `locked=true` |
-| BLK-003 | `brfss_full_sample` | `sample_limit_per_partition=10000` | Open | 8 | Remove smoke sample limits in final execution | Final metadata has no sample limit and row flow matches the full cohort |
-| BLK-004 | `brfss_test_access` | Smoke test path already accessed | Open, critical | 3, 4, 7–8 | Implement a new prespecified concealed final partition and access it only once after freeze | Split-control record, concealed-test preflight, and `single_locked_final_evaluation` metadata |
+| BLK-003 | `brfss_full_sample` | 429,360-row full cohort; no sample limit | Closed, development gate | 8 | Preserve full-cohort flow in final execution | Development metadata has no sample limit; final row flow must match its new manifest |
+| BLK-004 | `brfss_test_access` | Seed-42 development test was previously accessed and is explicitly ineligible for final claims | Open, critical | 3, 4, 7–8 | Create a new prespecified concealed final partition and access it only once after freeze | Split-control record, concealed-test preflight, and `single_locked_final_evaluation` metadata |
 | BLK-005 | `pidd_final_profile` | `profile=development`; complete 5 x 5 study | Open | 8 | Run the frozen final repeated nested study after authorization | Final metadata reports `profile=final` and all 25 outer evaluations |
 | BLK-006 | `pidd_profile_locked` | `locked=False` | Open | 7–8 | Freeze all PIDD analysis choices before the final run | Signed authorization and final metadata `locked=true` |
 | BLK-007 | `sylhet_final_profile` | `profile=development`; complete grouped 5 x 5 study | Open | 8 | Run the frozen grouped final repeated nested study after authorization | Final metadata reports `profile=final` and all grouped outer evaluations |
@@ -30,8 +32,8 @@ controls; they are not missing software outputs or failed model experiments.
 | BLK-012 | `tripod_ai_checklist_complete` | Development crosswalk drafted | Implemented, awaiting author review | 11 | Complete page/section mapping against the final venue version | Signed checklist and flag set true |
 | BLK-013 | `probast_ai_assessment_complete` | Conservative development assessment drafted | Implemented, awaiting independent review | 11 | Review and disclose the final assessment | Signed assessment with evidence and flag set true |
 | BLK-014 | `ablation_study_complete` | All prespecified development ablation paths executed | Implemented, awaiting scientific review | 5 | Approve retained analyses and freeze the decision report | Reviewed ablation protocol/results and flag set true |
-| BLK-015 | `selective_prediction_evaluation_complete` | Full PIDD/Sylhet and BRFSS smoke risk-coverage artifacts exist | Implemented, awaiting scientific review | 6 | Review coverage, event retention, and failure reasons | Reviewed report and flag set true |
-| BLK-016 | `subgroup_analysis_complete` | Full PIDD/Sylhet and BRFSS smoke subgroup/suppression artifacts exist | Implemented, awaiting scientific review | 6 | Review subgroup uncertainty and suppression | Reviewed report and flag set true |
+| BLK-015 | `selective_prediction_evaluation_complete` | Full PIDD, Sylhet, and full-sample BRFSS risk-coverage artifacts exist | Implemented, awaiting scientific review | 6 | Review coverage, event retention, and failure reasons | Reviewed report and flag set true |
+| BLK-016 | `subgroup_analysis_complete` | Full PIDD, Sylhet, and full-sample BRFSS subgroup/suppression artifacts exist | Implemented, awaiting scientific review | 6 | Review subgroup uncertainty and suppression | Reviewed report and flag set true |
 | WRN-001 | `external_or_temporal_validation` | `false` | Open warning; journal blocker | 13 | Apply a frozen model to an independent or later compatible cohort | External/temporal validation report and flag set true |
 
 ## Cross-cutting controls discovered during Phase 0
@@ -70,10 +72,11 @@ controls; they are not missing software outputs or failed model experiments.
   and participants fixed, averages repeated held-out probabilities per person,
   preserves Sylhet profile clusters, and applies metric-wise Holm correction.
   PIDD, Sylhet, and BRFSS development paths passed; final claims remain blocked.
-- Phase 5 artifact ablations: paired calibration, router-baseline, selector-metric,
-  and model-family evaluators passed for PIDD/Sylhet; BRFSS correctly records its
-  missing Logistic Regression baseline. BLK-014 remains open for retraining,
-  random-dropout, applicability, and leakage-demonstration components.
+- Phase 5 artifact ablations: paired calibration, router-baseline,
+  selector-metric, and model-family evaluators passed for PIDD, Sylhet, and the
+  full BRFSS development study. BRFSS included Logistic Regression and found
+  corrected tree-family improvements over it, while router and selector variants
+  did not support a corrected advantage. BLK-014 awaits scientific review.
 - Phase 5 missing-indicator retraining: indicator-on and indicator-off variants
   now use identical outer/inner folds, budgets, search spaces, model families,
   and seeds with separate tuning. Full 25-split PIDD individual and Sylhet
@@ -89,7 +92,7 @@ controls; they are not missing software outputs or failed model experiments.
 - Phase 6 selective prediction and subgroups: outcome-blind probability-certainty
   coverage analysis, positive-event retention, group-preserving acceptance,
   subgroup bootstrap uncertainty, and small-cell suppression are implemented.
-  full PIDD/Sylhet development studies and current-code BRFSS smoke passed;
+  full PIDD/Sylhet and full-sample BRFSS development studies passed;
   BLK-015 and BLK-016 now await scientific review only.
 - Phase 5 missingness stress: shared MCAR-like and structured-block masks at four
   severity levels passed on the full PIDD and Sylhet development studies. Severe dropout materially
@@ -100,6 +103,6 @@ controls; they are not missing software outputs or failed model experiments.
   authorization record, and final manifest fields are deliberately unset.
 - Current audit uses `pidd_development_072cd2104089`,
   `sylhet_development_b52477910fe6`, and
-  `brfss_smoke_holdout_b3a6ad2aa89e`: all readiness-required artifact checks
-  pass; 16 governance/final-profile blockers and one external-validation warning
-  remain.
+  `brfss_development_holdout_56407ef53bba`: all readiness-required artifact and
+  full-sample checks pass; 15 governance/final-profile/test-access blockers and
+  one external-validation warning remain.

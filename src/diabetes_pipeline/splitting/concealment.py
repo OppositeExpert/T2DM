@@ -4,14 +4,21 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 from pathlib import Path
-from typing import Any
+from typing import Any, Sequence
 
 import pandas as pd
 import yaml
 
 from diabetes_pipeline.contracts import LoadedDataset
-from diabetes_pipeline.settings import DEFAULT_OUTPUT_ROOT, PROJECT_ROOT, get_dataset_config
+from diabetes_pipeline.settings import (
+    DEFAULT_OUTPUT_ROOT,
+    PROJECT_ROOT,
+    configuration_sha256,
+    get_dataset_config,
+    source_tree_sha256,
+)
 from diabetes_pipeline.splitting.registry import validate_split_manifest
 from diabetes_pipeline.splitting.strategies import build_split_manifest
 
@@ -132,7 +139,59 @@ def validate_concealed_manifest_files(
         raise RuntimeError("Concealed manifest checksum does not match its metadata")
     if expected_sha256 is not None and observed_sha256 != str(expected_sha256):
         raise RuntimeError("Concealed manifest checksum does not match the protocol")
+    manifest = pd.read_csv(manifest_path)
+    if manifest["row_position"].duplicated().any():
+        raise RuntimeError("Concealed manifest contains duplicate row positions")
+    if manifest["row_id"].astype(str).duplicated().any():
+        raise RuntimeError("Concealed manifest contains duplicate row identities")
+    for field in ("dataset", "strategy", "seed"):
+        values = manifest[field].drop_duplicates().tolist()
+        if len(values) != 1 or str(values[0]) != str(metadata.get(field)):
+            raise RuntimeError(
+                f"Concealed manifest {field} does not match its metadata"
+            )
+    observed_role_rows = {
+        str(role): int(count)
+        for role, count in manifest["role"].value_counts().sort_index().items()
+    }
+    if observed_role_rows != metadata.get("role_rows"):
+        raise RuntimeError("Concealed manifest role counts do not match its metadata")
     return manifest_path, metadata_path, metadata
+
+
+def final_analysis_configuration_sha256(
+    *,
+    dataset_name: str,
+    dataset_config: dict[str, Any],
+    profile: dict[str, Any],
+    models: Sequence[str],
+) -> str:
+    """Fingerprint the executable inputs that must be frozen before final access."""
+
+    lock_path = PROJECT_ROOT / "requirements.lock"
+    payload = {
+        "schema_version": "1.0",
+        "dataset": dataset_name,
+        "dataset_configuration_sha256": configuration_sha256(dataset_config),
+        "profile": profile,
+        "models": list(models),
+        "configuration_file_sha256": {
+            relative: _sha256_file(PROJECT_ROOT / relative)
+            for relative in (
+                "config/datasets.yaml",
+                "config/availability_scenarios.yaml",
+                "config/feature_ontology.yaml",
+                "config/output_schemas.yaml",
+            )
+        },
+        "requirements_lock_sha256": (
+            _sha256_file(lock_path) if lock_path.exists() else None
+        ),
+        "source_tree_sha256": source_tree_sha256(),
+    }
+    return hashlib.sha256(
+        json.dumps(payload, sort_keys=True, default=str).encode("utf-8")
+    ).hexdigest()
 
 
 def write_development_concealment_test(
@@ -170,10 +229,87 @@ def write_development_concealment_test(
     return manifest_path, metadata_path, metadata
 
 
+def write_final_concealed_manifest(
+    dataset: LoadedDataset,
+    *,
+    profile: dict[str, Any],
+    protocol_path: Path | str = DEFAULT_PROTOCOL_PATH,
+    output_root: Path = DEFAULT_OUTPUT_ROOT,
+) -> tuple[Path, Path, dict[str, Any]]:
+    """Create one authorized outcome-blind final manifest without enabling access."""
+
+    protocol_path = Path(protocol_path).resolve()
+    protocol = yaml.safe_load(protocol_path.read_text(encoding="utf-8"))
+    analysis = dict(protocol.get("analysis_plan", {}))
+    failures: list[str] = []
+    if not bool(protocol.get("protocol_frozen", False)):
+        failures.append("protocol_frozen=false")
+    if str(analysis.get("status")) != "frozen":
+        failures.append("analysis_plan.status is not frozen")
+    if not bool(analysis.get("final_split_creation_authorized", False)):
+        failures.append("final split creation is not authorized")
+    if bool(analysis.get("final_execution_authorized", False)):
+        failures.append("final execution must remain unauthorized during split creation")
+    if str(profile.get("name")) != "final":
+        failures.append("loaded experiment profile is not named final")
+    if not bool(profile.get("locked", False)):
+        failures.append("final experiment profile is not locked")
+    seed = analysis.get("final_holdout_seed")
+    if seed is None:
+        failures.append("final holdout seed is not configured")
+    elif int(seed) == 42:
+        failures.append("seed 42 is permanently reserved for development evidence")
+    elif int(seed) != int(profile.get("seed", -1)):
+        failures.append("profile seed does not match the authorized final holdout seed")
+    if analysis.get("final_holdout_manifest") or analysis.get(
+        "final_holdout_manifest_sha256"
+    ):
+        failures.append("a final holdout manifest is already registered")
+    if failures:
+        raise RuntimeError("Final manifest creation denied: " + "; ".join(failures))
+
+    cfg = get_dataset_config(dataset.name)
+    if cfg["evaluation_strategy"] not in {
+        "stratified_holdout_cv",
+        "stratified_group_holdout_cv",
+    }:
+        raise ValueError("Final concealment requires a configured holdout dataset")
+    ordinary = build_split_manifest(dataset, cfg, seed=int(seed))
+    validate_split_manifest(dataset, ordinary, cfg)
+    safe = sanitize_holdout_manifest(ordinary)
+    output_dir = output_root / "final_concealed" / dataset.name
+    output_dir.mkdir(parents=True, exist_ok=True)
+    manifest_path = output_dir / f"final_concealed_seed_{seed}.csv"
+    metadata_path = manifest_path.with_suffix(".json")
+    if manifest_path.exists() or metadata_path.exists():
+        raise RuntimeError("Final concealed manifest already exists; overwrite is prohibited")
+
+    temporary_manifest = manifest_path.with_suffix(".csv.tmp")
+    temporary_metadata = metadata_path.with_suffix(".json.tmp")
+    safe.to_csv(temporary_manifest, index=False)
+    manifest_sha256 = _sha256_file(temporary_manifest)
+    metadata = _concealed_metadata(
+        safe,
+        manifest_sha256=manifest_sha256,
+        purpose="final_locked_holdout",
+    )
+    temporary_metadata.write_text(
+        json.dumps(metadata, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+    )
+    os.replace(temporary_manifest, manifest_path)
+    os.replace(temporary_metadata, metadata_path)
+    validate_concealed_manifest_files(manifest_path)
+    return manifest_path, metadata_path, metadata
+
+
 def assert_final_execution_authorized(
     *,
     profile_name: str,
     profile: dict[str, Any],
+    dataset_name: str | None = None,
+    raw_data_sha256: str | None = None,
+    analysis_configuration_sha256: str | None = None,
+    requires_concealed_holdout: bool = True,
     protocol_path: Path | str = DEFAULT_PROTOCOL_PATH,
 ) -> Path | None:
     """Fail closed unless every final holdout authorization control is present."""
@@ -183,6 +319,8 @@ def assert_final_execution_authorized(
     failures: list[str] = []
     if profile_name != "final":
         failures.append("holdout scientific execution requires the final profile")
+    if str(profile.get("name")) != "final":
+        failures.append("loaded experiment profile is not named final")
     if not bool(profile.get("locked", False)):
         failures.append("final experiment profile is not locked")
 
@@ -203,11 +341,38 @@ def assert_final_execution_authorized(
         failures.append("analysis_plan.status is not frozen")
     if not bool(analysis.get("final_execution_authorized", False)):
         failures.append("final execution is not authorized")
+    authorized_hashes = dict(analysis.get("final_raw_data_sha256", {}))
+    authorized_analysis_hashes = dict(
+        analysis.get("final_analysis_configuration_sha256", {})
+    )
+    if dataset_name is not None:
+        authorized_raw_hash = authorized_hashes.get(dataset_name)
+        if not authorized_raw_hash:
+            failures.append(
+                f"authorized raw-data SHA-256 is not configured for {dataset_name}"
+            )
+        elif raw_data_sha256 != str(authorized_raw_hash):
+            failures.append(
+                f"raw-data SHA-256 does not match authorization for {dataset_name}"
+            )
+        authorized_analysis_hash = authorized_analysis_hashes.get(dataset_name)
+        if not authorized_analysis_hash:
+            failures.append(
+                f"authorized analysis-configuration SHA-256 is not configured for {dataset_name}"
+            )
+        elif analysis_configuration_sha256 != str(authorized_analysis_hash):
+            failures.append(
+                f"analysis-configuration SHA-256 does not match authorization for {dataset_name}"
+            )
     configured_seed = analysis.get("final_holdout_seed")
-    if configured_seed is None or int(configured_seed) != int(profile.get("seed", -1)):
+    if requires_concealed_holdout and (
+        configured_seed is None
+        or int(configured_seed) != int(profile.get("seed", -1))
+    ):
         failures.append("profile seed does not match the authorized final holdout seed")
 
     authorization_path = analysis.get("final_authorization_record")
+    authorization_sha256 = analysis.get("final_authorization_record_sha256")
     if not authorization_path:
         failures.append("final authorization record is not configured")
     else:
@@ -219,28 +384,51 @@ def assert_final_execution_authorized(
         )
         if not authorization.exists():
             failures.append("final authorization record does not exist")
+        elif not authorization_sha256:
+            failures.append("final authorization record SHA-256 is not configured")
+        elif _sha256_file(authorization) != str(authorization_sha256):
+            failures.append("final authorization record checksum does not match")
 
-    manifest_value = analysis.get("final_holdout_manifest")
-    manifest_sha256 = analysis.get("final_holdout_manifest_sha256")
     manifest_path: Path | None = None
-    if not manifest_value or not manifest_sha256:
-        failures.append("final concealed manifest path/hash is not configured")
-    else:
-        manifest_path = Path(manifest_value)
-        manifest_path = (
-            manifest_path if manifest_path.is_absolute() else PROJECT_ROOT / manifest_path
-        )
-        try:
-            validate_concealed_manifest_files(
-                manifest_path, expected_sha256=str(manifest_sha256)
+    if requires_concealed_holdout:
+        manifest_value = analysis.get("final_holdout_manifest")
+        manifest_sha256 = analysis.get("final_holdout_manifest_sha256")
+        if not manifest_value or not manifest_sha256:
+            failures.append("final concealed manifest path/hash is not configured")
+        else:
+            manifest_path = Path(manifest_value)
+            manifest_path = (
+                manifest_path
+                if manifest_path.is_absolute()
+                else PROJECT_ROOT / manifest_path
             )
-        except (FileNotFoundError, RuntimeError) as exc:
-            failures.append(str(exc))
+            try:
+                _, _, manifest_metadata = validate_concealed_manifest_files(
+                    manifest_path, expected_sha256=str(manifest_sha256)
+                )
+                if (
+                    dataset_name is not None
+                    and str(manifest_metadata.get("dataset")) != dataset_name
+                ):
+                    failures.append(
+                        "final concealed manifest dataset does not match request"
+                    )
+                if configured_seed is not None and int(
+                    manifest_metadata.get("seed", -1)
+                ) != int(configured_seed):
+                    failures.append(
+                        "final concealed manifest seed does not match authorization"
+                    )
+                if str(manifest_metadata.get("purpose")) != "final_locked_holdout":
+                    failures.append(
+                        "final concealed manifest purpose is not final_locked_holdout"
+                    )
+            except (FileNotFoundError, RuntimeError) as exc:
+                failures.append(str(exc))
 
     if failures:
-        raise RuntimeError("Final holdout access denied: " + "; ".join(failures))
-    assert manifest_path is not None
-    return manifest_path.resolve()
+        raise RuntimeError("Final study execution denied: " + "; ".join(failures))
+    return manifest_path.resolve() if manifest_path is not None else None
 
 
 def load_authorized_concealed_manifest(

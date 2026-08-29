@@ -1,0 +1,54 @@
+name: lightweight-validation
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  unit-and-config:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12.0"
+          cache: pip
+      - name: Install locked environment
+        run: |
+          python -m pip install -r requirements.lock
+          python -m pip install --no-deps --no-build-isolation -e .
+      - name: Verify environment
+        run: python scripts/verify_environment.py
+      - name: Run data-independent unit and governance tests
+        env:
+          MPLCONFIGDIR: outputs/.matplotlib
+        run: |
+          python -m pytest -q \
+            tests/test_artifact_reload.py \
+            tests/test_concealment.py \
+            tests/test_decision_curve_inference.py \
+            tests/test_feature_ontology.py \
+            tests/test_holdout_evaluation.py \
+            tests/test_metrics_calibration.py \
+            tests/test_models.py \
+            tests/test_preprocessing.py \
+            tests/test_repeated_cv_inference.py \
+            tests/test_reproducibility.py \
+            tests/test_routing.py \
+            tests/test_selective_prediction.py \
+            tests/test_splits.py
+      - name: Validate feature and endpoint ontology
+        env:
+          MPLCONFIGDIR: outputs/.matplotlib
+        run: python -m diabetes_pipeline.cli feature-map
+
+  raw-data-contract-note:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Confirm raw data is not tracked
+        run: |
+          test -z "$(git ls-files 'data/raw/**')"
+          test -f config/data_sources.yaml
+          test -f docs/DATA_ACQUISITION.md

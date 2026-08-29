@@ -23,6 +23,7 @@ class PublicationReadinessTests(unittest.TestCase):
         self.assertFalse(result["ready_for_submission"])
         self.assertIn("brfss_final_profile", result["blockers"])
         self.assertIn("brfss_full_sample", result["blockers"])
+        self.assertIn("brfss_test_access", result["blockers"])
         self.assertIn("protocol_frozen", result["blockers"])
         brfss_artifacts = next(
             check

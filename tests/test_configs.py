@@ -43,7 +43,10 @@ class ConfigurationTests(unittest.TestCase):
         self.assertIsNone(analysis_plan["final_holdout_seed"])
         self.assertIsNone(analysis_plan["final_holdout_manifest"])
         self.assertIsNone(analysis_plan["final_holdout_manifest_sha256"])
+        self.assertEqual(analysis_plan["final_raw_data_sha256"], {})
+        self.assertEqual(analysis_plan["final_analysis_configuration_sha256"], {})
         self.assertIsNone(analysis_plan["final_authorization_record"])
+        self.assertIsNone(analysis_plan["final_authorization_record_sha256"])
         self.assertFalse(final_profile["locked"])
 
     def test_every_dataset_has_a_valid_availability_contract(self) -> None:

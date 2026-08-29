@@ -1,5 +1,11 @@
 # Block K Checkpoint: Research-Grade Audit and Claim Control
 
+> Historical checkpoint. This report preserves the state when Block K was
+> written. Later full PIDD/Sylhet work and the full BRFSS development study are
+> recorded in `docs/research/Execution_Status.md`, the tracked evidence registry,
+> and the current publication-readiness audit. Historical smoke evidence below
+> has not been relabelled.
+
 ## Verdict
 
 The implementation is a serious research prototype, but the current evidence

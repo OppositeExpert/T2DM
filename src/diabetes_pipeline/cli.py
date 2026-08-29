@@ -115,6 +115,14 @@ def build_parser() -> argparse.ArgumentParser:
     concealment.add_argument("--dataset", required=True, choices=("brfss", "hospital130"))
     concealment.add_argument("--seed", type=int, default=42)
 
+    final_concealment = subparsers.add_parser(
+        "create-final-concealment",
+        help="Create one authorization-gated outcome-blind final manifest",
+    )
+    final_concealment.add_argument(
+        "--dataset", required=True, choices=("brfss", "hospital130")
+    )
+
     feature_map = subparsers.add_parser(
         "feature-map",
         help="Validate and write the complete cross-dataset feature dictionary",
@@ -434,6 +442,31 @@ def main() -> None:
                     "manifest": str(manifest_path),
                     "metadata": str(metadata_path),
                     "manifest_sha256": metadata["manifest_sha256"],
+                },
+                sort_keys=True,
+            )
+        )
+    elif args.command == "create-final-concealment":
+        from diabetes_pipeline.settings import load_experiment_profile
+        from diabetes_pipeline.splitting.concealment import (
+            write_final_concealed_manifest,
+        )
+
+        manifest_path, metadata_path, metadata = write_final_concealed_manifest(
+            load_dataset(args.dataset),
+            profile=load_experiment_profile("final"),
+        )
+        print(
+            json.dumps(
+                {
+                    "dataset": args.dataset,
+                    "purpose": metadata["purpose"],
+                    "outcome_blind": metadata["outcome_blind"],
+                    "manifest": str(manifest_path),
+                    "metadata": str(metadata_path),
+                    "manifest_sha256": metadata["manifest_sha256"],
+                    "final_execution_authorized": False,
+                    "next_step": "independent hash review and manual protocol registration",
                 },
                 sort_keys=True,
             )

@@ -5,7 +5,9 @@ from __future__ import annotations
 import hashlib
 import json
 import logging
+import os
 import time
+from datetime import datetime, timezone
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Sequence
@@ -44,6 +46,7 @@ from diabetes_pipeline.settings import (
 from diabetes_pipeline.splitting.registry import create_and_write_split_manifest
 from diabetes_pipeline.splitting.concealment import (
     assert_final_execution_authorized,
+    final_analysis_configuration_sha256,
     load_authorized_concealed_manifest,
 )
 from diabetes_pipeline.training.tuning import (
@@ -65,20 +68,73 @@ class HoldoutResult:
     summary_path: Path
 
 
+def _sha256_file(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        while chunk := handle.read(8 * 1024 * 1024):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
 def _experiment_id(
-    dataset_cfg: dict[str, Any], profile: dict[str, Any], models: Sequence[str]
+    dataset_cfg: dict[str, Any],
+    profile: dict[str, Any],
+    models: Sequence[str],
+    *,
+    raw_data_sha256: str,
+    split_manifest_sha256: str,
 ) -> str:
     payload = {
         "runner": "development_locked_holdout",
         "dataset_configuration": configuration_sha256(dataset_cfg),
         "profile": profile,
         "models": list(models),
+        "raw_data_sha256": raw_data_sha256,
+        "split_manifest_sha256": split_manifest_sha256,
         "source_tree_sha256": source_tree_sha256(),
     }
     digest = hashlib.sha256(
         json.dumps(payload, sort_keys=True, default=str).encode("utf-8")
     ).hexdigest()[:12]
     return f"{dataset_cfg['name']}_{profile['name']}_holdout_{digest}"
+
+
+def _holdout_evidence_tier(profile_name: str, profile: dict[str, Any]) -> str:
+    if profile_name == "smoke":
+        return "execution_only_smoke"
+    if profile_name == "development":
+        return "full_development"
+    if profile_name == "final" and bool(profile.get("locked", False)):
+        return "final_locked"
+    raise ValueError(
+        "Holdout studies support only smoke, development, or an authorized locked final profile"
+    )
+
+
+def _atomic_joblib_dump(payload: Any, path: Path) -> None:
+    temporary = path.with_suffix(path.suffix + ".tmp")
+    joblib.dump(payload, temporary)
+    os.replace(temporary, path)
+
+
+def _claim_final_test_access(output_dir: Path, experiment_id: str) -> Path:
+    """Create a one-way receipt immediately before an authorized final test access."""
+
+    receipt = output_dir / "FINAL_TEST_ACCESS_STARTED.json"
+    payload = {
+        "experiment_id": experiment_id,
+        "started_at_utc": datetime.now(timezone.utc).isoformat(),
+        "warning": "Presence of this receipt prohibits automatic final-test re-execution.",
+    }
+    try:
+        with receipt.open("x", encoding="utf-8") as handle:
+            json.dump(payload, handle, indent=2, sort_keys=True)
+            handle.write("\n")
+    except FileExistsError as exc:
+        raise RuntimeError(
+            "Final test access was already started for this study; automatic overwrite or re-run is prohibited"
+        ) from exc
+    return receipt
 
 
 def _sample_partition(
@@ -182,14 +238,35 @@ def run_holdout_benchmark(
     unknown_models = sorted(set(models) - set(MODEL_NAMES))
     if unknown_models:
         raise ValueError(f"Unknown models: {unknown_models}")
-    authorized_manifest_path = assert_final_execution_authorized(
-        profile_name=profile_name,
+    evidence_tier = _holdout_evidence_tier(profile_name, profile)
+    evaluation_role = {
+        "smoke": "smoke_test",
+        "development": "development_test",
+        "final": "locked_final_test",
+    }[profile_name]
+    run_started_at_utc = datetime.now(timezone.utc).isoformat()
+    raw_data_sha256 = _sha256_file(Path(dataset_cfg["raw_path"]))
+    analysis_configuration_sha256 = final_analysis_configuration_sha256(
+        dataset_name=dataset_name,
+        dataset_config=dataset_cfg,
         profile=profile,
+        models=models,
     )
+    authorized_manifest_path = None
+    if profile_name == "final":
+        authorized_manifest_path = assert_final_execution_authorized(
+            profile_name=profile_name,
+            profile=profile,
+            dataset_name=dataset_name,
+            raw_data_sha256=raw_data_sha256,
+            analysis_configuration_sha256=analysis_configuration_sha256,
+        )
 
     dataset = load_dataset(dataset_name)
     audit_path, audit_markdown_path, audit = write_audit(dataset)
-    if profile_name == "smoke":
+    if str(audit["raw_sha256"]) != raw_data_sha256:
+        raise RuntimeError("Raw data changed between authorization and dataset audit")
+    if profile_name in {"smoke", "development"}:
         split_path, split_metadata_path, manifest = create_and_write_split_manifest(
             dataset, seed=int(profile["seed"])
         )
@@ -233,12 +310,22 @@ def run_holdout_benchmark(
     development_splits = _predefined_development_splits(development_manifest)
     model_n_jobs = int(profile.get("model_n_jobs", 1))
 
-    experiment_id = _experiment_id(dataset_cfg, profile, models)
+    split_manifest_sha256 = json.loads(
+        split_metadata_path.read_text(encoding="utf-8")
+    )["manifest_sha256"]
+    experiment_id = _experiment_id(
+        dataset_cfg,
+        profile,
+        models,
+        raw_data_sha256=str(audit["raw_sha256"]),
+        split_manifest_sha256=str(split_manifest_sha256),
+    )
     output_dir = DEFAULT_OUTPUT_ROOT / "studies" / experiment_id
     trial_dir = output_dir / "trials"
     model_dir = output_dir / "models"
     paper_table_dir = output_dir / "paper_tables"
-    for path in (trial_dir, model_dir, paper_table_dir):
+    checkpoint_dir = output_dir / "checkpoints" / "development_models"
+    for path in (trial_dir, model_dir, paper_table_dir, checkpoint_dir):
         path.mkdir(parents=True, exist_ok=True)
 
     calibration_records: list[dict[str, Any]] = []
@@ -249,6 +336,23 @@ def run_holdout_benchmark(
     locked_artifacts: dict[str, dict[str, Any]] = {}
 
     for model_index, model_name in enumerate(models):
+        checkpoint_path = checkpoint_dir / f"{model_name}.joblib"
+        if checkpoint_path.exists():
+            checkpoint = joblib.load(checkpoint_path)
+            if (
+                checkpoint.get("experiment_id") == experiment_id
+                and checkpoint.get("model_name") == model_name
+            ):
+                LOGGER.info("Resuming completed development model %s", model_name)
+                calibration_records.extend(checkpoint["calibration_records"])
+                threshold_records.extend(checkpoint["threshold_records"])
+                parameter_records.append(checkpoint["parameter_record"])
+                development_prediction_frames.append(
+                    checkpoint["development_predictions"]
+                )
+                development_scores.append(checkpoint["development_score"])
+                locked_artifacts[model_name] = checkpoint["locked_artifact"]
+                continue
         LOGGER.info(
             "Development tuning %s dataset=%s rows=%d trials=%d",
             model_name,
@@ -311,15 +415,13 @@ def run_holdout_benchmark(
             calibration.cross_fitted_probability,
             threshold=0.5,
         )
-        development_scores.append(
-            {
-                "model": model_name,
-                "calibration_method": calibration.method,
-                **development_metric,
-            }
-        )
-        development_prediction_frames.append(
-            pd.DataFrame(
+        development_score = {
+            "model": model_name,
+            "calibration_method": calibration.method,
+            **development_metric,
+        }
+        development_scores.append(development_score)
+        development_predictions = pd.DataFrame(
                 {
                     "experiment_id": experiment_id,
                     "dataset": dataset_name,
@@ -335,10 +437,10 @@ def run_holdout_benchmark(
                     "calibration_method": calibration.method,
                 }
             )
-        )
+        development_prediction_frames.append(development_predictions)
+        model_calibration_records: list[dict[str, Any]] = []
         for score in calibration.scores:
-            calibration_records.append(
-                {
+            record = {
                     "experiment_id": experiment_id,
                     "dataset": dataset_name,
                     "model": model_name,
@@ -346,15 +448,16 @@ def run_holdout_benchmark(
                     "selected": str(score["method"]) == calibration.method,
                     "selection_data": "development_oof_only",
                 }
-            )
+            calibration_records.append(record)
+            model_calibration_records.append(record)
+        model_threshold_records: list[dict[str, Any]] = []
         for threshold in thresholds:
             operating = binary_metrics(
                 y_development,
                 calibration.cross_fitted_probability,
                 threshold=float(threshold["threshold"]),
             )
-            threshold_records.append(
-                {
+            record = {
                     "experiment_id": experiment_id,
                     "dataset": dataset_name,
                     "model": model_name,
@@ -366,7 +469,8 @@ def run_holdout_benchmark(
                     "development_npv": operating["npv"],
                     **threshold,
                 }
-            )
+            threshold_records.append(record)
+            model_threshold_records.append(record)
 
         preprocessor = build_preprocessor(dataset_cfg, model_name)
         transformed_development = preprocessor.fit_transform(X_development)
@@ -380,7 +484,7 @@ def run_holdout_benchmark(
         fit_start = time.perf_counter()
         model.fit(transformed_development, y_development)
         fit_seconds = time.perf_counter() - fit_start
-        locked_artifacts[model_name] = {
+        locked_artifact = {
             "model": model,
             "preprocessor": preprocessor,
             "calibrator": calibration.calibrator,
@@ -394,8 +498,8 @@ def run_holdout_benchmark(
             "tuning_seconds": tuning_seconds,
             "fit_seconds": fit_seconds,
         }
-        parameter_records.append(
-            {
+        locked_artifacts[model_name] = locked_artifact
+        parameter_record = {
                 "model": model_name,
                 "development_cv_average_precision": tuning.best_score,
                 "best_params": json.dumps(tuning.best_params, sort_keys=True),
@@ -403,6 +507,19 @@ def run_holdout_benchmark(
                 "fit_seconds": fit_seconds,
                 "trial_path": str(trial_path),
             }
+        parameter_records.append(parameter_record)
+        _atomic_joblib_dump(
+            {
+                "experiment_id": experiment_id,
+                "model_name": model_name,
+                "calibration_records": model_calibration_records,
+                "threshold_records": model_threshold_records,
+                "parameter_record": parameter_record,
+                "development_predictions": development_predictions,
+                "development_score": development_score,
+                "locked_artifact": locked_artifact,
+            },
+            checkpoint_path,
         )
 
     development_score_frame = pd.DataFrame(development_scores)
@@ -413,6 +530,9 @@ def run_holdout_benchmark(
 
     # No test feature or label is used before all model, calibration, threshold,
     # and champion choices above have been locked from development data.
+    final_access_receipt = None
+    if profile_name == "final":
+        final_access_receipt = _claim_final_test_access(output_dir, experiment_id)
     test_positions = test_manifest["row_position"].to_numpy(dtype=int)
     X_test = dataset.X.iloc[test_positions].reset_index(drop=True)
     y_test = dataset.y.iloc[test_positions].to_numpy(dtype=int)
@@ -439,7 +559,7 @@ def run_holdout_benchmark(
                 "model": model_name,
                 "row_id": test_manifest["row_id"].to_numpy(),
                 "group_id": test_manifest["group_id"].to_numpy(),
-                "evaluation_role": "locked_test",
+                "evaluation_role": evaluation_role,
                 "target": y_test,
                 "probability_raw": probability_raw,
                 "probability_calibrated": probability_calibrated,
@@ -454,9 +574,10 @@ def run_holdout_benchmark(
             "task": dataset_cfg["task"],
             "endpoint": dataset_cfg["endpoint"],
             "model": model_name,
-            "evaluation_role": "locked_test",
+            "evaluation_role": evaluation_role,
             "calibration_method": artifact["calibration_method"],
             "development_selected_champion": model_name == champion,
+            "evidence_tier": evidence_tier,
         }
         raw_metrics = {
             **base,
@@ -512,6 +633,10 @@ def run_holdout_benchmark(
             "threshold_policy": "fixed_0_5",
             "threshold": float(artifact["thresholds"]["fixed_0_5"]),
             "development_selected_champion": model_name == champion,
+            "evidence_tier": evidence_tier,
+            "raw_data_sha256": raw_data_sha256,
+            "split_manifest_sha256": split_manifest_sha256,
+            "analysis_configuration_sha256": analysis_configuration_sha256,
         }
         bundle_path = model_dir / f"{model_name}.joblib"
         joblib.dump(bundle, bundle_path)
@@ -561,7 +686,7 @@ def run_holdout_benchmark(
                         "model": model_name,
                         "probability_version": probability_version,
                         "threshold_policy": threshold_policy,
-                        "evaluation_role": "locked_test",
+                        "evaluation_role": evaluation_role,
                         **row,
                     }
                 )
@@ -600,9 +725,9 @@ def run_holdout_benchmark(
         seed=int(profile["seed"]) + 700_000,
         groups=comparison_groups,
     )
-    decision_curve_confidence_intervals.insert(0, "evaluation_role", "locked_test")
+    decision_curve_confidence_intervals.insert(0, "evaluation_role", evaluation_role)
     if not decision_curve_paired_contrasts.empty:
-        decision_curve_paired_contrasts.insert(0, "evaluation_role", "locked_test")
+        decision_curve_paired_contrasts.insert(0, "evaluation_role", evaluation_role)
 
     paths = {
         "development_predictions": output_dir / "development_oof_predictions.csv",
@@ -674,20 +799,38 @@ def run_holdout_benchmark(
                 "dataset_configuration_sha256": configuration_sha256(dataset_cfg),
                 "source_tree_sha256": source_tree_sha256(),
                 "raw_data_sha256": audit["raw_sha256"],
+                "analysis_configuration_sha256": analysis_configuration_sha256,
+                "requirements_lock_sha256": (
+                    _sha256_file(PROJECT_ROOT / "requirements.lock")
+                    if (PROJECT_ROOT / "requirements.lock").exists()
+                    else None
+                ),
+                "run_started_at_utc": run_started_at_utc,
+                "run_completed_at_utc": datetime.now(timezone.utc).isoformat(),
+                "reproduction_command": (
+                    "python -m diabetes_pipeline.cli benchmark-holdout "
+                    f"--dataset {dataset_name} --profile {profile_name} --models "
+                    + " ".join(models)
+                ),
                 "audit_json": str(audit_path),
                 "audit_markdown": str(audit_markdown_path),
                 "split_manifest": str(split_path),
                 "split_manifest_metadata": str(split_metadata_path),
-                "split_manifest_sha256": json.loads(
-                    split_metadata_path.read_text(encoding="utf-8")
-                )["manifest_sha256"],
+                "split_manifest_sha256": split_manifest_sha256,
                 "profile": profile,
+                "evidence_tier": evidence_tier,
+                "evaluation_role": evaluation_role,
                 "models": list(models),
                 "development_selected_champion": champion,
-                "test_access": (
-                    "smoke_path_check_not_for_scientific_inference"
-                    if profile_name == "smoke"
-                    else "single_locked_final_evaluation"
+                "test_access": {
+                    "smoke": "smoke_path_check_not_for_scientific_inference",
+                    "development": "development_test_previously_accessed_not_final_eligible",
+                    "final": "single_locked_final_evaluation",
+                }[profile_name],
+                "final_test_access_receipt": (
+                    str(final_access_receipt.relative_to(output_dir))
+                    if final_access_receipt is not None
+                    else None
                 ),
                 "all_choices_locked_before_test_prediction": True,
                 "full_development_rows": len(full_development_manifest),
@@ -701,7 +844,7 @@ def run_holdout_benchmark(
                     "patient_cluster" if dataset.groups is not None else "individual"
                 ),
                 "decision_curve_inference": {
-                    "estimation_scope": "locked_test",
+                    "estimation_scope": evaluation_role,
                     "paired_bootstrap": True,
                     "resampling_unit": (
                         "patient_cluster"

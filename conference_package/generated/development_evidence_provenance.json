@@ -1,18 +1,18 @@
 {
-  "evidence_role": "development_and_smoke_not_final",
+  "evidence_role": "development_only_not_final",
   "schema_version": "1.0",
   "studies": {
     "brfss": {
       "dataset_configuration_sha256": "d48716267cc6fca23fc5e678280c60064645698fdca2c3334fd3b1dc3c685ef6",
       "eligible_for_final_claims": false,
-      "metadata_sha256": "d36df3ce170dba2659c6f299f7643372c8fb7a51297b871a5671f1a43163c33f",
-      "profile": "smoke",
+      "metadata_sha256": "88fe8ddc7dfef15c54a9f6c9230ea51ca1b1fdea8ae85ac7f8f1b14768289219",
+      "profile": "development",
       "profile_locked": false,
       "raw_data_sha256": "a7d3380aca5aeae94186770983c3089fb6c4b2074aa112418112c11891d16420",
-      "source_tree_sha256": "701cbda9030814a07922b46d087ee3aab27c37c59988e9ac72e0d99b357f070c",
+      "source_tree_sha256": "772edea034d6e455409541d212fe0184244f0a7db6780da1875a55647f34fe31",
       "split_manifest_sha256": "047d0a8ad36f229ff1d74c8a2f5531f3123aee9cc480f708287ad2fa4265be1e",
-      "study_id": "brfss_smoke_holdout_b3a6ad2aa89e",
-      "summary_metrics_sha256": "14a5e41c93101f415c3776cdd49950e5b9cbee79a461dda732e50e8279c90a8a"
+      "study_id": "brfss_development_holdout_56407ef53bba",
+      "summary_metrics_sha256": "da8898db8993b786de218879b0ee3ee8d553cc7d226e25c5fa7f716c2d2a9bff"
     },
     "pidd": {
       "dataset_configuration_sha256": "c000944c58f8e2edf5c5ef337bfe7b7243a1f4f9e3e7916a4466594864dd4add",

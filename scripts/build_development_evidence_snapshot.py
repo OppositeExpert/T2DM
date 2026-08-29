@@ -15,7 +15,7 @@ GENERATED = ROOT / "conference_package" / "generated"
 STUDY_IDS = {
     "pidd": "pidd_development_072cd2104089",
     "sylhet": "sylhet_development_b52477910fe6",
-    "brfss": "brfss_smoke_holdout_b3a6ad2aa89e",
+    "brfss": "brfss_development_holdout_56407ef53bba",
 }
 
 
@@ -32,7 +32,7 @@ def main() -> None:
     frames: list[pd.DataFrame] = []
     provenance: dict[str, object] = {
         "schema_version": "1.0",
-        "evidence_role": "development_and_smoke_not_final",
+        "evidence_role": "development_only_not_final",
         "studies": {},
     }
     for dataset, study_id in STUDY_IDS.items():
@@ -48,11 +48,10 @@ def main() -> None:
         primary.insert(0, "study_id", study_id)
         if "dataset" not in primary:
             primary.insert(1, "dataset", dataset)
-        primary.insert(
-            2,
-            "evidence_tier",
-            "execution_only_smoke" if dataset == "brfss" else "development_only",
-        )
+        if "evidence_tier" not in primary:
+            primary["evidence_tier"] = str(
+                metadata.get("evidence_tier", "development_only")
+            )
         columns = [
             "study_id",
             "dataset",

@@ -385,16 +385,22 @@ PROBAST+AI assessment.
 
 ## 20. Required implementation before freeze
 
-- [ ] Participant-level aggregation across repeated PIDD/Sylhet held-out predictions.
-- [ ] Identical-profile cluster bootstrap for Sylhet primary inference.
-- [ ] Paired bootstrap CIs for reduced-panel versus full-panel degradation.
-- [ ] Net-benefit uncertainty and paired decision-curve comparisons.
-- [ ] Selective-prediction/risk-coverage engine and failure-reason tables.
-- [ ] Subgroup metrics, suppression, coverage, and uncertainty engine.
-- [ ] Prespecified ablation runner with matched folds and budgets.
-- [ ] Label-concealed fresh-final split and one-time authorization guard.
-- [ ] Final preflight for hashes, disk capacity, output emptiness, and backup target.
-- [ ] Blank final tables and figures approved.
+**Current implementation status (updated 28 August 2026):**
+
+- [x] Participant-level aggregation across repeated PIDD/Sylhet held-out predictions.
+- [x] Identical-profile cluster bootstrap for Sylhet primary inference.
+- [x] Paired bootstrap CIs for reduced-panel versus full-panel degradation.
+- [x] Net-benefit uncertainty and paired decision-curve comparisons.
+- [x] Selective-prediction/risk-coverage engine and failure-reason tables.
+- [x] Subgroup metrics, suppression, coverage, and uncertainty engine.
+- [x] Prespecified artifact and repeated-CV retraining ablation runners with matched folds and budgets.
+- [x] Outcome-blind manifest validation and fail-closed one-time authorization guard tested on development controls.
+- [ ] Create the genuinely fresh label-concealed final manifest only after the human protocol-freeze gate authorizes it.
+- [ ] Complete the final preflight with authorized hashes, disk capacity, empty output target, and backup target.
+- [ ] Obtain human approval of blank final tables and figures.
+
+Completed engineering items remain development verification. Checkmarks do not
+freeze the SAP or authorize creation or access of a final outcome.
 
 ## 21. SAP sign-off gate
 

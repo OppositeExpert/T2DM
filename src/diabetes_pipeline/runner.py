@@ -6,6 +6,7 @@ import hashlib
 import json
 import logging
 import time
+from datetime import datetime, timezone
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Sequence
@@ -33,12 +34,17 @@ from diabetes_pipeline.models.registry import MODEL_NAMES, build_estimator
 from diabetes_pipeline.preprocessing.builders import build_preprocessor, transformed_feature_names
 from diabetes_pipeline.settings import (
     DEFAULT_OUTPUT_ROOT,
+    PROJECT_ROOT,
     configuration_sha256,
     get_dataset_config,
     load_experiment_profile,
     source_tree_sha256,
 )
 from diabetes_pipeline.splitting.registry import create_and_write_split_manifest
+from diabetes_pipeline.splitting.concealment import (
+    assert_final_execution_authorized,
+    final_analysis_configuration_sha256,
+)
 from diabetes_pipeline.training.tuning import (
     cross_fitted_probabilities,
     positive_class_weight,
@@ -47,6 +53,56 @@ from diabetes_pipeline.training.tuning import (
 
 
 LOGGER = logging.getLogger(__name__)
+
+
+def _sha256_file(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        while chunk := handle.read(8 * 1024 * 1024):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def _nested_evidence_tier(profile_name: str, profile: dict[str, Any]) -> str:
+    if profile_name == "smoke":
+        return "execution_only_smoke"
+    if profile_name in {"development_pilot", "pilot"}:
+        return "development_pilot"
+    if profile_name == "development":
+        return "full_development"
+    if profile_name == "final" and bool(profile.get("locked", False)):
+        return "final_locked"
+    raise ValueError("Nested studies require an explicit supported evidence profile")
+
+
+def _claim_final_nested_execution(
+    dataset_name: str,
+    analysis_configuration_sha256: str,
+    *,
+    output_root: Path = DEFAULT_OUTPUT_ROOT,
+) -> Path:
+    """Persist a one-way receipt before any authorized final nested-CV work."""
+
+    receipt_dir = output_root / "final_execution_receipts"
+    receipt_dir.mkdir(parents=True, exist_ok=True)
+    receipt = receipt_dir / (
+        f"{dataset_name}_{analysis_configuration_sha256[:12]}.json"
+    )
+    payload = {
+        "dataset": dataset_name,
+        "analysis_configuration_sha256": analysis_configuration_sha256,
+        "started_at_utc": datetime.now(timezone.utc).isoformat(),
+        "warning": "Presence of this receipt prohibits automatic final re-execution.",
+    }
+    try:
+        with receipt.open("x", encoding="utf-8") as handle:
+            json.dump(payload, handle, indent=2, sort_keys=True)
+            handle.write("\n")
+    except FileExistsError as exc:
+        raise RuntimeError(
+            "Final nested-CV execution was already started for this frozen analysis; automatic re-run is prohibited"
+        ) from exc
+    return receipt
 
 
 @dataclass(frozen=True)
@@ -59,12 +115,19 @@ class BenchmarkResult:
 
 
 def _experiment_id(
-    dataset_cfg: dict[str, Any], profile: dict[str, Any], models: Sequence[str]
+    dataset_cfg: dict[str, Any],
+    profile: dict[str, Any],
+    models: Sequence[str],
+    *,
+    raw_data_sha256: str,
+    split_manifest_sha256: str,
 ) -> str:
     payload = {
         "dataset_configuration": configuration_sha256(dataset_cfg),
         "profile": profile,
         "models": list(models),
+        "raw_data_sha256": raw_data_sha256,
+        "split_manifest_sha256": split_manifest_sha256,
         "source_tree_sha256": source_tree_sha256(),
     }
     digest = hashlib.sha256(
@@ -130,13 +193,39 @@ def run_nested_benchmark(
     unknown_models = sorted(set(models) - set(MODEL_NAMES))
     if unknown_models:
         raise ValueError(f"Unknown models: {unknown_models}")
+    evidence_tier = _nested_evidence_tier(profile_name, profile)
     if not dataset_cfg["evaluation_strategy"].startswith("repeated_nested"):
         raise NotImplementedError(
             "The first vertical-slice runner currently supports repeated nested CV datasets only"
         )
 
+    run_started_at_utc = datetime.now(timezone.utc).isoformat()
+    raw_data_sha256 = _sha256_file(Path(dataset_cfg["raw_path"]))
+    analysis_configuration_sha256 = final_analysis_configuration_sha256(
+        dataset_name=dataset_name,
+        dataset_config=dataset_cfg,
+        profile=profile,
+        models=models,
+    )
+    final_execution_receipt = None
+    if profile_name == "final":
+        assert_final_execution_authorized(
+            profile_name=profile_name,
+            profile=profile,
+            dataset_name=dataset_name,
+            raw_data_sha256=raw_data_sha256,
+            analysis_configuration_sha256=analysis_configuration_sha256,
+            requires_concealed_holdout=False,
+        )
+        final_execution_receipt = _claim_final_nested_execution(
+            dataset_name,
+            analysis_configuration_sha256,
+        )
+
     dataset = load_dataset(dataset_name)
     audit_path, audit_markdown_path, audit = write_audit(dataset)
+    if str(audit["raw_sha256"]) != raw_data_sha256:
+        raise RuntimeError("Raw data changed between authorization and dataset audit")
     split_path, split_metadata_path, manifest = create_and_write_split_manifest(
         dataset, seed=int(profile["seed"])
     )
@@ -144,7 +233,16 @@ def run_nested_benchmark(
     if not selected_splits:
         raise RuntimeError("Experiment profile selected no outer splits")
 
-    experiment_id = _experiment_id(dataset_cfg, profile, models)
+    split_manifest_sha256 = json.loads(
+        split_metadata_path.read_text(encoding="utf-8")
+    )["manifest_sha256"]
+    experiment_id = _experiment_id(
+        dataset_cfg,
+        profile,
+        models,
+        raw_data_sha256=raw_data_sha256,
+        split_manifest_sha256=str(split_manifest_sha256),
+    )
     output_dir = DEFAULT_OUTPUT_ROOT / "studies" / experiment_id
     trial_dir = output_dir / "trials"
     model_dir = output_dir / "models"
@@ -337,6 +435,7 @@ def run_nested_benchmark(
                 "tuning_average_precision": tuning.best_score,
                 "tuning_seconds": tuning_seconds,
                 "fit_seconds": fit_seconds,
+                "evidence_tier": evidence_tier,
             }
             raw_row = {
                 **base_metric_record,
@@ -380,6 +479,10 @@ def run_nested_benchmark(
                 "outer_fold": outer_fold,
                 "dataset_configuration_sha256": configuration_sha256(dataset_cfg),
                 "source_tree_sha256": source_tree_sha256(),
+                "evidence_tier": evidence_tier,
+                "raw_data_sha256": raw_data_sha256,
+                "split_manifest_sha256": split_manifest_sha256,
+                "analysis_configuration_sha256": analysis_configuration_sha256,
                 "best_params": tuning.best_params,
                 "preprocessor": preprocessor,
                 "transformed_feature_names": transformed_feature_names(preprocessor),
@@ -664,14 +767,31 @@ def run_nested_benchmark(
                 "dataset_configuration_sha256": configuration_sha256(dataset_cfg),
                 "source_tree_sha256": source_tree_sha256(),
                 "raw_data_sha256": audit["raw_sha256"],
+                "analysis_configuration_sha256": analysis_configuration_sha256,
+                "requirements_lock_sha256": (
+                    _sha256_file(PROJECT_ROOT / "requirements.lock")
+                    if (PROJECT_ROOT / "requirements.lock").exists()
+                    else None
+                ),
+                "run_started_at_utc": run_started_at_utc,
+                "run_completed_at_utc": datetime.now(timezone.utc).isoformat(),
+                "reproduction_command": (
+                    "python -m diabetes_pipeline.cli benchmark "
+                    f"--dataset {dataset_name} --profile {profile_name} --models "
+                    + " ".join(models)
+                ),
                 "audit_json": str(audit_path),
                 "audit_markdown": str(audit_markdown_path),
                 "split_manifest": str(split_path),
                 "split_manifest_metadata": str(split_metadata_path),
-                "split_manifest_sha256": json.loads(
-                    split_metadata_path.read_text(encoding="utf-8")
-                )["manifest_sha256"],
+                "split_manifest_sha256": split_manifest_sha256,
                 "profile": profile,
+                "evidence_tier": evidence_tier,
+                "final_execution_receipt": (
+                    str(final_execution_receipt.relative_to(PROJECT_ROOT))
+                    if final_execution_receipt is not None
+                    else None
+                ),
                 "models": list(models),
                 "outer_splits": selected_splits,
                 "inner_folds": inner_folds,

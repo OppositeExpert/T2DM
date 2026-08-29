@@ -15,7 +15,7 @@ export MPLCONFIGDIR=outputs/.matplotlib
 ```text
 PIDD:   outputs/publication_pipeline/studies/pidd_development_072cd2104089
 Sylhet: outputs/publication_pipeline/studies/sylhet_development_b52477910fe6
-BRFSS smoke verification: outputs/publication_pipeline/studies/brfss_smoke_holdout_b3a6ad2aa89e
+BRFSS:  outputs/publication_pipeline/studies/brfss_development_holdout_56407ef53bba
 ```
 
 The immutable identity of a result is the study identifier plus the raw-data,
@@ -28,8 +28,12 @@ copy a directory and rename it as another profile.
 .venv-pipeline/bin/python scripts/build_conference_package.py
 .venv-pipeline/bin/python scripts/build_development_evidence_snapshot.py
 .venv-pipeline/bin/python scripts/build_conference_manifest.py
+.venv-pipeline/bin/python scripts/build_study_registry.py
 .venv-pipeline/bin/python -m pytest -q
-.venv-pipeline/bin/python -m diabetes_pipeline.cli publication-readiness
+.venv-pipeline/bin/python -m diabetes_pipeline.cli publication-readiness \
+  --study-dir outputs/publication_pipeline/studies/pidd_development_072cd2104089 \
+  --study-dir outputs/publication_pipeline/studies/sylhet_development_b52477910fe6 \
+  --study-dir outputs/publication_pipeline/studies/brfss_development_holdout_56407ef53bba
 ```
 
 The checksum manifest must be generated last. A changed file after manifest
@@ -48,6 +52,11 @@ Before any non-smoke BRFSS/Hospital130 holdout access or any final-profile run:
    inspecting final outcome performance.
 5. Record and independently verify the manifest SHA-256.
 6. Set the final-profile lock and execution authorization only after sign-off.
+
+The precise two-stage split-creation and execution procedure is maintained in
+`FINAL_RUN_CHECKLIST.md`. Use `scripts/final_preflight.py --dataset brfss` to
+compute the current raw-data and executable-analysis fingerprints without
+loading outcomes; it must remain denied until every binding is present.
 
 The runner is designed to fail closed if any prerequisite is absent. This is a
 scientific safeguard, not an engineering defect.

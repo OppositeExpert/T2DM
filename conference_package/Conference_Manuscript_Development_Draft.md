@@ -1,7 +1,7 @@
 # Availability-Aware Diabetes Screening Under Incomplete Predictor Panels: A Multi-Environment Development Study
 
 **Document state:** Development manuscript; not final evidence and not authorized for submission  
-**Evidence cutoff:** 24 August 2026  
+**Evidence cutoff:** 29 August 2026
 **Target format:** Short applied machine-learning / health-informatics conference paper
 
 ## Abstract
@@ -45,9 +45,15 @@ development study (520 participants; 5 x 5 outer folds), CatBoost achieved AUROC
 12.65 indicated instability. The full-panel router achieved AUROC 0.965 and Brier
 0.068 versus 0.960 and 0.077 for the robust fixed baseline, without a corrected
 significance claim. Across 32 Sylhet panel-specific-training contrasts, no
-comparison survived Holm correction (minimum adjusted p=0.064). BRFSS scientific estimates remain pending because the next
-full-sample holdout is the protected, one-time final evaluation and cannot be
-accessed before protocol freeze and authorization.
+comparison survived Holm correction (minimum adjusted p=0.064). The full BRFSS
+development study used 343,488 development and 85,872 development-test
+respondents. XGBoost, CatBoost, and LightGBM had nearly identical calibrated
+AUROC (0.843) and Brier score (0.0915); none of their pairwise differences was
+Holm-significant. The development-selected LightGBM champion was retained even
+though XGBoost had the numerically lowest test Brier score. Survey weighting
+changed prevalence from 13.3% to 10.9% and increased XGBoost AUROC from 0.843 to
+0.871, showing that sample-conditional and population-weighted estimands are not
+interchangeable.
 
 **Conclusion:** The development evidence supports a reliability and applicability
 paper, not a universal-model or algorithm-superiority claim. Availability-aware
@@ -344,13 +350,95 @@ suppressed, as were the youngest and oldest age groups. Under 75% simulated
 dropout, supported-panel coverage fell to 4.0%-6.2% and Brier score rose to
 0.278-0.289 across Random Forest and XGBoost.
 
-### 3.6 Pending locked BRFSS estimate
+### 3.6 Full BRFSS development results
 
-Existing BRFSS smoke studies remain engineering evidence and are not promoted
-into the main result table. The next full-sample BRFSS holdout is deliberately
-reserved for a new concealed manifest and one authorized final execution after
-protocol freeze. Hospital130 remains outside the diabetes-screening result family
-because its endpoint is 30-day readmission.
+The full BRFSS development study
+`brfss_development_holdout_56407ef53bba` used all 429,360 retained respondents:
+343,488 for five-fold development tuning and cross-fitted selection and 85,872
+in the pre-existing seed-42 development test role (11,451 positives; prevalence
+13.3%). This partition had already been inspected and is permanently ineligible
+as a concealed final test. All model, calibration, threshold, and champion
+choices were locked from development data before test prediction.
+
+**Table 3. BRFSS calibrated full-development performance on the development test partition**
+
+| Model | AUROC | Average precision | Brier | Log loss | Calibration slope | ECE |
+|---|---:|---:|---:|---:|---:|---:|
+| XGBoost | 0.843 | 0.444 | 0.0915 | 0.2958 | 1.008 | 0.0023 |
+| CatBoost | 0.843 | 0.442 | 0.0915 | 0.2958 | 1.008 | 0.0018 |
+| LightGBM | 0.843 | 0.443 | 0.0915 | 0.2960 | 1.016 | 0.0020 |
+| Random Forest | 0.840 | 0.437 | 0.0921 | 0.2981 | 0.997 | 0.0022 |
+| Logistic Regression | 0.833 | 0.404 | 0.0940 | 0.3031 | 0.976 | 0.0033 |
+
+Development OOF Brier score selected LightGBM as champion (0.091391 versus
+0.091395 for XGBoost and CatBoost). On the development test, XGBoost had the
+numerically lowest Brier score (0.091497; 95% interval 0.090817-0.092218), but
+the top-three pairwise Brier, log-loss, AUROC, and average-precision differences
+were not Holm-significant. The champion was not reselected using test outcomes.
+
+The descriptive 0.5 threshold had high specificity (0.980-0.987) but low
+sensitivity (0.113-0.179). Development sensitivity-constrained thresholds near
+0.14 achieved 0.802-0.814 sensitivity with 0.704-0.726 specificity. This large
+operating-point change reinforces that 0.5 is not an implied clinical cutoff.
+
+The availability router selected LightGBM for the full 21-feature panel and
+XGBoost for each reduced panel using development cross-fitted Brier score. Test
+Brier score increased from 0.0915 for the full panel to 0.0924 for 12 routine
+survey features, 0.0927 for nine cardiometabolic/health features, 0.0945 for six
+health-status features, 0.1016 for five demographic/health features, and 0.1020
+for general health plus age. These are development degradation estimates, not
+optimized deployment rules. All 80 same-participant, same-family reduced-panel
+contrasts had degradation intervals excluding zero, but none survived the
+metric-wise Holm family (minimum adjusted p=0.080); this resolution limit must
+not be rewritten as equivalence or as a corrected significance claim.
+
+Certainty-based selective prediction was particularly unfavorable to positive
+cases. At 70% coverage, full-panel Brier score fell from 0.0915 to 0.0430, but
+only 2,859 of 11,451 positive events remained (25.0% event coverage), accepted
+prevalence fell to 4.8%, AUROC fell to 0.784, and average precision fell to
+0.128. The improved retained-case loss primarily reflects rejection of higher-
+risk cases and does not support an unqualified abstention benefit.
+
+All 30 prespecified age- and sex-stratified coverage cells met the minimum size
+and event counts. At the 70% target, observed acceptance ranged from 69.7% to
+70.3% across the four age groups and two sex groups. Within-group positive-event
+retention nevertheless fell sharply, with accepted prevalences of 4.6%-4.8% and
+average precision of 0.125-0.133. The subgroup results therefore reinforce the
+case-mix warning; they do not establish population fairness.
+
+The model-family ablation found that every tree family improved on Logistic
+Regression for AUROC, average precision, Brier score, and log loss after Holm
+correction (adjusted p=0.016 for the reported 500-replicate family). This is a
+development contrast, not a final superiority result. Selector-metric variants
+did not produce corrected differences, and the router-versus-robust-single-model
+family did not support a routing advantage. Calibration materially improved
+CatBoost probability loss because its raw scores required correction; LightGBM
+selected identity calibration and therefore showed no calibration change.
+
+Held-out SHAP analysis explained 1,000 development-test respondents per model
+using a 100-row development background. General health, high blood pressure,
+age, BMI, and high cholesterol occupied the top five original-feature positions
+for four model families; CatBoost used the same set with a different order.
+Additive reconstruction error was at most 5.6e-6. These explanations describe
+model behavior and must not be interpreted as causal effects.
+
+![BRFSS five-model discrimination and availability-router probability loss across prespecified feature panels in the full-sample development study.](generated/figures/brfss_performance_and_panels.png)
+
+**Figure 5.** BRFSS model discrimination and router probability loss under the
+full-sample development protocol. AUROC intervals use 500 participant-bootstrap
+replicates.
+
+Survey-weighted sensitivity analysis represented 53 reporting areas and 1,292
+strata; the Kish effective sample size was 21,165.5. Weighted prevalence was
+10.9% rather than 13.3%. Weighted XGBoost AUROC was 0.871 (95% PSU-bootstrap
+interval 0.864-0.877) and Brier score was 0.0752 (0.0730-0.0778). These estimates
+are secondary sensitivity analyses because the random respondent holdout was not
+designed as an official survey-analysis partition.
+
+Historical 10,000-row BRFSS smoke studies remain engineering evidence. A future
+final estimate still requires a different prespecified concealed manifest and
+one authorized execution after protocol freeze. Hospital130 remains outside the
+diabetes-screening result family because its endpoint is 30-day readmission.
 
 ## 4. Discussion
 
@@ -375,6 +463,13 @@ Likewise, missingness stress showed rapid collapse in supported-panel coverage a
 high severity. A safe system needs an applicability layer and explicit
 abstention reason, not only a calibrated score.
 
+The full BRFSS study adds precision but does not change the negative algorithm-
+superiority narrative: the three boosted-tree models were practically
+indistinguishable at reported precision, and the development-selected champion
+was not the numerical test leader on every metric. Survey weighting materially
+changed prevalence and performance, so population-weighted sensitivity results
+must remain separate from sample-conditional estimates.
+
 The study has important limitations. All primary datasets are public and mostly
 cross-sectional; they do not measure future incidence or age of onset. PIDD and
 Sylhet are small, and public benchmark reuse limits transportability. BRFSS uses
@@ -393,9 +488,11 @@ abstain when no evaluated route is supported. In PIDD development evidence, the
 router did not materially outperform a robust fixed model, while reduced panels,
 selective acceptance, and simulated missingness changed both probability quality
 and population coverage. The conference contribution should therefore be framed
-around reliability under incomplete inputs, endpoint safety, and transparent
-negative findings. Locked multi-environment evaluation and independent review
-are required before submission.
+around reliability under incomplete inputs, endpoint safety, survey-estimand
+transparency, and negative findings. The full BRFSS study remains development
+evidence because its seed-42 test role was already inspected. Locked evaluation
+on a genuinely new concealed manifest and independent review are required before
+submission.
 
 ## Declarations
 

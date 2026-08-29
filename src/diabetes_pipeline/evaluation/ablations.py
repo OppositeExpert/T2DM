@@ -68,7 +68,8 @@ def _aggregate_base_predictions(predictions: pd.DataFrame) -> pd.DataFrame:
     frame["group_id"] = frame["group_id"].fillna("").astype(str)
     if frame.duplicated(["model", "row_id"]).any():
         raise ValueError("Holdout predictions contain duplicate model/row pairs")
-    frame["estimation_scope"] = "locked_test"
+    roles = frame.get("evaluation_role", pd.Series(dtype=str)).dropna().unique()
+    frame["estimation_scope"] = str(roles[0]) if len(roles) == 1 else "holdout_test"
     return frame
 
 
@@ -277,7 +278,8 @@ def _aggregate_system_predictions(predictions: pd.DataFrame) -> pd.DataFrame:
     if frame.duplicated(["system", "scenario", "row_id"]).any():
         raise ValueError("Holdout system predictions contain duplicate rows")
     frame["repeat_count"] = 1
-    frame["estimation_scope"] = "locked_test"
+    roles = frame.get("evaluation_role", pd.Series(dtype=str)).dropna().unique()
+    frame["estimation_scope"] = str(roles[0]) if len(roles) == 1 else "holdout_test"
     return frame
 
 
