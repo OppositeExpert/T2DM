@@ -208,7 +208,57 @@ Regression to 5.6e-6 for XGBoost. The holdout design supplies one explanation
 sample rather than fold-pair stability estimates, and SHAP values are not causal
 effects.
 
-## S10. Reproducibility artifact map
+## S10. Hospital130 full-development readmission evidence
+
+Study `hospital130_development_holdout_c3aa5fb84a7a` retained 99,343 encounters
+from 69,990 patients after excluding death and hospice discharge dispositions.
+The binary endpoint was readmission within 30 days; 11,314 encounters were
+positive. Patient-grouped splitting placed 79,475 encounters from 55,987
+patients in five development folds and 19,868 encounters from 14,003 patients
+in the development test role. No patient crossed the holdout boundary or a
+development fold. Identifiers and the outcome were excluded from all 46
+predictors.
+
+All five model families completed 30 development tuning trials, development-only
+calibration and threshold selection, 500 patient-cluster bootstrap intervals,
+paired model and decision-curve comparisons, model export, and exact reload
+verification. LightGBM was the development-selected champion. Its calibrated
+development-test estimates were AUROC 0.6792 (95% interval 0.6671-0.6913),
+average precision 0.2288 (0.2134-0.2445), Brier score 0.09584
+(0.09183-0.09921), log loss 0.33271 (0.32180-0.34185), and calibration slope
+1.019 (0.957-1.094). The four tree families did not differ from each other after
+metric-wise Holm correction. All four did outperform Logistic Regression across
+AUROC, average precision, Brier score, and log loss in the prespecified
+artifact-based family (adjusted p=0.0399); this remains development evidence.
+
+Availability routing selected LightGBM for the full and admission-clinical
+panels and Random Forest for encounter-utilization, prior-utilization, and
+minimal-inpatient-history panels. Router Brier score was 0.09584 for all 46
+features and 0.09820-0.09939 across reduced panels. Matched full-versus-reduced
+degradation was estimated on identical test patients using cluster bootstrap.
+The artifact ablation remains explicitly incomplete because retraining-only
+missing-indicator, panel-specific-training, simulated-dropout, and leakage
+demonstration engines apply to nested-CV studies and were not forced onto this
+holdout contract.
+
+At 80% full-panel selective coverage, 15,895 encounters from 12,256 patients
+were accepted and 3,973 encounters from 1,747 patients were abstained. Accepted
+prevalence was 7.62%, compared with 26.45% among rejected encounters. Age, sex,
+and race subgroup estimates used the prespecified small-cell rules. Held-out
+SHAP explained 1,000 test encounters per model with a 100-row development-only
+background. For LightGBM, prior inpatient encounters and discharge disposition
+were the two most influential original features; maximum additive reconstruction
+error was 1.2e-14. Five exported model bundles reproduced all 19,868 test
+probabilities with maximum absolute error below 1.4e-16.
+
+The original run completed its scientific artifacts before a missing
+`PROJECT_ROOT` import interrupted metadata writing. The receipt was regenerated
+from the completed checkpoints without refitting any model, and this recovery is
+recorded in `experiment_metadata.json`. The permanent import defect is fixed in
+source. Hospital130 remains a development-only, retrospective readmission study;
+it is neither diabetes-status evidence nor external or clinical validation.
+
+## S11. Reproducibility artifact map
 
 | Artifact | Location |
 |---|---|
@@ -221,13 +271,14 @@ effects.
 | PIDD development study | `outputs/publication_pipeline/studies/pidd_development_072cd2104089` |
 | Sylhet development study | `outputs/publication_pipeline/studies/sylhet_development_b52477910fe6` |
 | BRFSS development study | `outputs/publication_pipeline/studies/brfss_development_holdout_56407ef53bba` |
+| Hospital130 development study | `outputs/publication_pipeline/studies/hospital130_development_holdout_c3aa5fb84a7a` |
 | Tracked study registry | `evidence/study_registry.json` |
 | Data-source manifest | `config/data_sources.yaml` |
 | Exact environment lock | `requirements.lock` |
 | Command reference | `docs/RUNBOOK.md` |
 | Automated tests | `tests/` |
 
-## S11. Items reserved for locked evidence
+## S12. Items reserved for locked evidence
 
 - Final participant-flow counts, exclusions, and the protected authorized BRFSS
   decision table from a new concealed partition, not the seed-42 development test.

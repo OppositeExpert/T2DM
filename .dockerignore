@@ -1,0 +1,10 @@
+.git
+.venv-pipeline
+.pytest_cache
+**/__pycache__
+data/raw
+outputs
+conference_package/qa/rendered
+*.docx
+*.pdf
+.DS_Store

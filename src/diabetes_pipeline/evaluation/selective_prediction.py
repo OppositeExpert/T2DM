@@ -134,9 +134,12 @@ def selective_prediction_analysis(
             )
             decision_frames.append(decisions)
             retained = decisions[decisions["accepted"]].reset_index(drop=True)
+            rejected = decisions[~decisions["accepted"]].reset_index(drop=True)
             actual_coverage = len(retained) / len(decisions)
             total_positive_events = int(decisions["target"].sum())
             retained_positive_events = int(retained["target"].sum())
+            rejected_positive_events = int(rejected["target"].sum())
+            has_groups = decisions["group_id"].fillna("").astype(str).str.len().gt(0).any()
             base = {
                 "dataset": str(frame["dataset"].iloc[0]),
                 "system": str(system),
@@ -146,6 +149,15 @@ def selective_prediction_analysis(
                 "actual_coverage": float(actual_coverage),
                 "accepted_n": int(len(retained)),
                 "abstained_n": int(len(decisions) - len(retained)),
+                "total_group_count": (
+                    int(decisions["group_id"].nunique()) if has_groups else None
+                ),
+                "accepted_group_count": (
+                    int(retained["group_id"].nunique()) if has_groups else None
+                ),
+                "abstained_group_count": (
+                    int(rejected["group_id"].nunique()) if has_groups else None
+                ),
                 "positive_events": retained_positive_events,
                 "negative_events": int((retained["target"] == 0).sum()),
                 "total_positive_events": total_positive_events,
@@ -157,6 +169,11 @@ def selective_prediction_analysis(
                 "accepted_prevalence": (
                     retained_positive_events / len(retained)
                     if len(retained)
+                    else float("nan")
+                ),
+                "rejected_prevalence": (
+                    rejected_positive_events / len(rejected)
+                    if len(rejected)
                     else float("nan")
                 ),
             }
@@ -205,8 +222,8 @@ def _render_report(metadata: dict[str, Any], metrics: pd.DataFrame) -> str:
         "the accepted set is fixed. Complete groups are retained or rejected "
         "together where grouped inference is required.",
         "",
-        "| System | Panel | Coverage | Event coverage | Brier | AP | Accepted |",
-        "|---|---|---:|---:|---:|---:|---:|",
+        "| System | Panel | Coverage | Event coverage | Accepted prevalence | Rejected prevalence | Brier | AP | Accepted encounters | Accepted groups |",
+        "|---|---|---:|---:|---:|---:|---:|---:|---:|---:|",
     ]
     for _, row in estimated.sort_values(
         ["system", "scenario", "target_coverage"],
@@ -216,8 +233,11 @@ def _render_report(metadata: dict[str, Any], metrics: pd.DataFrame) -> str:
             f"| {row['system']} | {row['scenario']} | "
             f"{row['actual_coverage']:.3f} | "
             f"{row['positive_event_coverage']:.3f} | "
+            f"{row['accepted_prevalence']:.3f} | "
+            f"{row['rejected_prevalence']:.3f} | "
             f"{row['brier_score']:.4f} | "
-            f"{row['average_precision']:.4f} | {int(row['accepted_n'])} |"
+            f"{row['average_precision']:.4f} | {int(row['accepted_n'])} | "
+            f"{int(row['accepted_group_count']) if pd.notna(row['accepted_group_count']) else 'N/A'} |"
         )
     lines.extend(
         [

@@ -23,7 +23,18 @@ class SplitTests(unittest.TestCase):
         manifest = build_split_manifest(dataset, config, seed=42)
         validate_split_manifest(dataset, manifest, config)
 
+    def test_hospital_patients_never_cross_holdout_or_development_folds(self) -> None:
+        dataset = load_dataset("hospital130")
+        config = get_dataset_config("hospital130")
+        manifest = build_split_manifest(dataset, config, seed=42)
+        validate_split_manifest(dataset, manifest, config)
+        development = manifest[manifest["role"] == "development"]
+        test = manifest[manifest["role"] == "test"]
+        self.assertFalse(set(development["group_id"]) & set(test["group_id"]))
+        self.assertTrue(
+            development.groupby("group_id")["outer_fold"].nunique().eq(1).all()
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
-

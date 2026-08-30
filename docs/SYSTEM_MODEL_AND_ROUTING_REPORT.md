@@ -1,10 +1,15 @@
 # Multi-Dataset Diabetes Prediction and Routing System
 
+> **Historical engineering snapshot (superseded).** This report preserves the
+> smoke-stage state reviewed on 22 August 2026. Current authoritative studies
+> are declared in `config/authoritative_studies.yaml` and indexed in
+> `evidence/study_registry.json`; the smoke metrics below are not current evidence.
+
 ## 1. Purpose and current status
 
 This pipeline accepts partially available patient attributes, identifies which dataset-specific prediction panels can use them, and returns a calibrated probability percentage from one eligible expert. It supports PIDD, Sylhet, BRFSS, and Hospital130 artifacts. PIDD, Sylhet, and BRFSS concern diabetes-related labels; Hospital130 predicts 30-day hospital readmission and is therefore kept as a separate endpoint.
 
-The implementation is a research-validation system, not a diagnostic device. The current PIDD and Sylhet results are development pilots, while BRFSS and Hospital130 are smoke-test holdouts. No current result is marked publication-claim eligible or ready for clinical use.
+The implementation is a research-validation system, not a diagnostic device. At this report's 22 August 2026 cutoff, PIDD and Sylhet were development pilots while BRFSS and Hospital130 were smoke-test holdouts. Those historical results were not publication-claim eligible or ready for clinical use.
 
 ## 2. Datasets, targets, and evidence level
 

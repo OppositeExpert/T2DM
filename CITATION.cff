@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: "Please cite this development software and the underlying datasets; replace the placeholder contributor entity with the approved author list before release."
+title: "T2DM Minor Project: Endpoint-Safe Diabetes Screening and Readmission Development Pipeline"
+type: software
+authors:
+  - name: "T2DM Minor Project contributors"
+version: 0.1.0-development
+repository-code: "https://github.com/OppositeExpert/T2DM"
+keywords:
+  - diabetes screening
+  - hospital readmission
+  - calibration
+  - machine learning

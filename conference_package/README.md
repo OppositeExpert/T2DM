@@ -4,7 +4,7 @@
 
 **Package state:** Near-complete development package; not authorized for submission
 
-**Evidence cutoff:** 29 August 2026
+**Evidence cutoff:** 30 August 2026
 
 This directory assembles the engineering, analysis, and reporting material for a
 conference submission. It is intentionally labelled as development evidence.
@@ -62,7 +62,7 @@ satisfies the prespecified superiority rule.
 | BRFSS full-sample development holdout | Complete (`brfss_development_holdout_56407ef53bba`) | Full development decision evidence only; seed-42 test already inspected |
 | Historical BRFSS smoke verification | Preserved (`brfss_smoke_holdout_b3a6ad2aa89e`) | Engineering history only |
 | BRFSS new concealed final holdout | Protected until protocol freeze and authorization | Required locked evidence |
-| Hospital130 | Engineering complete; separate endpoint | Supplementary methodological analysis only |
+| Hospital130 full-cohort development holdout | Complete (`hospital130_development_holdout_c3aa5fb84a7a`); separate 30-day readmission endpoint | Supporting development analysis only; never diabetes-detection or final evidence |
 | Mixed-input router | Engineering complete | Software demonstration only |
 | Protocol/sign-off/final run | Not authorized | Required before submission |
 

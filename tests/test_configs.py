@@ -71,6 +71,15 @@ class ConfigurationTests(unittest.TestCase):
                 self.assertTrue(available)
                 self.assertFalse(available - configured)
 
+    def test_development_evidence_role_cannot_imply_final_lock(self) -> None:
+        schema = yaml.safe_load(
+            (PROJECT_ROOT / "config/output_schemas.yaml").read_text(encoding="utf-8")
+        )
+        roles = schema["evaluation_roles_by_evidence_tier"]
+        self.assertEqual(roles["full_development"], "development_test")
+        self.assertEqual(roles["final_locked"], "locked_final_test")
+        self.assertNotEqual(roles["full_development"], roles["final_locked"])
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -1,42 +1,68 @@
 {
   "evidence_role": "development_only_not_final",
-  "schema_version": "1.0",
+  "primary_estimands": {
+    "brfss": "development_test_holdout",
+    "hospital130": "development_test_holdout_with_patient_cluster_inference",
+    "pidd": "participant_mean_across_repeats",
+    "sylhet": "participant_mean_across_repeats_with_profile_cluster_inference"
+  },
+  "schema_version": "2.0",
   "studies": {
     "brfss": {
       "dataset_configuration_sha256": "d48716267cc6fca23fc5e678280c60064645698fdca2c3334fd3b1dc3c685ef6",
       "eligible_for_final_claims": false,
-      "metadata_sha256": "88fe8ddc7dfef15c54a9f6c9230ea51ca1b1fdea8ae85ac7f8f1b14768289219",
+      "endpoint": "self_reported_diagnosed_diabetes",
+      "metadata_sha256": "0a730737d7368d8810e31d25381d7efeecb70a1f46b393b541ee3017cdd83cc2",
+      "primary_metrics_artifact": "outputs/publication_pipeline/studies/brfss_development_holdout_56407ef53bba/summary_metrics.csv",
+      "primary_metrics_sha256": "51736eacf1904c997cac1006c0dcf3699ad59975093a093d77b511b6bc945a70",
       "profile": "development",
       "profile_locked": false,
       "raw_data_sha256": "a7d3380aca5aeae94186770983c3089fb6c4b2074aa112418112c11891d16420",
       "source_tree_sha256": "772edea034d6e455409541d212fe0184244f0a7db6780da1875a55647f34fe31",
       "split_manifest_sha256": "047d0a8ad36f229ff1d74c8a2f5531f3123aee9cc480f708287ad2fa4265be1e",
-      "study_id": "brfss_development_holdout_56407ef53bba",
-      "summary_metrics_sha256": "da8898db8993b786de218879b0ee3ee8d553cc7d226e25c5fa7f716c2d2a9bff"
+      "study_id": "brfss_development_holdout_56407ef53bba"
+    },
+    "hospital130": {
+      "dataset_configuration_sha256": "c26f5eba292f93da7aeb24d3541ccee2f393a3f844e972da750adad05fb9d05a",
+      "eligible_for_final_claims": false,
+      "endpoint": "readmission_within_30_days",
+      "metadata_sha256": "d9c3fd016e8e9d72a5ed0932c1000fa6b62c6f14b5549430d0cab1ebd78334a1",
+      "primary_metrics_artifact": "outputs/publication_pipeline/studies/hospital130_development_holdout_c3aa5fb84a7a/summary_metrics.csv",
+      "primary_metrics_sha256": "719c4ef85b303df88659452843a12337befd36338d24b5ff324e0a9f35e63b02",
+      "profile": "development",
+      "profile_locked": false,
+      "raw_data_sha256": "0689e7ec031237dc63031b938805c48377748761a3b26acab621567afa24df97",
+      "source_tree_sha256": "a972b35e66b0b23c5ee2441a513213fa13c02c8cf28726ac5283956de0d6ee7f",
+      "split_manifest_sha256": "6339ee87b228d61f351e56160591746448ed4052785ab8c035c7c42853371ca0",
+      "study_id": "hospital130_development_holdout_c3aa5fb84a7a"
     },
     "pidd": {
       "dataset_configuration_sha256": "c000944c58f8e2edf5c5ef337bfe7b7243a1f4f9e3e7916a4466594864dd4add",
       "eligible_for_final_claims": false,
+      "endpoint": "diabetes_positive_label",
       "metadata_sha256": "64d9c7a7626b5ee7a3a4a589fd59c23216b8a1f9fbfd83bc0804e871ac2f6482",
+      "primary_metrics_artifact": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/participant_confidence_intervals.csv",
+      "primary_metrics_sha256": "94bfbca61efe7975404414ea2df3159d1f0b38bd923890e593d4c149a5e282a0",
       "profile": "development",
       "profile_locked": false,
       "raw_data_sha256": "6bfe5d0f379d17a0e0819b996407e3c09bf80febd4287f2ed212190dfff154af",
       "source_tree_sha256": "b81aed549be9b19296d32da93b13a2fa1cd005739203b70b8da438189d586bf2",
       "split_manifest_sha256": "774f1aa295d71e607b555247543a8761662be7ab31ca03db43c355b2ed18d87d",
-      "study_id": "pidd_development_072cd2104089",
-      "summary_metrics_sha256": "e4a4a428e5a7b417e289a4a9359b079068abd7c39f3b0ce5257cdb352e53038b"
+      "study_id": "pidd_development_072cd2104089"
     },
     "sylhet": {
       "dataset_configuration_sha256": "88fad5bc58b23d3d3b4bdf861bd35b72a2f450be79a32a8882c3a712aab4e16d",
       "eligible_for_final_claims": false,
+      "endpoint": "early_stage_diabetes_positive_label",
       "metadata_sha256": "8e1b418ac05c57bbcd7a372537aa551a925e8fb53ff08f00ccec3071f2045526",
+      "primary_metrics_artifact": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/participant_confidence_intervals.csv",
+      "primary_metrics_sha256": "f647cefbfd612630ae211b93b547b5fa1ff651cc180fd3f5e5c793db04a30d8b",
       "profile": "development",
       "profile_locked": false,
       "raw_data_sha256": "7889d9d0beb7dd1ccc58da99f72763f16afb259b5dbbaa086f8195366ff66137",
       "source_tree_sha256": "b81aed549be9b19296d32da93b13a2fa1cd005739203b70b8da438189d586bf2",
       "split_manifest_sha256": "1c5e2f18959d00d947ebf0248399566cc9535a7307e6692992c8408f8196f496",
-      "study_id": "sylhet_development_b52477910fe6",
-      "summary_metrics_sha256": "0ab1143a2aba46c515c7f4d5633dab4d001d0b469eda4fdddfb555ea7c92f30b"
+      "study_id": "sylhet_development_b52477910fe6"
     }
   }
 }

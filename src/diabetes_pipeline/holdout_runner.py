@@ -38,6 +38,7 @@ from diabetes_pipeline.preprocessing.builders import (
 )
 from diabetes_pipeline.settings import (
     DEFAULT_OUTPUT_ROOT,
+    PROJECT_ROOT,
     configuration_sha256,
     get_dataset_config,
     load_experiment_profile,
@@ -795,6 +796,8 @@ def run_holdout_benchmark(
                 "experiment_id": experiment_id,
                 "runner": "development_locked_holdout",
                 "dataset": dataset_name,
+                "task": dataset_cfg["task"],
+                "endpoint": dataset_cfg["endpoint"],
                 "evaluation_strategy": dataset_cfg["evaluation_strategy"],
                 "dataset_configuration_sha256": configuration_sha256(dataset_cfg),
                 "source_tree_sha256": source_tree_sha256(),

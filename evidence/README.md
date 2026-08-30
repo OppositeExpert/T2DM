@@ -14,6 +14,16 @@ listed study ineligible for final claims. Large predictions, fitted models, and
 plots remain under ignored `outputs/` and must be regenerated after a fresh
 clone unless the research team provides a separately checksum-verified archive.
 
+After rebuilding this registry, create and verify the external-archive inventory:
+
+```bash
+python scripts/build_artifact_release_manifest.py
+python scripts/verify_artifact_release_manifest.py
+```
+
+The resulting tracked manifest is an inventory, not proof of upload. Its URI and
+archive identifier remain empty until a real immutable archive is configured.
+
 Study IDs include the source-tree fingerprint. Running a regeneration command
 after source changes correctly creates a successor study ID instead of silently
 overwriting the declared study. Exact byte-for-byte regeneration of an older

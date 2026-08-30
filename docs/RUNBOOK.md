@@ -135,14 +135,15 @@ python -m diabetes_pipeline.cli evaluate-routing \
 
 python -m diabetes_pipeline.cli evaluate-routing \
   --dataset hospital130 \
-  --study-dir outputs/publication_pipeline/studies/hospital130_smoke_holdout_6640beff7a08
+  --study-dir outputs/publication_pipeline/studies/hospital130_development_holdout_c3aa5fb84a7a
 ```
 
 This evaluates Random Forest, XGBoost, LightGBM, and CatBoost under predeclared
 feature panels. PIDD and Sylhet use their repeated outer-fold design, including
 fixed-model baselines, bootstrap intervals, and paired comparisons. BRFSS and
-Hospital130 use development-fold selection followed by one locked test
-evaluation, matching their holdout contracts. Both paths save reloadable
+Hospital130 use development-fold selection followed by one development-test
+evaluation; only a separately authorized final profile may use the
+`locked_final_test` role. Both paths save reloadable
 routing bundles, supported-panel inference metadata, and explicit abstention
 when no panel matches.
 
@@ -355,8 +356,9 @@ changed only after the corresponding signed-off artifact exists.
 
 ## Large and patient-grouped holdout studies
 
-BRFSS and Hospital130 use a separate runner because their test partitions must
-remain untouched until all development choices are locked.
+BRFSS and Hospital130 use a separate runner because each evaluation partition
+must remain untouched until all choices for that study are locked on development
+data.
 
 ```bash
 python -m diabetes_pipeline.cli benchmark-holdout \
@@ -372,8 +374,9 @@ python -m diabetes_pipeline.cli benchmark-holdout \
 
 The smoke profile outcome-stratifies at most 10,000 rows from each partition and
 uses only two tuning trials and 50 bootstrap resamples. It verifies code paths
-and must not be cited as scientific evidence. Non-smoke test access is rejected
-until the experiment profile is explicitly locked.
+and must not be cited as scientific evidence. The `development` profile may use
+the already inspected seed-42 development-test role; the `final` profile remains
+rejected until the protocol and authorization controls are legitimately locked.
 
 The holdout runner writes development-only tuning/calibration/threshold
 evidence, test predictions and metrics, individual or patient-cluster bootstrap
@@ -401,6 +404,42 @@ bootstrap resamples, all configured calibration and threshold policies, paired
 Holm-corrected model comparisons, decision-curve inference, reloadable bundles,
 and model-level resume checkpoints. Its metadata must say `full_development`
 and `development_test_previously_accessed_not_final_eligible`.
+
+### Full Hospital130 development study
+
+Hospital130 uses the entire retained cohort and remains a separate 30-day
+readmission endpoint:
+
+```bash
+python -m diabetes_pipeline.cli benchmark-holdout \
+  --dataset hospital130 \
+  --profile development \
+  --models logistic_regression random_forest xgboost lightgbm catboost
+```
+
+The authoritative study is
+`outputs/publication_pipeline/studies/hospital130_development_holdout_c3aa5fb84a7a`.
+Its 99,343 encounters are grouped by patient for the development/test split,
+development folds, calibration selection, bootstrap inference, and paired
+comparisons. It is full development evidence and can never be relabelled as a
+fresh final test.
+
+Run the supported holdout secondary analyses in this order:
+
+```bash
+HOSPITAL_STUDY=outputs/publication_pipeline/studies/hospital130_development_holdout_c3aa5fb84a7a
+python -m diabetes_pipeline.cli evaluate-routing --dataset hospital130 --study-dir "$HOSPITAL_STUDY"
+python -m diabetes_pipeline.cli matched-panel-contrasts --study-dir "$HOSPITAL_STUDY"
+python -m diabetes_pipeline.cli artifact-ablations --study-dir "$HOSPITAL_STUDY"
+python -m diabetes_pipeline.cli selective-prediction --study-dir "$HOSPITAL_STUDY"
+python -m diabetes_pipeline.cli subgroup-analysis --study-dir "$HOSPITAL_STUDY"
+python -m diabetes_pipeline.cli explain-holdout --dataset hospital130 --study-dir "$HOSPITAL_STUDY" --maximum-samples-per-model 1000
+python scripts/verify_holdout_bundles.py --study-dir "$HOSPITAL_STUDY"
+```
+
+The nested-CV-only missing-indicator, panel-training, missingness-stress, and
+reporting-ablation commands are not supported for holdout studies and must not
+be forced onto Hospital130 merely for symmetry.
 
 ## BRFSS survey-weighted sensitivity analysis
 
@@ -434,5 +473,5 @@ The background sample comes only from development rows, while all reported SHAP
 values come only from held-out test rows. Both transformed-component and grouped
 original-feature tables are written. The original-feature version should be the
 primary interpretation for one-hot encoded Hospital130 variables. A single
-locked test has no fold-stability estimate, which is recorded explicitly rather
+development-test evaluation has no fold-stability estimate, which is recorded explicitly rather
 than fabricated.

@@ -4,7 +4,7 @@
     "python": "3.12.0"
   },
   "evidence_scope": "development_and_engineering_not_final",
-  "generated_at_utc": "2026-08-29T06:02:50.740356+00:00",
+  "generated_at_utc": "2026-08-30T16:42:30.622341+00:00",
   "historical_engineering_studies": {
     "brfss_smoke": {
       "evidence_tier": "execution_only_smoke",
@@ -17,9 +17,11 @@
   },
   "large_artifact_policy": "Study outputs and model bundles remain ignored. This tracked registry identifies their hashes and regeneration commands but does not replace them.",
   "requirements_lock_sha256": "b58cb163f2a95a6beaba4a2e9119fd70fa0bd867a001ea79b3e990a19c3cd826",
-  "schema_version": "1.0",
+  "schema_version": "2.0",
   "studies": {
     "brfss": {
+      "analysis_configuration_hash_origin": "registry_reconstructed_from_study_metadata",
+      "analysis_configuration_sha256": "87b1cc0eb78ce4b98069bcc09eb36b52a195932360aa33a1c404df9f3cabfd62",
       "artifacts": {
         "artifact_ablation": {
           "bytes": 1112,
@@ -38,19 +40,27 @@
           "tracked_in_git": false
         },
         "confidence_intervals": {
-          "bytes": 86232,
+          "bytes": 87828,
           "path": "outputs/publication_pipeline/studies/brfss_development_holdout_56407ef53bba/confidence_intervals.csv",
           "present_locally": true,
           "regeneration_required_after_clone": true,
-          "sha256": "4fe9a516e4544b4742d3d7b172ec2dc22b69eb937e21168e26597a3c7fb3a9bd",
+          "sha256": "e74ec0c1f1fab25f423e7a06e5503aa3b0c292bb73a6a5eb7327ee2f1d7d8167",
+          "tracked_in_git": false
+        },
+        "decision_curve_comparisons": {
+          "bytes": 116462,
+          "path": "outputs/publication_pipeline/studies/brfss_development_holdout_56407ef53bba/decision_curve_paired_contrasts.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "33e8bc86c3dde17830ebbe63d81ab911a279ac607d59f74555d16e20779a020e",
           "tracked_in_git": false
         },
         "decision_curve_intervals": {
-          "bytes": 45456,
+          "bytes": 44354,
           "path": "outputs/publication_pipeline/studies/brfss_development_holdout_56407ef53bba/decision_curve_confidence_intervals.csv",
           "present_locally": true,
           "regeneration_required_after_clone": true,
-          "sha256": "ca979b4bd978e709d849c7f1034ddbe1e3408dc28dcb3bdec2081865c7f68868",
+          "sha256": "318fa47d056d8137973a69afe7d98e18ae2afae979835e2216c2a1b8f669a4d2",
           "tracked_in_git": false
         },
         "decision_curves": {
@@ -70,19 +80,19 @@
           "tracked_in_git": false
         },
         "metadata": {
-          "bytes": 3386,
+          "bytes": 3392,
           "path": "outputs/publication_pipeline/studies/brfss_development_holdout_56407ef53bba/experiment_metadata.json",
           "present_locally": true,
           "regeneration_required_after_clone": true,
-          "sha256": "88fe8ddc7dfef15c54a9f6c9230ea51ca1b1fdea8ae85ac7f8f1b14768289219",
+          "sha256": "0a730737d7368d8810e31d25381d7efeecb70a1f46b393b541ee3017cdd83cc2",
           "tracked_in_git": false
         },
         "metrics": {
-          "bytes": 14286,
+          "bytes": 14141,
           "path": "outputs/publication_pipeline/studies/brfss_development_holdout_56407ef53bba/summary_metrics.csv",
           "present_locally": true,
           "regeneration_required_after_clone": true,
-          "sha256": "da8898db8993b786de218879b0ee3ee8d553cc7d226e25c5fa7f716c2d2a9bff",
+          "sha256": "51736eacf1904c997cac1006c0dcf3699ad59975093a093d77b511b6bc945a70",
           "tracked_in_git": false
         },
         "paired_comparisons_holdout": {
@@ -110,11 +120,11 @@
           "tracked_in_git": false
         },
         "predictions_holdout": {
-          "bytes": 82131274,
+          "bytes": 83260239,
           "path": "outputs/publication_pipeline/studies/brfss_development_holdout_56407ef53bba/test_predictions.csv",
           "present_locally": true,
           "regeneration_required_after_clone": true,
-          "sha256": "5dabeb82f0a9ac4ec5eb43030a7e39bca5ca7021e73b66ec0717c45bfd6fe8af",
+          "sha256": "0bd1728f236641c2e7d97c1433dc1eb0d7ed90dec531dddf6ad93cf3135b3bb6",
           "tracked_in_git": false
         },
         "predictions_nested_cv": {
@@ -183,13 +193,14 @@
         }
       },
       "command": "python -m diabetes_pipeline.cli benchmark-holdout --dataset brfss --profile development --models logistic_regression random_forest xgboost lightgbm catboost",
+      "created_at_utc": "2026-08-30T12:38:57.556278+00:00",
       "dataset": "brfss",
       "dataset_configuration_sha256": "d48716267cc6fca23fc5e678280c60064645698fdca2c3334fd3b1dc3c685ef6",
       "eligible_for_final_claims": false,
       "endpoint": "self_reported_diagnosed_diabetes",
       "evidence_tier": "full_development",
       "execution_profile": "development",
-      "metadata_modified_at_utc": "2026-08-28T12:24:54.094663+00:00",
+      "manifest_sha256": "047d0a8ad36f229ff1d74c8a2f5531f3123aee9cc480f708287ad2fa4265be1e",
       "model_bundles": {
         "catboost": {
           "bytes": 793209,
@@ -239,9 +250,246 @@
       "split_manifest_sha256": "047d0a8ad36f229ff1d74c8a2f5531f3123aee9cc480f708287ad2fa4265be1e",
       "study_directory": "outputs/publication_pipeline/studies/brfss_development_holdout_56407ef53bba",
       "study_id": "brfss_development_holdout_56407ef53bba",
-      "test_access": "development_test_previously_accessed_not_final_eligible"
+      "test_access": "development_test_previously_accessed_not_final_eligible",
+      "updated_at_utc": "2026-08-30T12:38:57.556278+00:00"
+    },
+    "hospital130": {
+      "analysis_configuration_hash_origin": "study_metadata",
+      "analysis_configuration_sha256": "dd1c1c7cce60f7f80aeca29683deb44d9dadeeec1bba76e0be5d4193ce741d67",
+      "artifacts": {
+        "artifact_ablation": {
+          "bytes": 1124,
+          "path": "outputs/publication_pipeline/studies/hospital130_development_holdout_c3aa5fb84a7a/ablations/ablation_inventory.json",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "e7445f49ff511fae212f1561c3a8838e897fd6558f6a01d5db5eed9b42fa4d0c",
+          "tracked_in_git": false
+        },
+        "calibration_selection": {
+          "bytes": 2640,
+          "path": "outputs/publication_pipeline/studies/hospital130_development_holdout_c3aa5fb84a7a/calibration_selection.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "27b5088d45342cbbba996746d84f82a0ce05d29ec66b430e6117b86cfed155da",
+          "tracked_in_git": false
+        },
+        "confidence_intervals": {
+          "bytes": 92695,
+          "path": "outputs/publication_pipeline/studies/hospital130_development_holdout_c3aa5fb84a7a/confidence_intervals.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "d47131a9623915e8c73bace9eccc5aacedc72b3c5c727355d89912c435f813f6",
+          "tracked_in_git": false
+        },
+        "decision_curve_comparisons": {
+          "bytes": 117914,
+          "path": "outputs/publication_pipeline/studies/hospital130_development_holdout_c3aa5fb84a7a/decision_curve_paired_contrasts.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "4fce5c1f1f6196e6c942c9fddb42efdc2b92fff11f85323df38504a45925008c",
+          "tracked_in_git": false
+        },
+        "decision_curve_intervals": {
+          "bytes": 45037,
+          "path": "outputs/publication_pipeline/studies/hospital130_development_holdout_c3aa5fb84a7a/decision_curve_confidence_intervals.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "011e7a1de911c0b419a305f7c7b7047e2d1ee0bd7283ec52e8c56736e87f6105",
+          "tracked_in_git": false
+        },
+        "decision_curves": {
+          "bytes": 48476,
+          "path": "outputs/publication_pipeline/studies/hospital130_development_holdout_c3aa5fb84a7a/decision_curves.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "884dbe9faf7d8a97823085d0aab7d09e5b66c19ef97d5d4f383df1d7f4ae9c44",
+          "tracked_in_git": false
+        },
+        "matched_panel_comparisons": {
+          "bytes": 20261,
+          "path": "outputs/publication_pipeline/studies/hospital130_development_holdout_c3aa5fb84a7a/availability_routing/matched_panel_contrasts.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "9b0dc9d517400fbc14be6dcd37ae6ab7c65569ad6243ff50c7f739503a26ffc5",
+          "tracked_in_git": false
+        },
+        "metadata": {
+          "bytes": 4635,
+          "path": "outputs/publication_pipeline/studies/hospital130_development_holdout_c3aa5fb84a7a/experiment_metadata.json",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "d9c3fd016e8e9d72a5ed0932c1000fa6b62c6f14b5549430d0cab1ebd78334a1",
+          "tracked_in_git": false
+        },
+        "metrics": {
+          "bytes": 14530,
+          "path": "outputs/publication_pipeline/studies/hospital130_development_holdout_c3aa5fb84a7a/summary_metrics.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "719c4ef85b303df88659452843a12337befd36338d24b5ff324e0a9f35e63b02",
+          "tracked_in_git": false
+        },
+        "paired_comparisons_holdout": {
+          "bytes": 7226,
+          "path": "outputs/publication_pipeline/studies/hospital130_development_holdout_c3aa5fb84a7a/paired_bootstrap_model_comparisons.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "6f28291a310fa8071e2568efd04f41572939767033dfdf35f327b2eece08c6bc",
+          "tracked_in_git": false
+        },
+        "paired_comparisons_nested_cv": {
+          "bytes": null,
+          "path": "outputs/publication_pipeline/studies/hospital130_development_holdout_c3aa5fb84a7a/participant_paired_model_comparisons.csv",
+          "present_locally": false,
+          "regeneration_required_after_clone": true,
+          "sha256": null,
+          "tracked_in_git": false
+        },
+        "participant_confidence_intervals": {
+          "bytes": null,
+          "path": "outputs/publication_pipeline/studies/hospital130_development_holdout_c3aa5fb84a7a/participant_confidence_intervals.csv",
+          "present_locally": false,
+          "regeneration_required_after_clone": true,
+          "sha256": null,
+          "tracked_in_git": false
+        },
+        "predictions_holdout": {
+          "bytes": 20733675,
+          "path": "outputs/publication_pipeline/studies/hospital130_development_holdout_c3aa5fb84a7a/test_predictions.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "dc6e87b8f16567e7b64d9ab1b617cfe5b47e262e929687b1783dfaa48d7bfdfd",
+          "tracked_in_git": false
+        },
+        "predictions_nested_cv": {
+          "bytes": null,
+          "path": "outputs/publication_pipeline/studies/hospital130_development_holdout_c3aa5fb84a7a/participant_predictions.csv",
+          "present_locally": false,
+          "regeneration_required_after_clone": true,
+          "sha256": null,
+          "tracked_in_git": false
+        },
+        "routing_metrics": {
+          "bytes": 16844,
+          "path": "outputs/publication_pipeline/studies/hospital130_development_holdout_c3aa5fb84a7a/availability_routing/summary_metrics.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "3b87e53db719ae7b9bd9063e96087e2c732f8cb61ea3bd9c3585545229b38a84",
+          "tracked_in_git": false
+        },
+        "routing_predictions": {
+          "bytes": 124223555,
+          "path": "outputs/publication_pipeline/studies/hospital130_development_holdout_c3aa5fb84a7a/availability_routing/system_predictions.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "4d5620380741ace0caa0a6cb2f374bd902c91e15ab75bca5fbddfe08a15988ca",
+          "tracked_in_git": false
+        },
+        "selective_prediction": {
+          "bytes": 9089,
+          "path": "outputs/publication_pipeline/studies/hospital130_development_holdout_c3aa5fb84a7a/selective_prediction/risk_coverage_metrics.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "5cd5632c11e493096a71a32895d1fd47431da38dea13d824ae7a0ea22f858b3e",
+          "tracked_in_git": false
+        },
+        "shap_original_features": {
+          "bytes": 18950,
+          "path": "outputs/publication_pipeline/studies/hospital130_development_holdout_c3aa5fb84a7a/test_explanations/global_shap_importance_original_features.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "3bf02c338ade6e3c5610e733f0797f518e00d3d3d3b267acfba775dfdada7e80",
+          "tracked_in_git": false
+        },
+        "subgroup_analysis": {
+          "bytes": 14366,
+          "path": "outputs/publication_pipeline/studies/hospital130_development_holdout_c3aa5fb84a7a/subgroup_analysis/subgroup_metrics.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "b49f996977f0ccc9b780224f1324c8118e5130edf4bf3e96cfc35ea72ca782f9",
+          "tracked_in_git": false
+        },
+        "survey_sensitivity": {
+          "bytes": null,
+          "path": "outputs/publication_pipeline/studies/hospital130_development_holdout_c3aa5fb84a7a/survey_sensitivity/survey_weighted_metrics.csv",
+          "present_locally": false,
+          "regeneration_required_after_clone": true,
+          "sha256": null,
+          "tracked_in_git": false
+        },
+        "thresholds": {
+          "bytes": 3285,
+          "path": "outputs/publication_pipeline/studies/hospital130_development_holdout_c3aa5fb84a7a/selected_thresholds.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "232ebf8d1a1c2c8ba0db36eec9b4987ae63cc5f81273247fd93f1b5410b960b1",
+          "tracked_in_git": false
+        }
+      },
+      "command": "python -m diabetes_pipeline.cli benchmark-holdout --dataset hospital130 --profile development --models logistic_regression random_forest xgboost lightgbm catboost",
+      "created_at_utc": "2026-08-30T11:55:25.270480+00:00",
+      "dataset": "hospital130",
+      "dataset_configuration_sha256": "c26f5eba292f93da7aeb24d3541ccee2f393a3f844e972da750adad05fb9d05a",
+      "eligible_for_final_claims": false,
+      "endpoint": "readmission_within_30_days",
+      "evidence_tier": "full_development",
+      "execution_profile": "development",
+      "manifest_sha256": "6339ee87b228d61f351e56160591746448ed4052785ab8c035c7c42853371ca0",
+      "model_bundles": {
+        "catboost": {
+          "bytes": 401274,
+          "path": "outputs/publication_pipeline/studies/hospital130_development_holdout_c3aa5fb84a7a/models/catboost.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "e67b6e8b3685d39a6ce875b9e90e03dab4679c9d3f782cfac4da5a7c8b941ef4",
+          "tracked_in_git": false
+        },
+        "lightgbm": {
+          "bytes": 1295487,
+          "path": "outputs/publication_pipeline/studies/hospital130_development_holdout_c3aa5fb84a7a/models/lightgbm.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "5dd1d4babd495962fe54d8e492088df02c590392d489519a3f96ea51ac0d14b5",
+          "tracked_in_git": false
+        },
+        "logistic_regression": {
+          "bytes": 30473,
+          "path": "outputs/publication_pipeline/studies/hospital130_development_holdout_c3aa5fb84a7a/models/logistic_regression.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "959b43e816a5c9d86c93b23ba5031f73ad3f1184e52894378965b76646e7c7e4",
+          "tracked_in_git": false
+        },
+        "random_forest": {
+          "bytes": 145902169,
+          "path": "outputs/publication_pipeline/studies/hospital130_development_holdout_c3aa5fb84a7a/models/random_forest.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "913e4a443d70330d176cf0af96b01de627dbbd86288ff9d41a526b132881d274",
+          "tracked_in_git": false
+        },
+        "xgboost": {
+          "bytes": 1469935,
+          "path": "outputs/publication_pipeline/studies/hospital130_development_holdout_c3aa5fb84a7a/models/xgboost.joblib",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "3f291c22b6e2f4a7915f9a189cefc97df07188ee9f35c1cc8b58e55180d06518",
+          "tracked_in_git": false
+        }
+      },
+      "profile_locked": false,
+      "raw_data_sha256": "0689e7ec031237dc63031b938805c48377748761a3b26acab621567afa24df97",
+      "requirements_lock_sha256": "b58cb163f2a95a6beaba4a2e9119fd70fa0bd867a001ea79b3e990a19c3cd826",
+      "source_tree_sha256": "a972b35e66b0b23c5ee2441a513213fa13c02c8cf28726ac5283956de0d6ee7f",
+      "split_manifest_sha256": "6339ee87b228d61f351e56160591746448ed4052785ab8c035c7c42853371ca0",
+      "study_directory": "outputs/publication_pipeline/studies/hospital130_development_holdout_c3aa5fb84a7a",
+      "study_id": "hospital130_development_holdout_c3aa5fb84a7a",
+      "test_access": "development_test_previously_accessed_not_final_eligible",
+      "updated_at_utc": "2026-08-30T12:00:50.176647+00:00"
     },
     "pidd": {
+      "analysis_configuration_hash_origin": "registry_reconstructed_from_study_metadata",
+      "analysis_configuration_sha256": "705cb63362a425065c618124ee57ff615a6cadead6cd996f33508bedd1c075ee",
       "artifacts": {
         "artifact_ablation": {
           "bytes": 1102,
@@ -265,6 +513,14 @@
           "present_locally": true,
           "regeneration_required_after_clone": true,
           "sha256": "b982424a9b66d61816d8ae938eb03304f8ba2fe5cc3f4064feed240142badd4c",
+          "tracked_in_git": false
+        },
+        "decision_curve_comparisons": {
+          "bytes": 133728,
+          "path": "outputs/publication_pipeline/studies/pidd_development_072cd2104089/decision_curve_paired_contrasts.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "81f0d3c713a546b94e210589a8f80ba4508cb4ba6cd9c32b06f6da4375fe0774",
           "tracked_in_git": false
         },
         "decision_curve_intervals": {
@@ -405,13 +661,14 @@
         }
       },
       "command": "python -m diabetes_pipeline.cli benchmark --dataset pidd --profile development",
+      "created_at_utc": "2026-08-23T18:15:57.125301+00:00",
       "dataset": "pidd",
       "dataset_configuration_sha256": "c000944c58f8e2edf5c5ef337bfe7b7243a1f4f9e3e7916a4466594864dd4add",
       "eligible_for_final_claims": false,
       "endpoint": "diabetes_positive_label",
       "evidence_tier": "full_development",
       "execution_profile": "development",
-      "metadata_modified_at_utc": "2026-08-23T18:15:57.125301+00:00",
+      "manifest_sha256": "774f1aa295d71e607b555247543a8761662be7ab31ca03db43c355b2ed18d87d",
       "model_bundles": {
         "catboost_repeat_0_fold_0": {
           "bytes": 78481,
@@ -1421,9 +1678,12 @@
       "split_manifest_sha256": "774f1aa295d71e607b555247543a8761662be7ab31ca03db43c355b2ed18d87d",
       "study_directory": "outputs/publication_pipeline/studies/pidd_development_072cd2104089",
       "study_id": "pidd_development_072cd2104089",
-      "test_access": null
+      "test_access": "repeated_outer_evaluation_no_single_concealed_test",
+      "updated_at_utc": "2026-08-23T18:15:57.125301+00:00"
     },
     "sylhet": {
+      "analysis_configuration_hash_origin": "registry_reconstructed_from_study_metadata",
+      "analysis_configuration_sha256": "4e0b45a8e16857a07f859bbf546029408a1b4ec0f248b5f3ceb53a740b49d76e",
       "artifacts": {
         "artifact_ablation": {
           "bytes": 1131,
@@ -1447,6 +1707,14 @@
           "present_locally": true,
           "regeneration_required_after_clone": true,
           "sha256": "5ab433640583af6374cbc86419135705b5acd048d5ba5c33daff7596044f5860",
+          "tracked_in_git": false
+        },
+        "decision_curve_comparisons": {
+          "bytes": 131542,
+          "path": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6/decision_curve_paired_contrasts.csv",
+          "present_locally": true,
+          "regeneration_required_after_clone": true,
+          "sha256": "32772d7dda80a2213ed423432ae704903f1ea86d38374433f5c8fac6bfe31da6",
           "tracked_in_git": false
         },
         "decision_curve_intervals": {
@@ -1587,13 +1855,14 @@
         }
       },
       "command": "python -m diabetes_pipeline.cli benchmark --dataset sylhet --profile development",
+      "created_at_utc": "2026-08-24T05:11:28.639381+00:00",
       "dataset": "sylhet",
       "dataset_configuration_sha256": "88fad5bc58b23d3d3b4bdf861bd35b72a2f450be79a32a8882c3a712aab4e16d",
       "eligible_for_final_claims": false,
       "endpoint": "early_stage_diabetes_positive_label",
       "evidence_tier": "full_development",
       "execution_profile": "development",
-      "metadata_modified_at_utc": "2026-08-24T05:11:28.639381+00:00",
+      "manifest_sha256": "1c5e2f18959d00d947ebf0248399566cc9535a7307e6692992c8408f8196f496",
       "model_bundles": {
         "catboost_repeat_0_fold_0": {
           "bytes": 125527,
@@ -2603,7 +2872,8 @@
       "split_manifest_sha256": "1c5e2f18959d00d947ebf0248399566cc9535a7307e6692992c8408f8196f496",
       "study_directory": "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6",
       "study_id": "sylhet_development_b52477910fe6",
-      "test_access": null
+      "test_access": "repeated_outer_evaluation_no_single_concealed_test",
+      "updated_at_utc": "2026-08-24T05:11:28.639381+00:00"
     }
   }
 }

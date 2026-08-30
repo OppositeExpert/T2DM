@@ -1,7 +1,7 @@
 # Availability-Aware Diabetes Screening Under Incomplete Predictor Panels: A Multi-Environment Development Study
 
 **Document state:** Development manuscript; not final evidence and not authorized for submission  
-**Evidence cutoff:** 29 August 2026
+**Evidence cutoff:** 30 August 2026
 **Target format:** Short applied machine-learning / health-informatics conference paper
 
 ## Abstract
@@ -17,7 +17,8 @@ router preserves performance relative to strong fixed-model baselines while
 abstaining outside evaluated routes.
 
 **Methods:** PIDD, the Sylhet early-stage symptom cohort, and BRFSS 2015 are
-treated as separate prediction environments. Logistic Regression, Random Forest,
+treated as separate diabetes-status environments; Hospital130 is a distinct
+30-day-readmission analysis. Logistic Regression, Random Forest,
 XGBoost, LightGBM, and CatBoost are compared using leakage-controlled nested
 cross-validation or a development holdout appropriate to each dataset. Model
 selection occurs inside development data. Evaluation includes AUROC, average
@@ -28,9 +29,10 @@ only among models evaluated for a supported within-dataset panel and otherwise
 abstains.
 
 **Development results:** In the completed full-budget PIDD development study
-(768 participants; 5 repeats x 5 outer folds), calibrated fixed-threshold AUROC
-ranged from 0.835 to 0.841 and Brier score from 0.154 to 0.157 across the five
-model families. CatBoost had the lowest mean Brier score (0.154), but model
+(768 participants; 5 repeats x 5 outer folds), participant-aggregated calibrated
+AUROC ranged from 0.838 to 0.844 and Brier score from 0.152 to 0.156 across the
+five model families. CatBoost had the lowest participant-level Brier score
+(0.152), but model
 differences were small. For the full panel, the availability router achieved
 participant-level AUROC 0.843 and Brier score 0.152; the robust fixed-model
 baseline achieved AUROC 0.843 and Brier score 0.152. No reduced-panel comparison
@@ -40,9 +42,9 @@ from 0.152 to 0.110 but retained only 55.6% of positive events, demonstrating a
 clinically important coverage trade-off. With 75% simulated feature dropout,
 supported-panel coverage fell to approximately 4.8%-6.6%, while Brier score rose
 to approximately 0.208-0.211 for Random Forest and XGBoost. In the grouped Sylhet
-development study (520 participants; 5 x 5 outer folds), CatBoost achieved AUROC
-0.968, average precision 0.982, and Brier score 0.066, but a calibration slope of
-12.65 indicated instability. The full-panel router achieved AUROC 0.965 and Brier
+development study (520 participants; 5 x 5 outer folds), CatBoost achieved
+participant-level AUROC 0.970, average precision 0.984, Brier score 0.061, and
+calibration slope 1.01. The full-panel router achieved AUROC 0.965 and Brier
 0.068 versus 0.960 and 0.077 for the robust fixed baseline, without a corrected
 significance claim. Across 32 Sylhet panel-specific-training contrasts, no
 comparison survived Holm correction (minimum adjusted p=0.064). The full BRFSS
@@ -53,7 +55,10 @@ Holm-significant. The development-selected LightGBM champion was retained even
 though XGBoost had the numerically lowest test Brier score. Survey weighting
 changed prevalence from 13.3% to 10.9% and increased XGBoost AUROC from 0.843 to
 0.871, showing that sample-conditional and population-weighted estimands are not
-interchangeable.
+interchangeable. In the separate Hospital130 development study, 99,343 retained
+encounters from 69,990 patients yielded a 19,868-encounter patient-grouped test
+partition. LightGBM was selected on development data and achieved calibrated
+AUROC 0.679, average precision 0.229, Brier 0.0958, and calibration slope 1.02.
 
 **Conclusion:** The development evidence supports a reliability and applicability
 paper, not a universal-model or algorithm-superiority claim. Availability-aware
@@ -85,7 +90,8 @@ interpretable feature panels, whether routing between evaluated models improves
 on a robust fixed-model baseline, and when the system should abstain.
 
 This study evaluates that question across three separately analysed
-diabetes-status environments. Its contributions are: (1) endpoint-safe feature
+diabetes-status environments, with Hospital130 retained as a separate secondary
+readmission analysis. Its contributions are: (1) endpoint-safe feature
 and routing contracts; (2) matched evaluation of full and reduced panels on the
 same held-out participants; (3) calibration, paired uncertainty, clinical
 utility, selective prediction, subgroup coverage, and missingness stress beyond
@@ -200,18 +206,18 @@ record exist.
 The full-budget PIDD development run contained 25 outer evaluations for each of
 five models and complete participant aggregation for all 768 individuals. Table
 1 reports calibrated probabilities with the fixed 0.5 descriptive threshold.
-Differences were modest: the absolute Brier range was 0.0026 and the AUROC range
-was 0.0059.
+Differences were modest: the participant-level absolute Brier range was 0.0039
+and the AUROC range was 0.0067.
 
-**Table 1. PIDD calibrated development performance, mean across 25 outer evaluations**
+**Table 1. PIDD calibrated participant-level development performance after averaging each participant across five repeats**
 
 | Model | AUROC | Average precision | Brier | Log loss | Calibration slope | ECE |
 |---|---:|---:|---:|---:|---:|---:|
-| CatBoost | 0.841 | 0.719 | 0.154 | 0.468 | 1.028 | 0.078 |
-| Random Forest | 0.838 | 0.721 | 0.156 | 0.473 | 1.046 | 0.076 |
-| LightGBM | 0.836 | 0.717 | 0.156 | 0.473 | 1.007 | 0.075 |
-| Logistic Regression | 0.836 | 0.723 | 0.156 | 0.477 | 1.055 | 0.074 |
-| XGBoost | 0.835 | 0.715 | 0.157 | 0.476 | 1.017 | 0.078 |
+| CatBoost | 0.844 | 0.709 | 0.152 | 0.462 | 1.050 | 0.038 |
+| Random Forest | 0.840 | 0.710 | 0.154 | 0.468 | 1.046 | 0.032 |
+| LightGBM | 0.839 | 0.713 | 0.154 | 0.468 | 1.033 | 0.038 |
+| Logistic Regression | 0.838 | 0.712 | 0.156 | 0.475 | 1.036 | 0.043 |
+| XGBoost | 0.838 | 0.706 | 0.154 | 0.469 | 1.041 | 0.026 |
 
 These results do not support a claim that a complex model clearly dominates the
 interpretable baseline.
@@ -293,23 +299,23 @@ not a supported performance contribution.
 
 ### 3.5 Grouped Sylhet development results
 
-The full-budget Sylhet study contained 25 outer evaluations for each model and
-cluster-bootstrap uncertainty over identical symptom profiles. CatBoost had the
-lowest fold-mean Brier score (0.066) and highest AUROC (0.968), followed by Random
-Forest (Brier 0.072; AUROC 0.966). However, calibrated slopes were unstable,
-including 12.65 for CatBoost and 2.20 for Random Forest, so the high
-discrimination does not justify an unqualified claim that individual
-probabilities are well calibrated.
+The full-budget Sylhet study contained 25 outer evaluations for each model. Each
+participant's five held-out probabilities was averaged before primary metrics,
+and uncertainty resampled complete identical-profile clusters. CatBoost had the
+lowest participant-level Brier score (0.061) and highest AUROC (0.970), followed
+by Random Forest (Brier 0.067; AUROC 0.968). Participant-level calibration slopes
+were 1.01 and 1.13, respectively. High internal discrimination still does not
+establish transportability beyond this small symptom-enriched cohort.
 
-**Table 2. Sylhet calibrated grouped-development performance, mean across 25 outer evaluations**
+**Table 2. Sylhet calibrated participant-level development performance with identical-profile cluster inference**
 
 | Model | AUROC | Average precision | Brier | Log loss | Calibration slope | ECE |
 |---|---:|---:|---:|---:|---:|---:|
-| CatBoost | 0.968 | 0.982 | 0.066 | 0.235 | 12.652 | 0.074 |
-| Random Forest | 0.966 | 0.981 | 0.072 | 0.246 | 2.200 | 0.087 |
-| LightGBM | 0.953 | 0.973 | 0.080 | 0.290 | 1.354 | 0.085 |
-| XGBoost | 0.957 | 0.976 | 0.080 | 0.266 | 2.244 | 0.085 |
-| Logistic Regression | 0.957 | 0.976 | 0.086 | 0.285 | 1.431 | 0.091 |
+| CatBoost | 0.970 | 0.984 | 0.061 | 0.213 | 1.010 | 0.038 |
+| Random Forest | 0.968 | 0.981 | 0.067 | 0.226 | 1.126 | 0.034 |
+| XGBoost | 0.961 | 0.977 | 0.075 | 0.245 | 1.057 | 0.021 |
+| LightGBM | 0.961 | 0.978 | 0.072 | 0.245 | 0.931 | 0.029 |
+| Logistic Regression | 0.955 | 0.974 | 0.081 | 0.262 | 0.989 | 0.024 |
 
 ![Sylhet participant-level model discrimination and probability loss across feature-availability panels under grouped development validation.](generated/figures/sylhet_performance_and_panels.png)
 
@@ -437,8 +443,45 @@ designed as an official survey-analysis partition.
 
 Historical 10,000-row BRFSS smoke studies remain engineering evidence. A future
 final estimate still requires a different prespecified concealed manifest and
-one authorized execution after protocol freeze. Hospital130 remains outside the
-diabetes-screening result family because its endpoint is 30-day readmission.
+one authorized execution after protocol freeze.
+
+### 3.7 Separate Hospital130 readmission development analysis
+
+Hospital130 remains outside the diabetes-screening result family because its
+endpoint is readmission within 30 days. After excluding death and hospice
+dispositions, 99,343 encounters from 69,990 patients remained (11,314 positive;
+11.39% prevalence). Patient-grouped splitting assigned 79,475 encounters to five
+development folds and 19,868 encounters from 14,003 patients to the development
+test role, with no patient crossing the partitions or development folds.
+
+**Table 4. Hospital130 calibrated full-development performance on the patient-grouped development test partition**
+
+| Model | AUROC | Average precision | Brier | Log loss | Calibration slope | ECE |
+|---|---:|---:|---:|---:|---:|---:|
+| LightGBM | 0.679 | 0.229 | 0.0958 | 0.3327 | 1.019 | 0.0066 |
+| XGBoost | 0.678 | 0.227 | 0.0959 | 0.3331 | 1.029 | 0.0053 |
+| CatBoost | 0.678 | 0.229 | 0.0959 | 0.3330 | 1.028 | 0.0070 |
+| Random Forest | 0.673 | 0.228 | 0.0960 | 0.3339 | 1.020 | 0.0047 |
+| Logistic Regression | 0.661 | 0.201 | 0.0971 | 0.3377 | 0.979 | 0.0070 |
+
+Development OOF Brier score selected sigmoid-calibrated LightGBM. Its 95%
+patient-cluster intervals were 0.667-0.691 for AUROC, 0.213-0.245 for average
+precision, and 0.0918-0.0992 for Brier score. None of the four tree families
+differed from another after metric-wise Holm correction. Each tree family did
+improve over Logistic Regression across the four artifact-ablation metrics after
+correction; these are development comparisons, not final superiority claims.
+
+The router retained LightGBM for the full 46-feature and nine-feature
+admission-clinical panels, and selected Random Forest for the nine-feature
+encounter-utilization, five-feature prior-utilization, and two-feature
+minimal-history panels. Full-panel Brier was 0.0958; reduced-panel Brier ranged
+from 0.0982 to 0.0994. At 80% full-panel selective coverage, accepted prevalence
+fell to 7.62% while rejected prevalence rose to 26.45%, demonstrating substantial
+case-mix shift. Prespecified age, sex, and race estimates were generated, with
+small cells suppressed. Held-out SHAP for the selected LightGBM model ranked
+prior inpatient encounters and discharge disposition highest; maximum additive
+reconstruction error was 1.2e-14. These findings describe internal development
+behavior and do not establish clinical utility or external validity.
 
 ## 4. Discussion
 
@@ -470,12 +513,20 @@ was not the numerical test leader on every metric. Survey weighting materially
 changed prevalence and performance, so population-weighted sensitivity results
 must remain separate from sample-conditional estimates.
 
+The separate Hospital130 analysis reached a similar methodological conclusion:
+tree-family performance was close, reduced panels degraded probability quality,
+and certainty-based deferral preferentially rejected higher-risk encounters. It
+supports the pipeline's endpoint and applicability safeguards, not a diabetes-
+status claim and not a clinically validated readmission tool.
+
 The study has important limitations. All primary datasets are public and mostly
 cross-sectional; they do not measure future incidence or age of onset. PIDD and
 Sylhet are small, and public benchmark reuse limits transportability. BRFSS uses
 self-reported status and requires careful survey-design interpretation. The
 current selective score is a baseline rather than an optimized clinical deferral
-policy. No matched cohort contains all PIDD, Sylhet, and BRFSS attributes for the
+policy. Hospital130 is retrospective, lacks external or temporal validation, and
+its development-test outcomes have been inspected. No matched cohort contains
+all PIDD, Sylhet, and BRFSS attributes for the
 same individuals, so mixed-input routing is not efficacy-validated fusion.
 External or temporal validation remains necessary for clinical-generalization
 claims.

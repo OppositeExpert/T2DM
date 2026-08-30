@@ -4,6 +4,9 @@ No repository-level software license has been approved or added. A public clone
 therefore does not, by itself, grant a software-use license beyond applicable
 law. The project owner and research supervisor must choose and approve a code
 license before presenting this repository as reusable open-source software.
+`LICENSE_STATUS.md` is the canonical short-form governance notice. The
+development `CITATION.cff` deliberately uses a contributor-entity placeholder;
+the approved author list must replace it before a public release.
 
 Raw datasets are separate works and are never covered by a future repository
 code license. `config/data_sources.yaml` records their sources and known terms:

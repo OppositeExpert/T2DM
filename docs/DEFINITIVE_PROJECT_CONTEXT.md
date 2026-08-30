@@ -1,8 +1,9 @@
 # Definitive Technical Project Context: T2DM Prediction and Availability-Aware Evaluation
 
 **Repository audited:** `OppositeExpert/T2DM`, local checkout at `/Users/pranavprabhu/Codex/Minor Proj/T2DM`  
-**Workspace audited:** 29 August 2026; current working tree based on `main`/`origin/main` commit `9b15b26` (`Complete development conference readiness package`, 24 August 2026)  
-**Revision warning:** the current workspace contains 55 modified tracked paths and 24 untracked paths, including the full BRFSS development evidence and later reproducibility/final-run hardening. No single Git commit captures the complete state described here; `9b15b26` is the base revision, not the whole audited implementation.  
+**Workspace audited:** 30 August 2026; current working tree based on `main`/`origin/main` commit `99ff8fa` (`Add reproducible final-run safeguards`, 29 August 2026)
+
+**Revision warning:** the current workspace contains intentional uncommitted Hospital130, registry, release, documentation, CI, and conference-package changes. No single Git commit captures the complete state described here; `99ff8fa` is the base revision, not the whole audited implementation.
 **Document purpose:** technical source of truth and context transfer, not a polished dissertation, clinical protocol, or claim of final validation  
 **Evidence rule used here:** final code and configuration outrank generated development documents; current-code artifacts outrank older artifacts; historical reports explain evolution but do not override the final implementation.
 
@@ -14,7 +15,7 @@ The project uses four evidence tiers that must not be conflated:
 
 1. **Smoke:** a small, deliberately under-powered execution check. It proves the path runs, not scientific performance.
 2. **Development pilot:** full workflow but reduced tuning/repetition/bootstrap budget.
-3. **Full development:** the complete configured development budget for PIDD, Sylhet and BRFSS. These analyses are still unlocked, their outcomes have been inspected, and they are not final paper evidence.
+3. **Full development:** the complete configured development budget for PIDD, Sylhet, BRFSS, and the separate Hospital130 readmission study. These analyses are still unlocked, their outcomes have been inspected, and they are not final paper evidence.
 4. **Final locked:** would require a frozen protocol and authorized concealed final manifests. No such study exists. `config/publication_protocol.yaml` has `protocol_frozen: false` and `final_execution_authorized: false`.
 
 The current machine state has extensive ignored outputs. A clean GitHub clone does not.
@@ -58,7 +59,7 @@ It explicitly does not provide clinical diagnosis, treatment advice, prospective
 
 ## Why this is more than “train XGBoost on diabetes data”
 
-XGBoost is only one of five model families and is not universally best. The substantive work is the surrounding experimental system: dataset contracts, cohort audits, group-aware nested CV, holdout concealment, fold-fitted preprocessing, Optuna tuning, cross-fitted calibrator selection, development-only threshold selection, participant/cluster bootstrap inference, paired Holm-corrected comparisons, decision curves, feature ontology, panel-specific masking, routing, abstention, SHAP scale controls, patient reporting, ablations, selective prediction, missingness stress, subgroup analysis, reproducibility metadata and a fail-closed publication gate. Evidence: `src/diabetes_pipeline/` (14,406 Python source lines), `config/`, 100 passing tests plus seven subtests, and the development conference package.
+XGBoost is only one of five model families and is not universally best. The substantive work is the surrounding experimental system: dataset contracts, cohort audits, group-aware nested CV, holdout concealment, fold-fitted preprocessing, Optuna tuning, cross-fitted calibrator selection, development-only threshold selection, participant/cluster bootstrap inference, paired Holm-corrected comparisons, decision curves, feature ontology, panel-specific masking, routing, abstention, SHAP scale controls, patient reporting, ablations, selective prediction, missingness stress, subgroup analysis, reproducibility metadata and a fail-closed publication gate. Evidence: `src/diabetes_pipeline/`, `config/`, 107 passing tests plus seven subtests, and the development conference package.
 
 # 2. PROJECT EVOLUTION — FROM INITIAL EXPERIMENT TO FINAL SYSTEM
 
@@ -143,7 +144,7 @@ There is no standalone `BLOCK_B_REPORT.md`; its existence is inferred only from 
 
 **Problem:** working software and attractive metrics were being mistaken for submission-ready evidence.  
 **Implemented:** evidence tiers, fail-closed mixed-environment behaviour, publication readiness checks, claim scoping, TRIPOD+AI/PROBAST+AI placeholders and a narrowed negative-result-aware thesis. Evidence: `reporting/publication_readiness.py`; `config/publication_protocol.yaml`; `BLOCK_K_RESEARCH_GRADE_AUDIT.md`.  
-**Result:** NOT READY, initially because pilots/smoke and scientific work remained. Later work completed all supported machine-executable development analyses, the full BRFSS development run and the conference development package, but human review/freeze/final execution remain pending. The current conference-package audit reports 15 blockers and one warning. The older root audit still reports 16 because it points to the superseded BRFSS smoke study.  
+**Result:** NOT READY, initially because pilots/smoke and scientific work remained. Later work completed all supported machine-executable development analyses, the full BRFSS and Hospital130 development runs, and the conference development package, but human review/freeze/final execution remain pending. The current registry-driven conference-package audit reports 15 blockers and one warning; `PUBLICATION_READINESS.md` is the canonical root pointer to that audit.
 **Survival:** central final governance layer.
 
 ## Post-Block K publication-development completion
@@ -181,7 +182,7 @@ What works:
 
 - The reference interpreter is CPython 3.12.0. `requirements.lock` fixes 48 resolved distributions for the audited macOS-arm64 environment; `pyproject.toml` also pins the direct project dependencies.
 - Seed 42 is standard; derived fold/model seeds are deterministic. Split manifests and source/data hashes are recorded.
-- The current local environment passes `100 passed, 3 warnings, 7 subtests passed`; the warnings are SHAP/Matplotlib `PendingDeprecationWarning`s.
+- The current local environment passes `107 passed, 3 warnings, 7 subtests passed`; the warnings are third-party SHAP/Matplotlib `PendingDeprecationWarning`s.
 - `scripts/verify_environment.py` verifies Python 3.12.0 and all 48 locked distributions.
 - `scripts/acquire_data.py --dataset all` verifies all four exact raw files; with `--download` it can reconstruct/acquire them from the recorded OpenML, UCI and CDC sources and refuses silent hash mismatches.
 - `scripts/verify_holdout_bundles.py` reproduced all five BRFSS holdout bundles' raw and calibrated probabilities for all 85,872 development-test rows, with maximum absolute error at or below `3.33e-16`.
@@ -437,18 +438,31 @@ Survey sensitivity reweights the same 85,872 respondents. It contains 53 state/t
 
 Historical BRFSS smoke studies remain in `outputs/.../studies/brfss_smoke_*`. The most recent five-model smoke `brfss_smoke_holdout_b3a6ad2aa89e` had N=10,000 and CatBoost AUROC/AP/Brier 0.8316/0.4211/0.0936. It is superseded as the implementation snapshot by the full development study but remains useful execution provenance. Neither is final locked evidence.
 
-## Hospital130 smoke holdout (`hospital130_smoke_holdout_6640beff7a08`)
+## Hospital130 full development (`hospital130_development_holdout_c3aa5fb84a7a`)
 
-Test N=10,000, positives=1,139; smoke only and separate endpoint.
+The separate 30-day-readmission study retained 99,343 encounters from 69,990
+patients, with 11,314 positives (11.39%). Patient-grouped splitting assigned
+79,475 encounters to development and 19,868 encounters from 14,003 patients to
+the development test role. No patient crossed the holdout boundary or a
+development fold. All five benchmark families completed 30 tuning trials,
+development-only calibration/threshold/champion selection, and 500 patient-
+cluster bootstrap replicates.
 
 | Model | AUROC | AP | Brier | Log loss |
 |---|---:|---:|---:|---:|
-| XGBoost | **0.6589** | **0.2065** | **0.0973** | **0.3382** |
-| Random Forest | 0.6584 | 0.2040 | 0.0973 | 0.3383 |
-| CatBoost | 0.6516 | 0.2003 | 0.0976 | 0.3396 |
-| LightGBM | 0.6334 | 0.1874 | 0.0984 | 0.3430 |
+| LightGBM | **0.6792** | **0.2288** | **0.09584** | **0.33271** |
+| XGBoost | 0.6781 | 0.2269 | 0.09594 | 0.33308 |
+| CatBoost | 0.6781 | 0.2287 | 0.09589 | 0.33305 |
+| Random Forest | 0.6729 | 0.2281 | 0.09604 | 0.33393 |
+| Logistic Regression | 0.6610 | 0.2007 | 0.09715 | 0.33769 |
 
-At 0.5, XGBoost produced TN=8,857, FP=4, FN=1,135, TP=4. This is not evidence that the probabilities are useless; it demonstrates that 0.5 is inappropriate for an 11.4%-prevalence endpoint. Development-selected Youden thresholds gave sensitivity about 0.566–0.671; the 0.80-sensitivity policy gave 0.809–0.860 with much lower specificity.
+Development OOF evidence selected sigmoid-calibrated LightGBM. Tree-family
+differences did not survive Holm correction; every tree family did improve over
+Logistic Regression in the prespecified four-metric artifact-ablation family.
+Availability routing, matched-panel contrasts, selective prediction, age/sex/
+race subgroups, held-out SHAP, and exact bundle replay are complete. Historical
+study `hospital130_smoke_holdout_6640beff7a08` remains preserved as smoke-only
+execution provenance and is not current evidence.
 
 # 9. `summary_metrics.csv` AND RESULT ARTIFACTS
 
@@ -583,13 +597,17 @@ Every one of the 80 same-model BRFSS full-versus-reduced point estimates has a d
 
 # 14. HOLDOUT ENGINE
 
-`holdout_runner.py` is separate from `runner.py`. BRFSS uses a stratified 80/20 manifest; Hospital130 uses a patient-grouped approximate 80/20 split. Within development, model tuning, calibration selection, threshold selection and development-champion selection are completed using development folds. The champion rule is lowest Brier, then log loss, then higher AP. Only afterward is the test partition read for one evaluation. BRFSS uncertainty resamples individuals; Hospital resamples patient clusters. Metrics, predictions, choices, CIs, comparisons, decision curves, models and hashes are saved. The authoritative BRFSS study used all 343,488 development and 85,872 development-test rows; Hospital130 remains a 10,000-per-partition smoke study.
+`holdout_runner.py` is separate from `runner.py`. BRFSS uses a stratified 80/20 manifest; Hospital130 uses a patient-grouped approximate 80/20 split. Within development, model tuning, calibration selection, threshold selection and development-champion selection are completed using development folds. The champion rule is lowest Brier, then log loss, then higher AP. Only afterward is the test partition read for one evaluation. BRFSS uncertainty resamples individuals; Hospital resamples patient clusters. Metrics, predictions, choices, CIs, comparisons, decision curves, models and hashes are saved. The authoritative BRFSS study used all 343,488 development and 85,872 development-test rows; the authoritative Hospital130 study used all 79,475 development and 19,868 development-test encounters.
 
 This is stronger than a casual `train_test_split` because it has stable row/group identity, stored roles, group isolation, cross-fitted development choices, reloadable artifacts, source/manifests checksums, test-access metadata, outcome-blind final manifests, and a fail-closed authorization layer in `splitting/concealment.py`. A non-smoke run cannot be unlocked casually.
 
-The final guard requires a locked final profile, frozen protocol/analysis plan, completed prespecified gates, signed authorization, authorized seed, authorized raw-data and analysis-configuration hashes, and—for holdout datasets—a checksum-valid outcome-blind concealed manifest. Future split creation is deliberately authorized separately from execution. Immediately before final outcome loading, code claims a non-overwritable access receipt bound to dataset, experiment, raw data, manifest, configuration, seed, purpose and authorization record. Current values are unset/false; read-only preflight for all four datasets returns `authorized=false` and `outcome_accessed=false`. That guard reduces accidental researcher degrees of freedom but does not create external validity or substitute for an independent custodian. The full seed-42 BRFSS development-test and Hospital smoke outcomes are permanently development evidence.
+The final guard requires a locked final profile, frozen protocol/analysis plan, completed prespecified gates, signed authorization, authorized seed, authorized raw-data and analysis-configuration hashes, and—for holdout datasets—a checksum-valid outcome-blind concealed manifest. Future split creation is deliberately authorized separately from execution. Immediately before final outcome loading, code claims a non-overwritable access receipt bound to dataset, experiment, raw data, manifest, configuration, seed, purpose and authorization record. Current values are unset/false; read-only preflight for all four datasets returns `authorized=false` and `outcome_accessed=false`. That guard reduces accidental researcher degrees of freedom but does not create external validity or substitute for an independent custodian. The full seed-42 BRFSS and Hospital130 development-test outcomes are permanently development evidence.
 
-One artifact-label caveat is important: BRFSS CSV/SHAP artifacts generated before the latest role-label hardening still say `evaluation_role=locked_test` or `estimation_scope=locked_test`. Their metadata and current registry correctly classify them as `full_development` with `test_access=development_test_previously_accessed_not_final_eligible`. Current code uses explicit `development_test` versus `locked_final_test` semantics for future runs. The old string must never be read as final eligibility.
+Current canonical BRFSS CSV/JSON artifacts have been migrated from the historical
+`locked_test` string to explicit `development_test` semantics without rewriting
+free-text provenance. Historical studies may retain their original label. Current
+code and schema tests distinguish `development_test` from `locked_final_test`,
+and neither authoritative holdout study is final eligible.
 
 Scientifically, protected holdout discipline reduces optimistic bias from iterating on test feedback. It does not correct sampling bias, target mismatch, dataset shift, measurement error or lack of prospective validation.
 
@@ -769,7 +787,7 @@ The planned conference narrative focuses on availability-aware calibrated degrad
 | Full PIDD and grouped Sylhet development studies | Implemented and development-validated | studies `072cd...`, `b524...` |
 | Full BRFSS development study | Implemented and development-evaluated on all 429,360 retained rows | `brfss_development_holdout_56407ef53bba`; inspected development-test, never final |
 | Fresh BRFSS final locked study | Engine/preflight implemented; execution prohibited | protocol/authorization/concealed-manifest fields unset |
-| Hospital readmission support | Implemented smoke, separate endpoint | study `6640...` |
+| Hospital readmission support | Full-cohort grouped development study, separate endpoint; historical smoke retained | study `hospital130_development_holdout_c3aa5fb84a7a` |
 | Calibration/threshold/DCA/paired uncertainty | Implemented and development-validated | evaluation/calibration modules |
 | Ontology and panels | Implemented; mappings need independent review | config, generated dictionary |
 | Router vs fixed comparison | Implemented; no corrected advantage | routing/contrasts |
@@ -788,7 +806,7 @@ The planned conference narrative focuses on availability-aware calibrated degrad
 
 **Working hypotheses.** These remain development hypotheses, not confirmed claims: (1) evaluated reduced panels will degrade more gracefully than simplistic baselines on matched people; (2) compact, clinically plausible panels will retain useful discrimination but may lose calibration and positive-class precision; (3) selective prediction will improve performance among accepted cases only at the cost of coverage and potentially harmful case-mix selection; and (4) a dynamic per-person selector may not outperform a simpler robust fixed expert after paired multiplicity correction. Exact superiority/non-inferiority margins are not frozen, so no confirmatory hypothesis test may yet be claimed.
 
-**Experiments already completed.** The repository contains full repeated nested-CV development studies for PIDD and grouped Sylhet, a full BRFSS development/holdout study, a separate Hospital130 smoke pathway, calibration and threshold analyses, participant/cluster bootstrap inference, paired Holm-corrected model and panel contrasts, decision curves, routing and robust-comparator analyses, SHAP, reporting, missingness and panel-training ablations for the nested-CV cohorts, and BRFSS artifact ablations, selective prediction, subgroup and survey-weighted sensitivity analyses. The automatic mixed-dataset selector is only an opt-in software experiment; it is not clinical validation.
+**Experiments already completed.** The repository contains full repeated nested-CV development studies for PIDD and grouped Sylhet, full BRFSS and patient-grouped Hospital130 development holdout studies, calibration and threshold analyses, participant/cluster bootstrap inference, paired Holm-corrected model and panel contrasts, decision curves, routing and robust-comparator analyses, held-out SHAP, reporting, missingness and panel-training ablations for the nested-CV cohorts, BRFSS survey-weighted sensitivity, and supported artifact/selective/subgroup analyses. The automatic mixed-dataset selector is only an opt-in software experiment; it is not clinical validation.
 
 **Experiments still required.** Freeze the protocol and primary panels, estimands, margins and utility assumptions; obtain human authorization for genuinely fresh final runs; complete independent ontology and reporting review; add an external, geographic, prospective or temporal validation cohort; test transport and recalibration; prespecify and assess clinically meaningful subgroup intersections; and, if automatic schema/environment selection is retained as a claim, evaluate it on matched cases for which alternative feature environments are genuinely observed rather than simulated by masking.
 
@@ -800,7 +818,7 @@ The planned conference narrative focuses on availability-aware calibrated degrad
 
 **Possible paper structure.** Introduction: feature availability, endpoint heterogeneity and the danger of optimistic schema pooling. Methods: cohort contracts, leakage controls, splitting, preprocessing, model/calibration selection, availability panels, abstention, explainability and statistical analysis. Results: cohort audit, primary model performance, panel degradation, routing/selective prediction, robustness and subgroup/survey sensitivity. Discussion: negative selector result, case-mix effects, transport limits, clinical interpretation and non-deployment status. Conclusion: bounded development findings only. Supplement: protocol and tuning spaces, full fold and participant results, calibration/DCA, all ablations, SHAP QA, model cards, data dictionaries, TRIPOD+AI crosswalk, PROBAST+AI assessment and exact reproducibility manifests.
 
-Machine-executable development work is complete for the supported paths, including the analyses Block K originally listed as incomplete. Scientifically, the project is a strong development prototype and a prepared draft package, not a submit-ready clinical prediction paper. Current authoritative conference QA verdict: NOT READY, 15 blocking checks and one external-validation warning. The root `outputs/publication_readiness_audit.md` is stale at 16 blockers because it still audits the BRFSS smoke study.
+Machine-executable development work is complete for the supported paths, including the analyses Block K originally listed as incomplete. Scientifically, the project is a strong development prototype and a prepared draft package, not a submit-ready clinical prediction paper. Current authoritative conference QA verdict: NOT READY, 15 blocking checks and one external-validation warning. `PUBLICATION_READINESS.md` points to the registry-driven canonical audit so a stale root result cannot be mistaken for current evidence.
 
 # 21. FINAL PROJECT STATUS
 
@@ -809,13 +827,13 @@ Machine-executable development work is complete for the supported paths, includi
 - Four validated dataset adapters, audits and deterministic stratified/group splits.
 - Five model families, Optuna tuning, cross-fitted calibration, three threshold policies and reloadable bundles.
 - Repeated nested development studies for PIDD and grouped Sylhet at the full development budget.
-- Full-cohort BRFSS development holdout plus a Hospital130 smoke holdout pathway.
+- Full-cohort BRFSS development holdout plus a full-cohort patient-grouped Hospital130 development holdout on its separate readmission endpoint.
 - Participant/cluster bootstrap CIs, paired contrasts, Holm correction and decision-curve uncertainty.
 - Held-out SHAP, grouping, local explanations, dependence summaries and stability/reconstruction QA.
 - Four-dataset 91-row ontology and availability-panel contracts.
 - Availability routing, robust comparator, abstention, single/mixed patient research reports.
 - Artifact, missing-indicator, panel-training, missingness-stress, selective-prediction, subgroup, leakage and reporting ablation engines; development executions are complete.
-- Exact source/data/environment study registry, CI, final preflight/access-receipt safeguards, publication readiness gate, conference development package, and 100 passing tests plus seven subtests.
+- Exact source/data/environment study registry, CI, final preflight/access-receipt safeguards, publication readiness gate, conference development package, and 107 passing tests plus seven subtests.
 
 ## Partially completed
 
@@ -1123,16 +1141,27 @@ For exact authoritative development reproduction rather than a short demonstrati
 
 For a university minor project, structure and methodological care are unusually strong: clear package boundaries, declarative configuration, type hints/docstrings, deterministic IDs/hashes, testable pure functions, fold-safe pipelines, reload checks, explicit negative evidence and governance. Error handling commonly fails closed for unsupported datasets/panels, non-finite/out-of-range patient values, group overlap, SHAP reconstruction and final authorization.
 
-Weaknesses include ignored primary artifacts; no approved code license/container/immutable external artifact archive; a few old absolute paths in generated metadata; potentially expensive monolithic orchestration; no formal static typing/coverage report; and no independent data custody. Top-level current/stale audit aliases coexist, pre-hardening BRFSS artifacts still use the misleading string `locked_test`, and many ignored studies make the canonical choice easy to misunderstand. Some robustness/ablation engines support repeated-CV studies only, so “all analyses completed” must be qualified by dataset/runner support.
+Weaknesses include ignored primary artifacts; no approved code license or
+immutable external artifact archive; a few old absolute paths in generated
+metadata; potentially expensive monolithic orchestration; no formal static
+typing/coverage report; and no independent data custody. The repository now has
+a CPU container recipe, canonical audit runner/pointer, explicit development-test
+labels, and a hash-verified external-archive manifest, but the container cannot
+be runtime-verified on this host and no external archive has been uploaded. Some
+robustness/ablation engines support repeated-CV studies only, so “all analyses
+completed” must be qualified by dataset/runner support.
 
 ## Improvements for the minor-project handoff
 
 1. Commit the audited hardening/current documentation as one reviewed checkpoint so the source of truth is no longer a dirty working tree.
-2. Regenerate the root publication audit from authoritative study IDs or remove the stale alias; keep the current audit in one canonical path.
-3. Regenerate BRFSS secondary artifacts with `development_test` role labels so no reader can confuse them with a final test.
-4. Publish lightweight canonical metric/manifest tables or a versioned artifact release; keep raw/sensitive data excluded.
-5. Add this definitive context to README navigation and record a stable artifact archive/recovery policy.
-6. Add lint/type/coverage checks and validate cross-platform lock/container behavior.
+2. Obtain independent review of the canonical publication-readiness audit and
+   artifact manifest before release.
+3. Upload the hash manifest and required artifacts to an approved immutable
+   archive without placing large outputs in Git.
+4. Approve a software license and replace the explicit no-license status.
+5. Validate the container on a Docker-capable host and record platform details.
+6. Add formal typing or coverage only if it offers maintainable value beyond the
+   current test and configuration checks.
 
 ## Before serious publication/open source
 
@@ -1155,13 +1184,13 @@ Acquire representative external/prospective data; define intended use/users and 
 | `experiment_metadata.json` absolute XGBoost paths | artifacts generated before move | hashes/study IDs matter; paths are stale provenance |
 | No `PUBLICATION_PIPELINE.md` though planning language cites it | actual plan split across roadmap/protocol/research docs | cite real paths; create index if desired |
 | “Calibrated” narrative vs Sylhet fold slope 12.65 and participant slope ~1.01 | different unstable/aggregated estimands | report both and define primary estimand |
-| Conference Table 1/2 fold means vs protocol participant/profile-level primary inference | draft tables summarize outer evaluations, while the inferential unit is the aggregated person/profile | use participant/cluster estimates and CIs in primary submission tables; label fold means secondary |
+| Earlier conference Table 1/2 fold means vs protocol participant/profile-level primary inference | the earlier draft summarized outer evaluations, while the inferential unit is the aggregated person/profile | resolved in the current package: participant/profile estimates and CIs are primary; fold summaries are secondary |
 | Block J describes priority auto-selection; Block K/final code defaults to abstain | safety hardening after Block J | final code/protocol authoritative |
 | Patient synthetic probability 66.05% vs mixed example PIDD ~55.16% | different input JSON, pilot bundles and routing context | both demos only; label exact artifact/source |
 | `pyproject` description says diabetes screening while Hospital supported | primary topic vs secondary endpoint | clarify package description |
-| Root readiness audit says 16 blockers/BRFSS smoke; conference QA says 15/full BRFSS development | root audit was not regenerated after authoritative BRFSS study | conference QA/current study registry is authoritative; root alias is stale |
-| BRFSS artifact rows say `locked_test`; study metadata says full development/non-final | artifacts predate explicit development/final role split | treat as development-test only; regenerate labels before release |
-| Base Git commit is `9b15b26`, but this document describes later code/results | substantial changes are uncommitted | cite base plus working-tree audit date/hash; commit a reviewed checkpoint before external handoff |
+| Historical root readiness audit reported 16 blockers/BRFSS smoke; conference QA reported 15/full BRFSS development | the root audit was not regenerated after the authoritative BRFSS study | resolved: `PUBLICATION_READINESS.md` points to the registry-driven conference QA audit; historical audits remain provenance only |
+| BRFSS canonical artifact rows previously said `locked_test`; study metadata said full development/non-final | artifacts predated the explicit development/final role split | resolved in current canonical CSV/JSON artifacts by migration to `development_test`; historical prose is unchanged |
+| Earlier context used base commit `9b15b26`; this audit uses `99ff8fa` plus intentional changes | the repository advanced while development work remained uncommitted | the header now identifies the exact base and dirty working-tree status; create a reviewed checkpoint before external handoff |
 
 # 31. THINGS I MAY HAVE MISUNDERSTOOD ABOUT MY OWN PROJECT
 
@@ -1188,7 +1217,7 @@ Acquire representative external/prospective data; define intended use/users and 
 
 ## Project identity and objective
 
-This is Pranav Prabhu's completed university Minor Project on Type 2 Diabetes Mellitus prediction, implemented in the repository `OppositeExpert/T2DM`. The audited workspace is dated 29 August 2026 and is based on `main`/`origin/main` commit `9b15b26`, but it contains substantial uncommitted post-commit hardening and full BRFSS development evidence; do not pretend that one Git revision captures the whole state. The implementation is a Python research prototype for **calibrated, explainable and availability-aware evaluation across heterogeneous diabetes-related datasets**. It is not simply an XGBoost classifier and is not a clinical diagnostic tool.
+This is Pranav Prabhu's completed university Minor Project on Type 2 Diabetes Mellitus prediction, implemented in the repository `OppositeExpert/T2DM`. The audited workspace is dated 30 August 2026 and is based on `main`/`origin/main` commit `99ff8fa`, with intentional uncommitted Hospital130, registry, release, documentation, CI, and conference-package changes; do not pretend that one Git revision captures the whole state. The implementation is a Python research prototype for **calibrated, explainable and availability-aware evaluation across heterogeneous diabetes-related datasets**. It is not simply an XGBoost classifier and is not a clinical diagnostic tool.
 
 The final research problem is: how can separate cohort-specific diabetes models preserve endpoint/feature semantics, avoid leakage, quantify discrimination/calibration/utility degradation when only prespecified feature panels are available, route a dataset-native patient input to an evaluated panel/model, and abstain when no scientifically supported route exists? The strongest defensible contribution is an endpoint-safe, provenance-preserving framework for calibrated feature-availability degradation and abstention across incompatible diabetes-screening cohorts. Dynamic model switching is a secondary negative result.
 
@@ -1202,7 +1231,7 @@ Inside training partitions, `preprocessing/builders.py` median-imputes numeric f
 
 `runner.py` executes PIDD/Sylhet nested studies. `holdout_runner.py` completes all BRFSS/Hospital tuning/calibration/threshold/champion choices from development data before test access. `evaluation/*` calculates metrics, bootstrap uncertainty, paired comparisons with Holm correction, decision curves and ablations. `artifacts/bundles.py` stores preprocessor+estimator+calibrator+threshold+feature/provenance metadata in joblib bundles. `explainability/*` creates held-out SHAP evidence. `routing/*` evaluates prespecified missing-feature panels and performs inference. `reporting/patient_results.py`, `mixed_patient_results.py` and `publication_readiness.py` create research reports and enforce scientific claim gates.
 
-The active package is `src/diabetes_pipeline` (14,406 Python lines). The CLI is `python -m diabetes_pipeline.cli` or installed `diabetes-pipeline`. There are no Jupyter notebooks. The audited code has 100 passing tests plus seven adapter subtests; three warnings are SHAP/Matplotlib pending deprecations.
+The active package is `src/diabetes_pipeline`. The CLI is `python -m diabetes_pipeline.cli` or installed `diabetes-pipeline`. There are no Jupyter notebooks. The audited code has 107 passing tests plus seven adapter subtests; three warnings are third-party SHAP/Matplotlib pending deprecations.
 
 ## Development history
 
@@ -1283,7 +1312,7 @@ The holdout engine fixes development tuning/calibration/threshold/champion selec
 
 Patient inference validates finite/range-compatible dataset-native input, loads multiple outer router bundles, requires panel agreement, aggregates calibrated probabilities by mean/min/max/SD, reports fold threshold agreement/model/calibrator counts, computes per-fold SHAP, normalizes within fold because scales differ, and adds cohort-relative observational context plus disclaimers. The spread is not a CI. Synthetic PIDD missing Insulin demonstrated `no_insulin_or_skinfold`, mean 66.05%, range 59.54–78.38%, all 5 folds positive; this is a pilot demo, not a real person.
 
-SHAP uses LinearExplainer raw log-odds for LR, TreeExplainer raw probability for RF and raw margins for boosted trees. Calibration happens after the explained model. Only outer/test rows are reported; development provides holdout background. Glucose/BMI lead PIDD; Polyuria/Polydipsia lead Sylhet. Full BRFSS development explains 1,000 development-test rows/model and most consistently ranks GenHlth, HighBP, Age, BMI and HighChol; Hospital smoke emphasizes prior inpatient use/discharge/utilization. SHAP is associative, model-relative and non-causal; cross-family raw magnitudes are incomparable.
+SHAP uses LinearExplainer raw log-odds for LR, TreeExplainer raw probability for RF and raw margins for boosted trees. Calibration happens after the explained model. Only outer/test rows are reported; development provides holdout background. Glucose/BMI lead PIDD; Polyuria/Polydipsia lead Sylhet. Full BRFSS development explains 1,000 development-test rows/model and most consistently ranks GenHlth, HighBP, Age, BMI and HighChol; full Hospital130 development explains 1,000 development-test rows/model and emphasizes prior inpatient use, discharge disposition, diagnosis count and related utilization fields. SHAP is associative, model-relative and non-causal; cross-family raw magnitudes are incomparable.
 
 The final pipeline calculates and saves TP/TN/FP/FN but does **not** compare feature profiles/statistics across error groups or generate SHAP-by-error-class findings. Do not invent false-negative characteristics. Supported error conclusions are counts and threshold trade-offs only.
 
@@ -1293,7 +1322,7 @@ Strongest novelty is the integrated endpoint-safe availability/degradation/abste
 
 Important negative/cautionary results: no universal corrected model-family superiority; no corrected router-vs-fixed advantage; no indicator-on advantage in PIDD/Sylhet; no panel-specific RF/XGB training advantage; severe dropout destroys named-panel coverage; and selective prediction improves accepted-case Brier while losing event coverage. In BRFSS at 70% coverage, only 24.97% of positive events are retained. These narrow and strengthen the paper claim.
 
-Supported machine development work, the full BRFSS development analyses and conference drafts are complete. `config/publication_protocol.yaml` remains unlocked; the current conference QA audit is NOT READY with 15 blockers and one warning. No authorized final profile, fresh locked study, signed protocol, independent novelty/ontology review or external/temporal validation exists. Hospital is supporting smoke only. The project is complete as a minor-project implementation, not as a final clinical/publication validation.
+Supported machine development work, the full BRFSS and Hospital130 development analyses, and conference drafts are complete. `config/publication_protocol.yaml` remains unlocked; the current conference QA audit is NOT READY with 15 blockers and one warning. No authorized final profile, fresh locked study, signed protocol, independent novelty/ontology review or external/temporal validation exists. Hospital130 remains supporting full-development evidence on a separate readmission endpoint. The project is complete as a minor-project implementation, not as a final clinical/publication validation.
 
 ## Safe and unsafe claims
 
@@ -1321,7 +1350,7 @@ Unsafe: diagnoses diabetes; is medically/clinically validated; generalizes to In
 - `docs/progress_reports/BLOCK_A...K`: development history, not always final truth.
 - `docs/research/Execution_Status.md`: latest development completion status.
 - `conference_package/`: development draft/crosswalks/tables/figures, not final.
-- `conference_package/qa/Publication_Readiness_Audit.md`: current 15-blocker audit; the root audit is stale.
+- `conference_package/qa/Publication_Readiness_Audit.md`: current registry-driven 15-blocker audit; `PUBLICATION_READINESS.md` is its root pointer.
 - `outputs/publication_pipeline/studies/`: local ignored evidence/models; unavailable in clean clone.
 
 ## Demo memory

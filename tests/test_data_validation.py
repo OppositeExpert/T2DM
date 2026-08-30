@@ -23,6 +23,14 @@ class DataValidationTests(unittest.TestCase):
         config = get_dataset_config("hospital130")
         validate_dataset(hospital, config)
         self.assertEqual(len(hospital.X), 99_343)
+        self.assertEqual(hospital.groups.nunique(), 69_990)
+        self.assertEqual(int(hospital.y.sum()), 11_314)
+        self.assertAlmostEqual(float(hospital.y.mean()), 11_314 / 99_343)
+        self.assertEqual(hospital.X.shape[1], 46)
+        self.assertFalse(
+            {"encounter_id", "patient_nbr", "readmitted", "readmitted_binary"}
+            & set(hospital.X.columns)
+        )
         self.assertIn("discharge_disposition_id", config["categorical_features"])
         self.assertNotIn("discharge_disposition_id", config["numeric_features"])
         excluded = {"11", "13", "14", "19", "20", "21"}

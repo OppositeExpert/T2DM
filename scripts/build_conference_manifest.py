@@ -7,6 +7,8 @@ import json
 from datetime import date
 from pathlib import Path
 
+import yaml
+
 
 ROOT = Path(__file__).resolve().parents[1]
 PACKAGE = ROOT / "conference_package"
@@ -21,6 +23,9 @@ def sha256(path: Path) -> str:
 
 
 def main() -> None:
+    authoritative = yaml.safe_load(
+        (ROOT / "config" / "authoritative_studies.yaml").read_text(encoding="utf-8")
+    )["studies"]
     included = []
     for path in sorted(PACKAGE.rglob("*")):
         if not path.is_file() or path.name == "package_manifest.json":
@@ -37,9 +42,8 @@ def main() -> None:
         "created_date": date.today().isoformat(),
         "evidence_role": "development_only_not_submission_authorized",
         "development_studies": {
-            "pidd": "pidd_development_072cd2104089",
-            "sylhet": "sylhet_development_b52477910fe6",
-            "brfss": "brfss_development_holdout_56407ef53bba",
+            dataset: declaration["study_id"]
+            for dataset, declaration in authoritative.items()
         },
         "protocol_frozen": False,
         "final_execution_authorized": False,

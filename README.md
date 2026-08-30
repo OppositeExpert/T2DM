@@ -17,8 +17,14 @@ reports.
   filenames, hashes, licenses, loader assumptions, and verified acquisition.
 - [Tracked evidence registry](evidence/README.md): mapping from authoritative
   development studies to ignored local artifacts and hashes.
+- [Artifact archiving](docs/ARTIFACT_ARCHIVING.md): external immutable-archive
+  manifest generation and restored-artifact verification.
+- [Publication readiness](PUBLICATION_READINESS.md): pointer to the one canonical
+  current readiness audit and its regeneration command.
 - [Code and data use status](docs/LICENSE_AND_DATA_USE.md): current absence of a
   repository code license and dataset-specific terms that remain separate.
+- [Software license status](LICENSE_STATUS.md): explicit no-license governance
+  state; this repository is not yet approved for open-source reuse.
 - [Project structure](docs/PROJECT_STRUCTURE.md): what each folder contains.
 - [Progress reports](docs/progress_reports): completed experimental blocks and
   their interpretation.
@@ -73,3 +79,7 @@ The corresponding large artifacts under `outputs/publication_pipeline/studies`
 are ignored and must be regenerated after a clean clone. Smoke results verify
 execution only; full-development results support development decisions only;
 neither is final locked paper evidence.
+
+An optional CPU container is provided for cross-platform setup and lightweight
+verification. It pins Python and package versions, but it does not promise
+byte-identical trained models across operating systems or CPU architectures.

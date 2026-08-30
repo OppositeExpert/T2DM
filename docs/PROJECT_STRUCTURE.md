@@ -67,7 +67,7 @@ Validation and immutable splitting
 Fold-fitted preprocessing
           │
           ▼
-RF / XGBoost / LightGBM / CatBoost
+Logistic Regression / RF / XGBoost / LightGBM / CatBoost
           │
           ▼
 Calibration + threshold selection + model/panel routing
@@ -82,9 +82,19 @@ Calibration + threshold selection + model/panel routing
 - `pidd_development_072cd2104089`
 - `sylhet_development_b52477910fe6`
 - `brfss_development_holdout_56407ef53bba`
+- `hospital130_development_holdout_c3aa5fb84a7a` (separate 30-day readmission endpoint)
 
 The exact mapping is machine-readable in `config/authoritative_studies.yaml` and
 `evidence/study_registry.json`. Historical BRFSS and Hospital130 smoke studies
 remain engineering provenance, not publication estimates. No current study is
 a final locked result; final execution remains prohibited until the protocol is
 frozen and independently authorized.
+
+`evidence/artifact_release_manifest.json` is the tracked inventory for a future
+immutable external archive. `scripts/build_artifact_release_manifest.py` creates
+it from the authoritative registry, and
+`scripts/verify_artifact_release_manifest.py` verifies a local or restored tree.
+
+`Dockerfile` provides an optional pinned Python 3.12 CPU environment for
+cross-platform setup and lightweight checks. Raw data and generated outputs are
+excluded from the build context by `.dockerignore`.

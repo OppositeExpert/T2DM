@@ -12,6 +12,10 @@ studies:
     study_id: brfss_development_holdout_56407ef53bba
     evidence_tier: full_development
     command: python -m diabetes_pipeline.cli benchmark-holdout --dataset brfss --profile development --models logistic_regression random_forest xgboost lightgbm catboost
+  hospital130:
+    study_id: hospital130_development_holdout_c3aa5fb84a7a
+    evidence_tier: full_development
+    command: python -m diabetes_pipeline.cli benchmark-holdout --dataset hospital130 --profile development --models logistic_regression random_forest xgboost lightgbm catboost
 
 historical_engineering_studies:
   brfss_smoke:

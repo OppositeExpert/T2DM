@@ -1,6 +1,6 @@
 # Publication Blocker Register
 
-**Baseline:** 29 August 2026, post-BRFSS full-development audit
+**Current audit:** 30 August 2026, post-Hospital130 full-development and release-hardening audit
 
 **Readiness verdict:** `NOT READY`
 
@@ -32,8 +32,8 @@ controls; they are not missing software outputs or failed model experiments.
 | BLK-012 | `tripod_ai_checklist_complete` | Development crosswalk drafted | Implemented, awaiting author review | 11 | Complete page/section mapping against the final venue version | Signed checklist and flag set true |
 | BLK-013 | `probast_ai_assessment_complete` | Conservative development assessment drafted | Implemented, awaiting independent review | 11 | Review and disclose the final assessment | Signed assessment with evidence and flag set true |
 | BLK-014 | `ablation_study_complete` | All prespecified development ablation paths executed | Implemented, awaiting scientific review | 5 | Approve retained analyses and freeze the decision report | Reviewed ablation protocol/results and flag set true |
-| BLK-015 | `selective_prediction_evaluation_complete` | Full PIDD, Sylhet, and full-sample BRFSS risk-coverage artifacts exist | Implemented, awaiting scientific review | 6 | Review coverage, event retention, and failure reasons | Reviewed report and flag set true |
-| BLK-016 | `subgroup_analysis_complete` | Full PIDD, Sylhet, and full-sample BRFSS subgroup/suppression artifacts exist | Implemented, awaiting scientific review | 6 | Review subgroup uncertainty and suppression | Reviewed report and flag set true |
+| BLK-015 | `selective_prediction_evaluation_complete` | Full PIDD, Sylhet, BRFSS, and patient-grouped Hospital130 risk-coverage artifacts exist | Implemented, awaiting scientific review | 6 | Review coverage, event retention, and failure reasons | Reviewed report and flag set true |
+| BLK-016 | `subgroup_analysis_complete` | Full PIDD, Sylhet, BRFSS, and Hospital130 subgroup/suppression artifacts exist | Implemented, awaiting scientific review | 6 | Review subgroup uncertainty and suppression | Reviewed report and flag set true |
 | WRN-001 | `external_or_temporal_validation` | `false` | Open warning; journal blocker | 13 | Apply a frozen model to an independent or later compatible cohort | External/temporal validation report and flag set true |
 
 ## Cross-cutting controls discovered during Phase 0
@@ -92,7 +92,8 @@ controls; they are not missing software outputs or failed model experiments.
 - Phase 6 selective prediction and subgroups: outcome-blind probability-certainty
   coverage analysis, positive-event retention, group-preserving acceptance,
   subgroup bootstrap uncertainty, and small-cell suppression are implemented.
-  full PIDD/Sylhet and full-sample BRFSS development studies passed;
+  full PIDD/Sylhet, full-sample BRFSS, and patient-grouped Hospital130
+  development studies passed;
   BLK-015 and BLK-016 now await scientific review only.
 - Phase 5 missingness stress: shared MCAR-like and structured-block masks at four
   severity levels passed on the full PIDD and Sylhet development studies. Severe dropout materially

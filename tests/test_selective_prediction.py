@@ -47,6 +47,9 @@ class SelectivePredictionTests(unittest.TestCase):
         self.assertEqual(set(rejected["row_id"]), {"row:3", "row:4"})
         self.assertEqual(len(metrics), 2)
         self.assertFalse(intervals.empty)
+        reduced_metrics = metrics[metrics["target_coverage"] == 0.75].iloc[0]
+        self.assertEqual(int(reduced_metrics["accepted_n"]), 6)
+        self.assertAlmostEqual(float(reduced_metrics["rejected_prevalence"]), 0.5)
 
     def test_grouped_acceptance_keeps_clusters_intact(self) -> None:
         decisions, _, _ = selective_prediction_analysis(
@@ -57,6 +60,13 @@ class SelectivePredictionTests(unittest.TestCase):
         )
         decisions_by_group = decisions.groupby("group_id")["accepted"].nunique()
         self.assertTrue(decisions_by_group.eq(1).all())
+        _, metrics, _ = selective_prediction_analysis(
+            _predictions(grouped=True),
+            coverages=[0.75],
+            n_bootstrap=5,
+            seed=42,
+        )
+        self.assertEqual(int(metrics.iloc[0]["accepted_group_count"]), 3)
 
 
 if __name__ == "__main__":

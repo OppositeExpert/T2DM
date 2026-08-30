@@ -16,6 +16,7 @@ export MPLCONFIGDIR=outputs/.matplotlib
 PIDD:   outputs/publication_pipeline/studies/pidd_development_072cd2104089
 Sylhet: outputs/publication_pipeline/studies/sylhet_development_b52477910fe6
 BRFSS:  outputs/publication_pipeline/studies/brfss_development_holdout_56407ef53bba
+Hospital130: outputs/publication_pipeline/studies/hospital130_development_holdout_c3aa5fb84a7a
 ```
 
 The immutable identity of a result is the study identifier plus the raw-data,
@@ -29,11 +30,10 @@ copy a directory and rename it as another profile.
 .venv-pipeline/bin/python scripts/build_development_evidence_snapshot.py
 .venv-pipeline/bin/python scripts/build_conference_manifest.py
 .venv-pipeline/bin/python scripts/build_study_registry.py
+.venv-pipeline/bin/python scripts/build_artifact_release_manifest.py
+.venv-pipeline/bin/python scripts/verify_artifact_release_manifest.py
 .venv-pipeline/bin/python -m pytest -q
-.venv-pipeline/bin/python -m diabetes_pipeline.cli publication-readiness \
-  --study-dir outputs/publication_pipeline/studies/pidd_development_072cd2104089 \
-  --study-dir outputs/publication_pipeline/studies/sylhet_development_b52477910fe6 \
-  --study-dir outputs/publication_pipeline/studies/brfss_development_holdout_56407ef53bba
+.venv-pipeline/bin/python scripts/run_publication_readiness_audit.py
 ```
 
 The checksum manifest must be generated last. A changed file after manifest
@@ -41,7 +41,7 @@ creation invalidates the package manifest and requires regeneration.
 
 ## Final authorization preconditions
 
-Before any non-smoke BRFSS/Hospital130 holdout access or any final-profile run:
+Before any final-profile run or any access to a newly concealed final holdout:
 
 1. Complete novelty, claim-evidence, TRIPOD+AI, PROBAST+AI, ablation, selective-
    prediction, and subgroup reviews.

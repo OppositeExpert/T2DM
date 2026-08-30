@@ -4,11 +4,43 @@ import unittest
 
 import numpy as np
 import pandas as pd
+from types import SimpleNamespace
+from unittest.mock import patch
 
-from diabetes_pipeline.evaluation.subgroup_analysis import subgroup_performance_analysis
+from diabetes_pipeline.evaluation.subgroup_analysis import (
+    subgroup_membership,
+    subgroup_performance_analysis,
+)
 
 
 class SubgroupAnalysisTests(unittest.TestCase):
+    def test_hospital_membership_supports_age_gender_and_race(self) -> None:
+        dataset = SimpleNamespace(
+            row_ids=pd.Series(["e1", "e2", "e3", "e4"]),
+            X=pd.DataFrame(
+                {
+                    "age": [1.0, 3.0, 5.0, 8.0],
+                    "gender": ["Female", "Male", "Unknown/Invalid", "Female"],
+                    "race": ["Caucasian", "AfricanAmerican", pd.NA, "Asian"],
+                }
+            ),
+        )
+        with patch(
+            "diabetes_pipeline.evaluation.subgroup_analysis.load_dataset",
+            return_value=dataset,
+        ):
+            membership = subgroup_membership("hospital130")
+        self.assertEqual(
+            set(membership["subgroup_variable"]), {"age_group", "sex", "race"}
+        )
+        age = membership[membership["subgroup_variable"] == "age_group"]
+        self.assertEqual(
+            age["subgroup_value"].tolist(),
+            ["under_30", "30-49", "50-69", "70+"],
+        )
+        sex = membership[membership["subgroup_variable"] == "sex"]
+        self.assertEqual(set(sex["subgroup_value"]), {"female", "male"})
+
     def test_small_cells_are_suppressed_and_supported_cells_are_estimated(self) -> None:
         rows = []
         membership = []

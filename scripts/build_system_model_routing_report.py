@@ -269,7 +269,7 @@ def add_title_block(doc: Document) -> None:
     set_run_font(r, size=10, bold=True, color=CAUTION)
     r = callout.add_run(
         "The routing software is implemented and testable, but the evidence package is not paper-final or clinically deployable. "
-        "PIDD and Sylhet are development pilots; BRFSS and Hospital130 are smoke holdouts."
+        "Historical snapshot: PIDD and Sylhet were development pilots; BRFSS and Hospital130 were smoke holdouts at this report's 22 August 2026 evidence cutoff. Current evidence is registry-driven."
     )
     set_run_font(r, size=10, color=INK)
 
@@ -351,7 +351,7 @@ def add_body(doc: Document) -> None:
     doc.add_heading("Executive summary", level=1)
     p = doc.add_paragraph()
     p.add_run(
-        "The current build is an availability-aware, multi-dataset research pipeline. It does not train one universal model over "
+        "The build documented at this report's 22 August 2026 cutoff is an availability-aware, multi-dataset research pipeline. It does not train one universal model over "
         "columns copied from unrelated cohorts. Instead, it maintains cohort-specific experts for PIDD, Sylhet, BRFSS, and "
         "Hospital130; identifies the largest evaluated feature panel supported by the supplied measurements; applies a panel-specific, "
         "development-selected model and calibrator; and returns a traceable probability or an explicit abstention."
@@ -367,8 +367,8 @@ def add_body(doc: Document) -> None:
     add_callout(
         doc,
         "EVIDENCE STATUS",
-        "The software behavior is implemented and the current test suite passes, but the retained studies are development pilots or smoke holdouts. "
-        "The publication gate reports 16 blockers, so none of the percentages is approved as a final paper estimate or clinical output.",
+        "At this report's historical cutoff, the software behavior was implemented and its test suite passed, but the retained studies were development pilots or smoke holdouts. "
+        "The publication gate then reported 16 blockers, so none of those percentages was approved as a final paper estimate or clinical output.",
     )
 
     doc.add_heading("1. System scope, datasets, and targets", level=1)

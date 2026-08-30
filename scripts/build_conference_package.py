@@ -15,6 +15,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+import yaml
 from docx import Document
 from docx.enum.section import WD_SECTION
 from docx.enum.style import WD_STYLE_TYPE
@@ -29,9 +30,13 @@ ROOT = Path(__file__).resolve().parents[1]
 PACKAGE = ROOT / "conference_package"
 GENERATED = PACKAGE / "generated"
 FIGURES = GENERATED / "figures"
-STUDY = ROOT / "outputs/publication_pipeline/studies/pidd_development_072cd2104089"
-SYLHET_STUDY = ROOT / "outputs/publication_pipeline/studies/sylhet_development_b52477910fe6"
-BRFSS_STUDY = ROOT / "outputs/publication_pipeline/studies/brfss_development_holdout_56407ef53bba"
+AUTHORITATIVE = yaml.safe_load(
+    (ROOT / "config" / "authoritative_studies.yaml").read_text(encoding="utf-8")
+)["studies"]
+STUDY_ROOT = ROOT / "outputs" / "publication_pipeline" / "studies"
+STUDY = STUDY_ROOT / AUTHORITATIVE["pidd"]["study_id"]
+SYLHET_STUDY = STUDY_ROOT / AUTHORITATIVE["sylhet"]["study_id"]
+BRFSS_STUDY = STUDY_ROOT / AUTHORITATIVE["brfss"]["study_id"]
 
 BLUE = "2E74B5"
 DARK_BLUE = "1F4D78"
@@ -337,7 +342,7 @@ def add_cover(doc, title, subtitle):
     meta = doc.add_paragraph()
     meta.alignment = WD_ALIGN_PARAGRAPH.CENTER
     meta.paragraph_format.space_after = Pt(10)
-    set_run_font(meta.add_run("Evidence cutoff: 29 August 2026"), size=10, color=MUTED)
+    set_run_font(meta.add_run("Evidence cutoff: 30 August 2026"), size=10, color=MUTED)
     doc.add_page_break()
     # LibreOffice can collapse the first heading's line box against the first
     # body paragraph when it follows a bare page-break paragraph. A tiny,
@@ -416,6 +421,7 @@ def render_markdown(doc, source, bullet_num_id, decimal_num_id):
     lines = source.read_text(encoding="utf-8").splitlines()
     index = 0
     paragraph_buffer = []
+    compact_numbered_list = False
 
     def flush_paragraph():
         if paragraph_buffer:
@@ -461,6 +467,9 @@ def render_markdown(doc, source, bullet_num_id, decimal_num_id):
             p.alignment = WD_ALIGN_PARAGRAPH.LEFT
             p.paragraph_format.keep_with_next = False
             add_inline_runs(p, heading.group(2))
+            compact_numbered_list = (
+                heading.group(2) == "References requiring final bibliographic formatting"
+            )
             index += 1
             continue
         bullet = re.match(r"^-\s+(.+)$", stripped)
@@ -469,8 +478,8 @@ def render_markdown(doc, source, bullet_num_id, decimal_num_id):
             flush_paragraph()
             p = doc.add_paragraph()
             p.alignment = WD_ALIGN_PARAGRAPH.LEFT
-            p.paragraph_format.space_after = Pt(4)
-            p.paragraph_format.line_spacing = 1.10
+            p.paragraph_format.space_after = Pt(1 if numbered and compact_numbered_list else 4)
+            p.paragraph_format.line_spacing = 1.0 if numbered and compact_numbered_list else 1.10
             p.paragraph_format.left_indent = Inches(0.5)
             p.paragraph_format.first_line_indent = Inches(-0.25)
             apply_num(p, bullet_num_id if bullet else decimal_num_id)
@@ -483,6 +492,9 @@ def render_markdown(doc, source, bullet_num_id, decimal_num_id):
                 item_parts.append(continuation.strip())
                 index += 1
             add_inline_runs(p, " ".join(item_parts))
+            if numbered and compact_numbered_list:
+                for run in p.runs:
+                    set_run_font(run, size=10)
             continue
         paragraph_buffer.append(stripped)
         index += 1

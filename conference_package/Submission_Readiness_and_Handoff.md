@@ -33,11 +33,16 @@ guide decisions; it may not be relabelled as final evidence.
   robustness, survey-sensitivity, subgroup, selective-prediction, SHAP, and
   bundle-reload evidence. Its inspected seed-42 test role is permanently
   ineligible as a protected final holdout.
+- Full-cohort Hospital130 development study
+  `hospital130_development_holdout_c3aa5fb84a7a` contains five-family,
+  patient-grouped readmission evaluation plus all supported holdout routing,
+  robustness, selective, subgroup, SHAP, and bundle-reload evidence. It remains
+  separate from the diabetes-screening claim.
 
 ## 3. Remaining machine-executable work
 
-No supported engineering or development analysis remains after the full BRFSS
-run. The package has been regenerated from fixed development study identifiers,
+No supported engineering or development analysis remains after the full
+Hospital130 run. The package has been regenerated from authoritative registry identifiers,
 structurally audited, and tested. The latest rendered page counts and visual QA
 results are recorded in `qa/QA_REPORT.md`. Venue-template rendering must still be
 repeated after the target format and final text are known.

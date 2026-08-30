@@ -67,6 +67,16 @@ python -m diabetes_pipeline.cli benchmark-holdout \
   --models logistic_regression random_forest xgboost lightgbm catboost
 ```
 
+Hospital130 uses the same full-development holdout contract with patient-grouped
+splits and patient-cluster inference, while preserving its separate 30-day
+readmission endpoint:
+
+```bash
+python -m diabetes_pipeline.cli benchmark-holdout \
+  --dataset hospital130 --profile development \
+  --models logistic_regression random_forest xgboost lightgbm catboost
+```
+
 The holdout runner checkpoints each completed development model under the
 study's `checkpoints/development_models/` directory. Repeating the identical
 command resumes only checkpoints tied to the same experiment identifier,
@@ -96,24 +106,41 @@ holdout studies. The artifact-based calibration, routing, selector, model-family
 matched-panel, selective-prediction, subgroup, survey, and held-out SHAP paths
 are the supported BRFSS analyses.
 
-## 6. Regenerate the development conference package and readiness audit
+For Hospital130, run the same holdout-supported paths except the BRFSS-only
+survey sensitivity analysis. Use the exact commands in `docs/RUNBOOK.md`.
+Nested-CV retraining and missingness-stress paths remain unsupported for both
+holdout datasets.
+
+## 6. Optional CPU container
+
+```bash
+docker build -t t2dm-development:python3.12 .
+docker run --rm t2dm-development:python3.12 python scripts/verify_environment.py
+docker run --rm t2dm-development:python3.12 python -m pytest -q \
+  tests/test_models.py tests/test_metrics_calibration.py tests/test_concealment.py
+```
+
+Mount raw data and an output directory only for data-dependent commands. The
+container pins Python and packages but does not promise byte-identical model
+files across CPU architectures.
+
+## 7. Regenerate the development conference package and readiness audit
 
 ```bash
 python scripts/build_development_evidence_snapshot.py
 python scripts/build_conference_package.py
 python scripts/build_conference_manifest.py
-python -m diabetes_pipeline.cli publication-readiness \
-  --study-dir outputs/publication_pipeline/studies/pidd_development_072cd2104089 \
-  --study-dir outputs/publication_pipeline/studies/sylhet_development_b52477910fe6 \
-  --study-dir <BRFSS_STUDY> \
-  --format markdown --output outputs/publication_readiness_audit.md
+python scripts/run_publication_readiness_audit.py
+python scripts/build_study_registry.py
+python scripts/build_artifact_release_manifest.py
+python scripts/verify_artifact_release_manifest.py
 ```
 
 The readiness audit is expected to remain `NOT READY` until the human and
 scientific gates in `FINAL_RUN_CHECKLIST.md` are satisfied. Never change flags
 merely to make the audit pass.
 
-## 7. Read-only final preflight
+## 8. Read-only final preflight
 
 This command computes the current raw-data and executable-analysis fingerprints
 without loading outcomes. It is expected to exit with status 2 and report

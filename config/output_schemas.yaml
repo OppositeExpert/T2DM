@@ -1,9 +1,15 @@
-version: 1
+version: 2
+
+evaluation_roles_by_evidence_tier:
+  execution_only_smoke: smoke_test
+  full_development: development_test
+  final_locked: locked_final_test
 
 prediction_columns:
   - experiment_id
   - dataset
   - task
+  - endpoint
   - model
   - row_id
   - group_id
@@ -46,12 +52,17 @@ metric_value_columns:
   - balanced_accuracy
   - sensitivity
   - specificity
+  - false_positive_rate
+  - false_negative_rate
   - ppv
   - npv
   - f1
   - mcc
+  - youden_index
+  - positive_likelihood_ratio
+  - negative_likelihood_ratio
+  - diagnostic_odds_ratio
   - tn
   - fp
   - fn
   - tp
-

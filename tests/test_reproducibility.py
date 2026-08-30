@@ -88,6 +88,24 @@ class ReproducibilityTests(unittest.TestCase):
             self.assertEqual(declaration["evidence_tier"], "full_development")
             self.assertNotIn("--profile final", declaration["command"])
 
+    def test_tracked_registry_matches_authoritative_declarations(self) -> None:
+        declarations = yaml.safe_load(
+            (ROOT / "config/authoritative_studies.yaml").read_text(encoding="utf-8")
+        )["studies"]
+        registry = json.loads(
+            (ROOT / "evidence/study_registry.json").read_text(encoding="utf-8")
+        )
+        self.assertEqual(set(registry["studies"]), set(declarations))
+        for dataset, declaration in declarations.items():
+            study = registry["studies"][dataset]
+            self.assertEqual(study["study_id"], declaration["study_id"])
+            self.assertEqual(study["evidence_tier"], "full_development")
+            self.assertFalse(study["eligible_for_final_claims"])
+            self.assertIsInstance(study["test_access"], str)
+            self.assertTrue(study["test_access"])
+            self.assertRegex(study["raw_data_sha256"], r"^[0-9a-f]{64}$")
+            self.assertRegex(study["source_tree_sha256"], r"^[0-9a-f]{64}$")
+
 
 if __name__ == "__main__":
     unittest.main()

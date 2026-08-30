@@ -30,6 +30,7 @@ ARTIFACTS = {
     "thresholds": "selected_thresholds.csv",
     "decision_curves": "decision_curves.csv",
     "decision_curve_intervals": "decision_curve_confidence_intervals.csv",
+    "decision_curve_comparisons": "decision_curve_paired_contrasts.csv",
     "routing_metrics": "availability_routing/summary_metrics.csv",
     "routing_predictions": "availability_routing/system_predictions.csv",
     "matched_panel_comparisons": "availability_routing/matched_panel_contrasts.csv",
@@ -60,13 +61,44 @@ def artifact_record(study: Path, relative: str) -> dict[str, object]:
     }
 
 
+def analysis_configuration_record(metadata: dict[str, object]) -> tuple[str, str]:
+    recorded = metadata.get("analysis_configuration_sha256")
+    if recorded:
+        return str(recorded), "study_metadata"
+    # Older completed studies predate the dedicated analysis hash. Preserve that
+    # fact while supplying a deterministic registry descriptor from the exact
+    # configuration-bearing metadata that is available.
+    payload = {
+        "dataset_configuration_sha256": metadata.get(
+            "dataset_configuration_sha256"
+        ),
+        "profile": metadata.get("profile"),
+        "models": metadata.get("models"),
+        "split_manifest_sha256": metadata.get("split_manifest_sha256"),
+        "source_tree_sha256": metadata.get("source_tree_sha256"),
+    }
+    digest = hashlib.sha256(
+        json.dumps(payload, sort_keys=True, default=str).encode("utf-8")
+    ).hexdigest()
+    return digest, "registry_reconstructed_from_study_metadata"
+
+
+def test_access_record(metadata: dict[str, object]) -> str:
+    recorded = metadata.get("test_access")
+    if recorded:
+        return str(recorded)
+    if metadata.get("primary_repeated_cv_inference"):
+        return "repeated_outer_evaluation_no_single_concealed_test"
+    return "not_recorded_in_legacy_study_metadata"
+
+
 def main() -> None:
     configured = yaml.safe_load(CONFIG.read_text(encoding="utf-8"))
     dataset_contracts = yaml.safe_load(
         (ROOT / "config" / "datasets.yaml").read_text(encoding="utf-8")
     )["datasets"]
     registry: dict[str, object] = {
-        "schema_version": "1.0",
+        "schema_version": "2.0",
         "generated_at_utc": datetime.now(timezone.utc).isoformat(),
         "evidence_scope": "development_and_engineering_not_final",
         "requirements_lock_sha256": sha256(ROOT / "requirements.lock"),
@@ -108,6 +140,7 @@ def main() -> None:
             path.stem: artifact_record(study, path.relative_to(study).as_posix())
             for path in sorted((study / "models").glob("*.joblib"))
         }
+        analysis_hash, analysis_hash_origin = analysis_configuration_record(metadata)
         registry["studies"][dataset] = {
             "study_id": study_id,
             "dataset": dataset,
@@ -117,7 +150,11 @@ def main() -> None:
             "execution_profile": metadata.get("profile", {}).get("name"),
             "command": declaration["command"],
             "study_directory": study.relative_to(ROOT).as_posix(),
-            "metadata_modified_at_utc": datetime.fromtimestamp(
+            "created_at_utc": metadata.get("run_started_at_utc")
+            or datetime.fromtimestamp(
+                metadata_path.stat().st_mtime, timezone.utc
+            ).isoformat(),
+            "updated_at_utc": metadata.get("run_completed_at_utc") or datetime.fromtimestamp(
                 metadata_path.stat().st_mtime, timezone.utc
             ).isoformat(),
             "dataset_configuration_sha256": metadata.get(
@@ -126,9 +163,12 @@ def main() -> None:
             "raw_data_sha256": metadata.get("raw_data_sha256"),
             "split_manifest_sha256": metadata.get("split_manifest_sha256"),
             "source_tree_sha256": metadata.get("source_tree_sha256"),
+            "analysis_configuration_sha256": analysis_hash,
+            "analysis_configuration_hash_origin": analysis_hash_origin,
+            "manifest_sha256": metadata.get("split_manifest_sha256"),
             "requirements_lock_sha256": registry["requirements_lock_sha256"],
             "profile_locked": bool(metadata.get("profile", {}).get("locked", False)),
-            "test_access": metadata.get("test_access"),
+            "test_access": test_access_record(metadata),
             "eligible_for_final_claims": False,
             "artifacts": artifacts,
             "model_bundles": model_bundles,

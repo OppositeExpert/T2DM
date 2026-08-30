@@ -45,6 +45,12 @@ def _age_groups(dataset_name: str, age: pd.Series) -> pd.Series:
             labels=["18-34", "35-49", "50-64", "65+"],
             include_lowest=True,
         ).astype("string")
+    if dataset_name == "hospital130":
+        return pd.cut(
+            numeric,
+            bins=[-np.inf, 2, 4, 6, np.inf],
+            labels=["under_30", "30-49", "50-69", "70+"],
+        ).astype("string")
     return pd.cut(
         numeric,
         bins=[0, 29, 44, 59, np.inf],
@@ -59,20 +65,35 @@ def subgroup_membership(dataset_name: str) -> pd.DataFrame:
     dataset = load_dataset(dataset_name)
     base = pd.DataFrame({"row_id": dataset.row_ids.astype(str).to_numpy()})
     frames: list[pd.DataFrame] = []
-    if "Age" in dataset.X:
+    age_column = "Age" if "Age" in dataset.X else "age" if "age" in dataset.X else None
+    if age_column is not None:
         age = base.copy()
         age["subgroup_variable"] = "age_group"
-        age["subgroup_value"] = _age_groups(dataset_name, dataset.X["Age"])
+        age["subgroup_value"] = _age_groups(dataset_name, dataset.X[age_column])
         frames.append(age)
-    sex_column = "Gender" if "Gender" in dataset.X else "Sex" if "Sex" in dataset.X else None
+    sex_column = next(
+        (column for column in ("Gender", "Sex", "gender") if column in dataset.X),
+        None,
+    )
     if sex_column is not None:
         sex = base.copy()
         sex["subgroup_variable"] = "sex"
-        values = pd.to_numeric(dataset.X[sex_column], errors="coerce")
-        sex["subgroup_value"] = values.map({0.0: "female", 1.0: "male"}).astype(
-            "string"
-        )
+        if dataset_name == "hospital130":
+            values = dataset.X[sex_column].astype("string").str.strip().str.lower()
+            sex["subgroup_value"] = values.map(
+                {"female": "female", "male": "male"}
+            ).astype("string")
+        else:
+            values = pd.to_numeric(dataset.X[sex_column], errors="coerce")
+            sex["subgroup_value"] = values.map({0.0: "female", 1.0: "male"}).astype(
+                "string"
+            )
         frames.append(sex)
+    if dataset_name == "hospital130" and "race" in dataset.X:
+        race = base.copy()
+        race["subgroup_variable"] = "race"
+        race["subgroup_value"] = dataset.X["race"].astype("string").str.strip()
+        frames.append(race)
     if not frames:
         raise ValueError(f"No prespecified supported subgroups exist for {dataset_name}")
     membership = pd.concat(frames, ignore_index=True)
