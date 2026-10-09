@@ -23,7 +23,7 @@ individual private files exceeded 500 MB. None was treated as disposable merely
 because it was ignored or generated.
 
 The initial working-tree file payload was **16,082,436,004 bytes** (16.082 GB,
-14.978 GiB), excluding Git internals and the later backup. A compressed inventory
+14.979 GiB), excluding Git internals and the later backup. A compressed inventory
 records every original local project file and its original fingerprint.
 
 ## 2. Preservation completed before cleanup
@@ -220,7 +220,7 @@ are preserved and are not proof of portable exact replay.
 
 - Initial project-file payload excluding `.git`/backup: **16,082,436,004 bytes**.
 - Removed cache/metadata payload: **1,795,717 bytes**.
-- Final project-file payload: **16,083,493,447 bytes** (16.083493 GB), measured at validation.
+- Final project-file payload: **16,083,493,003 bytes** (16.083493 GB), measured at validation.
 - Original files retained: **27,512**, including **6,210 research/source/governance
   files** and **21,302 local environment files**.
 - Tracked files: **216 originally → 450 after preservation → 465**.
@@ -285,7 +285,7 @@ release decisions before presenting the repository as submission-complete.
 - Backup branch: `backup/pre-repository-cleanup`.
 - Annotated tag: `pre-cleanup-research-snapshot` (targets preservation commit).
 - Cleanup branch: `chore/repository-cleanup`.
-- Primary cleanup commit: CLEANUP_COMMIT_PENDING.
+- Primary cleanup commit: `e1aadf63bf9a5e93c610df075cfb3082c7e33bb9`.
 - Required cleanup commit subject: `chore: organize and clean research repository`.
 - Pull request: PR_URL_PENDING.
 - The branch tip may include a subsequent report-only commit recording the PR

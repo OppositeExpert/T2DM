@@ -112,6 +112,7 @@
   "size_method": "Logical project file bytes excluding .git and the sibling backup; stat follows environment symlinks.",
   "initial_bytes_excluding_git": 16082436004,
   "final_tracked_files": 465,
-  "measured_final_bytes_excluding_git": 16083493447,
-  "measured_final_files": 27527
+  "measured_final_bytes_excluding_git": 16083493003,
+  "measured_final_files": 27527,
+  "audit_csv_line_endings": "LF; normalized new audit tables only; frozen research tables unchanged"
 }
