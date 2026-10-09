@@ -1385,6 +1385,19 @@
           "exit_code": 0
         }
       ]
+    },
+    "github_actions": {
+      "run_id": 37933367987,
+      "url": "https://github.com/OppositeExpert/T2DM/actions/runs/37933367987",
+      "validated_head_commit": "4c69731e02bb01adecbd1e7c949d6e9a6d4a5fc7",
+      "status": "completed",
+      "conclusion": "success",
+      "jobs_passed": 2,
+      "portable_tests_passed": 125,
+      "portable_tests_failed": 0,
+      "local_research_checks_deselected": 7,
+      "subtests_passed": 7,
+      "locked_dependencies_installed_on_fresh_ubuntu_runner": true
     }
   },
   "language_analysis": {
@@ -1431,6 +1444,6 @@
     "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables"
   ],
   "final_tracked_files": 296,
-  "final_tracked_bytes": 27163033,
+  "final_tracked_bytes": 27164040,
   "simplification_commit": "9aab7d83239bffe4398b9c49cdeadbb560737fca"
 }

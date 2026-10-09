@@ -234,8 +234,8 @@ GitHub's eventual displayed percentages are not asserted.
 | Measure | Before | After |
 |---|---:|---:|
 | Tracked files | 465 | 296 |
-| Tracked logical payload bytes | 58,243,815 | 27,163,033 |
-| Decimal MB | 58.243815 | 27.163033 |
+| Tracked logical payload bytes | 58,243,815 | 27,164,040 |
+| Decimal MB | 58.243815 | 27.164040 |
 
 Payload reduction: **53.36%**. Counts include this report and its provenance
 ledger. They exclude `.git`, ignored data/artifacts/environments and external
@@ -283,7 +283,16 @@ A real Git clone of commit `9aab7d83239bffe4398b9c49cdeadbb560737fca` in a fresh
 The fresh clone used the local Git repository as its origin, with no hardlinks.
 The isolated environments reuse the verified local dependency distributions while
 installing a fresh editable package; a fresh network install of all dependencies
-was not performed. Docker was unavailable, so no container build/run is claimed.
+was not performed locally. Docker was unavailable, so no container build/run is claimed.
+
+[GitHub Actions run 37933367987](https://github.com/OppositeExpert/T2DM/actions/runs/37933367987)
+then passed both jobs for head `4c69731e02bb01adecbd1e7c949d6e9a6d4a5fc7`,
+including installation of the locked dependencies on a fresh Ubuntu runner,
+125 portable tests and 7 subtests, environment verification, current/correction
+fingerprints, source compilation and feature-map validation. The subsequent
+report/ledger-only commit records this completed run; research code is unchanged.
+
+
 No expensive training, final evaluation, calibration or SHAP export was rerun,
 and no locked output was overwritten. Help/config/hash checks do not establish
 scientific validity or prove exact retraining.
