@@ -1,37 +1,54 @@
-# Artifact Preservation and External Archiving
+# Local preservation and artifact restoration
 
-Git preserves source, configuration, documentation, and small evidence indexes.
-It intentionally excludes raw data, fitted models, row-level predictions, and
-large generated study outputs. Reproducible source does not by itself preserve
-the exact fitted artifacts used in a report.
+Raw data, patient/group identifiers, split assignments, row-level predictions,
+fitted models, trial ledgers and checkpoints remain intact under ignored
+`data/raw/` and `outputs/`. Generated status does not make scientific evidence
+disposable. Never use broad ignored-file cleanup commands on this project.
 
-After all authoritative studies and secondary analyses are complete, run:
+The owner's verified historical archives are outside the repository at
+`../T2DM-local-archives/2026-10-09-simplification/`. They contain the complete
+465-file pre-simplification tracked state and a dedicated complete conference
+package. Every archived member was verified against its original SHA-256; the
+[simplification report](../REPOSITORY_SIMPLIFICATION_REPORT.md) and
+`evidence/repository_simplification_manifest.json` record archive checksums and
+path mappings. Original untracked historical files also remain on the owner's
+computer. A separate full private snapshot including raw data, outputs and Git
+exists at `../T2DM-preservation/2026-10-09/complete-local-state.tar`.
+These are local backups, not off-site or immutable deposits. Do not upload the
+full private snapshot to GitHub.
+
+## Active scientific inventories
+
+- `evidence/final_artifact_release_manifest.json`: 1,304 final-study artifacts and
+  input/split/execution dependencies, including resumable checkpoints.
+- `evidence/artifact_release_manifest.json`: 1,962 development artifacts; retained
+  because mentor ablations and negative findings still depend on this evidence.
+- `evidence/study_registry.json`: final-study identities, hashes and claim boundary.
+- `evidence/publication_correction/`: unique original panel derivatives, executed
+  correction-source snapshots, supersession mapping and original fingerprints.
+
+Verify approved restored private artifacts with:
 
 ```bash
-python scripts/build_study_registry.py
-python scripts/build_artifact_release_manifest.py
-python scripts/verify_artifact_release_manifest.py
+python scripts/verify_artifact_release_manifest.py --manifest evidence/final_artifact_release_manifest.json --artifact-root /path/to/restored/repository
 ```
 
-`evidence/artifact_release_manifest.json` records logical names, study IDs,
-endpoints, evidence tiers, local paths, byte sizes, SHA-256 hashes, requirement
-status, regeneration commands, and empty external-archive fields. Upload the
-listed files to an approved immutable archive, then record its real identifier
-and URI; never invent an archive location or DOI.
+No external archive URI/DOI is established. Review data terms/privacy, recover the
+complete executed source/configuration closure, deposit permitted artifacts in
+an approved immutable restricted archive and record the real access information
+in a successor manifest. Do not overwrite frozen records or invent identifiers.
 
-The release manifest enumerates every file in each authoritative study except
-resumable `checkpoints/`, which are execution scratch rather than completed
-evidence. Core metadata, metrics, intervals, thresholds, decision curves, and
-model bundles are marked required; dependent tables, figures, and diagnostics
-are marked optional so archive custodians can apply an explicit retention tier.
+## Historical publication verification
 
-To verify a restored archive unpacked under another directory:
+A fresh clone verifies 101 current frozen fingerprints plus 14 retained correction
+support files. To additionally verify all 87 original historical fingerprints,
+restore the preserved superseded package into a separate directory and run:
 
 ```bash
-python scripts/verify_artifact_release_manifest.py \
-  --artifact-root /path/to/restored/repository-root
+python scripts/verify_publication_results.py --historical-results-root /path/to/restored/results/final_publication/superseded_pre_protocol_correction/2026-10-03
 ```
 
-Exact model bytes are only expected on the recorded platform and environment.
-Cross-platform reproduction should verify contracts and metric agreement, not
-promise byte-identical fitted models when numerical libraries do not guarantee it.
+The explicit historical option fails if requested files are missing or changed.
+No historical conference file is required for portable tests or current result
+verification. Old paths inside immutable provenance records are historical
+identities; the retained mapping and local archive resolve them.

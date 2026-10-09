@@ -1,158 +1,119 @@
-# Clean-Clone Reproducibility
+# Reproducibility and verification
 
-This document separates deterministic engineering reproduction from scientific
-authorization. It reproduces smoke and development evidence. It does not grant
-permission to create or inspect a protected final outcome.
+A clone contains source, configuration, tests, aggregate publication results and
+provenance indexes. It does **not** contain raw data, fitted models, row-level
+predictions or split assignments. Verifying fingerprints is different from
+retraining a model or independently validating a scientific claim.
 
-## 1. Create the exact environment
+## Environment and installation
 
-The tested reference interpreter is CPython 3.12.0; Python 3.12.x is supported.
-The lock was resolved on macOS arm64. Linux CPU runs should use the same package
-versions, but compiled numerical libraries, thread scheduling, and model-library
-implementations can prevent byte-identical model files across operating systems
-or architectures even when metrics agree within numerical tolerance.
+The reference interpreter is CPython 3.12.0; the package accepts 3.12.x. The
+48-distribution lock was resolved on macOS arm64. From the repository root:
 
 ```bash
 python3.12 -m venv .venv-pipeline
 source .venv-pipeline/bin/activate
-python -m pip install --upgrade pip
 python -m pip install -r requirements.lock
 python -m pip install --no-deps --no-build-isolation -e .
 python scripts/verify_environment.py
 ```
 
-Do not copy a virtual environment from another checkout. Editable environments
-embed an absolute source path; the previously copied local environment pointed
-at the historical `XGBoost` repository and caused test discovery/import failures.
+Use an editable installation in a source checkout. Configuration is resolved
+relative to that checkout; standalone wheel installation outside a checkout is
+not a supported reproduction path. Do not copy another checkout's environment:
+editable-install metadata embeds its source path. Numerical libraries and CPU
+architecture can prevent byte-identical fitted artifacts across platforms.
 
-## 2. Acquire and verify data
+## Safe checks in a fresh clone
 
-Follow `docs/DATA_ACQUISITION.md`, then require this command to pass:
+```bash
+python -m pytest -q -m "not local_research_data"
+python scripts/verify_publication_results.py
+python -m diabetes_pipeline.cli --help
+```
+
+The checksum verifier checks the unchanged 101-entry current publication
+manifest and the 14 retained correction-support fingerprints. Complete
+superseded packages are optional local archives; see ARTIFACT_ARCHIVING.md for
+explicit historical verification. It does not load patient records or rewrite tables. CI runs all data-independent tests, source compilation, feature-map validation
+and publication verification. Seven checks carry the `local_research_data` marker because they require raw
+cohort files or historical study artifacts. After acquisition and restoration,
+run `python -m pytest -q` for the complete suite.
+The feature-map command writes a generated dictionary under ignored `outputs/`.
+
+## Raw data
+
+Follow [DATA_ACQUISITION.md](DATA_ACQUISITION.md) for the four official-source
+records, exact filenames, download/conversion procedures and licensing limits.
+Verify an existing local data directory without downloading:
 
 ```bash
 python scripts/acquire_data.py --dataset all
 ```
 
-## 3. Validate contracts and manifests
+All four hashes are bound in `config/data_sources.yaml` and the frozen protocol.
+Raw data remains excluded from Git. Hospital130 uses patient groups and a
+30-day-readmission endpoint; it is not another diabetes-status cohort.
+
+## Restore recorded study artifacts
+
+[evidence/README.md](../evidence/README.md) distinguishes the historical
+`artifact_release_manifest.json` from `final_artifact_release_manifest.json`.
+The latter inventories the retained final studies and dependencies, including
+checkpoints; both manifests have truthful unfilled archive-location fields.
+Obtain artifacts through an approved restricted channel and restore their
+relative paths under the source checkout. Then run:
 
 ```bash
-export MPLCONFIGDIR=outputs/.matplotlib
-python -m pytest -q
-python -m diabetes_pipeline.cli feature-map
-python -m diabetes_pipeline.cli block-a --dataset all --seed 42
-python -m diabetes_pipeline.cli research-audit --seed 42
-python -m diabetes_pipeline.cli test-concealment --dataset brfss --seed 42
-python -m diabetes_pipeline.cli test-concealment --dataset hospital130 --seed 42
+python scripts/verify_artifact_release_manifest.py --manifest evidence/final_artifact_release_manifest.json
 ```
 
-The seed-42 concealment commands are control tests on development partitions.
-They do not create new final evidence.
+For a separate restored tree, add `--artifact-root /path/to/restored/repository`.
+A manifest is not proof of external deposit. No public artifact archive or DOI
+has been created by cleanup. Historical conference files are not required by a fresh clone. A verified
+pre-simplification tracked archive and a private full local snapshot exist for the owner;
+it contains raw/row-level records and must not be uploaded to GitHub.
 
-## 4. Reproduce authoritative development studies
+## What the current results reproduce
 
-PIDD and grouped Sylhet use the full `development` profile:
+The locked `t2dm-final-internal-validation-v1` record uses five models, 75 Optuna
+trials per applicable model/fold and 2,000 bootstrap resamples. PIDD/Sylhet use
+repeated nested evaluation, with Sylhet profile grouping. BRFSS and Hospital130
+use historical partitions reported as internal validation, with Hospital130
+patient-cluster inference. No untouched independent final test is claimed.
 
-```bash
-python -m diabetes_pipeline.cli benchmark --dataset pidd --profile development
-python -m diabetes_pipeline.cli benchmark --dataset sylhet --profile development
-```
+The October correction provenance distinguishes participant-mean probability
+aggregation, Sylhet profile-cluster uncertainty, fixed-panel stress evaluation
+and actual runtime fallback. See [RESULTS_GUIDE.md](RESULTS_GUIDE.md).
 
-BRFSS uses the entire seed-42 development/test structure as explicitly
-development-only evidence. That test role was inspected previously and is
-permanently ineligible to become a concealed final test:
+Exact retraining remains limited: the recorded training-source fingerprint is
+`7d5347cf4c10e50dceb201ad36527f6d1c3e2770bba364c15c9093bf97cc6a94`;
+current source includes later governance/packaging corrections. An exact complete
+training-source snapshot has not been demonstrated in Git. Historical study
+metadata also contains absolute paths that require controlled restoration or
+path adaptation in a new working copy. Do not rewrite historical metadata/hashes
+to make it appear portable, or bypass source-binding and single-use receipts.
 
-```bash
-python -m diabetes_pipeline.cli benchmark-holdout \
-  --dataset brfss --profile development \
-  --models logistic_regression random_forest xgboost lightgbm catboost
-```
+## Development and further analyses
 
-Hospital130 uses the same full-development holdout contract with patient-grouped
-splits and patient-cluster inference, while preserving its separate 30-day
-readmission endpoint:
+[RUNBOOK.md](RUNBOOK.md) preserves the supported development command catalogue.
+Training, routing, ablation and export commands can be expensive and can write
+into study directories. Run them only in a separate working checkout with fresh
+output paths and an agreed analysis plan. Existing locked studies and the
+canonical publication package are evidence, not scratch space.
 
-```bash
-python -m diabetes_pipeline.cli benchmark-holdout \
-  --dataset hospital130 --profile development \
-  --models logistic_regression random_forest xgboost lightgbm catboost
-```
+`python scripts/run_final_internal_validation.py --help` documents the final
+orchestrator. Its `--study-dir` mode runs dependent analyses and writes outputs;
+it is not a read-only verifier. Export/correction scripts likewise write results.
+Cleanup executed none of these workflows. Do not replay finalized training or
+change protocol authorization to make a check pass.
 
-The holdout runner checkpoints each completed development model under the
-study's `checkpoints/development_models/` directory. Repeating the identical
-command resumes only checkpoints tied to the same experiment identifier,
-dataset configuration, raw-data hash, split-manifest hash, profile, model bank,
-and source tree.
+Panel-specific retraining and missing-indicator retraining currently support
+unlocked nested-CV development studies. Locked profiles and BRFSS/Hospital130
+holdout studies are not supported by those retraining paths. Calibration,
+model-family, matched-panel, selective, subgroup and runtime-policy code remains
+preserved. The mentor-analysis gaps are listed in [CONTRIBUTING.md](../CONTRIBUTING.md).
 
-## 5. Reproduce BRFSS secondary development analyses
-
-The completed authoritative development identifier is
-`outputs/publication_pipeline/studies/brfss_development_holdout_56407ef53bba`.
-Use that path as `<BRFSS_STUDY>` below:
-
-```bash
-python -m diabetes_pipeline.cli evaluate-routing --dataset brfss --study-dir <BRFSS_STUDY>
-python -m diabetes_pipeline.cli matched-panel-contrasts --study-dir <BRFSS_STUDY>
-python -m diabetes_pipeline.cli artifact-ablations --study-dir <BRFSS_STUDY>
-python -m diabetes_pipeline.cli selective-prediction --study-dir <BRFSS_STUDY>
-python -m diabetes_pipeline.cli subgroup-analysis --study-dir <BRFSS_STUDY>
-python -m diabetes_pipeline.cli brfss-survey-sensitivity --study-dir <BRFSS_STUDY> --n-bootstrap 500 --seed 42
-python -m diabetes_pipeline.cli explain-holdout --dataset brfss --study-dir <BRFSS_STUDY> --maximum-samples-per-model 1000
-python scripts/verify_holdout_bundles.py --study-dir <BRFSS_STUDY>
-```
-
-The missing-indicator, panel-specific retraining, missingness-stress, and
-reporting-ablation runners currently support repeated nested-CV studies, not
-holdout studies. The artifact-based calibration, routing, selector, model-family,
-matched-panel, selective-prediction, subgroup, survey, and held-out SHAP paths
-are the supported BRFSS analyses.
-
-For Hospital130, run the same holdout-supported paths except the BRFSS-only
-survey sensitivity analysis. Use the exact commands in `docs/RUNBOOK.md`.
-Nested-CV retraining and missingness-stress paths remain unsupported for both
-holdout datasets.
-
-## 6. Optional CPU container
-
-```bash
-docker build -t t2dm-development:python3.12 .
-docker run --rm t2dm-development:python3.12 python scripts/verify_environment.py
-docker run --rm t2dm-development:python3.12 python -m pytest -q \
-  tests/test_models.py tests/test_metrics_calibration.py tests/test_concealment.py
-```
-
-Mount raw data and an output directory only for data-dependent commands. The
-container pins Python and packages but does not promise byte-identical model
-files across CPU architectures.
-
-## 7. Regenerate the development conference package and readiness audit
-
-```bash
-python scripts/build_development_evidence_snapshot.py
-python scripts/build_conference_package.py
-python scripts/build_conference_manifest.py
-python scripts/run_publication_readiness_audit.py
-python scripts/build_study_registry.py
-python scripts/build_artifact_release_manifest.py
-python scripts/verify_artifact_release_manifest.py
-```
-
-The readiness audit is expected to remain `NOT READY` until the human and
-scientific gates in `FINAL_RUN_CHECKLIST.md` are satisfied. Never change flags
-merely to make the audit pass.
-
-## 8. Read-only final preflight
-
-This command computes the current raw-data and executable-analysis fingerprints
-without loading outcomes. It is expected to exit with status 2 and report
-`authorized: false` until the checklist is completed:
-
-```bash
-python scripts/final_preflight.py --dataset brfss
-```
-
-Use the same command with `pidd` or `sylhet` for their authorization-gated final
-repeated-CV profiles; those datasets do not use a concealed holdout manifest.
-
-The future split-creation and final-execution procedures are deliberately
-separate. Follow `FINAL_RUN_CHECKLIST.md`; never repurpose the seed-42
-development partition or enable flags merely to make preflight pass.
+An optional CPU container is defined by `Dockerfile`. Container build/run and a
+fresh network installation of every locked dependency are separate checks;
+consult REPOSITORY_SIMPLIFICATION_REPORT.md for what was actually executed.

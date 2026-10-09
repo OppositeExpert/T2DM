@@ -1,100 +1,40 @@
-# Project Structure
+# Project structure and research workflow
 
-```text
-T2DM/
-├── README.md                   Project overview and starting point
-├── pyproject.toml              Package metadata and pinned dependencies
-├── requirements.lock          Resolved Python environment
-├── .python-version            Reference CPython version
-├── .venv-pipeline/            Local environment; never copy between checkouts
-│
-├── config/                     Reproducible experiment definitions
-│   ├── datasets.yaml           Dataset schemas, endpoints, and raw file paths
-│   ├── availability_scenarios.yaml
-│   ├── feature_ontology.yaml   Cross-dataset feature relationships
-│   ├── output_schemas.yaml
-│   ├── data_sources.yaml      Raw-source, license, and byte-hash manifest
-│   ├── authoritative_studies.yaml
-│   └── experiments/            Smoke, pilot, development, and final profiles
-│
-├── data/
-│   └── raw/                    Four immutable source datasets
-│
-├── src/
-│   └── diabetes_pipeline/      The complete active Python package
-│       ├── data/               Loading, validation, and manifests
-│       ├── splitting/          Leakage-safe folds and grouped splits
-│       ├── preprocessing/      Fold-fitted transformations
-│       ├── models/             RF, XGBoost, LightGBM, CatBoost, and baseline
-│       ├── training/           Hyperparameter optimization
-│       ├── calibration/        Probability calibration and thresholds
-│       ├── evaluation/         Metrics, bootstrap CIs, DCA, and comparisons
-│       ├── routing/            Feature-panel and model selection
-│       ├── explainability/     SHAP analysis and stability checks
-│       ├── reporting/          Detailed patient research reports
-│       ├── features/           Master feature ontology
-│       ├── runner.py           Nested-CV experiment runner
-│       ├── holdout_runner.py   Locked holdout experiment runner
-│       └── cli.py              Command-line entry point
-│
-├── tests/                      Automated leakage, metric, model, and reload tests
-├── examples/                   Synthetic, non-identifiable example inputs
-├── docs/
-│   ├── RUNBOOK.md              How to run each pipeline stage
-│   ├── REPRODUCIBILITY.md      Clean-clone-to-development-evidence path
-│   ├── DATA_ACQUISITION.md     Verified raw-data acquisition
-│   ├── PROJECT_STRUCTURE.md    This map
-│   └── progress_reports/       Human-readable completed-block reports
-│
-├── evidence/                  Tracked registry for ignored study artifacts
-└── outputs/
-    └── publication_pipeline/   Reproducible generated research artifacts
-        ├── manifests/          Dataset audit records and hashes
-        ├── splits/             Immutable split assignments
-        ├── feature_ontology/   Generated cross-dataset dictionary
-        └── studies/            Generated studies; ignored, not clone contents
-```
+| Path | Active purpose |
+|---|---|
+| `src/diabetes_pipeline/data/`, `contracts.py` | Loading, validation, cohort flow and immutable input fingerprints |
+| `splitting/`, `preprocessing/` | Group-aware splits, outcome-blind controls and fold-fitted transforms |
+| `models/`, `training/` | Logistic Regression, Random Forest, XGBoost, LightGBM, CatBoost and seeded Optuna tuning |
+| `calibration/` | Calibration selection and development-selected thresholds |
+| `evaluation/` | Metrics, paired bootstrap intervals, Holm correction, DCA, subgroups, missingness, ablations and selective prediction |
+| `routing/` | Availability panels, fitted routing bundles, runtime fallback, policy coverage and abstention |
+| `explainability/`, `reporting/` | Held-out SHAP, stability, research reports and readiness controls |
+| `features/` | Dataset-native measurement semantics and endpoint ontology |
+| `publication/` | Frozen governance, final export, protocol corrections, leakage audit and consolidated figure |
+| `runner.py`, `holdout_runner.py`, `cli.py` | Repeated nested-CV and holdout-shaped internal evaluation; command interface |
+| `config/` | Dataset/source, feature, availability, output-schema, study and protocol contracts |
+| `scripts/` | Acquisition, verification, final orchestration, export/correction, registry and migration tools |
+| `tests/`, `.github/workflows/` | Research-contract, control and portable validation |
+| `examples/` | Explicit synthetic inputs |
+| `results/final_publication/` | Current frozen aggregate metrics, tables, visualizations and provenance |
+| `evidence/` | Final/development artifact inventories, registry, unique correction evidence and historical estimand reference |
+| `docs/` | Installation, acquisition, command, result and manuscript-review guides |
+| `docs/research/` | Scientifically relevant plans, decisions, literature, ablation findings and execution deviations |
+| `docs/audits/2026-09-05/` | Retained integrity findings/evidence requiring explicit closure review |
+| `data/raw/`, `outputs/` | Ignored local cohort records, fitted models, predictions, splits, trials, logs and checkpoints |
 
-## Data flow
+The end-to-end flow is dataset contracts → immutable/group-aware splits →
+fold-fitted preprocessing → five-family tuning/training → calibration/thresholds
+→ fixed panels and runtime routing/abstention → paired statistical analysis,
+selective/subgroup/missingness/ablation analysis → explanations → locked final
+provenance → publication tables and figures. Tests cover each source subsystem.
 
-```text
-Raw dataset + configuration
-          │
-          ▼
-Validation and immutable splitting
-          │
-          ▼
-Fold-fitted preprocessing
-          │
-          ▼
-Logistic Regression / RF / XGBoost / LightGBM / CatBoost
-          │
-          ▼
-Calibration + threshold selection + model/panel routing
-          │
-          ├──────────────► Metrics, confidence intervals, plots, comparisons
-          ├──────────────► SHAP explanations and stability checks
-          └──────────────► Detailed patient research result or safe abstention
-```
+Hospital130 is separate patient-grouped 30-day readmission. Other cohorts retain
+their own recorded diabetes-status endpoints and measurement environments;
+probabilities are not pooled. See [RESULTS_GUIDE.md](RESULTS_GUIDE.md).
 
-## Authoritative studies
-
-- `pidd_development_072cd2104089`
-- `sylhet_development_b52477910fe6`
-- `brfss_development_holdout_56407ef53bba`
-- `hospital130_development_holdout_c3aa5fb84a7a` (separate 30-day readmission endpoint)
-
-The exact mapping is machine-readable in `config/authoritative_studies.yaml` and
-`evidence/study_registry.json`. Historical BRFSS and Hospital130 smoke studies
-remain engineering provenance, not publication estimates. No current study is
-a final locked result; final execution remains prohibited until the protocol is
-frozen and independently authorized.
-
-`evidence/artifact_release_manifest.json` is the tracked inventory for a future
-immutable external archive. `scripts/build_artifact_release_manifest.py` creates
-it from the authoritative registry, and
-`scripts/verify_artifact_release_manifest.py` verifies a local or restored tree.
-
-`Dockerfile` provides an optional pinned Python 3.12 CPU environment for
-cross-platform setup and lightweight checks. Raw data and generated outputs are
-excluded from the build context by `.dockerignore`.
+The active tree has no conference package, block progress-report directory,
+first-cleanup audit inventory or complete superseded publication package.
+Their originals remain locally preserved and recoverable from prior commits.
+The [simplification report](../REPOSITORY_SIMPLIFICATION_REPORT.md) identifies
+archives and the few historical scientific records deliberately retained.

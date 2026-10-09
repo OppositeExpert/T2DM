@@ -1,0 +1,1449 @@
+{
+  "base_commit": "fb1e35d9df1113bc82fd75f9c0c640932735c87d",
+  "archives": [
+    {
+      "path": "/Users/pranavprabhu/Codex/Minor Proj/T2DM-local-archives/2026-10-09-simplification/pre-simplification-tracked-state.tar.gz",
+      "sha256": "7f5155e38697cb1999ff45bcc1cc206abd2e0007356b5dfda202962d68f02bd6",
+      "bytes": 18601679,
+      "files": 465,
+      "verified_files": 465
+    },
+    {
+      "path": "/Users/pranavprabhu/Codex/Minor Proj/T2DM-local-archives/2026-10-09-simplification/conference_package.tar.gz",
+      "sha256": "5c5ce2f37c13035e056e5a766055c95cc64aa5c42a59d9e3ea17369034c22203",
+      "bytes": 9969396,
+      "files": 49,
+      "verified_files": 49
+    }
+  ],
+  "original_tracked_files": 465,
+  "original_tracked_bytes": 58243815,
+  "removed_files": [
+    {
+      "path": "REPOSITORY_CLEANUP_REPORT.md",
+      "reason": "Superseded project/baseline/status/report document; current guides and journal-review queue retain unresolved decisions; full original archived locally.",
+      "sha256": "5ada98c38d39b7779cf4f1108581fed382b486b4cc9647d848c1e31ae7d5c75b",
+      "bytes": 17827
+    },
+    {
+      "path": "conference_package/Author_and_Venue_Inputs.md",
+      "reason": "Historical conference draft, generated output or QA; complete verified local package preserved; unique active references promoted.",
+      "sha256": "5b5996cb9587c20915c99e4b2d4b8af0de01fd491521cea1ff4e07c51b4bd2de",
+      "bytes": 1397
+    },
+    {
+      "path": "conference_package/Claim_to_Evidence_Development_Crosswalk.md",
+      "reason": "Historical conference draft, generated output or QA; complete verified local package preserved; unique active references promoted.",
+      "sha256": "2d0f1c11d669c7da29995f3f6cec9998a8b46c3b9508398ccf111d5b4a6cecdf",
+      "bytes": 5258
+    },
+    {
+      "path": "conference_package/Conference_Cover_Letter_Draft.md",
+      "reason": "Historical conference draft, generated output or QA; complete verified local package preserved; unique active references promoted.",
+      "sha256": "23b28b5153386cc852b58b5b61a5e117e8317d2b18386b9fd6876300470f3e16",
+      "bytes": 1631
+    },
+    {
+      "path": "conference_package/Conference_Manuscript_Development_Draft.md",
+      "reason": "Historical conference draft, generated output or QA; complete verified local package preserved; unique active references promoted.",
+      "sha256": "052ff4d7744250353638aecbf738b3fd3271acdba4910da7bc4d36e8e15e9176",
+      "bytes": 34235
+    },
+    {
+      "path": "conference_package/Final_Authorization_Record_Template.md",
+      "reason": "Historical conference draft, generated output or QA; complete verified local package preserved; unique active references promoted.",
+      "sha256": "1ceaab52d76d61e809d67751efc0acd128cc82f104b9162d06597f69a184c833",
+      "bytes": 2477
+    },
+    {
+      "path": "conference_package/PROBAST_AI_Development_Assessment.md",
+      "reason": "Historical conference draft, generated output or QA; complete verified local package preserved; unique active references promoted.",
+      "sha256": "83de69890593717381317ce1c4e215526ee78a4f98e86ed03307848d43dfe835",
+      "bytes": 4697
+    },
+    {
+      "path": "conference_package/README.md",
+      "reason": "Historical conference draft, generated output or QA; complete verified local package preserved; unique active references promoted.",
+      "sha256": "e54c91f1edb8a59f106e264c5d17b974ea3c9e4b6c966ca1c919fdbe0d9a93d7",
+      "bytes": 4470
+    },
+    {
+      "path": "conference_package/Reproducibility_and_Final_Run_Handoff.md",
+      "reason": "Historical conference draft, generated output or QA; complete verified local package preserved; unique active references promoted.",
+      "sha256": "ff15868980658205cc557e15be488cfb9cda2027693c01404e45cb0fd9b68742",
+      "bytes": 3776
+    },
+    {
+      "path": "conference_package/Submission_Readiness_and_Handoff.md",
+      "reason": "Historical conference draft, generated output or QA; complete verified local package preserved; unique active references promoted.",
+      "sha256": "68598ac97cfbd787aed4c65be0624d97082759371fea07fa3040aae6730572a1",
+      "bytes": 5704
+    },
+    {
+      "path": "conference_package/Supplementary_Appendix_Development_Draft.md",
+      "reason": "Historical conference draft, generated output or QA; complete verified local package preserved; unique active references promoted.",
+      "sha256": "c8780f87ae64bb606271087adc5dcf0ebeaf69abbfa664274b991f2877a1926a",
+      "bytes": 17932
+    },
+    {
+      "path": "conference_package/TRIPOD_AI_Development_Crosswalk.md",
+      "reason": "Historical conference draft, generated output or QA; complete verified local package preserved; unique active references promoted.",
+      "sha256": "ce4130e860fd70c229300f4dbaeb5942dfb1f2f5124ea3dbaaed9067fb516c4c",
+      "bytes": 5525
+    },
+    {
+      "path": "conference_package/generated/Conference_Manuscript_Development_Draft.docx",
+      "reason": "Historical conference draft, generated output or QA; complete verified local package preserved; unique active references promoted.",
+      "sha256": "fde20457d5d53f192734702d1624b51132376a35aa2adf344530e5237e457e5e",
+      "bytes": 737237
+    },
+    {
+      "path": "conference_package/generated/Supplementary_Appendix_Development_Draft.docx",
+      "reason": "Historical conference draft, generated output or QA; complete verified local package preserved; unique active references promoted.",
+      "sha256": "f6e548cd0ddb0eb215e3598ac452c06d364c0dd66a7479f15c9bf3e200062407",
+      "bytes": 47246
+    },
+    {
+      "path": "conference_package/generated/development_evidence_provenance.json",
+      "reason": "Historical conference draft, generated output or QA; complete verified local package preserved; unique active references promoted.",
+      "sha256": "6d0883ad70d89b7496fbb7a725db109690a753c09d0b43b83b440c5afacbf4c7",
+      "bytes": 4221
+    },
+    {
+      "path": "conference_package/generated/development_model_performance.csv",
+      "reason": "Historical conference draft, generated output or QA; complete verified local package preserved; unique active references promoted.",
+      "sha256": "846a143063f35cb80a57e3bc12f42340c4e7fd2a973ce3919de63c133c33c0a1",
+      "bytes": 11646
+    },
+    {
+      "path": "conference_package/generated/figures/brfss_performance_and_panels.png",
+      "reason": "Historical conference draft, generated output or QA; complete verified local package preserved; unique active references promoted.",
+      "sha256": "aa39468537551e8d9733e083b2a8f98246527e5b40c2b4f95a231a60377df68e",
+      "bytes": 137066
+    },
+    {
+      "path": "conference_package/generated/figures/pidd_missingness_stress.png",
+      "reason": "Historical conference draft, generated output or QA; complete verified local package preserved; unique active references promoted.",
+      "sha256": "060d94a6f02d999686aba6d005612c7f01e709365d60b30b108c95a12173daa2",
+      "bytes": 195054
+    },
+    {
+      "path": "conference_package/generated/figures/pidd_model_performance.png",
+      "reason": "Historical conference draft, generated output or QA; complete verified local package preserved; unique active references promoted.",
+      "sha256": "a984372b90fe4bac3759194f67bd30a8c7251e9120a6ced3d24fad3f28b99478",
+      "bytes": 121058
+    },
+    {
+      "path": "conference_package/generated/figures/pidd_risk_coverage.png",
+      "reason": "Historical conference draft, generated output or QA; complete verified local package preserved; unique active references promoted.",
+      "sha256": "f54ebd787c3cdcc0ff76f17a8a3af0abe4f62882ba70445e37b8525668d5df55",
+      "bytes": 134806
+    },
+    {
+      "path": "conference_package/generated/figures/sylhet_performance_and_panels.png",
+      "reason": "Historical conference draft, generated output or QA; complete verified local package preserved; unique active references promoted.",
+      "sha256": "f792137deaaf0ecd89b3492bfcbd63c1957d354216992601f1a2c7ebebea13a1",
+      "bytes": 149199
+    },
+    {
+      "path": "conference_package/package_manifest.json",
+      "reason": "Historical conference draft, generated output or QA; complete verified local package preserved; unique active references promoted.",
+      "sha256": "9273654f2572c98ab7ab90fab82dbdf3a21f39321558c048d44b72e56557e334",
+      "bytes": 9664
+    },
+    {
+      "path": "conference_package/qa/Publication_Readiness_Audit.md",
+      "reason": "Historical conference draft, generated output or QA; complete verified local package preserved; unique active references promoted.",
+      "sha256": "0864eff82c45aa4940d723f5eb2c2bb4fa219b2c4ee9e7795f00969cf1d8803b",
+      "bytes": 4019
+    },
+    {
+      "path": "conference_package/qa/QA_REPORT.md",
+      "reason": "Historical conference draft, generated output or QA; complete verified local package preserved; unique active references promoted.",
+      "sha256": "317c713d0e28dc147ad7a3af3a2ba667a3dc1083533174db498dcab479585837",
+      "bytes": 2211
+    },
+    {
+      "path": "conference_package/qa/a11y/manuscript.json",
+      "reason": "Historical conference draft, generated output or QA; complete verified local package preserved; unique active references promoted.",
+      "sha256": "219a667d9cd2e31ce50d3cda3d3d2608368572aa57dad6930e4a0c860cbc032d",
+      "bytes": 172
+    },
+    {
+      "path": "conference_package/qa/a11y/supplement.json",
+      "reason": "Historical conference draft, generated output or QA; complete verified local package preserved; unique active references promoted.",
+      "sha256": "c88347f0015e1bd3dcaac74756057cce5d93a8d66057d83ad7b39877e056df95",
+      "bytes": 173
+    },
+    {
+      "path": "conference_package/qa/publication_readiness.json",
+      "reason": "Historical conference draft, generated output or QA; complete verified local package preserved; unique active references promoted.",
+      "sha256": "439ae390fb5c3019015f7c05f031a45ff2f65bef4d7d109587bb01e674832d24",
+      "bytes": 7857
+    },
+    {
+      "path": "conference_package/qa/rendered/manuscript/Conference_Manuscript_Development_Draft.pdf",
+      "reason": "Historical conference draft, generated output or QA; complete verified local package preserved; unique active references promoted.",
+      "sha256": "86fecb54268af468089eabb46bdcb55d1fb60a41bef4135ee64cf5c306b46f11",
+      "bytes": 955568
+    },
+    {
+      "path": "conference_package/qa/rendered/manuscript/page-1.png",
+      "reason": "Historical conference draft, generated output or QA; complete verified local package preserved; unique active references promoted.",
+      "sha256": "5230abe797b2c532c6fe1fbec57ff0e3ba655759f79a95b50635c58394074b33",
+      "bytes": 70334
+    },
+    {
+      "path": "conference_package/qa/rendered/manuscript/page-10.png",
+      "reason": "Historical conference draft, generated output or QA; complete verified local package preserved; unique active references promoted.",
+      "sha256": "0efc9d202e5c273c189095e91f88dae3d03601bdc88ff0e93787f95ec5f5b5ba",
+      "bytes": 494355
+    },
+    {
+      "path": "conference_package/qa/rendered/manuscript/page-11.png",
+      "reason": "Historical conference draft, generated output or QA; complete verified local package preserved; unique active references promoted.",
+      "sha256": "099a5b1ee9b2ad8a3091cff85cc73d3dd4c1a6139d9001872754e374674cf970",
+      "bytes": 438707
+    },
+    {
+      "path": "conference_package/qa/rendered/manuscript/page-12.png",
+      "reason": "Historical conference draft, generated output or QA; complete verified local package preserved; unique active references promoted.",
+      "sha256": "f51620a4854e1086e1fd3a77e62d122a855836e6b7ef16b40aacd3a20ed2c3f1",
+      "bytes": 473644
+    },
+    {
+      "path": "conference_package/qa/rendered/manuscript/page-13.png",
+      "reason": "Historical conference draft, generated output or QA; complete verified local package preserved; unique active references promoted.",
+      "sha256": "d6dc8ea1cfe1eb981271f83d52be7a2a1b18fbbc84ee8c93a92fce35a95b5077",
+      "bytes": 436172
+    },
+    {
+      "path": "conference_package/qa/rendered/manuscript/page-2.png",
+      "reason": "Historical conference draft, generated output or QA; complete verified local package preserved; unique active references promoted.",
+      "sha256": "0adb4eb41668aeae4329fe4db6da07c1aecb7b558a9d3d14eb99b0c42f0cdec6",
+      "bytes": 542560
+    },
+    {
+      "path": "conference_package/qa/rendered/manuscript/page-3.png",
+      "reason": "Historical conference draft, generated output or QA; complete verified local package preserved; unique active references promoted.",
+      "sha256": "52dad9e13f9a860405cda3b4b0a0cc4cbbdeabb0152a93efe770eaf8dadeda79",
+      "bytes": 434786
+    },
+    {
+      "path": "conference_package/qa/rendered/manuscript/page-4.png",
+      "reason": "Historical conference draft, generated output or QA; complete verified local package preserved; unique active references promoted.",
+      "sha256": "692113939566904155efc191bc6b33e4bbc568cfb9d9fee4130827197314ffce",
+      "bytes": 432928
+    },
+    {
+      "path": "conference_package/qa/rendered/manuscript/page-5.png",
+      "reason": "Historical conference draft, generated output or QA; complete verified local package preserved; unique active references promoted.",
+      "sha256": "459407451de3a59d88a43e644558f0c8ea8ec0ae554de224c8a4657f47927db2",
+      "bytes": 361937
+    },
+    {
+      "path": "conference_package/qa/rendered/manuscript/page-6.png",
+      "reason": "Historical conference draft, generated output or QA; complete verified local package preserved; unique active references promoted.",
+      "sha256": "55d9e8dd4bfe62e02c6faf2c69c4c8a9c86a2d0cb868ca0be9458e4c2299f652",
+      "bytes": 500846
+    },
+    {
+      "path": "conference_package/qa/rendered/manuscript/page-7.png",
+      "reason": "Historical conference draft, generated output or QA; complete verified local package preserved; unique active references promoted.",
+      "sha256": "4d8878ab50d8b3aeea5d02fdf9d0dd92e693b95f21c34f50260d9f978e9e3613",
+      "bytes": 545178
+    },
+    {
+      "path": "conference_package/qa/rendered/manuscript/page-8.png",
+      "reason": "Historical conference draft, generated output or QA; complete verified local package preserved; unique active references promoted.",
+      "sha256": "829ed655bb84556230aefc8a2551b039da964a474939dfb06b571d12435a2605",
+      "bytes": 449469
+    },
+    {
+      "path": "conference_package/qa/rendered/manuscript/page-9.png",
+      "reason": "Historical conference draft, generated output or QA; complete verified local package preserved; unique active references promoted.",
+      "sha256": "f2b993274aa634de2c362ebd2b01ff25ec21867ea8e7f3b5df248fa24b6f0c48",
+      "bytes": 440054
+    },
+    {
+      "path": "conference_package/qa/rendered/supplement/Supplementary_Appendix_Development_Draft.pdf",
+      "reason": "Historical conference draft, generated output or QA; complete verified local package preserved; unique active references promoted.",
+      "sha256": "d0662de71bb829feca6061b6be1551b369b3809958b9ada8d998df310b2db72f",
+      "bytes": 190982
+    },
+    {
+      "path": "conference_package/qa/rendered/supplement/page-1.png",
+      "reason": "Historical conference draft, generated output or QA; complete verified local package preserved; unique active references promoted.",
+      "sha256": "df8baf1edf273859deda4c91fbca3cc751f08ba9c44446d3344c3f1d69bfdb47",
+      "bytes": 60247
+    },
+    {
+      "path": "conference_package/qa/rendered/supplement/page-2.png",
+      "reason": "Historical conference draft, generated output or QA; complete verified local package preserved; unique active references promoted.",
+      "sha256": "234b5048550c81454a79228fd52601115badf866ce952d4c0eae94286777ed49",
+      "bytes": 307483
+    },
+    {
+      "path": "conference_package/qa/rendered/supplement/page-3.png",
+      "reason": "Historical conference draft, generated output or QA; complete verified local package preserved; unique active references promoted.",
+      "sha256": "f3520612f9324c3cda41960f7de32816ccd9c31e6dbe52918ca200375ce198e4",
+      "bytes": 346333
+    },
+    {
+      "path": "conference_package/qa/rendered/supplement/page-4.png",
+      "reason": "Historical conference draft, generated output or QA; complete verified local package preserved; unique active references promoted.",
+      "sha256": "cf0c38095957f485922e6d264de6384015022ab6809db658810b38bfb084a24c",
+      "bytes": 409104
+    },
+    {
+      "path": "conference_package/qa/rendered/supplement/page-5.png",
+      "reason": "Historical conference draft, generated output or QA; complete verified local package preserved; unique active references promoted.",
+      "sha256": "c517727622cd60cfda817e2ef6487718528671b4d85fe883750dc290eb397c67",
+      "bytes": 513153
+    },
+    {
+      "path": "conference_package/qa/rendered/supplement/page-6.png",
+      "reason": "Historical conference draft, generated output or QA; complete verified local package preserved; unique active references promoted.",
+      "sha256": "02ecb4c08a7ce70fcbebf0cdaaf172890abb696a0dbe038391bfbdfa4558594a",
+      "bytes": 509431
+    },
+    {
+      "path": "conference_package/qa/rendered/supplement/page-7.png",
+      "reason": "Historical conference draft, generated output or QA; complete verified local package preserved; unique active references promoted.",
+      "sha256": "17c7034356fb342ba8b4e1592b7b42265b60bf33ebcc121b0dd5a79589adc6b5",
+      "bytes": 381214
+    },
+    {
+      "path": "conference_package/qa/rendered/supplement/page-8.png",
+      "reason": "Historical conference draft, generated output or QA; complete verified local package preserved; unique active references promoted.",
+      "sha256": "44efbe1f9be5fbb096514f36baac2c3b6c845215273bf92edec0f823e75d8694",
+      "bytes": 107448
+    },
+    {
+      "path": "docs/DEFINITIVE_PROJECT_CONTEXT.md",
+      "reason": "Superseded project/baseline/status/report document; current guides and journal-review queue retain unresolved decisions; full original archived locally.",
+      "sha256": "1e7a364b88e0a315811b84af77c30eb02e339fe99a1352c5d9a6d74d0a421c7b",
+      "bytes": 177952
+    },
+    {
+      "path": "docs/Diabetes_Publication_Pipeline_Progress_Report.docx",
+      "reason": "Superseded project/baseline/status/report document; current guides and journal-review queue retain unresolved decisions; full original archived locally.",
+      "sha256": "ec8b56ac250051c033b292d71a7a1986f917087b292f431624d7b5b2655346d1",
+      "bytes": 2028626
+    },
+    {
+      "path": "docs/Multi_Dataset_Diabetes_Model_and_Routing_Report.docx",
+      "reason": "Superseded project/baseline/status/report document; current guides and journal-review queue retain unresolved decisions; full original archived locally.",
+      "sha256": "149238bb250a1ec8128a0ee208960a3bcc059e5f436047fff88347b258cfd933",
+      "bytes": 55387
+    },
+    {
+      "path": "docs/NEXT_STEPS_PUBLICATION_ROADMAP.md",
+      "reason": "Superseded project/baseline/status/report document; current guides and journal-review queue retain unresolved decisions; full original archived locally.",
+      "sha256": "109c0dc740033237f21cac0c5d37f38cf800149f831b9a86af875953f2e143c2",
+      "bytes": 40064
+    },
+    {
+      "path": "docs/SYSTEM_MODEL_AND_ROUTING_REPORT.md",
+      "reason": "Superseded project/baseline/status/report document; current guides and journal-review queue retain unresolved decisions; full original archived locally.",
+      "sha256": "cc126001a2d0d5b44dfeec33cc94604b464b6ce64046c376acad9c729d6367f3",
+      "bytes": 9749
+    },
+    {
+      "path": "docs/audits/2026-09-05/probes/README.md",
+      "reason": "Historical diagnostic reproducer and instructions; audit findings and machine-readable evidence retained; exact probes recoverable locally and in Git history.",
+      "sha256": "bf6cd23a5d029281debf6ba285c388e63f9a853baaa64e1fad9637bd50ca4a0b",
+      "bytes": 3313
+    },
+    {
+      "path": "docs/audits/2026-09-05/probes/artifact_probes.py",
+      "reason": "Historical diagnostic reproducer and instructions; audit findings and machine-readable evidence retained; exact probes recoverable locally and in Git history.",
+      "sha256": "e948f4765274ab03ca3a4f54576ba6c53e1a2e3789322ab83277aea56014006d",
+      "bytes": 2940
+    },
+    {
+      "path": "docs/audits/2026-09-05/probes/data_probes.py",
+      "reason": "Historical diagnostic reproducer and instructions; audit findings and machine-readable evidence retained; exact probes recoverable locally and in Git history.",
+      "sha256": "dc2ac071ef1cfc29128e980c243f7464212bcc0b516c06a3d865196e47f0e055",
+      "bytes": 6579
+    },
+    {
+      "path": "docs/audits/2026-09-05/probes/followup_probes.py",
+      "reason": "Historical diagnostic reproducer and instructions; audit findings and machine-readable evidence retained; exact probes recoverable locally and in Git history.",
+      "sha256": "71b8ced11636837ed071096ee11ec7a85519b9b17e6a77a32b46d48d5b44cd5a",
+      "bytes": 3928
+    },
+    {
+      "path": "docs/audits/2026-09-05/probes/runtime_probes.py",
+      "reason": "Historical diagnostic reproducer and instructions; audit findings and machine-readable evidence retained; exact probes recoverable locally and in Git history.",
+      "sha256": "d5c42467a55afb6225a73da912946044841d4b4a1fcd9926819ede502fd6f7b2",
+      "bytes": 9386
+    },
+    {
+      "path": "docs/audits/2026-09-05/probes/smoke_probe.py",
+      "reason": "Historical diagnostic reproducer and instructions; audit findings and machine-readable evidence retained; exact probes recoverable locally and in Git history.",
+      "sha256": "340e9332ea9d3fc57e601e1802147177137e798650ee8fb384e750d60ef3889a",
+      "bytes": 775
+    },
+    {
+      "path": "docs/audits/repository-cleanup-2026-10-09/README.md",
+      "reason": "First cleanup bookkeeping; complete verified local snapshot and previous Git commit preserve audit; current report replaces active navigation.",
+      "sha256": "ae85eb1bfc110db06ee68421ddc1da1ea7b5d00484c9163cd11bf48bae4145c9",
+      "bytes": 3386
+    },
+    {
+      "path": "docs/audits/repository-cleanup-2026-10-09/RESEARCH_DEPENDENCIES.md",
+      "reason": "First cleanup bookkeeping; complete verified local snapshot and previous Git commit preserve audit; current report replaces active navigation.",
+      "sha256": "ebd370bc5b50afce05e46852dbb9815197ff7093ce0909b26b2fc36f0bb6322e",
+      "bytes": 6491
+    },
+    {
+      "path": "docs/audits/repository-cleanup-2026-10-09/directory_summary.csv",
+      "reason": "First cleanup bookkeeping; complete verified local snapshot and previous Git commit preserve audit; current report replaces active navigation.",
+      "sha256": "7f0c92fbeb953b8a9135049e2f1c656b816cde93263a14e003ac83024409a6f9",
+      "bytes": 1025
+    },
+    {
+      "path": "docs/audits/repository-cleanup-2026-10-09/duplicate_review.csv",
+      "reason": "First cleanup bookkeeping; complete verified local snapshot and previous Git commit preserve audit; current report replaces active navigation.",
+      "sha256": "2febaf0da942b4d2ce2737024e4f308f72840784bad25a57a83a6ede882dca5c",
+      "bytes": 162648
+    },
+    {
+      "path": "docs/audits/repository-cleanup-2026-10-09/file_classification.csv.gz",
+      "reason": "First cleanup bookkeeping; complete verified local snapshot and previous Git commit preserve audit; current report replaces active navigation.",
+      "sha256": "4ca2828933690ccd85ae3f6833fac46479921b1e1388fc2aa2c67b6a0f2bcdd2",
+      "bytes": 1430613
+    },
+    {
+      "path": "docs/audits/repository-cleanup-2026-10-09/inventory_summary.json",
+      "reason": "First cleanup bookkeeping; complete verified local snapshot and previous Git commit preserve audit; current report replaces active navigation.",
+      "sha256": "86e4f54538febb3ad25f816127a1487a679bc72a8199a46d5d55dfbb38d4cd52",
+      "bytes": 963
+    },
+    {
+      "path": "docs/audits/repository-cleanup-2026-10-09/preservation.json",
+      "reason": "First cleanup bookkeeping; complete verified local snapshot and previous Git commit preserve audit; current report replaces active navigation.",
+      "sha256": "745e21da58e6b6c80a6caddf5dc8fd8a81e0fe43493764fd0eab25507cd3934d",
+      "bytes": 1334
+    },
+    {
+      "path": "docs/audits/repository-cleanup-2026-10-09/proposed_deletions.csv",
+      "reason": "First cleanup bookkeeping; complete verified local snapshot and previous Git commit preserve audit; current report replaces active navigation.",
+      "sha256": "7bbf0b3ddeff70874bbdc699fb0cf98e907d1046b6b62f2d342ca33433a6d09f",
+      "bytes": 53540
+    },
+    {
+      "path": "docs/audits/repository-cleanup-2026-10-09/removal_result.json",
+      "reason": "First cleanup bookkeeping; complete verified local snapshot and previous Git commit preserve audit; current report replaces active navigation.",
+      "sha256": "9b73cefbe36f2c3f1f9709d76c725793aaa888f679dd8795b2c343c853d64378",
+      "bytes": 163
+    },
+    {
+      "path": "docs/audits/repository-cleanup-2026-10-09/validation.json",
+      "reason": "First cleanup bookkeeping; complete verified local snapshot and previous Git commit preserve audit; current report replaces active navigation.",
+      "sha256": "6700a6b4dec789d0aa1d3417aa24d7770d2edf09212c952f860b10b452e96d60",
+      "bytes": 4799
+    },
+    {
+      "path": "docs/progress_reports/BLOCK_A_REPORT.md",
+      "reason": "Dated block checkpoint; current architecture/results/contribution guides supersede onboarding purpose; original findings preserved locally.",
+      "sha256": "328f62ecefa35810b273548d3f151c4c5446d0b2b32d2a7af04e0752a8f2050a",
+      "bytes": 5352
+    },
+    {
+      "path": "docs/progress_reports/BLOCK_C_PIDD_DEVELOPMENT_PILOT_REPORT.md",
+      "reason": "Dated block checkpoint; current architecture/results/contribution guides supersede onboarding purpose; original findings preserved locally.",
+      "sha256": "56da6eed96baedcac392aba5322c3c46c239fb86ef8aad590771b9114ff8f8d6",
+      "bytes": 6914
+    },
+    {
+      "path": "docs/progress_reports/BLOCK_D_PIDD_SHAP_REPORT.md",
+      "reason": "Dated block checkpoint; current architecture/results/contribution guides supersede onboarding purpose; original findings preserved locally.",
+      "sha256": "96471b6a251bfc1d7151848509df3f5969b11425db5bcf9054ddd5c9503ae100",
+      "bytes": 4760
+    },
+    {
+      "path": "docs/progress_reports/BLOCK_E_SYLHET_GROUPED_PILOT_REPORT.md",
+      "reason": "Dated block checkpoint; current architecture/results/contribution guides supersede onboarding purpose; original findings preserved locally.",
+      "sha256": "413bace634e3b38e2643a41a95140eb7cf9280635b99ba852e2b5fbeffe71d9d",
+      "bytes": 5599
+    },
+    {
+      "path": "docs/progress_reports/BLOCK_F_PIDD_AVAILABILITY_ROUTING_REPORT.md",
+      "reason": "Dated block checkpoint; current architecture/results/contribution guides supersede onboarding purpose; original findings preserved locally.",
+      "sha256": "d7e991c5bbdd2527c25f26ef923ac927541a3179c4b5e582741e2471686436ff",
+      "bytes": 6676
+    },
+    {
+      "path": "docs/progress_reports/BLOCK_G_PATIENT_RESULT_REPORT.md",
+      "reason": "Dated block checkpoint; current architecture/results/contribution guides supersede onboarding purpose; original findings preserved locally.",
+      "sha256": "d25404665fb2ae51da78c27f3fe81fc477cab52ded14d093c8e389e22f7caacd",
+      "bytes": 4726
+    },
+    {
+      "path": "docs/progress_reports/BLOCK_H_HOLDOUT_ENGINE_REPORT.md",
+      "reason": "Dated block checkpoint; current architecture/results/contribution guides supersede onboarding purpose; original findings preserved locally.",
+      "sha256": "0d164c05558c78dd2d9aef2fa2ef378c8bbec58007d55e7be166794282691a23",
+      "bytes": 6517
+    },
+    {
+      "path": "docs/progress_reports/BLOCK_I_FEATURE_ONTOLOGY_REPORT.md",
+      "reason": "Dated block checkpoint; current architecture/results/contribution guides supersede onboarding purpose; original findings preserved locally.",
+      "sha256": "aacd56b7b882872bba0c0ae401b6c20db90ac8954990ead0c2c3dfdc22d9ccfa",
+      "bytes": 3765
+    },
+    {
+      "path": "docs/progress_reports/BLOCK_J_MULTI_DATASET_ROUTING_REPORT.md",
+      "reason": "Dated block checkpoint; current architecture/results/contribution guides supersede onboarding purpose; original findings preserved locally.",
+      "sha256": "20af7bcf2bb0284f34b5344c95c7ec1fffbe68b296aacf91b1385bba0ae82b17",
+      "bytes": 2520
+    },
+    {
+      "path": "docs/progress_reports/BLOCK_K_RESEARCH_GRADE_AUDIT.md",
+      "reason": "Dated block checkpoint; current architecture/results/contribution guides supersede onboarding purpose; original findings preserved locally.",
+      "sha256": "23f0f2cfd2b241bf4b616e27e87dd414c452961b5ee510287ebc75323790eed6",
+      "bytes": 3597
+    },
+    {
+      "path": "docs/research/Baseline_Reproducibility_Record.md",
+      "reason": "Superseded project/baseline/status/report document; current guides and journal-review queue retain unresolved decisions; full original archived locally.",
+      "sha256": "330dbaa08c5bf4f96a0850a5e53fba2d34bd4ae54dee4b60e1f47f0ed8fd0b90",
+      "bytes": 11293
+    },
+    {
+      "path": "docs/research/Execution_Status.md",
+      "reason": "Superseded project/baseline/status/report document; current guides and journal-review queue retain unresolved decisions; full original archived locally.",
+      "sha256": "cf4ec7048bcbe69cfb39b5c6f8f0ed100feb6e0022824638d61d2083385ad4b7",
+      "bytes": 4866
+    },
+    {
+      "path": "docs/research/Publication_Blocker_Register.md",
+      "reason": "Superseded project/baseline/status/report document; current guides and journal-review queue retain unresolved decisions; full original archived locally.",
+      "sha256": "5cfd2c5ee81f272c4e78437a5eabd9b0acb7b0f53292b32bbe8762857c1e00ce",
+      "bytes": 10347
+    },
+    {
+      "path": "docs/research/requirements-baseline-2026-08-23.txt",
+      "reason": "Superseded project/baseline/status/report document; current guides and journal-review queue retain unresolved decisions; full original archived locally.",
+      "sha256": "b98853573072f9e16f3cd4da82ca3c02f9843262a3a944dc8244af54cc4c66ae",
+      "bytes": 1086
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/FINAL_RESULTS.json",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "a579539799c5b9ea030cd96242c23a553f29af77fc865f2f845649deb2b61af7",
+      "bytes": 8892
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/FINAL_RESULTS_SUMMARY.md",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "fc55330ffe8535b10cbf9bc104e4e7e909e288f52e6eaa09db88d38f97c13870",
+      "bytes": 1215
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/README.md",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "64c1345f7de85b4ae85303e59042dadf6de86f2dea88a0efc408ebf3f2289784",
+      "bytes": 984
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/audits/FINAL_DATA_LEAKAGE_AUDIT.json",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "cd2cc37752aa23abb9881d1757d70d5ac317a09151c47b98f1045468b30cf8ed",
+      "bytes": 6480
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/audits/FINAL_DATA_LEAKAGE_AUDIT.md",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "63ae5e6b777181448e3d9e80fc2b00129ec0f022e30d652f8bbc0e3eeccba2e9",
+      "bytes": 4488
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/executed_correction_code/correct_publication_protocol_summaries.py",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "599fdb89e43b4b5af7f2f5f537c4af495a221ca4a29ba7308a849c32cd5fb5d8",
+      "bytes": 14281
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/executed_correction_code/protocol_correction.py",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "98a38ad62af69a8f39fdfc4eb2c871e20e9067fffcb1c75d3bd2512b418a91b5",
+      "bytes": 11720
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/figure/consolidated_results.pdf",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "da27f543b90c83dcaf443ada350b6eefa467eb5f463ce90df0ef04ff1f209cb5",
+      "bytes": 36391
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/figure/consolidated_results.png",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "aea5634000d9270ba93dabb2df2a96b9b703320a428365a2afcd301c3892f0d4",
+      "bytes": 796327
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/figure/consolidated_results.svg",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "f60ea3a1d61702ccbf144c3f2060ed7aab8e2ce7ec6d2746de824c8b6b3e8a66",
+      "bytes": 110576
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/figure/data/panel_a_calibration.csv",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "5d83b8cf2028529aae72f03072122f89ec3ff39f6c04d22449b4fa3cf73e1e0c",
+      "bytes": 2112
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/figure/data/panel_b_decision_curves.csv",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "f760d50c18addb921b728b04627254973c2626b2af73429b41f3b0de217761e3",
+      "bytes": 12216
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/figure/data/panel_c_availability_degradation.csv",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "b52c9c2c902b917bf7adfbe62e015919fb980aa872e4087814f8620bb3e687dd",
+      "bytes": 11654
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/original_publication_checksums.json",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "548fc724576421b662d86e94ecad1c0e87fc774d11ac4c371527943ec902ea9e",
+      "bytes": 9831
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/original_study_derivatives/pidd/availability_routing/confidence_intervals.csv",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "b8f79b4ae019b18b7f6fa45b3dd5e9e1a573a4dbf4581b5543b36f3e2cc0ddd5",
+      "bytes": 262592
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/original_study_derivatives/pidd/availability_routing/paired_system_comparisons.csv",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "9c47b28d9569bcee493939e48d5f9a984b962a0f5a80ee3e5bef5236e7cfa2e2",
+      "bytes": 13999
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/original_study_derivatives/pidd/availability_routing/router_gains.csv",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "7f9c35316a48350ba2748a9590712af8435a000f1abaa47697a99624ba60df56",
+      "bytes": 1299
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/original_study_derivatives/pidd/availability_routing/routing_metadata.json",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "c4cf4146a318d60a82436cafa786ed1e6b61a0f80fdabc4dc7f7ceaef467dc7b",
+      "bytes": 4088
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/original_study_derivatives/pidd/availability_routing/summary_metrics.csv",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "2fab30980286c60c1acde5c674090ffee4feef5b113e5d30079b3fc6d5c0beca",
+      "bytes": 10853
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/original_study_derivatives/sylhet/availability_routing/confidence_intervals.csv",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "e5dfaf002191883e3089932eb133b0cb5eb4bf94b70f60d75f4ab638155d201a",
+      "bytes": 220688
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/original_study_derivatives/sylhet/availability_routing/paired_system_comparisons.csv",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "df1a5b786886260f811a9bf3f86f34739811089e70e38fcaf997f103f2d1007a",
+      "bytes": 11648
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/original_study_derivatives/sylhet/availability_routing/router_gains.csv",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "800075d86cae1449ac05f80fe947ea5f813125d9a99c7b0fb1fd2bf7206791bc",
+      "bytes": 1107
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/original_study_derivatives/sylhet/availability_routing/routing_metadata.json",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "4b61d53ffe7852cac0d87b03ada5dcb5e01349ea847aff26063351210eb795b8",
+      "bytes": 4164
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/original_study_derivatives/sylhet/availability_routing/summary_metrics.csv",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "6c67b9c521b809aa84dc8ac5131ca22903bad6b74a112f6652a8224b4927f6e6",
+      "bytes": 8400
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/provenance/2026-09-11-publication-export-context-columns.md",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "e553a8579ca64d9546666c6b408b5a96e75b6c080f22de36de4e8f40dbbe37ba",
+      "bytes": 2780
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/provenance/BRFSS_FINAL_EVALUATION_DECISION.md",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "22a9f264d718cfd8f0d0d79ecf14e7da2011f90a6c67eb608840dcd601b24388",
+      "bytes": 2813
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/provenance/HOSPITAL130_FINAL_DECISION.md",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "7fb615d47273409fbed71107699f740e47ada83530909fb3ff570dc9e14e5b07",
+      "bytes": 2279
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/provenance/execution/brfss/execution.log",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "a3e9ca49fce9d900ef7cc56b3240abb9d7236d5df0629faf88c7ef5dca231da3",
+      "bytes": 244
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/provenance/execution/brfss/experiment_metadata.json",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "8c7a9f54af1b141841281255dc5c46c084de4a23077e9e919af6c379063ca0be",
+      "bytes": 4427
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/provenance/execution/brfss/outcome_access_receipt.json",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "86c59aee4ef96188152cad8050d368c8fa150e4ee93d832c05ba7855092a1868",
+      "bytes": 220
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/provenance/execution/brfss/survey_design_diagnostics.json",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "8b12e5584dee53febc4a682390bc0b0fba7f6ff2ec4408b6e9092a95648162dc",
+      "bytes": 1167
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/provenance/execution/hospital130/execution.log",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "a3e9ca49fce9d900ef7cc56b3240abb9d7236d5df0629faf88c7ef5dca231da3",
+      "bytes": 244
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/provenance/execution/hospital130/experiment_metadata.json",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "ec4c8b2a49f3cd33053457ca361443de20828cd25ea0e7ce2bde01bb229b8be1",
+      "bytes": 4479
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/provenance/execution/hospital130/outcome_access_receipt.json",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "58d36a05747901d5ca64d156c13ec4f9fd5a8150b57a959f7d8b3e676920b69b",
+      "bytes": 226
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/provenance/execution/pidd/execution.log",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "2bc3b2b626808c993fd3a5168a5e1a98d4ed49d9b24225f41a0e44f13a36b45d",
+      "bytes": 7108
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/provenance/execution/pidd/experiment_metadata.json",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "5ee88646e297c28afb61536f5237bb010c33202ad79100f3b0f21e93ed4c050e",
+      "bytes": 3925
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/provenance/execution/pidd/outcome_access_receipt.json",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "085ddf5d986372f40161f8057d437f1403b41debc68c926d11377a6926bd2d15",
+      "bytes": 264
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/provenance/execution/sylhet/execution.log",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "8382ac88370fc8758def070e223987141486d9cf71d027311d4b1098798b3da2",
+      "bytes": 7122
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/provenance/execution/sylhet/experiment_metadata.json",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "e36379bbfa5fc9dec3bdc3830d7d0a57fbcfaac6814363f456893800023f6463",
+      "bytes": 3956
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/provenance/execution/sylhet/outcome_access_receipt.json",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "019eee996b8ac34c3a051ac2e82d1a0abcbdccf1049c36746d60584c8125c283",
+      "bytes": 266
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/provenance/frozen_protocol.yaml",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "7c1c5191a1d98f70b6e6aa1081a894f41d0ecbe88b05b9ef7fcaab4f3fdd3b31",
+      "bytes": 7685
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/supersession_manifest.json",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "1093f54682eb476a4ec20f78b907998e58c17be643093e609130eaf1f1731978",
+      "bytes": 7903
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables/availability_panel_degradation.csv",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "46a33cd9af2a83434f1d5134eb318b5d419cd63a7b030e9a35cccf94f04dc728",
+      "bytes": 12165
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables/availability_panel_degradation.md",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "93bc544294b859f11d86289e3f2ac5fc87cb4a5a83d82cb07d33147f9ae24007",
+      "bytes": 10362
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables/availability_panel_degradation.tex",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "c2118710b92f64e9818d91e363f90f34f1ad48a952e9de0ef09aecf217e0a7ec",
+      "bytes": 10224
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables/brfss_survey_weighted_confidence_intervals.csv",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "cf3248e46990fa81c548ba05716c0436f6eab3def33a5a495f088c45fa647ee0",
+      "bytes": 83173
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables/brfss_survey_weighted_confidence_intervals.md",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "26730d651d8a4f79bcfa850271f7acdf30d32954bd83e319c5af0d030ec3dcc8",
+      "bytes": 83512
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables/brfss_survey_weighted_confidence_intervals.tex",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "4ee099d7850856d759d189552a720624b0b50881cbc638bea8ef99c9a4dcbd88",
+      "bytes": 85800
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables/brfss_survey_weighted_metrics.csv",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "6f36b6320fcaa291a63611e781b1deb11e64808c7c5815fa3a32cc7c964ccf19",
+      "bytes": 24064
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables/brfss_survey_weighted_metrics.md",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "743e859aff59866b092f58e7f17a72094b730044ea1b87374e594fef7156106d",
+      "bytes": 17800
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables/brfss_survey_weighted_metrics.tex",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "5f87e89e664e5abcd9b3cc596dc1c3bdd53d082089786839577905266dbb0869",
+      "bytes": 17353
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables/calibration_selection.csv",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "4d3c5640e435e8bd330d8515f4c6c99842229c76ff094b9293b4a0590e1ea3f7",
+      "bytes": 175767
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables/calibration_selection.md",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "d890ea7f3fdbe48e4363d6378c5143aa24768ae9ba4ea836fb15316962c76f34",
+      "bytes": 192307
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables/calibration_selection.tex",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "8b4916ffd457d92670ceebbcd749c442b42a099ab5b1c50dffa675378dbf268e",
+      "bytes": 213678
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables/dataset_characteristics.csv",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "768dbe166cc27ff47ad9817d54f8e157862b8290c2f6ca267fe3456fbc8afe43",
+      "bytes": 601
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables/dataset_characteristics.md",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "ab1a78ce41841d0339444649442b9e628bd9e39d037ee19f3b066d4cdddf1dce",
+      "bytes": 697
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables/dataset_characteristics.tex",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "de9d23084a0a23fd954a085b47cd94461f4b66aa4b1e3437f7905767612bfa04",
+      "bytes": 738
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables/decision_curve_confidence_intervals.csv",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "528dc9d78a5b27e878f38376f1ae9883698042ea1fe1e1bf3da6a36b3484909d",
+      "bytes": 288236
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables/decision_curve_confidence_intervals.md",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "fa4cd7c97c12606eba6b9c8331e2929fc3fc2e904fa3255852566ba8c09b75e8",
+      "bytes": 289162
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables/decision_curve_confidence_intervals.tex",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "d8a85cea9bc574a776a00d3ac4b88da9f405969f744c9aaa2699776ce728cf3e",
+      "bytes": 293189
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables/decision_curve_paired_contrasts.csv",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "200572dac39d73b024eec091bc16a6ecd3b50a3a92311c336497d4f53bb9ca67",
+      "bytes": 680662
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables/decision_curve_paired_contrasts.md",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "934eda91bf186396683d6d631ed27f718cea63f8564d86178d98ce99e3bb7484",
+      "bytes": 673457
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables/decision_curve_paired_contrasts.tex",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "10bcc8f8677bfc49aba7ba0a0d62dbe08af8e4dba1530f1ec634685203158ad5",
+      "bytes": 664782
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables/decision_curves.csv",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "343b08f8fddb5b50392005b0386ee4453806f96e399abbf148f34aa4c6719af7",
+      "bytes": 797418
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables/decision_curves.md",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "cd86e1b0eb6055eb8c33930852f28b10fa9cc379e4c83433537d83893ab93ebf",
+      "bytes": 786580
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables/decision_curves.tex",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "41341df25f212f03679a1feb57322f7a82405444e70c68584dcb6aaf948587fd",
+      "bytes": 857289
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables/full_panel_model_performance.csv",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "3ef60ac3cc65c5b66c65c11aafccd677ea5a73e002c11d0534bb3ed89839d5e9",
+      "bytes": 6132
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables/full_panel_model_performance.md",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "b41624f4bd680013f19229a27b06881c19c1a8325f7b183767fd2b608bc7a264",
+      "bytes": 4986
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables/full_panel_model_performance.tex",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "6a0f760003a36cb6a302a8cecb9c602dec0b1b088d9cb90c5f8a4af749d591b8",
+      "bytes": 4858
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables/model_paired_comparisons.csv",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "75763e448a6b9d6e380dd127eb926691f5a4438a1704dc8fe1dbd515094b19c8",
+      "bytes": 38438
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables/model_paired_comparisons.md",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "719ed422ca36b9ce7c7baf98d17124d474ff8ed3568eabc498c7a264a29c98d9",
+      "bytes": 36198
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables/model_paired_comparisons.tex",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "c10931042a26be9c46e74c2a714e9e887af1abe21e444a4845779a4ca6f9c281",
+      "bytes": 34563
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables/model_performance_confidence_intervals.csv",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "da358db927580c8f3c31a4aea71c2fa536bfe701820aa2d39dc775cef8e1b6f2",
+      "bytes": 1860835
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables/model_performance_confidence_intervals.md",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "1c4a6b10e8ef6b40d5500df41cebf114a0efebb65658e022fe2a4ca61db9c16a",
+      "bytes": 1977023
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables/model_performance_confidence_intervals.tex",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "e5afa696df1e6651c3989a9f1cf8b1b30aceee7ef3e38c3b6f9f787cc8e1fd60",
+      "bytes": 2077807
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables/routing_fallback_performance.csv",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "e74f5c5c7e0805ab8afa1be4ef672477f8bcbede1b82879d0ed21a4652439726",
+      "bytes": 9086
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables/routing_fallback_performance.md",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "462a40ac37d125421be1832f595571f2febf106f8388b0a04c58331919cab0f0",
+      "bytes": 7909
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables/routing_fallback_performance.tex",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "94a4019728abd1069b7d95aa8eb194e0e8e6ecbf594432a50114d24dffca38a8",
+      "bytes": 7614
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables/selective_prediction_confidence_intervals.csv",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "d63dcee6406de2d106f5a1e05a51a74ac634c1676f324baa1c24af58a3433050",
+      "bytes": 128838
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables/selective_prediction_confidence_intervals.md",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "1b2860659840888a0351f0836335dd3bb00b0c5179071c3d2c37c2a10a4ee366",
+      "bytes": 129940
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables/selective_prediction_confidence_intervals.tex",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "567e77bb312ceb4d6ef0b6bada4f197194d6edb6c87a18c947b0d9fb85cf1558",
+      "bytes": 136173
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables/selective_prediction_metrics.csv",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "31e5d4bf6c879a8b4d82900bc4e71b9f0a564baaa9f17b0e8c535eaefdff15ee",
+      "bytes": 16327
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables/selective_prediction_metrics.md",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "328adf0318c5cf6319d2cea295735a023b791bf60f883363e8632c16efd929af",
+      "bytes": 14445
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables/selective_prediction_metrics.tex",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "45527f50d0633b1c674611cf391472972b49011b006969ad069b2ad982ebc54c",
+      "bytes": 14654
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables/shap_summary.csv",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "671c5a36229f3798f9b50d9c3a05dcd6bd5798acf1527b8a3791d9eea9633ead",
+      "bytes": 65409
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables/shap_summary.md",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "c31192d6d89a14fe21944e32718e253d498ba345b9508b10a2b699fd8d13b10d",
+      "bytes": 63668
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables/shap_summary.tex",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "ecf2e25e633de6a7c2b2f08a164805201c6f9c34f1ec8c0f236e33f10bceb6c0",
+      "bytes": 64631
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables/statistical_comparisons.csv",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "2dfc985951ebb6b4ff804bf4778209b20b203c097132d8425c6d1d89b5ad0442",
+      "bytes": 14051
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables/statistical_comparisons.md",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "624752f774286b5b0a32523b2e26467b777346e1c45eddf20d7fdd56b78f6b30",
+      "bytes": 13504
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables/statistical_comparisons.tex",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "aeb305ca6848b15e28caf5b81678e5d98f68149923a340106218224fc7f7f7ee",
+      "bytes": 13285
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables/subgroup_confidence_intervals.csv",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "c1b39f4e133349b5fc100e16e637106bb657bb71c09d6ad7446e9e8c821a3ba2",
+      "bytes": 323168
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables/subgroup_confidence_intervals.md",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "fc8bb74d63fd6cf8a072bb8a2f8b77c6016a088f4da7424476d9713378d1ecfc",
+      "bytes": 340384
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables/subgroup_confidence_intervals.tex",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "8e009cbb017eaea8850fb49fe30bf4201bd5e7b977c71a04a581b27d99633e07",
+      "bytes": 349728
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables/subgroup_metrics.csv",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "b587b969117bc6dd7de17fa3a7c0e392c0bedda24fb9f5ecf074045741b5dda6",
+      "bytes": 42655
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables/subgroup_metrics.md",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "3f9fca59ff315fdf6c9ef4bb00380c71fa6708705cea64d88d0dbaeb25d0b67a",
+      "bytes": 39401
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables/subgroup_metrics.tex",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "a356116d9ad9784a0725d17950b67d1a55a328ea0e3936a18788242bbb4c52e9",
+      "bytes": 39375
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables/threshold_metrics.csv",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "c17fd34d09ae5b694a8f9713f2862414cbc8974c67228c42156565e75d5f7fb3",
+      "bytes": 228828
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables/threshold_metrics.md",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "9eb621290742f6309a23861b2cbade3767cfca3f3224fd9e7a9522e465a446c5",
+      "bytes": 217103
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables/threshold_metrics.tex",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "44920e7409fcde52ecd0d477a933b82ac7c738903b5ee043aeb8a8d36d3da274",
+      "bytes": 233256
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables/threshold_performance.csv",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "bfd283103a9f3afae7a0b57a362122d52f61860cae3eb227b27c4fa73bba363a",
+      "bytes": 52040
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables/threshold_performance.md",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "8bc224b1b16728ca2829dab213f506c9c44d834a276a29b376f44d58824f1490",
+      "bytes": 40692
+    },
+    {
+      "path": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables/threshold_performance.tex",
+      "reason": "Superseded publication version preserved locally; current frozen package retained; unique correction source/derivatives/hash mapping promoted.",
+      "sha256": "8879dae9d424be5e3acfc396ca903212ab8ccdac7b88795da9a64d284e9698fb",
+      "bytes": 40106
+    },
+    {
+      "path": "scripts/build_conference_manifest.py",
+      "reason": "Builder/renderer solely for archived conference or historical Word reports; not used by active training, evaluation, final export or retained tests.",
+      "sha256": "331665b0b64eed00cc625184f21f0a9ccf0dea28ae75436975b58934ef7c6f27",
+      "bytes": 1628
+    },
+    {
+      "path": "scripts/build_conference_package.py",
+      "reason": "Builder/renderer solely for archived conference or historical Word reports; not used by active training, evaluation, final export or retained tests.",
+      "sha256": "34abd13e58e831b24052c04cbc544c5bfec5196bba5f2eff95e5184d8292c946",
+      "bytes": 29095
+    },
+    {
+      "path": "scripts/build_development_evidence_snapshot.py",
+      "reason": "Builder/renderer solely for archived conference or historical Word reports; not used by active training, evaluation, final export or retained tests.",
+      "sha256": "aaa986abb2d02e59590b79de2c1fd8cb45c56b3471d50b45d8254066dbfa7c78",
+      "bytes": 6312
+    },
+    {
+      "path": "scripts/build_system_model_routing_report.py",
+      "reason": "Builder/renderer solely for archived conference or historical Word reports; not used by active training, evaluation, final export or retained tests.",
+      "sha256": "e4d28d689cce897a9956c6171a149752cc9ee826c25a272643a721ebaf2f9b92",
+      "bytes": 45616
+    },
+    {
+      "path": "scripts/render_docx_with_word.scpt",
+      "reason": "Builder/renderer solely for archived conference or historical Word reports; not used by active training, evaluation, final export or retained tests.",
+      "sha256": "d585ac5f7eec36b2610204cdb44fafdc1ef17cfc8423c033ceab1e36a4a93984",
+      "bytes": 314
+    }
+  ],
+  "promotions": [
+    {
+      "original": "conference_package/generated/development_model_performance.csv",
+      "active": "evidence/development_reference/development_model_performance.csv",
+      "sha256": "846a143063f35cb80a57e3bc12f42340c4e7fd2a973ce3919de63c133c33c0a1"
+    },
+    {
+      "original": "conference_package/generated/development_evidence_provenance.json",
+      "active": "evidence/development_reference/development_evidence_provenance.json",
+      "sha256": "6d0883ad70d89b7496fbb7a725db109690a753c09d0b43b83b440c5afacbf4c7"
+    },
+    {
+      "original": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/executed_correction_code/correct_publication_protocol_summaries.py",
+      "active": "evidence/publication_correction/executed_correction_code/correct_publication_protocol_summaries.py",
+      "sha256": "599fdb89e43b4b5af7f2f5f537c4af495a221ca4a29ba7308a849c32cd5fb5d8"
+    },
+    {
+      "original": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/executed_correction_code/protocol_correction.py",
+      "active": "evidence/publication_correction/executed_correction_code/protocol_correction.py",
+      "sha256": "98a38ad62af69a8f39fdfc4eb2c871e20e9067fffcb1c75d3bd2512b418a91b5"
+    },
+    {
+      "original": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/original_publication_checksums.json",
+      "active": "evidence/publication_correction/original_publication_checksums.json",
+      "sha256": "548fc724576421b662d86e94ecad1c0e87fc774d11ac4c371527943ec902ea9e"
+    },
+    {
+      "original": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/original_study_derivatives/pidd/availability_routing/confidence_intervals.csv",
+      "active": "evidence/publication_correction/original_study_derivatives/pidd/availability_routing/confidence_intervals.csv",
+      "sha256": "b8f79b4ae019b18b7f6fa45b3dd5e9e1a573a4dbf4581b5543b36f3e2cc0ddd5"
+    },
+    {
+      "original": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/original_study_derivatives/pidd/availability_routing/paired_system_comparisons.csv",
+      "active": "evidence/publication_correction/original_study_derivatives/pidd/availability_routing/paired_system_comparisons.csv",
+      "sha256": "9c47b28d9569bcee493939e48d5f9a984b962a0f5a80ee3e5bef5236e7cfa2e2"
+    },
+    {
+      "original": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/original_study_derivatives/pidd/availability_routing/router_gains.csv",
+      "active": "evidence/publication_correction/original_study_derivatives/pidd/availability_routing/router_gains.csv",
+      "sha256": "7f9c35316a48350ba2748a9590712af8435a000f1abaa47697a99624ba60df56"
+    },
+    {
+      "original": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/original_study_derivatives/pidd/availability_routing/routing_metadata.json",
+      "active": "evidence/publication_correction/original_study_derivatives/pidd/availability_routing/routing_metadata.json",
+      "sha256": "c4cf4146a318d60a82436cafa786ed1e6b61a0f80fdabc4dc7f7ceaef467dc7b"
+    },
+    {
+      "original": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/original_study_derivatives/pidd/availability_routing/summary_metrics.csv",
+      "active": "evidence/publication_correction/original_study_derivatives/pidd/availability_routing/summary_metrics.csv",
+      "sha256": "2fab30980286c60c1acde5c674090ffee4feef5b113e5d30079b3fc6d5c0beca"
+    },
+    {
+      "original": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/original_study_derivatives/sylhet/availability_routing/confidence_intervals.csv",
+      "active": "evidence/publication_correction/original_study_derivatives/sylhet/availability_routing/confidence_intervals.csv",
+      "sha256": "e5dfaf002191883e3089932eb133b0cb5eb4bf94b70f60d75f4ab638155d201a"
+    },
+    {
+      "original": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/original_study_derivatives/sylhet/availability_routing/paired_system_comparisons.csv",
+      "active": "evidence/publication_correction/original_study_derivatives/sylhet/availability_routing/paired_system_comparisons.csv",
+      "sha256": "df1a5b786886260f811a9bf3f86f34739811089e70e38fcaf997f103f2d1007a"
+    },
+    {
+      "original": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/original_study_derivatives/sylhet/availability_routing/router_gains.csv",
+      "active": "evidence/publication_correction/original_study_derivatives/sylhet/availability_routing/router_gains.csv",
+      "sha256": "800075d86cae1449ac05f80fe947ea5f813125d9a99c7b0fb1fd2bf7206791bc"
+    },
+    {
+      "original": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/original_study_derivatives/sylhet/availability_routing/routing_metadata.json",
+      "active": "evidence/publication_correction/original_study_derivatives/sylhet/availability_routing/routing_metadata.json",
+      "sha256": "4b61d53ffe7852cac0d87b03ada5dcb5e01349ea847aff26063351210eb795b8"
+    },
+    {
+      "original": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/original_study_derivatives/sylhet/availability_routing/summary_metrics.csv",
+      "active": "evidence/publication_correction/original_study_derivatives/sylhet/availability_routing/summary_metrics.csv",
+      "sha256": "6c67b9c521b809aa84dc8ac5131ca22903bad6b74a112f6652a8224b4927f6e6"
+    },
+    {
+      "original": "results/final_publication/superseded_pre_protocol_correction/2026-10-03/supersession_manifest.json",
+      "active": "evidence/publication_correction/supersession_manifest.json",
+      "sha256": "1093f54682eb476a4ec20f78b907998e58c17be643093e609130eaf1f1731978"
+    },
+    {
+      "original": "conference_package/Final_Authorization_Record_Template.md",
+      "active": "docs/research/Execution_Authorization_Template.md",
+      "sha256": "1ceaab52d76d61e809d67751efc0acd128cc82f104b9162d06597f69a184c833"
+    }
+  ],
+  "files_permanently_deleted": 0,
+  "archive_contents_note": "465 unique original tracked files archived; 49 conference members additionally verified in a dedicated archive. All 192 untracked originals remain locally present. Archives are outside Git.",
+  "validation": {
+    "full_local_tests": {
+      "passed": 132,
+      "failed": 0,
+      "subtests_passed": 7,
+      "warnings": 3,
+      "seconds": 49.05
+    },
+    "portable_staged_copy_tests": {
+      "passed": 125,
+      "failed": 0,
+      "deselected_local_research_checks": 7,
+      "subtests_passed": 7,
+      "warnings": 3,
+      "seconds": 29.85
+    },
+    "engineering": {
+      "imports": 67,
+      "python_files_compiled": 118,
+      "configs_valid": true,
+      "profiles": [
+        "development",
+        "development_pilot",
+        "smoke",
+        "final",
+        "final_internal_validation"
+      ],
+      "cli_subcommands_help": 26,
+      "source_tree_sha256": "2bf35ec02600e20b6acc275be6b1ee56849f3dd8661cec065b67906ae7afd4f4",
+      "protected_original_files_unchanged": 189,
+      "promoted_files_byte_identical": 17,
+      "untracked_originals_still_present_and_unchanged": 192,
+      "internal_markdown_links_checked": 41,
+      "broken_internal_links": [],
+      "credential_pattern_findings": [],
+      "restricted_paths_in_index": [],
+      "tex_generated_exports": 23,
+      "docker_available": false,
+      "master_source_artifact_hashes_matched": 28,
+      "existing_estimand_test_only_paths_changed": true
+    },
+    "isolated_copy": {
+      "candidate": "/private/tmp/t2dm-simplification-index",
+      "no_conference_or_raw_private_outputs": true,
+      "dependency_note": "Fresh editable package; reused verified local locked dependencies; no fresh network dependency installation.",
+      "checks": [
+        {
+          "check": "editable_install",
+          "exit_code": 0
+        },
+        {
+          "check": "environment",
+          "exit_code": 0
+        },
+        {
+          "check": "source_binding",
+          "exit_code": 0
+        },
+        {
+          "check": "portable_pytest",
+          "exit_code": 0
+        },
+        {
+          "check": "publication",
+          "exit_code": 0
+        },
+        {
+          "check": "feature_map",
+          "exit_code": 0
+        },
+        {
+          "check": "wheel",
+          "exit_code": 0
+        },
+        {
+          "check": "pip_check",
+          "exit_code": 0
+        }
+      ]
+    },
+    "publication_current": 101,
+    "publication_retained_correction_support": 14,
+    "publication_historical_optional": 87,
+    "final_artifact_inventory": 1304,
+    "development_artifact_inventory": 1962,
+    "expensive_training_executed": false,
+    "locked_results_modified": false,
+    "fresh_git_clone": {
+      "path": "/private/tmp/t2dm-simplification-clone",
+      "commit": "9aab7d83239bffe4398b9c49cdeadbb560737fca",
+      "clone_origin": "Local Git repository; ordinary clone with no hardlinks; source branch to be pushed and remotely verified.",
+      "dependency_reuse": "Verified locked local distributions only; fresh editable installation bound to clone; no network dependency install.",
+      "archive_files_absent": true,
+      "raw_and_private_study_artifacts_absent": true,
+      "portable_tests_passed": 125,
+      "portable_tests_failed": 0,
+      "local_research_checks_deselected": 7,
+      "subtests_passed": 7,
+      "checks": [
+        {
+          "check": "editable_install",
+          "exit_code": 0
+        },
+        {
+          "check": "portable_tests",
+          "exit_code": 0
+        },
+        {
+          "check": "publication",
+          "exit_code": 0
+        },
+        {
+          "check": "imports",
+          "exit_code": 0
+        },
+        {
+          "check": "cli_help",
+          "exit_code": 0
+        },
+        {
+          "check": "final_orchestrator_help",
+          "exit_code": 0
+        }
+      ]
+    },
+    "github_actions": {
+      "run_id": 37933367987,
+      "url": "https://github.com/OppositeExpert/T2DM/actions/runs/37933367987",
+      "validated_head_commit": "4c69731e02bb01adecbd1e7c949d6e9a6d4a5fc7",
+      "status": "completed",
+      "conclusion": "success",
+      "jobs_passed": 2,
+      "portable_tests_passed": 125,
+      "portable_tests_failed": 0,
+      "local_research_checks_deselected": 7,
+      "subtests_passed": 7,
+      "locked_dependencies_installed_on_fresh_ubuntu_runner": true
+    }
+  },
+  "language_analysis": {
+    "before_tex_files": 43,
+    "before_tex_bytes": 9872978,
+    "before_python_files": 126,
+    "before_python_bytes": 973079,
+    "after_tex_files": 23,
+    "after_tex_bytes": 4713875,
+    "after_python_files": 118,
+    "after_python_bytes": 870034,
+    "linguist_generated_tex_files": 23,
+    "note": "Unfiltered tracked suffix bytes, not a prediction of GitHub cached Linguist percentages. Generated attribute matches only exporter table TeX."
+  },
+  "all_directories_removed_from_active_tree": [
+    "conference_package",
+    "conference_package/generated",
+    "conference_package/generated/figures",
+    "conference_package/qa",
+    "conference_package/qa/a11y",
+    "conference_package/qa/rendered",
+    "conference_package/qa/rendered/manuscript",
+    "conference_package/qa/rendered/supplement",
+    "docs/audits/2026-09-05/probes",
+    "docs/audits/repository-cleanup-2026-10-09",
+    "docs/progress_reports",
+    "results/final_publication/superseded_pre_protocol_correction",
+    "results/final_publication/superseded_pre_protocol_correction/2026-10-03",
+    "results/final_publication/superseded_pre_protocol_correction/2026-10-03/audits",
+    "results/final_publication/superseded_pre_protocol_correction/2026-10-03/executed_correction_code",
+    "results/final_publication/superseded_pre_protocol_correction/2026-10-03/figure",
+    "results/final_publication/superseded_pre_protocol_correction/2026-10-03/figure/data",
+    "results/final_publication/superseded_pre_protocol_correction/2026-10-03/original_study_derivatives",
+    "results/final_publication/superseded_pre_protocol_correction/2026-10-03/original_study_derivatives/pidd",
+    "results/final_publication/superseded_pre_protocol_correction/2026-10-03/original_study_derivatives/pidd/availability_routing",
+    "results/final_publication/superseded_pre_protocol_correction/2026-10-03/original_study_derivatives/sylhet",
+    "results/final_publication/superseded_pre_protocol_correction/2026-10-03/original_study_derivatives/sylhet/availability_routing",
+    "results/final_publication/superseded_pre_protocol_correction/2026-10-03/provenance",
+    "results/final_publication/superseded_pre_protocol_correction/2026-10-03/provenance/execution",
+    "results/final_publication/superseded_pre_protocol_correction/2026-10-03/provenance/execution/brfss",
+    "results/final_publication/superseded_pre_protocol_correction/2026-10-03/provenance/execution/hospital130",
+    "results/final_publication/superseded_pre_protocol_correction/2026-10-03/provenance/execution/pidd",
+    "results/final_publication/superseded_pre_protocol_correction/2026-10-03/provenance/execution/sylhet",
+    "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables"
+  ],
+  "final_tracked_files": 296,
+  "final_tracked_bytes": 27164040,
+  "simplification_commit": "9aab7d83239bffe4398b9c49cdeadbb560737fca"
+}

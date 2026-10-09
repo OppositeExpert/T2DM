@@ -7,11 +7,15 @@
 # Local environment
 .venv-pipeline/
 
-# Raw study data and all generated research artifacts are preserved separately
-# with checksums. They must not enter source control or a public repository.
+# Raw data, fitted models and row-level outputs stay local; preserve them with
+# checksums and approved restricted archival rather than deleting them.
 data/raw/
 outputs/
-results/
+
+# Only the reviewed aggregate publication package is version-controlled.
+# Additional results require a privacy/provenance review before explicit add.
+results/*
+!results/final_publication/
 
 # Local/editor and coverage artifacts
 .coverage
@@ -20,6 +24,41 @@ htmlcov/
 .ruff_cache/
 .idea/
 .vscode/
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+build/
+dist/
+*.tmp
+*.swp
+outputs/.matplotlib/
 
 # Office lock/temporary files
 ~$*.docx
+
+# Locally preserved historical material (removed from active Git tracking)
+/conference_package/
+/docs/progress_reports/
+/docs/audits/repository-cleanup-2026-10-09/
+/docs/audits/2026-09-05/probes/
+/results/final_publication/superseded_pre_protocol_correction/
+/local_archives/
+/REPOSITORY_CLEANUP_REPORT.md
+/docs/DEFINITIVE_PROJECT_CONTEXT.md
+/docs/Diabetes_Publication_Pipeline_Progress_Report.docx
+/docs/Multi_Dataset_Diabetes_Model_and_Routing_Report.docx
+/docs/NEXT_STEPS_PUBLICATION_ROADMAP.md
+/docs/SYSTEM_MODEL_AND_ROUTING_REPORT.md
+/docs/research/Baseline_Reproducibility_Record.md
+/docs/research/Execution_Status.md
+/docs/research/Publication_Blocker_Register.md
+/docs/research/requirements-baseline-2026-08-23.txt
+/scripts/build_conference_manifest.py
+/scripts/build_conference_package.py
+/scripts/build_development_evidence_snapshot.py
+/scripts/build_system_model_routing_report.py
+/scripts/render_docx_with_word.scpt

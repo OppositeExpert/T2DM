@@ -1,36 +1,24 @@
-# Tracked Evidence Metadata
+# Scientific evidence index
 
-`study_registry.json` is the tracked map from authoritative finalized
-internal-validation claims to ignored local artifacts. Rebuild it only after
-every declared study and its dependent analyses are complete:
+| File/directory | Why it remains active |
+|---|---|
+| `study_registry.json` | Four final study identities, endpoint/evidence boundaries and artifact hashes |
+| `final_artifact_release_manifest.json` | 1,304 final-study/input/split/execution artifacts, including checkpoints |
+| `artifact_release_manifest.json` | 1,962 development artifact hashes supporting negative findings and ongoing mentor analyses |
+| `development_reference/` | Unchanged historical 20-row primary-estimand regression table and its source provenance; development only |
+| `publication_correction/` | Ten original panel derivatives, two executed correction-code snapshots, original 87-entry publication checksum list and supersession mapping |
+| `repository_simplification_manifest.json` | Verified local archive fingerprints, removed-path ledger and exact promotion mappings |
 
-```bash
-python scripts/build_study_registry.py
-```
+`publication_correction/retained_checksums.json` verifies all 14 retained support
+files. The original publication checksum list is unchanged; its paths are relative
+to the restored superseded package, not this support directory. Supersession-map
+original/replacement paths retain their historical meaning. Current replacements
+are under `results/final_publication/`; the complete original package is locally
+archived. Code snapshots are provenance, not the source entrypoint to rerun.
 
-The registry records study IDs, endpoints, evidence tiers, commands, hashes,
-artifact paths, local presence, and model bundles. It marks the listed studies
-eligible for finalized internal-validation claims while explicitly prohibiting
-untouched independent-holdout wording. Large predictions, fitted models, and
-plots remain under ignored `outputs/`; the checksum-verified canonical package
-is under ignored `results/final_publication/`. Both require immutable external
-archival for a fresh clone or release.
-
-After rebuilding this registry, create and verify the external-archive inventory:
-
-```bash
-python scripts/build_artifact_release_manifest.py
-python scripts/verify_artifact_release_manifest.py
-```
-
-The resulting tracked manifest is an inventory, not proof of upload. Its URI and
-archive identifier remain empty until a real immutable archive is configured.
-
-Study IDs include the source-tree fingerprint. Running a regeneration command
-after source changes correctly creates a successor study ID instead of silently
-overwriting the declared study. Exact byte-for-byte regeneration of an older
-ignored study therefore also requires the source revision identified by its
-recorded source hash or a separately archived source bundle. The finalized
-studies are fully identified by their frozen study hashes. The documented
-packaging-only successor hash does not retroactively change those studies. An
-immutable source/results archive is still required before release.
+The manifests contain hashes and paths rather than raw records, fitted models
+or participant predictions. Private artifacts require approved restoration;
+null archive identifiers mean no external deposit is established. See
+[artifact restoration](../docs/ARTIFACT_ARCHIVING.md) and the
+[results guide](../docs/RESULTS_GUIDE.md). Neither hashes nor passing tests prove
+external, clinical or causal validity.
