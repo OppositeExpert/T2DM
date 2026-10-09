@@ -202,6 +202,11 @@ Machine-readable details are in
 | Internal file links | 42 checked; zero broken current or historical links |
 | Credential/privacy checks | No selected credential-pattern matches in proposed Git files or 609 reachable historical blobs; no raw/private output/environment paths selected for Git |
 
+GitHub showed two successful push checks at metadata commit
+`e56790a06b390985467928c1c9a5363a56fd8803`; its two newly triggered PR checks
+were queued when the report link was recorded. Consult the PR for the current
+status after this report-only update.
+
 The first separate-copy attempt found two additional data/artifact-dependent
 tests beyond the five raw-data tests. Explicit markers corrected the portability
 instructions/CI selection; no assertions were removed or weakened. The later
@@ -220,7 +225,7 @@ are preserved and are not proof of portable exact replay.
 
 - Initial project-file payload excluding `.git`/backup: **16,082,436,004 bytes**.
 - Removed cache/metadata payload: **1,795,717 bytes**.
-- Final project-file payload: **16,083,493,003 bytes** (16.083493 GB), measured at validation.
+- Final project-file payload: **16,083,493,874 bytes** (16.083494 GB), measured at validation.
 - Original files retained: **27,512**, including **6,210 research/source/governance
   files** and **21,302 local environment files**.
 - Tracked files: **216 originally → 450 after preservation → 465**.
@@ -286,8 +291,9 @@ release decisions before presenting the repository as submission-complete.
 - Annotated tag: `pre-cleanup-research-snapshot` (targets preservation commit).
 - Cleanup branch: `chore/repository-cleanup`.
 - Primary cleanup commit: `e1aadf63bf9a5e93c610df075cfb3082c7e33bb9`.
+- Audit metadata commit: `e56790a06b390985467928c1c9a5363a56fd8803`.
 - Required cleanup commit subject: `chore: organize and clean research repository`.
-- Pull request: PR_URL_PENDING.
-- The branch tip may include a subsequent report-only commit recording the PR
-  URL and primary cleanup SHA. Resolve it with `git rev-parse chore/repository-cleanup`.
+- Pull request: [#1](https://github.com/OppositeExpert/T2DM/pull/1).
+- The branch tip includes a subsequent report-only commit recording this PR
+  URL. Resolve the exact tip with `git rev-parse chore/repository-cleanup`.
 - `main` retains the preservation commit; cleanup is not automatically merged.

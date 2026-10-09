@@ -86,7 +86,9 @@
     "reachable_historical_blobs_scanned": 609,
     "historical_credential_pattern_findings": [],
     "restricted_paths_selected_for_git": [],
-    "scope": "Pattern detection and content/schema inspection; not a proof of absence of every possible secret. No matches are printed as values."
+    "scope": "Pattern detection and content/schema inspection; not a proof of absence of every possible secret. No matches are printed as values.",
+    "final_tracked_files_scanned": 465,
+    "final_tracked_credential_pattern_findings": []
   },
   "training_source_recovery": {
     "committed_states_checked": 16,
@@ -112,7 +114,20 @@
   "size_method": "Logical project file bytes excluding .git and the sibling backup; stat follows environment symlinks.",
   "initial_bytes_excluding_git": 16082436004,
   "final_tracked_files": 465,
-  "measured_final_bytes_excluding_git": 16083493003,
+  "measured_final_bytes_excluding_git": 16083493874,
   "measured_final_files": 27527,
-  "audit_csv_line_endings": "LF; normalized new audit tables only; frozen research tables unchanged"
+  "audit_csv_line_endings": "LF; normalized new audit tables only; frozen research tables unchanged",
+  "pull_request": {
+    "url": "https://github.com/OppositeExpert/T2DM/pull/1",
+    "base": "main",
+    "head": "chore/repository-cleanup",
+    "state": "open",
+    "merged": false
+  },
+  "remote_ci_observation": {
+    "commit": "e56790a06b390985467928c1c9a5363a56fd8803",
+    "successful_push_checks": 2,
+    "queued_pr_checks": 2,
+    "note": "Observed during PR creation; consult PR for current status after report update."
+  }
 }
