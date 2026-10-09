@@ -1347,7 +1347,45 @@
     "final_artifact_inventory": 1304,
     "development_artifact_inventory": 1962,
     "expensive_training_executed": false,
-    "locked_results_modified": false
+    "locked_results_modified": false,
+    "fresh_git_clone": {
+      "path": "/private/tmp/t2dm-simplification-clone",
+      "commit": "9aab7d83239bffe4398b9c49cdeadbb560737fca",
+      "clone_origin": "Local Git repository; ordinary clone with no hardlinks; source branch to be pushed and remotely verified.",
+      "dependency_reuse": "Verified locked local distributions only; fresh editable installation bound to clone; no network dependency install.",
+      "archive_files_absent": true,
+      "raw_and_private_study_artifacts_absent": true,
+      "portable_tests_passed": 125,
+      "portable_tests_failed": 0,
+      "local_research_checks_deselected": 7,
+      "subtests_passed": 7,
+      "checks": [
+        {
+          "check": "editable_install",
+          "exit_code": 0
+        },
+        {
+          "check": "portable_tests",
+          "exit_code": 0
+        },
+        {
+          "check": "publication",
+          "exit_code": 0
+        },
+        {
+          "check": "imports",
+          "exit_code": 0
+        },
+        {
+          "check": "cli_help",
+          "exit_code": 0
+        },
+        {
+          "check": "final_orchestrator_help",
+          "exit_code": 0
+        }
+      ]
+    }
   },
   "language_analysis": {
     "before_tex_files": 43,
@@ -1393,5 +1431,6 @@
     "results/final_publication/superseded_pre_protocol_correction/2026-10-03/tables"
   ],
   "final_tracked_files": 296,
-  "final_tracked_bytes": 27161213
+  "final_tracked_bytes": 27162548,
+  "simplification_commit": "9aab7d83239bffe4398b9c49cdeadbb560737fca"
 }

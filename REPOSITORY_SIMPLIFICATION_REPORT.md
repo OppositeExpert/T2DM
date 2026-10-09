@@ -234,10 +234,10 @@ GitHub's eventual displayed percentages are not asserted.
 | Measure | Before | After |
 |---|---:|---:|
 | Tracked files | 465 | 296 |
-| Tracked logical payload bytes | 58,243,815 | 27,161,301 |
-| Decimal MB | 58.243815 | 27.161301 |
+| Tracked logical payload bytes | 58,243,815 | 27,163,033 |
+| Decimal MB | 58.243815 | 27.163033 |
 
-Payload reduction: **53.37%**. Counts include this report and its provenance
+Payload reduction: **53.36%**. Counts include this report and its provenance
 ledger. They exclude `.git`, ignored data/artifacts/environments and external
 local archives; retained Git history means total clone/history size does not
 shrink by the same amount. No history rewrite or garbage collection was used.
@@ -278,8 +278,9 @@ provenance rather than silently rewriting its bound hash. No license was assigne
 | Fingerprint failure behavior | Changed, missing, escaping and empty-manifest cases rejected by passing regression tests |
 | Feature dictionary | Generated successfully in the isolated copy under ignored outputs |
 
-Fresh Git-clone validation will be recorded after the validated simplification commit; the separate staged-source copy has already passed every portable check.
+A real Git clone of commit `9aab7d83239bffe4398b9c49cdeadbb560737fca` in a fresh directory passed **125 portable tests and 7 subtests**, with 7 local research-data checks deselected. It contained no conference package, historical progress reports, superseded full exports, raw data or private study artifacts. The editable import resolved to the clone. Current/correction fingerprints and source imports passed.
 
+The fresh clone used the local Git repository as its origin, with no hardlinks.
 The isolated environments reuse the verified local dependency distributions while
 installing a fresh editable package; a fresh network install of all dependencies
 was not performed. Docker was unavailable, so no container build/run is claimed.
@@ -323,6 +324,8 @@ no such completeness is inferred from portable tests. Use the cleanup branch
 while PR #1 is under review. `main` was not modified by this second cleanup.
 
 - Starting cleanup commit: `fb1e35d9df1113bc82fd75f9c0c640932735c87d`.
+- Validated simplification commit: `9aab7d83239bffe4398b9c49cdeadbb560737fca`; the subsequent
+  report-only commit records that actual clone validation.
 - Required simplification subject: `chore: streamline research repository for collaboration`.
 - Branch: `chore/repository-cleanup`; [existing PR #1](https://github.com/OppositeExpert/T2DM/pull/1).
 - Preservation branch/tag remain as recorded in section 1. No force push, merge,
