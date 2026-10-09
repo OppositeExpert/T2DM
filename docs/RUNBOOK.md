@@ -1,5 +1,12 @@
 # Publication Pipeline Commands
 
+This catalogue preserves development and historical command examples. For current
+final evidence and safe verification, read [REPRODUCIBILITY.md](REPRODUCIBILITY.md)
+and [RESULTS_GUIDE.md](RESULTS_GUIDE.md) first. Analysis commands below write
+outputs; use a separate working copy and preserve locked studies. Historical
+study IDs here are not substitutes for the declared final internal-validation
+studies.
+
 Run commands from the standalone `T2DM` repository root.
 
 ## Environment

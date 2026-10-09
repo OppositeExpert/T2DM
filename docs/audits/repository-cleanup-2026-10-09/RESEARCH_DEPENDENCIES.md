@@ -1,0 +1,32 @@
+# Research dependency verification
+
+This is a source/configuration/test/artifact trace, not a rerun of the experiments.
+All implementation paths below exist and were inspected. No research source,
+configuration, test, frozen result or existing historical evidence changed during
+cleanup. Local checks validate engineering controls and fingerprints; they do not
+establish external or clinical validation.
+
+| Workflow | Retained implementation/configuration | Existing checks | Evidence and limits |
+|---|---|---|---|
+| Dataset contracts/validation | `config/datasets.yaml`, `config/data_sources.yaml`, `src/diabetes_pipeline/data/loaders.py`, `src/diabetes_pipeline/data/validators.py` | `tests/test_data_validation.py` | Four input hashes verified locally; raw records retained privately. |
+| Preprocessing | `src/diabetes_pipeline/preprocessing/builders.py`, `src/diabetes_pipeline/training/tuning.py` | `tests/test_preprocessing.py` | Unfitted median/indicator and categorical graphs fit within each training fold; LR scaling. |
+| Leakage-controlled splitting | `src/diabetes_pipeline/splitting/registry.py`, `src/diabetes_pipeline/splitting/strategies.py` | `tests/test_splits.py`, `tests/test_concealment.py` | Split identity, positions, target/group binding; original manifests retained privately. |
+| Group-aware CV | `src/diabetes_pipeline/splitting/strategies.py`, `src/diabetes_pipeline/training/tuning.py` | `tests/test_splits.py` | Sylhet identical profiles and Hospital130 patients remain grouped. |
+| Hyperparameter optimization | `src/diabetes_pipeline/training/tuning.py`, `src/diabetes_pipeline/models/registry.py` | `tests/test_models.py` | Seeded TPE/median pruner, inner-fold AP; trial ledgers retained, no optimization rerun. |
+| Model training | `src/diabetes_pipeline/runner.py`, `src/diabetes_pipeline/holdout_runner.py` | `tests/test_artifact_reload.py`, `tests/test_holdout_evaluation.py` | Original fitted bundles and checkpoints retained; no final training launched. |
+| Five-family comparisons | `src/diabetes_pipeline/models/registry.py`, `config/final_publication_protocol.yaml` | `tests/test_models.py`, `tests/test_final_publication_governance.py` | LR/RF/XGBoost/LightGBM/CatBoost; 20 aggregate final comparison rows retained. |
+| Calibration | `src/diabetes_pipeline/calibration/calibrators.py` | `tests/test_metrics_calibration.py` | Identity/sigmoid/isotonic from development cross-fitted scores; evidence boundary preserved. |
+| Threshold selection | `src/diabetes_pipeline/calibration/thresholds.py` | `tests/test_metrics_calibration.py` | Fixed, development Youden and constrained-sensitivity policies retained. |
+| Confidence intervals | `src/diabetes_pipeline/evaluation/bootstrap.py`, `src/diabetes_pipeline/evaluation/repeated_cv.py` | `tests/test_repeated_cv_inference.py` | Participant means, complete cluster resampling and finite-replicate accounting; corrected and historical intervals kept. |
+| Multiple comparisons | `src/diabetes_pipeline/evaluation/comparisons.py`, `src/diabetes_pipeline/evaluation/ablations.py` | `tests/test_ablations.py` | Holm-adjusted comparison outputs and negative findings retained. |
+| Feature panels | `config/availability_scenarios.yaml`, `config/feature_ontology.yaml` | `tests/test_feature_ontology.py`, `tests/test_panel_contrasts.py` | Dataset-native prespecified panels; semantic differences are not harmonized away. |
+| Runtime routing | `src/diabetes_pipeline/routing/inference.py`, `src/diabetes_pipeline/routing/policy_evaluator.py` | `tests/test_routing.py`, `tests/test_runtime_policy_evaluation.py` | Actual supported-panel ordering and fixed comparators; detailed row-level decisions remain private. |
+| Abstention | `src/diabetes_pipeline/routing/inference.py`, `src/diabetes_pipeline/reporting/mixed_patient_results.py` | `tests/test_patient_results.py`, `tests/test_runtime_policy_evaluation.py` | Unsupported inputs and ambiguous cross-cohort selection abstain; no probability pooling. |
+| SHAP | `src/diabetes_pipeline/explainability/shap_analysis.py`, `src/diabetes_pipeline/explainability/holdout_shap.py` | `tests/test_explainability.py` | Held-out explanations, transformed-to-original grouping and reconstruction checks; not causal. |
+| Decision curves | `src/diabetes_pipeline/evaluation/decision_curve.py`, `src/diabetes_pipeline/evaluation/decision_curve_inference.py` | `tests/test_decision_curve_inference.py` | Retrospective net benefit and intervals retained; no clinical-validation inference. |
+| Subgroup/missingness | `src/diabetes_pipeline/evaluation/subgroup_analysis.py`, `src/diabetes_pipeline/evaluation/missingness_stress.py` | `tests/test_subgroup_analysis.py`, `tests/test_missingness_stress.py` | Positional subgroup alignment repair already present before cleanup; small-cell and missingness evidence retained. |
+| Ablations | `src/diabetes_pipeline/evaluation/ablations.py`, `src/diabetes_pipeline/evaluation/panel_training_ablations.py`, `src/diabetes_pipeline/evaluation/retraining_ablations.py` | `tests/test_ablations.py`, `tests/test_panel_training_ablations.py`, `tests/test_retraining_ablations.py` | Locked and holdout retraining limitations remain; dedicated alternative-imputation analysis outstanding. |
+| Selective prediction | `src/diabetes_pipeline/evaluation/selective_prediction.py` | `tests/test_selective_prediction.py` | Outcome-blind acceptance and coverage/event accounting retained. |
+| Publication figures/tables | `src/diabetes_pipeline/publication/exporter.py`, `src/diabetes_pipeline/publication/figure.py`, `src/diabetes_pipeline/publication/protocol_correction.py` | `tests/test_publication_protocol_correction.py` | 101 current plus 87 historical publication hashes; plot inputs and before/after correction tables preserved. |
+| Final locked evaluation | `src/diabetes_pipeline/publication/governance.py`, `scripts/run_final_internal_validation.py`, `config/final_publication_protocol.yaml` | `tests/test_final_publication_governance.py` | Single-use/hash-bound finalized internal evaluation, not untouched external/independent evaluation. Guards unchanged. |
+| Provenance/split manifests | `src/diabetes_pipeline/settings.py`, `evidence/study_registry.json`, `evidence/final_artifact_release_manifest.json` | `tests/test_reproducibility.py`, `tests/test_release_governance.py` | Four final study IDs, metadata, receipts, split/inputs and exact-byte inventory retained; external deposit and exact executed-source recovery outstanding. |

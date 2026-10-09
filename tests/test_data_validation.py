@@ -2,12 +2,15 @@ from __future__ import annotations
 
 import unittest
 
+import pytest
+
 from diabetes_pipeline.data.loaders import load_dataset
 from diabetes_pipeline.data.validators import validate_dataset
 from diabetes_pipeline.settings import get_dataset_config
 
 
 class DataValidationTests(unittest.TestCase):
+    @pytest.mark.local_research_data
     def test_small_datasets_load_without_global_imputation(self) -> None:
         pidd = load_dataset("pidd")
         validate_dataset(pidd, get_dataset_config("pidd"))
@@ -18,6 +21,7 @@ class DataValidationTests(unittest.TestCase):
         self.assertIsNotNone(sylhet.groups)
         self.assertLess(sylhet.groups.nunique(), len(sylhet.X))
 
+    @pytest.mark.local_research_data
     def test_hospital_cohort_excludes_non_readmission_dispositions(self) -> None:
         hospital = load_dataset("hospital130")
         config = get_dataset_config("hospital130")

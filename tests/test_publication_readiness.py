@@ -2,6 +2,8 @@ from __future__ import annotations
 
 import unittest
 
+import pytest
+
 from diabetes_pipeline.reporting.publication_readiness import (
     audit_publication_readiness,
     render_publication_readiness_markdown,
@@ -10,6 +12,7 @@ from diabetes_pipeline.settings import DEFAULT_OUTPUT_ROOT
 
 
 class PublicationReadinessTests(unittest.TestCase):
+    @pytest.mark.local_research_data
     def test_current_development_and_smoke_artifacts_cannot_pass_gate(self) -> None:
         studies = DEFAULT_OUTPUT_ROOT / "studies"
         result = audit_publication_readiness(

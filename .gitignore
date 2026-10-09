@@ -7,11 +7,15 @@
 # Local environment
 .venv-pipeline/
 
-# Raw study data and all generated research artifacts are preserved separately
-# with checksums. They must not enter source control or a public repository.
+# Raw data, fitted models and row-level outputs stay local; preserve them with
+# checksums and approved restricted archival rather than deleting them.
 data/raw/
 outputs/
-results/
+
+# Only the reviewed aggregate publication package is version-controlled.
+# Additional results require a privacy/provenance review before explicit add.
+results/*
+!results/final_publication/
 
 # Local/editor and coverage artifacts
 .coverage
@@ -20,6 +24,18 @@ htmlcov/
 .ruff_cache/
 .idea/
 .vscode/
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+build/
+dist/
+*.tmp
+*.swp
+outputs/.matplotlib/
 
 # Office lock/temporary files
 ~$*.docx

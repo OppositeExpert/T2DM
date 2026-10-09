@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "Please cite this development software and the underlying datasets; replace the placeholder contributor entity with the approved author list before release."
-title: "T2DM Minor Project: Endpoint-Safe Diabetes Screening and Readmission Development Pipeline"
+title: "Availability-Aware and Leakage-Controlled Evaluation of Predictive Models Across Heterogeneous Feature Schemas"
 type: software
 authors:
   - name: "T2DM Minor Project contributors"

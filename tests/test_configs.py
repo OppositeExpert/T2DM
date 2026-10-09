@@ -2,6 +2,8 @@ from __future__ import annotations
 
 import unittest
 
+import pytest
+
 import yaml
 
 from diabetes_pipeline.settings import (
@@ -12,6 +14,7 @@ from diabetes_pipeline.settings import (
 
 
 class ConfigurationTests(unittest.TestCase):
+    @pytest.mark.local_research_data
     def test_all_dataset_contracts_load(self) -> None:
         registry = load_dataset_registry()
         self.assertEqual(set(registry), {"brfss", "pidd", "sylhet", "hospital130"})

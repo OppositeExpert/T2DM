@@ -45,6 +45,7 @@ include = ["diabetes_pipeline*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+markers = ["local_research_data: requires local raw data or preserved private study artifacts"]
 addopts = "-ra"
 filterwarnings = [
   "ignore:Setting the shape on a NumPy array has been deprecated:DeprecationWarning:joblib.numpy_pickle",

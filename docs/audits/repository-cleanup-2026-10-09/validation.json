@@ -1,0 +1,117 @@
+{
+  "date": "2026-10-09",
+  "reference_environment": "CPython 3.12.0; 48/48 locked distributions verified",
+  "full_local_pytest": {
+    "passed": 129,
+    "failed": 0,
+    "subtests_passed": 7,
+    "upstream_shap_warnings": 3,
+    "seconds": 26.48
+  },
+  "portable_copy_pytest": {
+    "passed": 122,
+    "failed": 0,
+    "deselected_local_research_data": 7,
+    "subtests_passed": 7,
+    "upstream_shap_warnings": 3,
+    "seconds": 6.87,
+    "command": "python -m pytest -q -m \"not local_research_data\""
+  },
+  "initial_portable_attempt": {
+    "passed": 122,
+    "failed": 2,
+    "reason": "Two additional tests needed raw paths/historical metadata; all seven local-data checks explicitly marked, assertions unchanged; final portable/full runs pass."
+  },
+  "environment_installation": {
+    "editable_install": true,
+    "source_binding_to_separate_copy": true,
+    "wheel_build": true,
+    "dependency_reuse_note": "Reused the verified 48-distribution local dependency set via a dependency-only site path. New editable package installed into isolated venv. Fresh network dependency installation was not performed.",
+    "pip_check_passed": true,
+    "fresh_network_dependency_install": false,
+    "docker_build_run": false
+  },
+  "engineering_checks": {
+    "imported_modules": 67,
+    "compiled_python_files": 119,
+    "cli_subcommand_help_checked": 26,
+    "profiles_validated": [
+      "development_pilot",
+      "final_internal_validation",
+      "development",
+      "smoke",
+      "final"
+    ],
+    "dataset_contracts": [
+      "brfss",
+      "pidd",
+      "sylhet",
+      "hospital130"
+    ],
+    "source_tree_sha256": "2bf35ec02600e20b6acc275be6b1ee56849f3dd8661cec065b67906ae7afd4f4",
+    "verifier_rejects_modified_copy": true
+  },
+  "feature_dictionary_in_separate_copy": true,
+  "raw_hashes": {
+    "expected": 4,
+    "matched": 4
+  },
+  "publication_hashes": {
+    "current": 101,
+    "current_matched": 101,
+    "superseded": 87,
+    "superseded_matched": 87
+  },
+  "master_source_artifacts": {
+    "expected": 28,
+    "matched": 28
+  },
+  "historical_release_inventory": {
+    "expected": 1962,
+    "matched": 1962
+  },
+  "final_release_inventory": {
+    "expected": 1304,
+    "matched": 1304
+  },
+  "scientific_invariance": {
+    "scientific_files_rehashed": 6094,
+    "changed_or_missing_scientific_files": [],
+    "scope": "All original data, outputs, results, active source, experiment/dataset configuration and conference-package files except the explicitly removed cache/Finder metadata."
+  },
+  "test_body_ast_unchanged": true,
+  "secret_scan": {
+    "proposed_git_files": 463,
+    "credential_pattern_findings": [],
+    "reachable_historical_blobs_scanned": 609,
+    "historical_credential_pattern_findings": [],
+    "restricted_paths_selected_for_git": [],
+    "scope": "Pattern detection and content/schema inspection; not a proof of absence of every possible secret. No matches are printed as values."
+  },
+  "training_source_recovery": {
+    "committed_states_checked": 16,
+    "frozen_training_source_sha256": "7d5347cf4c10e50dceb201ad36527f6d1c3e2770bba364c15c9093bf97cc6a94",
+    "matching_commits": [],
+    "preservation_source_sha256": "2bf35ec02600e20b6acc275be6b1ee56849f3dd8661cec065b67906ae7afd4f4"
+  },
+  "expensive_experiments_executed": false,
+  "locked_results_overwritten": false,
+  "source_config_frozen_results_diff_from_preservation": false,
+  "limitations": [
+    "No fresh network install or Docker run.",
+    "Wheel execution outside source checkout unsupported.",
+    "Fingerprint/invariant checks do not prove scientific validity.",
+    "External artifact deposit and exact frozen training-source recovery remain outstanding.",
+    "Full author-approved manuscript outside repository was not re-audited."
+  ],
+  "internal_links": {
+    "checked": 42,
+    "broken_current_guide_links": [],
+    "unresolved_historical_links": []
+  },
+  "size_method": "Logical project file bytes excluding .git and the sibling backup; stat follows environment symlinks.",
+  "initial_bytes_excluding_git": 16082436004,
+  "final_tracked_files": 465,
+  "measured_final_bytes_excluding_git": 16083493447,
+  "measured_final_files": 27527
+}
