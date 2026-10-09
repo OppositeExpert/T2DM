@@ -52,7 +52,10 @@ def run_holdout_explainability(
             raise FileNotFoundError(f"Holdout study artifact is missing: {required}")
 
     metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
-    if metadata.get("runner") != "development_locked_holdout":
+    if metadata.get("runner") not in {
+        "development_locked_holdout",
+        "locked_internal_validation_holdout",
+    }:
         raise ValueError("Study was not produced by the locked holdout runner")
     if metadata["dataset"] != dataset_name:
         raise ValueError(

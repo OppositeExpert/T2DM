@@ -1,146 +1,96 @@
-# Locked Final Run Checklist
+# Final Internal-Validation Execution Checklist
 
-This checklist is the human and machine gate for a future final execution. It
-does not authorize a run. The repository currently remains deliberately locked
-out: `protocol_frozen=false`, `config/experiments/final.yaml` has
-`locked=false`, and `final_execution_authorized=false`.
+**Execution completed:** 11 September 2026
 
-The seed-42 BRFSS partition and every existing BRFSS study are development
-evidence. They have already been inspected and can never become final evidence.
+**Protocol:** `t2dm-final-internal-validation-v1`
 
-## A. Human scientific review before freeze
+**Evidence tier:** `final_internal_validation`
 
-- [ ] Independently complete and approve the structured novelty review.
-- [ ] Approve the endpoint and claim hierarchy; keep Hospital130 readmission
-      separate from diabetes screening.
-- [ ] Approve the SAP, model bank, search spaces, panels, calibration candidates,
-      thresholds, bootstrap unit, comparison families, Holm correction, practical
-      margins, selective-prediction policy, and subgroup suppression rules.
-- [ ] Review all development ablation, routing, selective-prediction, subgroup,
-      survey-sensitivity, and explanation evidence.
-- [ ] Complete and sign the claim-evidence, TRIPOD+AI, and PROBAST+AI reviews.
-- [ ] Record authorship, affiliation, declarations, venue, repository/archive,
-      data-use, and code-license decisions.
-- [ ] Define an immutable backup, log, and recovery location.
+**Canonical package:** `results/final_publication/`
 
-Only after those reviews may the corresponding completion flags be changed.
-Passing code or the existence of an artifact is not sufficient evidence for a
-human-review flag.
+This checklist supersedes the earlier proposal to manufacture new concealed
+BRFSS/Hospital130 holdouts. Audit showed that those cohorts and their historical
+partitions had already influenced development evidence. They are therefore
+reported transparently as finalized, prespecified internal validation rather
+than untouched independent tests.
 
-## B. Freeze code, data, and analysis configuration
+## A. Frozen design
 
-1. Create a reviewed commit and immutable release candidate tag. Do not include
-   ignored raw datasets, model outputs, credentials, or unrelated folders.
-2. Archive the source and record its SHA-256 in the completed authorization
-   record.
-3. Set a new prespecified final holdout seed. It must not be 42.
-4. Update `config/experiments/final.yaml` with that seed and the reviewed final
-   budget, then set `locked: true`.
-5. Set `analysis_plan.status: frozen`, `protocol_frozen: true`, and only the
-   reviewed completion flags in `config/publication_protocol.yaml`.
-6. Set `analysis_plan.final_split_creation_authorized: true` while keeping
-   `analysis_plan.final_execution_authorized: false`.
-7. Run the complete test suite and archive the output before creating a split.
+- [x] Endpoint definitions remain separated across PIDD, Sylhet, BRFSS, and
+      Hospital130.
+- [x] Hospital130 remains 30-day readmission and is never pooled with diabetes
+      screening/status probabilities.
+- [x] Protocol, raw-data hashes, split-manifest hashes, dataset-configuration
+      hashes, analysis-configuration hashes, source-tree hash, and requirements
+      lock are frozen in `config/final_publication_protocol.yaml`.
+- [x] Five-model registry frozen: Logistic Regression, Random Forest, XGBoost,
+      LightGBM, and CatBoost.
+- [x] Average precision tuning objective, 75 trials, 2,000 bootstrap replicates,
+      calibration candidates, threshold policies, availability panels, router,
+      abstention, Holm correction, subgroup rules, and SHAP settings frozen.
+- [x] All final sample limits are null.
 
-Any later change to source code, the dataset configuration, the final profile,
-or `requirements.lock` changes the analysis-configuration fingerprint and
-requires a new review and authorization record.
+## B. Defensible evaluation strategy
 
-## C. Create and register the concealed final manifest
+- [x] `BRFSS_FINAL_STRATEGY = INTERNAL_VALIDATION_ONLY` documented in
+      `BRFSS_FINAL_EVALUATION_DECISION.md`.
+- [x] `HOSPITAL130_FINAL_STRATEGY = COMPLETE_FULL_INTERNAL_VALIDATION`
+      documented in `HOSPITAL130_FINAL_DECISION.md`.
+- [x] BRFSS and Hospital130 metadata prohibit independent-holdout wording.
+- [x] Sylhet identical predictor profiles remain grouped.
+- [x] Hospital130 uses patient grouping and patient-cluster uncertainty.
+- [x] No cross-cohort probability pooling or fabricated feature harmonization.
 
-Run exactly once from the frozen checkout:
+## C. Final execution
 
-```bash
-python -m diabetes_pipeline.cli create-final-concealment --dataset brfss
-```
+- [x] PIDD: `pidd_final_internal_validation_5739531d61c3`.
+- [x] Sylhet: `sylhet_final_internal_validation_5d98677ca7d9`.
+- [x] BRFSS: `brfss_final_internal_validation_holdout_2cfa4a7e2a3a`, all
+      429,360 retained respondents with 85,872 internally evaluated rows.
+- [x] Hospital130: `hospital130_final_internal_validation_holdout_26b332f2e8a8`,
+      all 99,343 eligible encounters and 19,868 patient-grouped internally
+      evaluated encounters.
+- [x] All five trial ledgers contain 75 completed trials per dataset/model.
+- [x] Calibration, thresholds, decision curves, availability routing,
+      runtime fallback, abstention/selective prediction, subgroup uncertainty,
+      and held-out SHAP analyses completed.
+- [x] BRFSS survey-weight sensitivity completed with 2,000 replicates.
+- [x] Failed pre-execution/downstream attempts were preserved and documented;
+      no disappointing result was rerun away.
 
-The command refuses seed 42, refuses an unlocked profile, refuses overwrite,
-and writes only row identity and split-role information. It does not persist
-labels, event counts, or prevalence and it does not authorize test access.
+## D. Verification and publication package
 
-- [ ] Have a second person verify that the CSV contains no outcome field.
-- [ ] Independently verify the emitted manifest SHA-256 and metadata.
-- [ ] Record the manifest path and hash in `analysis_plan.final_holdout_manifest`
-      and `analysis_plan.final_holdout_manifest_sha256`.
-- [ ] Set `analysis_plan.final_split_creation_authorized: false` after creation.
-- [ ] Record the exact raw-data SHA-256 under
-      `analysis_plan.final_raw_data_sha256.brfss`.
+- [x] Locked Python 3.12 environment and 48 pinned distributions verified.
+- [x] Five BRFSS and five Hospital130 model bundles reproduced stored
+      probabilities within `1e-12` across 85,872 and 19,868 rows respectively.
+- [x] End-to-end leakage audit passed split identity, group isolation,
+      preprocessing, bootstrap accounting, and SHAP reconstruction checks.
+- [x] Full repository suite passed: 119 tests, 7 subtests; three upstream SHAP
+      deprecation warnings only.
+- [x] Canonical JSON, summary, CSV/Markdown/LaTeX tables, figure data, 600-dpi
+      PNG, vector PDF/SVG, metadata, logs, receipts, decisions, deviations, and
+      checksums exported.
+- [x] Every manifest-listed package artifact passed SHA-256 verification.
+- [x] Consolidated figure visually inspected for legibility and endpoint safety.
+- [x] Negative router-switching finding retained without engineering it away.
 
-Do not inspect final event counts, prevalence, model predictions, metrics, or
-figures during this stage.
+## E. Remaining human release work
 
-## D. Complete the authorization record and machine bindings
-
-1. Complete a versioned copy of
-   `conference_package/Final_Authorization_Record_Template.md` and obtain the
-   named approvals.
-2. Record its path and SHA-256 in
-   `analysis_plan.final_authorization_record` and
-   `analysis_plan.final_authorization_record_sha256`.
-3. Run the read-only preflight for each authorized dataset to obtain the current
-   executable fingerprint. PIDD and Sylhet do not require a concealed holdout
-   manifest, but their final repeated-CV runs remain authorization-gated:
-
-```bash
-python scripts/final_preflight.py --dataset brfss
-python scripts/final_preflight.py --dataset pidd
-python scripts/final_preflight.py --dataset sylhet
-```
-
-4. Record each emitted `analysis_configuration_sha256` under the matching key in
-   `analysis_plan.final_analysis_configuration_sha256`.
-5. Set `analysis_plan.final_execution_authorized: true` only after the completed
-   record authorizes that exact raw hash, manifest hash, seed, profile,
-   configuration fingerprint, command, operator, and one execution.
-6. Run the preflight again. It must report `authorized: true` and
-   `outcome_accessed: false`.
-
-The preflight and both benchmark runners independently reject a mismatched data
-hash, altered required manifest or metadata, wrong dataset, wrong holdout seed,
-non-final manifest purpose, changed executable configuration or model bank,
-changed authorization record, unlocked profile, or incomplete protocol flag.
-
-## E. One-time execution
-
-Use a fresh log and do not run the final command until the operator and reviewer
-are present:
-
-```bash
-python -m diabetes_pipeline.cli benchmark-holdout \
-  --dataset brfss --profile final \
-  --models logistic_regression random_forest xgboost lightgbm catboost
-```
-
-Immediately before test prediction, the runner creates
-`FINAL_TEST_ACCESS_STARTED.json` using exclusive creation. Its presence blocks
-automatic re-execution for the same study even if the first process later
-fails. Never delete or edit that receipt.
-
-- [ ] Archive stdout/stderr, environment verification, preflight output, and
-      start/end timestamps.
-- [ ] Verify row flow, group leakage checks, finite probabilities, calibrated
-      probability range, model-bundle reloads, artifact checksums, and expected
-      artifact inventory before interpreting results.
-- [ ] Run only prespecified dependent analyses.
-- [ ] Record every deviation without changing the frozen primary analysis.
-
-## F. Post-run review and release
-
-- [ ] Independently reproduce reported tables from prediction artifacts.
-- [ ] Review paired uncertainty, decision curves, calibration, thresholds,
-      subgroup suppression, event retention, survey sensitivity, and SHAP scope.
-- [ ] Replace development estimates only where locked final evidence exists;
-      retain explicit development labels elsewhere.
-- [ ] Re-run publication readiness, tests, bundle-reload verification, data and
-      environment verification, document accessibility checks, and page renders.
-- [ ] Rebuild the package checksum manifest last.
-- [ ] Obtain author and independent reviewer sign-off before submission.
-- [ ] Create the immutable release/archive and record its DOI or archive ID.
+- [ ] Update the Discover Applied Sciences manuscript using only
+      `results/final_publication/`.
+- [ ] Complete author and independent statistical/scientific review.
+- [ ] Finalize venue-specific TRIPOD+AI and PROBAST+AI mappings.
+- [ ] Confirm authorship, affiliations, declarations, code license, and dataset
+      use statements.
+- [ ] Archive the source, studies, and canonical package immutably and record
+      the DOI/archive identifier.
+- [ ] Do not claim external, temporal, prospective, clinical, causal, or
+      untouched-independent validation without new evidence.
 
 ## Recovery rule
 
-A disappointing result is never grounds for a rerun. If an implementation or
-infrastructure failure invalidates the run, stop; preserve the receipt and all
-partial artifacts; document the cause and affected evidence; repair and
-re-freeze the code; obtain a separate signed rerun authorization; then create a
-new immutable execution identity. No automated cleanup or overwrite is allowed.
+The completed studies are immutable evidence. A source or methodological change
+requires a new protocol version and new authorization; existing outputs must
+remain preserved. The documented packaging-only repair may regenerate tables
+and figures from unchanged study artifacts, but it may not reinterpret or
+modify those artifacts.

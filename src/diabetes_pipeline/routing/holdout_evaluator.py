@@ -106,8 +106,11 @@ def run_holdout_availability_routing(
         raise ValueError(
             f"Study dataset is {metadata.get('dataset')!r}, not {dataset_name!r}"
         )
-    if metadata.get("runner") != "development_locked_holdout":
-        raise ValueError("The study is not a development-locked holdout study")
+    if metadata.get("runner") not in {
+        "development_locked_holdout",
+        "locked_internal_validation_holdout",
+    }:
+        raise ValueError("The study is not a supported locked holdout study")
 
     routing_payload = yaml.safe_load(routing_config_path.read_text(encoding="utf-8"))
     try:
@@ -156,7 +159,9 @@ def run_holdout_availability_routing(
         else None
     )
     predefined_splits = _development_splits(development_manifest)
-    inner_folds = int(metadata["profile"].get("inner_folds_override", len(predefined_splits)))
+    inner_folds = int(
+        metadata["profile"].get("inner_folds_override") or len(predefined_splits)
+    )
     model_n_jobs = int(metadata["profile"].get("model_n_jobs", 1))
 
     configured_models = [str(value) for value in routing_cfg["router_models"]]
@@ -296,6 +301,16 @@ def run_holdout_availability_routing(
             }
         )
     selections = pd.DataFrame(selection_records)
+    full_panel_champion = _choose_model(
+        development_scores[development_scores["scenario"] == "full"]
+    )
+    robust_single_model = _choose_model(
+        development_scores.groupby("model", as_index=False).agg(
+            brier_score=("brier_score", "mean"),
+            log_loss=("log_loss", "mean"),
+            average_precision=("average_precision", "mean"),
+        )
+    )
 
     system_frames: list[pd.DataFrame] = []
     for model_name in configured_models:
@@ -303,12 +318,17 @@ def run_holdout_availability_routing(
         frame["system"] = model_name
         system_frames.append(frame)
     for scenario_name, selected_model in selected_models.items():
-        frame = stress_predictions[
-            (stress_predictions["scenario"] == scenario_name)
-            & (stress_predictions["model"] == selected_model)
-        ].copy()
-        frame["system"] = "availability_router"
-        system_frames.append(frame)
+        for system, model_name in (
+            ("availability_router", selected_model),
+            ("full_panel_champion", full_panel_champion),
+            ("robust_single_model", robust_single_model),
+        ):
+            frame = stress_predictions[
+                (stress_predictions["scenario"] == scenario_name)
+                & (stress_predictions["model"] == model_name)
+            ].copy()
+            frame["system"] = system
+            system_frames.append(frame)
     system_predictions = pd.concat(system_frames, ignore_index=True)
     metric_records: list[dict[str, Any]] = []
     for (scenario_name, feature_count, system), frame in system_predictions.groupby(
@@ -367,17 +387,19 @@ def run_holdout_availability_routing(
             "scenarios": scenarios,
             "selected_models": selected_models,
             "scenario_quality": scenario_quality,
-            "study_profile": str(metadata["profile"].get("name", "unknown")),
-            "evidence_tier": (
-                "publication_candidate"
-                if str(metadata["profile"].get("name")) == "final"
-                and bool(metadata["profile"].get("locked", False))
-                else "execution_only"
-                if str(metadata["profile"].get("name")) == "smoke"
-                else "development_only"
+            "full_panel_champion": full_panel_champion,
+            "robust_single_model": robust_single_model,
+            "raw_data_sha256": metadata.get("raw_data_sha256"),
+            "split_manifest_sha256": metadata.get("split_manifest_sha256"),
+            "analysis_configuration_sha256": metadata.get(
+                "analysis_configuration_sha256"
             ),
+            "protocol_id": metadata.get("protocol_id"),
+            "study_profile": str(metadata["profile"].get("name", "unknown")),
+            "evidence_tier": metadata.get("evidence_tier", "unknown"),
             "publication_claim_eligible": bool(
-                str(metadata["profile"].get("name")) == "final"
+                str(metadata["profile"].get("name"))
+                in {"final", "final_internal_validation"}
                 and metadata["profile"].get("locked", False)
             ),
             "test_access": metadata.get("test_access"),

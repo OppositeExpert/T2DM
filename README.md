@@ -20,7 +20,10 @@ reports.
 - [Artifact archiving](docs/ARTIFACT_ARCHIVING.md): external immutable-archive
   manifest generation and restored-artifact verification.
 - [Publication readiness](PUBLICATION_READINESS.md): pointer to the one canonical
-  current readiness audit and its regeneration command.
+  current final-experimental evidence package and remaining human release work.
+- [Canonical final results](results/final_publication/FINAL_RESULTS_SUMMARY.md):
+  endpoint-separated finalized internal-validation findings, tables, figure,
+  leakage audit, provenance, and checksums.
 - [Code and data use status](docs/LICENSE_AND_DATA_USE.md): current absence of a
   repository code license and dataset-specific terms that remain separate.
 - [Software license status](LICENSE_STATUS.md): explicit no-license governance
@@ -49,18 +52,20 @@ screening expert is selected for the final percentage; probabilities are not
 averaged across incompatible cohorts. Hospital130 remains isolated because it
 predicts readmission, not diabetes status.
 
-The repository includes a publication-readiness gate. The authoritative PIDD,
-Sylhet, and BRFSS artifacts are full development evidence and intentionally fail
-the final-profile, profile-lock, and human-review gates; they must not be
-described as final paper evidence. The gate also prevents the unvalidated cross-dataset heuristic from
-entering the primary efficacy claim; mixed requests with multiple eligible
-environments abstain unless an appropriate environment is explicitly selected.
+The final experimental pathway is complete under the frozen
+`t2dm-final-internal-validation-v1` protocol. The authoritative studies use 75
+Optuna trials per applicable model/fold and 2,000 bootstrap replicates with no
+sample caps. BRFSS is transparently internal validation because no defensible
+untouched final holdout remained. Hospital130 completed full-cohort,
+patient-grouped internal validation and remains a separate 30-day-readmission
+endpoint. Neither is called an independent final test.
 
-The technical final pathway is documented in `FINAL_RUN_CHECKLIST.md`. It
-separates one-time concealed-manifest creation from execution authorization and
-binds any future run to exact data, manifest, source/configuration, environment,
-seed, and signed-record hashes. All authorization and protocol flags remain
-false until legitimate human review occurs.
+`results/final_publication/FINAL_RESULTS.json` is the machine-readable source of
+truth. The package preserves the negative result that dynamic model-family
+switching did not establish multiplicity-corrected superiority, and it includes
+the passing leakage audit, source tables, figure, execution provenance, and
+checksums. A documented post-execution repair changed only packaging code; the
+study-source and packaging-source hashes remain separate.
 
 ## Quick verification
 
@@ -74,11 +79,12 @@ python -m pytest -q
 python -m diabetes_pipeline.cli --help
 ```
 
-The authoritative study IDs are declared in `config/authoritative_studies.yaml`.
-The corresponding large artifacts under `outputs/publication_pipeline/studies`
-are ignored and must be regenerated after a clean clone. Smoke results verify
-execution only; full-development results support development decisions only;
-neither is final locked paper evidence.
+The authoritative final study IDs are declared in
+`config/authoritative_studies.yaml`. Large study artifacts and the canonical
+package are Git-ignored and therefore require immutable external archival for
+release. Historical smoke and development studies remain preserved under their
+original evidence tiers and must not replace the finalized internal-validation
+package.
 
 An optional CPU container is provided for cross-platform setup and lightweight
 verification. It pins Python and package versions, but it does not promise

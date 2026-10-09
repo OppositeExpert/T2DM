@@ -1,0 +1,5 @@
+dataset,task,endpoint,n,positive_events,prevalence,predictor_count,grouping_unit,evidence_tier
+pidd,diabetes_screening,diabetes_positive_label,768,268,0.3489583333333333,8,none,final_internal_validation
+sylhet,diabetes_screening,early_stage_diabetes_positive_label,520,320,0.6153846153846154,16,identical_feature_profile,final_internal_validation
+brfss,diabetes_screening,self_reported_diagnosed_diabetes,429360,57256,0.13335196571641514,21,none,final_internal_validation
+hospital130,hospital_readmission,readmission_within_30_days,99343,11314,0.11388824577474005,46,patient,final_internal_validation

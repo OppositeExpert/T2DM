@@ -1,0 +1,147 @@
+{
+  "brfss_final_strategy": "INTERNAL_VALIDATION_ONLY",
+  "cross_cohort_probability_pooling": false,
+  "datasets_are_endpoint_separated": true,
+  "dynamic_model_switching": {
+    "multiplicity_corrected_superiority_established": false,
+    "reporting_role": "negative_result_no_established_corrected_superiority"
+  },
+  "evidence_tier": "final_internal_validation",
+  "execution_provenance": {
+    "brfss": {
+      "execution_log": "provenance/execution/brfss/execution.log",
+      "experiment_metadata": "provenance/execution/brfss/experiment_metadata.json",
+      "outcome_access_receipt": "provenance/execution/brfss/outcome_access_receipt.json",
+      "survey_design_diagnostics": "provenance/execution/brfss/survey_design_diagnostics.json"
+    },
+    "hospital130": {
+      "execution_log": "provenance/execution/hospital130/execution.log",
+      "experiment_metadata": "provenance/execution/hospital130/experiment_metadata.json",
+      "outcome_access_receipt": "provenance/execution/hospital130/outcome_access_receipt.json"
+    },
+    "pidd": {
+      "execution_log": "provenance/execution/pidd/execution.log",
+      "experiment_metadata": "provenance/execution/pidd/experiment_metadata.json",
+      "outcome_access_receipt": "provenance/execution/pidd/outcome_access_receipt.json"
+    },
+    "sylhet": {
+      "execution_log": "provenance/execution/sylhet/execution.log",
+      "experiment_metadata": "provenance/execution/sylhet/experiment_metadata.json",
+      "outcome_access_receipt": "provenance/execution/sylhet/outcome_access_receipt.json"
+    }
+  },
+  "figure": {
+    "data": [
+      "figure/data/panel_a_calibration.csv",
+      "figure/data/panel_b_decision_curves.csv",
+      "figure/data/panel_c_availability_degradation.csv"
+    ],
+    "pdf": "figure/consolidated_results.pdf",
+    "png": "figure/consolidated_results.png",
+    "source": "src/diabetes_pipeline/publication/figure.py",
+    "svg": "figure/consolidated_results.svg"
+  },
+  "hospital130_final_strategy": "COMPLETE_FULL_INTERNAL_VALIDATION",
+  "independent_holdout_claim_allowed": false,
+  "leakage_audit": "audits/FINAL_DATA_LEAKAGE_AUDIT.json",
+  "packaging_deviation": "provenance/2026-09-11-publication-export-context-columns.md",
+  "packaging_source_tree_sha256": "18e3cb6245939a1cab0ba279b8f7803002a0131c3f5dd2db22d0061f57ffbe26",
+  "post_execution_packaging_source_drift": true,
+  "protocol_id": "t2dm-final-internal-validation-v1",
+  "protocol_sha256": "69bcc324474cc330ae20db5ecb771415f049b292057c9b93a14928de697d0cf6",
+  "publication_correction": {
+    "corrected_panel_sources": {
+      "pidd": "/Users/pranavprabhu/Codex/Minor Proj/T2DM/outputs/publication_pipeline/studies/pidd_final_internal_validation_5739531d61c3/publication_protocol_correction",
+      "sylhet": "/Users/pranavprabhu/Codex/Minor Proj/T2DM/outputs/publication_pipeline/studies/sylhet_final_internal_validation_5d98677ca7d9/publication_protocol_correction"
+    },
+    "historical_package": "superseded_pre_protocol_correction/2026-10-03",
+    "record": "provenance/protocol_correction.json"
+  },
+  "schema_version": "1.0",
+  "studies": {
+    "brfss": {
+      "endpoint": "self_reported_diagnosed_diabetes",
+      "experiment_id": "brfss_final_internal_validation_holdout_2cfa4a7e2a3a",
+      "path": "/Users/pranavprabhu/Codex/Minor Proj/T2DM/outputs/publication_pipeline/studies/brfss_final_internal_validation_holdout_2cfa4a7e2a3a",
+      "source_artifacts": {
+        "availability_routing/summary_metrics.csv": "c1419fcbe2460ef408b4813e6145d2a81125d4e667f078f256694afb79009ea7",
+        "confidence_intervals.csv": "e68b1a6e129cb2b6ad423f94c8837a63fa1a69de4d9934faf1e8de46b06486e0",
+        "decision_curves.csv": "8bf6b64e2718443f58deaf8b1c17e35e6637131e20da3119db03c03afe31dbb4",
+        "runtime_policy_evaluation/policy_metrics.csv": "4ebea48edb4ce8cb3ecb9180bccc436ace94e13d804129359c393cb013dc029e",
+        "runtime_policy_evaluation/policy_paired_comparisons.csv": "c059cf629e91739676bc4609c364c00df13555c0f820055a2898d24857f08910",
+        "test_explanations/shap_reconstruction_checks.csv": "2b8640b95403b3221c190ad62eb23491ca8e31e093c86dd78bd879e336f8da4d",
+        "test_metrics.csv": "4749348d4da0d46f28aeadcfe77aab131a84a55a0357412dcd14e8f08ed6c942"
+      },
+      "task": "diabetes_screening"
+    },
+    "hospital130": {
+      "endpoint": "readmission_within_30_days",
+      "experiment_id": "hospital130_final_internal_validation_holdout_26b332f2e8a8",
+      "path": "/Users/pranavprabhu/Codex/Minor Proj/T2DM/outputs/publication_pipeline/studies/hospital130_final_internal_validation_holdout_26b332f2e8a8",
+      "source_artifacts": {
+        "availability_routing/summary_metrics.csv": "77c628c2a853097609e0d857bc0a1eb3df0b662432de756e282e5466dd0a68c1",
+        "confidence_intervals.csv": "cc7505d63de9ebf2f3cb71ac47a1e67f273721fb7803af3b57375f32a3825833",
+        "decision_curves.csv": "4aa1b949681ea94a1733ad0d47b1bdb497e752e85732cacebb55f19b599b1d35",
+        "runtime_policy_evaluation/policy_metrics.csv": "c65c1c81e9aa4334eb76128600bee6019ce2170e45d394c1124e1fee77741100",
+        "runtime_policy_evaluation/policy_paired_comparisons.csv": "4ab9b39b8a1d9db1137c178ca5377fff923c9b6ae499e81210eb2b750772705a",
+        "test_explanations/shap_reconstruction_checks.csv": "61f9f000fbcc911c90f7e67ed653546bf70542e05568accdc6db37aaac031cd6",
+        "test_metrics.csv": "1b221c12987c1c4112a3f93a45e79f9a610a3bf050b7973d13bf5d50141ab6a2"
+      },
+      "task": "hospital_readmission"
+    },
+    "pidd": {
+      "endpoint": "diabetes_positive_label",
+      "experiment_id": "pidd_final_internal_validation_5739531d61c3",
+      "path": "/Users/pranavprabhu/Codex/Minor Proj/T2DM/outputs/publication_pipeline/studies/pidd_final_internal_validation_5739531d61c3",
+      "source_artifacts": {
+        "availability_routing/summary_metrics.csv": "2fab30980286c60c1acde5c674090ffee4feef5b113e5d30079b3fc6d5c0beca",
+        "confidence_intervals.csv": "ccf6a378385f7a73966a049d37e429231d0c81a23e4674cc9e3fc6f0cf35fe12",
+        "decision_curves.csv": "7ace284e55fab1ce35f226725fe3b2d1800541d8556d2a119783caf88e88cfae",
+        "explanations/shap_reconstruction_checks.csv": "56adcb05adc2d4d46a19e132874e6d465e3e51246794a08a6b21a643db89d20d",
+        "runtime_policy_evaluation/policy_metrics.csv": "8e19e017736fb036a8ee89aa6318d882e7d4d7d75865ca91818f0f0ecd095718",
+        "runtime_policy_evaluation/policy_paired_comparisons.csv": "83518a7106d5650636c02915ec82f8835ceade192795fb4541e110b2648edf2c",
+        "summary_metrics.csv": "dee0d5e6705812997fbb05ce897a433e63e63c01d9103525e2c365abc06fbe2f"
+      },
+      "task": "diabetes_screening"
+    },
+    "sylhet": {
+      "endpoint": "early_stage_diabetes_positive_label",
+      "experiment_id": "sylhet_final_internal_validation_5d98677ca7d9",
+      "path": "/Users/pranavprabhu/Codex/Minor Proj/T2DM/outputs/publication_pipeline/studies/sylhet_final_internal_validation_5d98677ca7d9",
+      "source_artifacts": {
+        "availability_routing/summary_metrics.csv": "6c67b9c521b809aa84dc8ac5131ca22903bad6b74a112f6652a8224b4927f6e6",
+        "confidence_intervals.csv": "b008764ef66a9175a5300b56f78f006fa6c537df11e0a0bd6e37c8aead7db923",
+        "decision_curves.csv": "6257a04726123032914870cc6148b5ad32b7d1215d712025cf8cdc13a423b838",
+        "explanations/shap_reconstruction_checks.csv": "1c1710996b0f4cde5a82193a0781397b61ede0632bbb2980088a140569fa43c1",
+        "runtime_policy_evaluation/policy_metrics.csv": "a0035e34c7010341d56d949d05373558df626d1bbe47c15449a615514c517147",
+        "runtime_policy_evaluation/policy_paired_comparisons.csv": "7db8d940ba9f2211a6b34715695d56ec03e6005047d86783aa792ffa479a282c",
+        "summary_metrics.csv": "d2109871437ad407c870c4e93d8ab5c1ea22002eae932b9e7f29a20d7967fdc0"
+      },
+      "task": "diabetes_screening"
+    }
+  },
+  "study_source_tree_sha256": "7d5347cf4c10e50dceb201ad36527f6d1c3e2770bba364c15c9093bf97cc6a94",
+  "tables": {
+    "availability_panel_confidence_intervals": "tables/availability_panel_confidence_intervals.csv",
+    "availability_panel_degradation": "tables/availability_panel_degradation.csv",
+    "brfss_survey_weighted_confidence_intervals": "tables/brfss_survey_weighted_confidence_intervals.csv",
+    "brfss_survey_weighted_metrics": "tables/brfss_survey_weighted_metrics.csv",
+    "calibration_selection": "tables/calibration_selection.csv",
+    "dataset_characteristics": "tables/dataset_characteristics.csv",
+    "decision_curve_confidence_intervals": "tables/decision_curve_confidence_intervals.csv",
+    "decision_curve_paired_contrasts": "tables/decision_curve_paired_contrasts.csv",
+    "decision_curves": "tables/decision_curves.csv",
+    "full_panel_model_performance": "tables/full_panel_model_performance.csv",
+    "model_paired_comparisons": "tables/model_paired_comparisons.csv",
+    "model_performance_confidence_intervals": "tables/model_performance_confidence_intervals.csv",
+    "routing_fallback_performance": "tables/routing_fallback_performance.csv",
+    "selective_prediction_confidence_intervals": "tables/selective_prediction_confidence_intervals.csv",
+    "selective_prediction_metrics": "tables/selective_prediction_metrics.csv",
+    "shap_summary": "tables/shap_summary.csv",
+    "statistical_comparisons": "tables/statistical_comparisons.csv",
+    "subgroup_confidence_intervals": "tables/subgroup_confidence_intervals.csv",
+    "subgroup_metrics": "tables/subgroup_metrics.csv",
+    "threshold_metrics": "tables/threshold_metrics.csv",
+    "threshold_performance": "tables/threshold_performance.csv"
+  }
+}

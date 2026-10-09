@@ -1,21 +1,42 @@
-version: 1
+version: 2
+protocol_id: t2dm-final-internal-validation-v1
+evidence_tier: final_internal_validation
+canonical_results: results/final_publication/FINAL_RESULTS.json
+independent_holdout_claim_allowed: false
+
 studies:
   pidd:
-    study_id: pidd_development_072cd2104089
-    evidence_tier: full_development
-    command: python -m diabetes_pipeline.cli benchmark --dataset pidd --profile development
+    study_id: pidd_final_internal_validation_5739531d61c3
+    evidence_tier: final_internal_validation
+    evaluation_role: locked_internal_validation
+    endpoint: diabetes_positive_label
+    command: python scripts/run_final_internal_validation.py --dataset pidd
   sylhet:
-    study_id: sylhet_development_b52477910fe6
-    evidence_tier: full_development
-    command: python -m diabetes_pipeline.cli benchmark --dataset sylhet --profile development
+    study_id: sylhet_final_internal_validation_5d98677ca7d9
+    evidence_tier: final_internal_validation
+    evaluation_role: locked_internal_validation
+    endpoint: early_stage_diabetes_positive_label
+    command: python scripts/run_final_internal_validation.py --dataset sylhet
   brfss:
-    study_id: brfss_development_holdout_56407ef53bba
-    evidence_tier: full_development
-    command: python -m diabetes_pipeline.cli benchmark-holdout --dataset brfss --profile development --models logistic_regression random_forest xgboost lightgbm catboost
+    study_id: brfss_final_internal_validation_holdout_2cfa4a7e2a3a
+    evidence_tier: final_internal_validation
+    evaluation_role: locked_internal_validation
+    endpoint: self_reported_diagnosed_diabetes
+    final_strategy: INTERNAL_VALIDATION_ONLY
+    command: python scripts/run_final_internal_validation.py --dataset brfss
   hospital130:
-    study_id: hospital130_development_holdout_c3aa5fb84a7a
-    evidence_tier: full_development
-    command: python -m diabetes_pipeline.cli benchmark-holdout --dataset hospital130 --profile development --models logistic_regression random_forest xgboost lightgbm catboost
+    study_id: hospital130_final_internal_validation_holdout_26b332f2e8a8
+    evidence_tier: final_internal_validation
+    evaluation_role: locked_internal_validation
+    endpoint: readmission_within_30_days
+    final_strategy: COMPLETE_FULL_INTERNAL_VALIDATION
+    command: python scripts/run_final_internal_validation.py --dataset hospital130
+
+historical_development_studies:
+  pidd: pidd_development_072cd2104089
+  sylhet: sylhet_development_b52477910fe6
+  brfss: brfss_development_holdout_56407ef53bba
+  hospital130: hospital130_development_holdout_c3aa5fb84a7a
 
 historical_engineering_studies:
   brfss_smoke:

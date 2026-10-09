@@ -105,7 +105,10 @@ def run_availability_routing(
         raise ValueError(
             f"Study dataset is {metadata['dataset']!r}, not {dataset_name!r}"
         )
-    if metadata.get("runner") == "development_locked_holdout":
+    if metadata.get("runner") in {
+        "development_locked_holdout",
+        "locked_internal_validation_holdout",
+    }:
         from diabetes_pipeline.routing.holdout_evaluator import (
             run_holdout_availability_routing,
         )
@@ -176,7 +179,7 @@ def run_availability_routing(
         )
         split_seed = int(profile["seed"]) + repeat * 1_000 + outer_fold
         inner_folds = int(
-            profile.get("inner_folds_override", dataset_cfg["inner_folds"])
+            profile.get("inner_folds_override") or dataset_cfg["inner_folds"]
         )
         fold_development_records: list[dict[str, Any]] = []
         model_bundles: dict[str, dict[str, Any]] = {}
@@ -347,23 +350,25 @@ def run_availability_routing(
             {
                 "experiment_id": metadata["experiment_id"],
                 "dataset": dataset_name,
+                "task": dataset_cfg["task"],
+                "endpoint": dataset_cfg["endpoint"],
                 "repeat": repeat,
                 "outer_fold": outer_fold,
+                "raw_data_sha256": metadata.get("raw_data_sha256"),
+                "split_manifest_sha256": metadata.get("split_manifest_sha256"),
+                "analysis_configuration_sha256": metadata.get(
+                    "analysis_configuration_sha256"
+                ),
+                "protocol_id": metadata.get("protocol_id"),
                 "configured_features": configured_features,
                 "scenarios": scenarios,
                 "selected_models": selected_models,
                 "scenario_quality": scenario_quality,
                 "study_profile": str(profile.get("name", "unknown")),
-                "evidence_tier": (
-                    "publication_candidate"
-                    if str(profile.get("name")) == "final"
-                    and bool(profile.get("locked", False))
-                    else "execution_only"
-                    if str(profile.get("name")) == "smoke"
-                    else "development_only"
-                ),
+                "evidence_tier": metadata.get("evidence_tier", "unknown"),
                 "publication_claim_eligible": bool(
-                    str(profile.get("name")) == "final"
+                    str(profile.get("name"))
+                    in {"final", "final_internal_validation"}
                     and profile.get("locked", False)
                 ),
                 "full_panel_champion": full_panel_champion,

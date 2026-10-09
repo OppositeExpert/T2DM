@@ -11,6 +11,7 @@
 # with checksums. They must not enter source control or a public repository.
 data/raw/
 outputs/
+results/
 
 # Local/editor and coverage artifacts
 .coverage

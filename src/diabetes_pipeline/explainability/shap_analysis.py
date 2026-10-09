@@ -464,7 +464,7 @@ def run_study_explainability(
     ) = importance_tables(original_feature_shap, top_k=top_k)
     local_contributors = (
         shap_values.sort_values("absolute_shap_value", ascending=False)
-        .groupby(["model", "row_id"], sort=False)
+        .groupby(["model", "repeat", "outer_fold", "row_id"], sort=False)
         .head(top_k)
         .copy()
     )
@@ -475,7 +475,7 @@ def run_study_explainability(
     )
     local_original_contributors = (
         original_feature_shap.sort_values("absolute_shap_value", ascending=False)
-        .groupby(["model", "row_id"], sort=False)
+        .groupby(["model", "repeat", "outer_fold", "row_id"], sort=False)
         .head(top_k)
         .copy()
     )

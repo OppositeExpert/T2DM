@@ -33,26 +33,41 @@ class ReleaseGovernanceTests(unittest.TestCase):
             },
         )
 
-    def test_canonical_readiness_audit_matches_authoritative_primary_ids(self) -> None:
+    def test_canonical_final_results_match_authoritative_ids_and_claim_boundary(self) -> None:
         declarations = yaml.safe_load(
             (ROOT / "config/authoritative_studies.yaml").read_text(encoding="utf-8")
         )["studies"]
-        primary = yaml.safe_load(
-            (ROOT / "config/publication_protocol.yaml").read_text(encoding="utf-8")
-        )["primary_datasets"]
-        audit = json.loads(
-            (ROOT / "conference_package/qa/publication_readiness.json").read_text(
-                encoding="utf-8"
-            )
+        registry = json.loads(
+            (ROOT / "evidence/study_registry.json").read_text(encoding="utf-8")
         )
-        actual = {Path(path).name for path in audit["study_directories"]}
-        expected = {declarations[name]["study_id"] for name in primary}
+        actual = {
+            dataset: study["study_id"]
+            for dataset, study in registry["studies"].items()
+        }
+        expected = {
+            dataset: declaration["study_id"]
+            for dataset, declaration in declarations.items()
+        }
         self.assertEqual(actual, expected)
-        markdown = (
-            ROOT / "conference_package/qa/Publication_Readiness_Audit.md"
-        ).read_text(encoding="utf-8")
-        self.assertIn(f"**Blocking checks:** {audit['blocker_count']}", markdown)
-        self.assertIn(f"**Warnings:** {audit['warning_count']}", markdown)
+        self.assertFalse(registry["independent_holdout_claim_allowed"])
+        final_path = ROOT / "results/final_publication/FINAL_RESULTS.json"
+        if final_path.is_file():
+            final_results = json.loads(final_path.read_text(encoding="utf-8"))
+            self.assertEqual(
+                {
+                    dataset: study["experiment_id"]
+                    for dataset, study in final_results["studies"].items()
+                },
+                expected,
+            )
+            self.assertFalse(final_results["independent_holdout_claim_allowed"])
+            self.assertTrue(final_results["datasets_are_endpoint_separated"])
+            self.assertFalse(final_results["cross_cohort_probability_pooling"])
+            self.assertFalse(
+                final_results["dynamic_model_switching"][
+                    "multiplicity_corrected_superiority_established"
+                ]
+            )
 
     def test_development_table_uses_primary_estimands(self) -> None:
         import pandas as pd

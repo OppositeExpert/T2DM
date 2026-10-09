@@ -106,4 +106,33 @@ def load_experiment_profile(name: str) -> dict[str, Any]:
     missing = sorted(required - set(profile))
     if missing:
         raise ConfigurationError(f"Experiment profile '{name}' is missing keys: {missing}")
+    if profile["name"] != name:
+        raise ConfigurationError("Experiment filename and profile name disagree")
+    if profile["optimization_metric"] != "average_precision":
+        raise ConfigurationError("The implemented tuning objective is average_precision")
+    if name == "final":
+        validate_final_profile(profile)
+    elif name == "final_internal_validation":
+        from diabetes_pipeline.publication.governance import (
+            validate_final_internal_profile,
+        )
+
+        validate_final_internal_profile(profile)
     return profile
+
+
+def validate_final_profile(profile: dict[str, Any]) -> None:
+    """Reject reduced budgets even when an operator marks a profile as locked."""
+    failures = []
+    for field, expected in (("name", "final"), ("n_trials", 75), ("n_bootstrap", 2000),
+                            ("optimization_metric", "average_precision")):
+        if profile.get(field) != expected:
+            failures.append(f"{field} must equal {expected}")
+    for field in ("max_repeats", "max_outer_folds", "inner_folds_override"):
+        if profile.get(field) is not None:
+            failures.append(f"{field} cannot reduce final evaluation")
+    limits = profile.get("sample_limits", {})
+    if not isinstance(limits, dict) or any(value is not None for value in limits.values()):
+        failures.append("final sample limits must all be null")
+    if failures:
+        raise ConfigurationError("Invalid final profile: " + "; ".join(failures))

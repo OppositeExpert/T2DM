@@ -129,7 +129,7 @@ def bootstrap_metric_intervals(
         finite = samples[metric][np.isfinite(samples[metric])]
         lower, upper = (
             np.quantile(finite, [alpha, 1.0 - alpha])
-            if len(finite)
+            if len(finite) >= 0.95 * n_bootstrap
             else (float("nan"), float("nan"))
         )
         records.append(
@@ -140,6 +140,12 @@ def bootstrap_metric_intervals(
                 "ci_upper": float(upper),
                 "confidence_level": float(confidence_level),
                 "n_bootstrap": int(n_bootstrap),
+                "valid_replicates": int(len(finite)),
+                "failed_replicates": int(n_bootstrap - len(finite)),
+                "interval_status": "estimated" if len(finite) >= 0.95 * n_bootstrap else "suppressed_insufficient_valid_replicates",
+                "seed": int(seed),
+                "interval_method": "percentile",
+                "uncertainty_scope": "conditional_on_fitted_predictions",
                 "resampling_unit": "cluster" if groups is not None else "individual",
             }
         )

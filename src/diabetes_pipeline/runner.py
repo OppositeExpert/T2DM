@@ -50,6 +50,9 @@ from diabetes_pipeline.training.tuning import (
     positive_class_weight,
     tune_model,
 )
+from diabetes_pipeline.publication.governance import (
+    assert_final_internal_validation_authorized,
+)
 
 
 LOGGER = logging.getLogger(__name__)
@@ -72,6 +75,10 @@ def _nested_evidence_tier(profile_name: str, profile: dict[str, Any]) -> str:
         return "full_development"
     if profile_name == "final" and bool(profile.get("locked", False)):
         return "final_locked"
+    if profile_name == "final_internal_validation" and bool(
+        profile.get("locked", False)
+    ):
+        return "final_internal_validation"
     raise ValueError("Nested studies require an explicit supported evidence profile")
 
 
@@ -194,6 +201,11 @@ def run_nested_benchmark(
     if unknown_models:
         raise ValueError(f"Unknown models: {unknown_models}")
     evidence_tier = _nested_evidence_tier(profile_name, profile)
+    evaluation_role = (
+        "locked_internal_validation"
+        if profile_name == "final_internal_validation"
+        else "outer_validation"
+    )
     if not dataset_cfg["evaluation_strategy"].startswith("repeated_nested"):
         raise NotImplementedError(
             "The first vertical-slice runner currently supports repeated nested CV datasets only"
@@ -236,6 +248,23 @@ def run_nested_benchmark(
     split_manifest_sha256 = json.loads(
         split_metadata_path.read_text(encoding="utf-8")
     )["manifest_sha256"]
+    protocol_id = None
+    if profile_name == "final_internal_validation":
+        protocol_id = assert_final_internal_validation_authorized(
+            dataset_name=dataset_name,
+            profile=profile,
+            models=models,
+            raw_data_sha256=raw_data_sha256,
+            split_manifest_sha256=str(split_manifest_sha256),
+            dataset_configuration_sha256=configuration_sha256(dataset_cfg),
+            analysis_configuration_sha256=analysis_configuration_sha256,
+            source_tree_sha256=source_tree_sha256(),
+            requirements_lock_sha256=_sha256_file(PROJECT_ROOT / "requirements.lock"),
+        )
+        final_execution_receipt = _claim_final_nested_execution(
+            dataset_name,
+            analysis_configuration_sha256,
+        )
     experiment_id = _experiment_id(
         dataset_cfg,
         profile,
@@ -255,7 +284,9 @@ def run_nested_benchmark(
     best_parameter_records: list[dict[str, Any]] = []
     calibration_records: list[dict[str, Any]] = []
     threshold_records: list[dict[str, Any]] = []
-    inner_folds = int(profile.get("inner_folds_override", dataset_cfg["inner_folds"]))
+    inner_folds = int(
+        profile.get("inner_folds_override") or dataset_cfg["inner_folds"]
+    )
     model_n_jobs = int(profile.get("model_n_jobs", 1))
 
     for repeat, outer_fold in selected_splits:
@@ -408,12 +439,13 @@ def run_nested_benchmark(
                     "experiment_id": experiment_id,
                     "dataset": dataset_name,
                     "task": dataset_cfg["task"],
+                    "endpoint": dataset_cfg["endpoint"],
                     "model": model_name,
                     "row_id": validation_manifest["row_id"].to_numpy(),
                     "group_id": validation_manifest["group_id"].to_numpy(),
                     "repeat": repeat,
                     "outer_fold": outer_fold,
-                    "evaluation_role": "outer_validation",
+                    "evaluation_role": evaluation_role,
                     "target": y_validation,
                     "probability_raw": probability_raw,
                     "probability_calibrated": probability_calibrated,
@@ -427,10 +459,11 @@ def run_nested_benchmark(
                 "dataset": dataset_name,
                 "task": dataset_cfg["task"],
                 "endpoint": dataset_cfg["endpoint"],
+                "evaluation_strategy": dataset_cfg["evaluation_strategy"],
                 "model": model_name,
                 "repeat": repeat,
                 "outer_fold": outer_fold,
-                "evaluation_role": "outer_validation",
+                "evaluation_role": evaluation_role,
                 "calibration_method": calibration_method,
                 "tuning_average_precision": tuning.best_score,
                 "tuning_seconds": tuning_seconds,
@@ -764,6 +797,9 @@ def run_nested_benchmark(
             {
                 "experiment_id": experiment_id,
                 "dataset": dataset_name,
+                "task": dataset_cfg["task"],
+                "endpoint": dataset_cfg["endpoint"],
+                "evaluation_strategy": dataset_cfg["evaluation_strategy"],
                 "dataset_configuration_sha256": configuration_sha256(dataset_cfg),
                 "source_tree_sha256": source_tree_sha256(),
                 "raw_data_sha256": audit["raw_sha256"],
@@ -787,6 +823,8 @@ def run_nested_benchmark(
                 "split_manifest_sha256": split_manifest_sha256,
                 "profile": profile,
                 "evidence_tier": evidence_tier,
+                "evaluation_role": evaluation_role,
+                "protocol_id": protocol_id,
                 "final_execution_receipt": (
                     str(final_execution_receipt.relative_to(PROJECT_ROOT))
                     if final_execution_receipt is not None

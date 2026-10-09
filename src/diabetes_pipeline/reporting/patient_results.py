@@ -82,6 +82,63 @@ def _load_router_bundles(
     return loaded
 
 
+def _validate_publication_router_bundles(
+    loaded: list[dict[str, Any]], reference: LoadedDataset
+) -> None:
+    strict = any(
+        bool(bundle.get("publication_claim_eligible", False))
+        or bundle.get("evidence_tier")
+        in {"final_internal_validation", "final_locked"}
+        for bundle in loaded
+    )
+    if not strict:
+        return
+    required = {
+        "experiment_id",
+        "dataset",
+        "task",
+        "endpoint",
+        "raw_data_sha256",
+        "split_manifest_sha256",
+        "analysis_configuration_sha256",
+        "protocol_id",
+        "repeat",
+        "outer_fold",
+    }
+    for bundle in loaded:
+        missing = sorted(required - set(bundle))
+        if missing:
+            raise ValueError(f"Publication router lacks provenance keys: {missing}")
+    identity_fields = (
+        "experiment_id",
+        "dataset",
+        "task",
+        "endpoint",
+        "raw_data_sha256",
+        "split_manifest_sha256",
+        "analysis_configuration_sha256",
+        "protocol_id",
+    )
+    for field in identity_fields:
+        if len({str(bundle[field]) for bundle in loaded}) != 1:
+            raise ValueError(f"Publication routers disagree on {field}")
+    reference_task = reference.metadata.get("task")
+    reference_endpoint = reference.metadata.get("endpoint")
+    if str(loaded[0]["dataset"]) != reference.name:
+        raise ValueError("Publication router dataset does not match reference")
+    if reference_task is not None and str(loaded[0]["task"]) != str(reference_task):
+        raise ValueError("Publication router task does not match reference")
+    if reference_endpoint is not None and str(loaded[0]["endpoint"]) != str(
+        reference_endpoint
+    ):
+        raise ValueError("Publication router endpoint does not match reference")
+    fold_ids = [
+        (int(bundle["repeat"]), int(bundle["outer_fold"])) for bundle in loaded
+    ]
+    if len(fold_ids) != len(set(fold_ids)):
+        raise ValueError("Publication routers contain duplicate fold identities")
+
+
 def _bundle_evidence_tier(bundle: dict[str, Any]) -> str:
     explicit = bundle.get("evidence_tier")
     if explicit is not None:
@@ -410,6 +467,7 @@ def generate_patient_result(
     if top_k < 1:
         raise ValueError("top_k must be at least one")
     loaded = _load_router_bundles(router_bundles)
+    _validate_publication_router_bundles(loaded, reference)
     configured = list(loaded[0]["configured_features"])
     for bundle in loaded[1:]:
         if list(bundle["configured_features"]) != configured:

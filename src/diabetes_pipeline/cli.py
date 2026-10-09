@@ -189,6 +189,12 @@ def build_parser() -> argparse.ArgumentParser:
     routing.add_argument("--dataset", required=True)
     routing.add_argument("--study-dir", type=Path, required=True)
 
+    runtime_policy = subparsers.add_parser(
+        "evaluate-runtime-policy",
+        help="Evaluate the actual largest-supported-panel fallback and abstention policy",
+    )
+    runtime_policy.add_argument("--study-dir", type=Path, required=True)
+
     panel_contrasts = subparsers.add_parser(
         "matched-panel-contrasts",
         help="Compare reduced and full feature panels on identical participants",
@@ -593,6 +599,22 @@ def main() -> None:
                     "output_dir": str(result.output_dir),
                     "selections": str(result.selections_path),
                     "summary": str(result.summary_path),
+                },
+                sort_keys=True,
+            )
+        )
+    elif args.command == "evaluate-runtime-policy":
+        from diabetes_pipeline.routing import evaluate_runtime_policy
+
+        result = evaluate_runtime_policy(args.study_dir)
+        print(
+            json.dumps(
+                {
+                    "study_dir": str(result.study_dir),
+                    "output_dir": str(result.output_dir),
+                    "decisions": str(result.decisions_path),
+                    "metrics": str(result.metrics_path),
+                    "comparisons": str(result.comparisons_path),
                 },
                 sort_keys=True,
             )

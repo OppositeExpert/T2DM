@@ -91,6 +91,8 @@ def load_brfss(cfg: dict[str, Any]) -> LoadedDataset:
     X = pd.DataFrame(index=raw.index)
     X["HighBP"] = raw["_RFHYPE5"].map({1: 0, 2: 1})
     X["HighChol"] = raw["TOLDHI2"].map({1: 1, 2: 0})
+    # Ever checked, NOT checked within five years: CDC _CHOLCHK code 2
+    # means checked longer ago. Preserve the established feature definition.
     X["CholCheck"] = raw["_CHOLCHK"].map({1: 1, 2: 1, 3: 0})
     X["BMI"] = raw["_BMI5"] / 100.0
     X["Smoker"] = raw["SMOKE100"].map({1: 1, 2: 0})
@@ -242,6 +244,12 @@ def load_hospital130(cfg: dict[str, Any]) -> LoadedDataset:
             ~raw["discharge_disposition_id"].isin(excluded_dispositions)
         ].copy()
 
+    if raw[["encounter_id", "patient_nbr"]].isna().any().any():
+        raise ValueError("Hospital130 identity fields must not be missing")
+    if not raw["readmitted"].isin(["<30", ">30", "NO"]).all():
+        raise ValueError("Unexpected values in Hospital130 readmission target")
+    if raw["encounter_id"].duplicated().any():
+        raise ValueError("Hospital130 encounter IDs must be unique")
     row_ids = raw["encounter_id"].astype(str).rename("row_id")
     groups = raw["patient_nbr"].astype(str).rename("group_id")
     y = (raw["readmitted"] == "<30").astype(int).rename(cfg["target_name"])

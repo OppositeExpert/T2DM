@@ -369,7 +369,9 @@ def run_panel_training_ablation(
     selected_outer_splits = _selected_outer_splits(manifest, profile)
     if not selected_outer_splits:
         raise ValueError("The source study contains no selected outer splits")
-    inner_folds = int(profile.get("inner_folds_override", dataset_cfg["inner_folds"]))
+    inner_folds = int(
+        profile.get("inner_folds_override") or dataset_cfg["inner_folds"]
+    )
     model_n_jobs = int(profile.get("model_n_jobs", 1))
     output_dir = study_dir / "ablations" / "panel_specific_training"
     trial_dir = output_dir / "trials"

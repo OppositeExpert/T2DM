@@ -41,6 +41,35 @@ class SubgroupAnalysisTests(unittest.TestCase):
         sex = membership[membership["subgroup_variable"] == "sex"]
         self.assertEqual(set(sex["subgroup_value"]), {"female", "male"})
 
+    def test_membership_preserves_noncontiguous_source_index_identity(self) -> None:
+        source_index = pd.Index([0, 2, 7, 11])
+        dataset = SimpleNamespace(
+            row_ids=pd.Series(["e1", "e2", "e3", "e4"], index=source_index),
+            X=pd.DataFrame(
+                {
+                    "age": [1.0, 3.0, 5.0, 8.0],
+                    "gender": ["Female", "Male", "Female", "Male"],
+                    "race": ["Asian", "Caucasian", "Hispanic", "Other"],
+                },
+                index=source_index,
+            ),
+        )
+        with patch(
+            "diabetes_pipeline.evaluation.subgroup_analysis.load_dataset",
+            return_value=dataset,
+        ):
+            membership = subgroup_membership("hospital130")
+        age = membership[membership["subgroup_variable"] == "age_group"]
+        self.assertEqual(
+            age.set_index("row_id")["subgroup_value"].to_dict(),
+            {"e1": "under_30", "e2": "30-49", "e3": "50-69", "e4": "70+"},
+        )
+        race = membership[membership["subgroup_variable"] == "race"]
+        self.assertEqual(
+            race.set_index("row_id")["subgroup_value"].to_dict()["e3"],
+            "Hispanic",
+        )
+
     def test_small_cells_are_suppressed_and_supported_cells_are_estimated(self) -> None:
         rows = []
         membership = []

@@ -1,5 +1,12 @@
 # Publication Roadmap Execution Status
 
+> **Superseded 11 September 2026:** this file records the earlier development
+> roadmap. Final full-budget internal validation is now complete under
+> `config/final_publication_protocol.yaml`; current status is summarized in
+> `PUBLICATION_READINESS.md` and `results/final_publication/FINAL_RESULTS.json`.
+> The historical false flags and concealed-holdout plan below are retained only
+> for provenance and must not be used as the current experimental status.
+
 **Updated:** 30 August 2026, full Hospital130 development and release-hardening checkpoint
 
 **Overall state:** Machine-executable development work complete; human review,

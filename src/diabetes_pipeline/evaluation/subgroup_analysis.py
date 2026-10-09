@@ -63,7 +63,11 @@ def subgroup_membership(dataset_name: str) -> pd.DataFrame:
     """Create prespecified interpretable subgroup labels keyed by stable row ID."""
 
     dataset = load_dataset(dataset_name)
-    base = pd.DataFrame({"row_id": dataset.row_ids.astype(str).to_numpy()})
+    # Loaded cohorts retain source indexes after exclusions. Preserve that index
+    # while assigning demographic Series so identities cannot shift silently.
+    base = pd.DataFrame(
+        {"row_id": dataset.row_ids.astype(str).to_numpy()}, index=dataset.X.index
+    )
     frames: list[pd.DataFrame] = []
     age_column = "Age" if "Age" in dataset.X else "age" if "age" in dataset.X else None
     if age_column is not None:
@@ -194,7 +198,11 @@ def _render_report(metadata: dict[str, Any], metrics: pd.DataFrame) -> str:
     estimated = metrics[metrics["status"] == "estimated"]
     suppressed = metrics[metrics["status"] != "estimated"]
     lines = [
-        "# Development Subgroup and Fairness Analysis",
+        (
+            "# Final Internal-Validation Subgroup and Fairness Analysis"
+            if metadata.get("evidence_tier") == "final_internal_validation"
+            else "# Development Subgroup and Fairness Analysis"
+        ),
         "",
         f"**Dataset:** `{metadata['dataset']}`",
         "",
@@ -249,7 +257,14 @@ def run_subgroup_analysis(
         (study_dir / "experiment_metadata.json").read_text(encoding="utf-8")
     )
     profile = dict(study_metadata["profile"])
-    if str(profile.get("name")) == "final" or bool(profile.get("locked", False)):
+    is_final_internal = (
+        str(profile.get("name")) == "final_internal_validation"
+        and bool(profile.get("locked", False))
+        and study_metadata.get("evidence_tier") == "final_internal_validation"
+    )
+    if str(profile.get("name")) == "final" or (
+        bool(profile.get("locked", False)) and not is_final_internal
+    ):
         raise PermissionError("Development subgroup analysis is not a final-run command")
     decisions_path = study_dir / "selective_prediction" / "acceptance_decisions.csv"
     if not decisions_path.exists():
@@ -280,7 +295,11 @@ def run_subgroup_analysis(
         "source_study": str(study_dir),
         "profile": str(profile["name"]),
         "evidence_tier": (
-            "execution_only" if str(profile["name"]) == "smoke" else "development_only"
+            "final_internal_validation"
+            if is_final_internal
+            else "execution_only"
+            if str(profile["name"]) == "smoke"
+            else "development_only"
         ),
         "system": system,
         "scenarios": list(scenarios),
@@ -289,7 +308,8 @@ def run_subgroup_analysis(
         "minimum_negative_events": int(minimum_events),
         "small_cell_suppression": True,
         "source_tree_sha256": source_tree_sha256(),
-        "subgroup_analysis_complete": False,
+        "subgroup_analysis_complete": is_final_internal,
+        "publication_evidence_eligible": is_final_internal,
         "final_outcome_access_authorized": False,
     }
     metrics_path = output_dir / "subgroup_metrics.csv"

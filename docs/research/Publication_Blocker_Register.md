@@ -1,5 +1,13 @@
 # Publication Blocker Register
 
+> **Superseded 11 September 2026:** this register describes the prior
+> development/concealed-holdout plan. The supervisor blockers were resolved by
+> a frozen, full-budget internal-validation strategy documented in
+> `BRFSS_FINAL_EVALUATION_DECISION.md`, `HOSPITAL130_FINAL_DECISION.md`, and
+> `results/final_publication/`. Historical rows remain unchanged for audit
+> provenance; see `PUBLICATION_READINESS.md` for current remaining human release
+> work.
+
 **Current audit:** 30 August 2026, post-Hospital130 full-development and release-hardening audit
 
 **Readiness verdict:** `NOT READY`

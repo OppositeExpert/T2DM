@@ -270,7 +270,9 @@ def run_missing_indicator_retraining_ablation(
     selected_splits = _selected_outer_splits(manifest, profile)
     if not selected_splits:
         raise ValueError("The source study contains no selected outer splits")
-    inner_folds = int(profile.get("inner_folds_override", dataset_cfg["inner_folds"]))
+    inner_folds = int(
+        profile.get("inner_folds_override") or dataset_cfg["inner_folds"]
+    )
     model_n_jobs = int(profile.get("model_n_jobs", 1))
     output_dir = study_dir / "ablations" / "missing_indicator_retraining"
     trial_dir = output_dir / "trials"

@@ -80,13 +80,17 @@ class ReproducibilityTests(unittest.TestCase):
         project_path = Path(unquote(urlparse(payload["url"]).path)).resolve()
         self.assertEqual(project_path, ROOT.resolve())
 
-    def test_authoritative_registry_never_promotes_development_to_final(self) -> None:
+    def test_authoritative_registry_preserves_final_internal_claim_boundary(self) -> None:
         payload = yaml.safe_load(
             (ROOT / "config/authoritative_studies.yaml").read_text(encoding="utf-8")
         )
+        self.assertFalse(payload["independent_holdout_claim_allowed"])
         for declaration in payload["studies"].values():
-            self.assertEqual(declaration["evidence_tier"], "full_development")
-            self.assertNotIn("--profile final", declaration["command"])
+            self.assertEqual(
+                declaration["evidence_tier"], "final_internal_validation"
+            )
+            self.assertIn("run_final_internal_validation.py", declaration["command"])
+            self.assertEqual(declaration["evaluation_role"], "locked_internal_validation")
 
     def test_tracked_registry_matches_authoritative_declarations(self) -> None:
         declarations = yaml.safe_load(
@@ -99,8 +103,9 @@ class ReproducibilityTests(unittest.TestCase):
         for dataset, declaration in declarations.items():
             study = registry["studies"][dataset]
             self.assertEqual(study["study_id"], declaration["study_id"])
-            self.assertEqual(study["evidence_tier"], "full_development")
-            self.assertFalse(study["eligible_for_final_claims"])
+            self.assertEqual(study["evidence_tier"], "final_internal_validation")
+            self.assertTrue(study["eligible_for_final_internal_validation_claims"])
+            self.assertFalse(study["independent_holdout_claim_allowed"])
             self.assertIsInstance(study["test_access"], str)
             self.assertTrue(study["test_access"])
             self.assertRegex(study["raw_data_sha256"], r"^[0-9a-f]{64}$")

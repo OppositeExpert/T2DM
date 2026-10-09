@@ -100,7 +100,12 @@ def main() -> None:
     registry: dict[str, object] = {
         "schema_version": "2.0",
         "generated_at_utc": datetime.now(timezone.utc).isoformat(),
-        "evidence_scope": "development_and_engineering_not_final",
+        "evidence_scope": "final_internal_validation_and_historical_engineering",
+        "protocol_id": configured.get("protocol_id"),
+        "independent_holdout_claim_allowed": bool(
+            configured.get("independent_holdout_claim_allowed", False)
+        ),
+        "canonical_results": configured.get("canonical_results"),
         "requirements_lock_sha256": sha256(ROOT / "requirements.lock"),
         "environment_used_to_build_registry": {
             "python": platform.python_version(),
@@ -130,7 +135,7 @@ def main() -> None:
         }
         shap_relative = (
             "test_explanations/global_shap_importance_original_features.csv"
-            if metadata.get("runner") == "development_locked_holdout"
+            if str(metadata.get("runner", "")).endswith("holdout")
             else "explanations/global_shap_importance_original_features.csv"
         )
         artifacts["shap_original_features"] = artifact_record(
@@ -169,7 +174,10 @@ def main() -> None:
             "requirements_lock_sha256": registry["requirements_lock_sha256"],
             "profile_locked": bool(metadata.get("profile", {}).get("locked", False)),
             "test_access": test_access_record(metadata),
-            "eligible_for_final_claims": False,
+            "eligible_for_final_internal_validation_claims": (
+                declaration["evidence_tier"] == "final_internal_validation"
+            ),
+            "independent_holdout_claim_allowed": False,
             "artifacts": artifacts,
             "model_bundles": model_bundles,
         }

@@ -1,0 +1,2257 @@
+{
+  "audit_date": "2026-09-05",
+  "root": "/Users/pranavprabhu/Codex/Minor Proj/T2DM",
+  "head": "c964664ddaa1e4a1fbc6dd72fde9dfb66fc88cfc",
+  "baseline_existing_modified_file": "docs/DEFINITIVE_PROJECT_CONTEXT.md",
+  "data_probes": {
+    "pidd": {
+      "rows": 768,
+      "events": 268,
+      "groups": null,
+      "duplicates": 0,
+      "non_contiguous_index": false,
+      "stored_split_exists": false,
+      "local_split_exists": true,
+      "local_split_hash_matches": true
+    },
+    "sylhet": {
+      "rows": 520,
+      "events": 320,
+      "groups": 251,
+      "duplicates": 269,
+      "non_contiguous_index": false,
+      "stored_split_exists": false,
+      "local_split_exists": true,
+      "local_split_hash_matches": true,
+      "max_actual_outer_group_overlap": 0
+    },
+    "brfss": {
+      "rows": 429360,
+      "events": 57256,
+      "groups": null,
+      "duplicates": 8695,
+      "non_contiguous_index": true,
+      "stored_split_exists": true,
+      "local_split_exists": true,
+      "local_split_hash_matches": true,
+      "subgroups": {
+        "age_group": {
+          "expected_known": 424232,
+          "assigned": 412616,
+          "wrong_nonmissing": 293692,
+          "known_dropped": 16533,
+          "persisted_disagreements": 315142
+        },
+        "sex": {
+          "expected_known": 429360,
+          "assigned": 417628,
+          "wrong_nonmissing": 204173,
+          "known_dropped": 11732,
+          "persisted_disagreements": 215905
+        }
+      }
+    },
+    "hospital130": {
+      "rows": 99343,
+      "events": 11314,
+      "groups": 69990,
+      "duplicates": 1,
+      "non_contiguous_index": true,
+      "stored_split_exists": true,
+      "local_split_exists": true,
+      "local_split_hash_matches": true,
+      "subgroups": {
+        "age_group": {
+          "expected_known": 99343,
+          "assigned": 96973,
+          "wrong_nonmissing": 60608,
+          "known_dropped": 2370,
+          "persisted_disagreements": 62978
+        },
+        "sex": {
+          "expected_known": 99340,
+          "assigned": 96970,
+          "wrong_nonmissing": 48431,
+          "known_dropped": 2373,
+          "persisted_disagreements": 50807
+        },
+        "race": {
+          "expected_known": 97109,
+          "assigned": 94810,
+          "wrong_nonmissing": 34448,
+          "known_dropped": 4385,
+          "persisted_disagreements": 40919
+        }
+      },
+      "actual_holdout_group_overlap": 0
+    },
+    "cholcheck": {
+      "raw_counts": {
+        "1.0": 362923,
+        "3.0": 49673,
+        "9.0": 15337,
+        "2.0": 13523
+      },
+      "retained_code_2": 13258,
+      "retained_n": 429360
+    },
+    "invalid_row_positions_accepted": true,
+    "hospital_invalid_raw_accepted": {
+      "error": "DatasetValidationError('hospital130: target must contain both binary classes; found [0]')"
+    },
+    "icd_decimal_examples": {
+      "459.0": "Circulatory",
+      "459.9": "Other",
+      "785.0": "Circulatory",
+      "785.9": "Other",
+      "519.9": "Other",
+      "239.9": "Other",
+      "250.13": "Diabetes"
+    }
+  },
+  "runtime_probes": {
+    "patient_valid": {
+      "status": "predicted",
+      "dataset": "fixture",
+      "task": "diabetes_screening",
+      "endpoint": "fixture_endpoint",
+      "research_evidence": {
+        "study_profiles": [
+          "unknown"
+        ],
+        "evidence_tiers": [
+          "unknown"
+        ],
+        "publication_claim_eligible": false,
+        "interpretation": "Development or execution evidence only; this patient result must not be presented as a final paper estimate or clinical output."
+      }
+    },
+    "patient_fractional_binary": {
+      "status": "predicted",
+      "dataset": "fixture",
+      "task": "diabetes_screening",
+      "endpoint": "fixture_endpoint",
+      "research_evidence": {
+        "study_profiles": [
+          "unknown"
+        ],
+        "evidence_tiers": [
+          "unknown"
+        ],
+        "publication_claim_eligible": false,
+        "interpretation": "Development or execution evidence only; this patient result must not be presented as a final paper estimate or clinical output."
+      }
+    },
+    "patient_nan": {
+      "status": "predicted",
+      "dataset": "fixture",
+      "task": "diabetes_screening",
+      "endpoint": "fixture_endpoint",
+      "research_evidence": {
+        "study_profiles": [
+          "unknown"
+        ],
+        "evidence_tiers": [
+          "unknown"
+        ],
+        "publication_claim_eligible": false,
+        "interpretation": "Development or execution evidence only; this patient result must not be presented as a final paper estimate or clinical output."
+      }
+    },
+    "patient_infinity": {
+      "status": "abstain",
+      "reason": "invalid_input",
+      "dataset": "fixture",
+      "task": null,
+      "endpoint": "fixture_endpoint"
+    },
+    "patient_text": {
+      "status": "abstain",
+      "reason": "invalid_input",
+      "dataset": "fixture",
+      "task": null,
+      "endpoint": "fixture_endpoint"
+    },
+    "patient_nested_list": {
+      "exception": "ValueError",
+      "message": "The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()"
+    },
+    "patient_nested_object": {
+      "status": "abstain",
+      "reason": "invalid_input",
+      "dataset": "fixture",
+      "task": null,
+      "endpoint": "fixture_endpoint"
+    },
+    "patient_out_of_range": {
+      "status": "abstain",
+      "reason": "outside_reference_range",
+      "dataset": "fixture",
+      "task": null,
+      "endpoint": "fixture_endpoint"
+    },
+    "route_no_features": {
+      "status": "abstain",
+      "reason": "no_supported_feature_panel"
+    },
+    "route_partial": {
+      "status": "predicted"
+    },
+    "route_unknown_feature": {
+      "status": "abstain",
+      "reason": "no_supported_feature_panel"
+    },
+    "route_extra_feature": {
+      "status": "predicted"
+    },
+    "route_unsupported_panel": {
+      "exception": "ValueError",
+      "message": "Unknown availability scenario 'bogus'"
+    },
+    "route_missing_required": {
+      "status": "abstain",
+      "reason": "required_scenario_features_missing"
+    },
+    "mixed_one": {
+      "status": "predicted",
+      "task": "diabetes_screening",
+      "routing": {
+        "selected_dataset": "pidd",
+        "selected_dataset_display_name": "Fixture cohort",
+        "selected_endpoint": "pidd_status",
+        "selection_reason": "only_eligible_dataset",
+        "selection_policy": "Select one eligible cohort-specific expert; never average or pool probabilities across datasets without a separately validated harmonized model.",
+        "cross_dataset_selector_validated": false,
+        "experimental_auto_selection_used": false,
+        "dataset_priority": {
+          "pidd": 300,
+          "sylhet": 200,
+          "brfss": 100
+        },
+        "candidate_results": {
+          "pidd": {
+            "status": "predicted",
+            "estimated_probability_percent": 99.9999,
+            "selected_scenario": "a_only",
+            "features_used": [
+              "a"
+            ],
+            "research_evidence": {
+              "study_profiles": [
+                "unknown"
+              ],
+              "evidence_tiers": [
+                "unknown"
+              ],
+              "publication_claim_eligible": false,
+              "interpretation": "Development or execution evidence only; this patient result must not be presented as a final paper estimate or clinical output."
+            },
+            "abstention_reason": null
+          }
+        }
+      },
+      "research_evidence": {
+        "selected_study_publication_claim_eligible": false,
+        "environment_selection_is_explicit_or_unambiguous": true,
+        "cross_dataset_selector_validated": false,
+        "publication_claim_eligible": false,
+        "interpretation": "The probability inherits the evidence tier of the selected dataset study. Automatic cross-dataset expert selection remains unvalidated and is excluded from publication claims."
+      }
+    },
+    "mixed_multiple": {
+      "status": "abstain",
+      "reason": "cross_dataset_environment_selection_not_validated",
+      "task": "diabetes_screening",
+      "research_evidence": {
+        "cross_dataset_selector_validated": false,
+        "publication_claim_eligible": false,
+        "interpretation": "No matched multi-environment patient cohort exists to validate automatic selection among PIDD, Sylhet, and BRFSS."
+      }
+    },
+    "mixed_none": {
+      "status": "abstain",
+      "reason": "no_supported_dataset_panel",
+      "task": "diabetes_screening"
+    },
+    "mixed_preferred": {
+      "status": "predicted",
+      "task": "diabetes_screening",
+      "routing": {
+        "selected_dataset": "sylhet",
+        "selected_dataset_display_name": "Fixture cohort",
+        "selected_endpoint": "sylhet_status",
+        "selection_reason": "explicit_preferred_dataset",
+        "selection_policy": "Select one eligible cohort-specific expert; never average or pool probabilities across datasets without a separately validated harmonized model.",
+        "cross_dataset_selector_validated": false,
+        "experimental_auto_selection_used": false,
+        "dataset_priority": {
+          "pidd": 300,
+          "sylhet": 200,
+          "brfss": 100
+        },
+        "candidate_results": {
+          "pidd": {
+            "status": "predicted",
+            "estimated_probability_percent": 99.9999,
+            "selected_scenario": "a_only",
+            "features_used": [
+              "a"
+            ],
+            "research_evidence": {
+              "study_profiles": [
+                "unknown"
+              ],
+              "evidence_tiers": [
+                "unknown"
+              ],
+              "publication_claim_eligible": false,
+              "interpretation": "Development or execution evidence only; this patient result must not be presented as a final paper estimate or clinical output."
+            },
+            "abstention_reason": null
+          },
+          "sylhet": {
+            "status": "predicted",
+            "estimated_probability_percent": 99.9999,
+            "selected_scenario": "a_only",
+            "features_used": [
+              "a"
+            ],
+            "research_evidence": {
+              "study_profiles": [
+                "unknown"
+              ],
+              "evidence_tiers": [
+                "unknown"
+              ],
+              "publication_claim_eligible": false,
+              "interpretation": "Development or execution evidence only; this patient result must not be presented as a final paper estimate or clinical output."
+            },
+            "abstention_reason": null
+          }
+        }
+      },
+      "research_evidence": {
+        "selected_study_publication_claim_eligible": false,
+        "environment_selection_is_explicit_or_unambiguous": true,
+        "cross_dataset_selector_validated": false,
+        "publication_claim_eligible": false,
+        "interpretation": "The probability inherits the evidence tier of the selected dataset study. Automatic cross-dataset expert selection remains unvalidated and is excluded from publication claims."
+      }
+    },
+    "mixed_invalid_preference": {
+      "exception": "ValueError",
+      "message": "Preferred dataset 'invalid' did not produce an eligible prediction"
+    },
+    "mixed_hospital": {
+      "exception": "ValueError",
+      "message": "Dataset 'hospital130' predicts 'hospital_readmission'; it cannot be mixed into a diabetes-screening result"
+    },
+    "mismatched_study_and_duplicate_fold": {
+      "status": "predicted",
+      "dataset": "fixture",
+      "task": "diabetes_screening",
+      "endpoint": "fixture_endpoint",
+      "research_evidence": {
+        "study_profiles": [
+          "unknown"
+        ],
+        "evidence_tiers": [
+          "unknown"
+        ],
+        "publication_claim_eligible": false,
+        "interpretation": "Development or execution evidence only; this patient result must not be presented as a final paper estimate or clinical output."
+      }
+    },
+    "reference_endpoint_relabels_bundle": {
+      "status": "predicted",
+      "dataset": "hospital130",
+      "task": "hospital_readmission",
+      "endpoint": "readmission_within_30_days",
+      "research_evidence": {
+        "study_profiles": [
+          "unknown"
+        ],
+        "evidence_tiers": [
+          "unknown"
+        ],
+        "publication_claim_eligible": false,
+        "interpretation": "Development or execution evidence only; this patient result must not be presented as a final paper estimate or clinical output."
+      }
+    },
+    "markdown_provenance": {
+      "contains_study_id": false,
+      "contains_cohort_name": false,
+      "contains_endpoint": false,
+      "contains_development_evidence_word": false,
+      "contains_disclaimer": true
+    },
+    "hospital_invalid_source": {
+      "exception": "DatasetValidationError",
+      "message": "hospital130: group IDs contain missing values"
+    },
+    "hospital_icd_boundary": {
+      "fields": {
+        "diag_1": {
+          "affected_values": {},
+          "affected_cells": 0
+        },
+        "diag_2": {
+          "affected_values": {},
+          "affected_cells": 0
+        },
+        "diag_3": {
+          "affected_values": {},
+          "affected_cells": 0
+        }
+      },
+      "affected_rows": 0
+    },
+    "real_hospital_unknown_category": {
+      "status": "abstain",
+      "reason": "required_scenario_features_missing",
+      "dataset": "hospital130",
+      "task": "hospital_readmission",
+      "endpoint": "readmission_within_30_days"
+    },
+    "isotonic_minimum": {
+      "configured_minimum": 1000,
+      "actual_fit_sizes": [
+        800,
+        800,
+        800,
+        800,
+        800,
+        1000
+      ],
+      "eligible": true
+    },
+    "single_class_group_calibration": {
+      "exception": "ValueError",
+      "message": "Cannot have number of splits n_splits=5 greater than the number of groups: 2."
+    },
+    "empty_unauthorized_final_readiness": {
+      "schema_version": "1.0",
+      "target_readiness": "conference_submission",
+      "status": "ready",
+      "ready_for_submission": true,
+      "blocker_count": 0,
+      "warning_count": 1,
+      "checks": [
+        {
+          "id": "primary_dataset_coverage",
+          "status": "pass",
+          "severity": "blocker",
+          "evidence": "expected=['brfss', 'pidd', 'sylhet'] supplied=['brfss', 'pidd', 'sylhet'] duplicates=[]",
+          "remediation": ""
+        },
+        {
+          "id": "brfss_final_profile",
+          "status": "pass",
+          "severity": "blocker",
+          "evidence": "profile=final",
+          "remediation": ""
+        },
+        {
+          "id": "brfss_profile_locked",
+          "status": "pass",
+          "severity": "blocker",
+          "evidence": "locked=True",
+          "remediation": ""
+        },
+        {
+          "id": "brfss_full_sample",
+          "status": "pass",
+          "severity": "blocker",
+          "evidence": "sample_limit_per_partition=None",
+          "remediation": ""
+        },
+        {
+          "id": "brfss_test_access",
+          "status": "pass",
+          "severity": "blocker",
+          "evidence": "test_access=not_applicable",
+          "remediation": ""
+        },
+        {
+          "id": "brfss_required_artifacts",
+          "status": "pass",
+          "severity": "blocker",
+          "evidence": "missing=[]",
+          "remediation": ""
+        },
+        {
+          "id": "pidd_final_profile",
+          "status": "pass",
+          "severity": "blocker",
+          "evidence": "profile=final",
+          "remediation": ""
+        },
+        {
+          "id": "pidd_profile_locked",
+          "status": "pass",
+          "severity": "blocker",
+          "evidence": "locked=True",
+          "remediation": ""
+        },
+        {
+          "id": "pidd_full_sample",
+          "status": "pass",
+          "severity": "blocker",
+          "evidence": "sample_limit_per_partition=None",
+          "remediation": ""
+        },
+        {
+          "id": "pidd_test_access",
+          "status": "pass",
+          "severity": "blocker",
+          "evidence": "test_access=not_applicable",
+          "remediation": ""
+        },
+        {
+          "id": "pidd_required_artifacts",
+          "status": "pass",
+          "severity": "blocker",
+          "evidence": "missing=[]",
+          "remediation": ""
+        },
+        {
+          "id": "sylhet_final_profile",
+          "status": "pass",
+          "severity": "blocker",
+          "evidence": "profile=final",
+          "remediation": ""
+        },
+        {
+          "id": "sylhet_profile_locked",
+          "status": "pass",
+          "severity": "blocker",
+          "evidence": "locked=True",
+          "remediation": ""
+        },
+        {
+          "id": "sylhet_full_sample",
+          "status": "pass",
+          "severity": "blocker",
+          "evidence": "sample_limit_per_partition=None",
+          "remediation": ""
+        },
+        {
+          "id": "sylhet_test_access",
+          "status": "pass",
+          "severity": "blocker",
+          "evidence": "test_access=not_applicable",
+          "remediation": ""
+        },
+        {
+          "id": "sylhet_required_artifacts",
+          "status": "pass",
+          "severity": "blocker",
+          "evidence": "missing=[]",
+          "remediation": ""
+        },
+        {
+          "id": "leakage_demonstrations",
+          "status": "pass",
+          "severity": "blocker",
+          "evidence": "missing=[]",
+          "remediation": ""
+        },
+        {
+          "id": "protocol_frozen",
+          "status": "pass",
+          "severity": "blocker",
+          "evidence": "protocol_frozen=True",
+          "remediation": ""
+        },
+        {
+          "id": "novelty_review_complete",
+          "status": "pass",
+          "severity": "blocker",
+          "evidence": "novelty_review_complete=True",
+          "remediation": ""
+        },
+        {
+          "id": "claim_evidence_table_complete",
+          "status": "pass",
+          "severity": "blocker",
+          "evidence": "claim_evidence_table_complete=True",
+          "remediation": ""
+        },
+        {
+          "id": "tripod_ai_checklist_complete",
+          "status": "pass",
+          "severity": "blocker",
+          "evidence": "tripod_ai_checklist_complete=True",
+          "remediation": ""
+        },
+        {
+          "id": "probast_ai_assessment_complete",
+          "status": "pass",
+          "severity": "blocker",
+          "evidence": "probast_ai_assessment_complete=True",
+          "remediation": ""
+        },
+        {
+          "id": "ablation_study_complete",
+          "status": "pass",
+          "severity": "blocker",
+          "evidence": "ablation_study_complete=True",
+          "remediation": ""
+        },
+        {
+          "id": "selective_prediction_evaluation_complete",
+          "status": "pass",
+          "severity": "blocker",
+          "evidence": "selective_prediction_evaluation_complete=True",
+          "remediation": ""
+        },
+        {
+          "id": "subgroup_analysis_complete",
+          "status": "pass",
+          "severity": "blocker",
+          "evidence": "subgroup_analysis_complete=True",
+          "remediation": ""
+        },
+        {
+          "id": "mixed_router_claim_scope",
+          "status": "pass",
+          "severity": "blocker",
+          "evidence": "mixed_router_role=software_demonstration_only selector_validated=False",
+          "remediation": ""
+        },
+        {
+          "id": "dynamic_model_selection_claim_scope",
+          "status": "pass",
+          "severity": "blocker",
+          "evidence": "dynamic_model_selection_role=secondary_negative_result",
+          "remediation": ""
+        },
+        {
+          "id": "external_or_temporal_validation",
+          "status": "warn",
+          "severity": "warning",
+          "evidence": "external_or_temporal_validation_complete=False",
+          "remediation": "Add independent or temporal validation before journal-strength, transportability, or clinical-generalization claims."
+        }
+      ],
+      "blockers": [],
+      "warnings": [
+        "external_or_temporal_validation"
+      ],
+      "protocol_path": "/private/tmp/t2dm-final-audit-20260905/fake_readiness/protocol.yaml",
+      "study_directories": [
+        "/private/tmp/t2dm-final-audit-20260905/fake_readiness/pidd",
+        "/private/tmp/t2dm-final-audit-20260905/fake_readiness/sylhet",
+        "/private/tmp/t2dm-final-audit-20260905/fake_readiness/brfss"
+      ],
+      "pipeline_source_tree_sha256": "c9da8635ffcfee10c718b6c36a2981c07c1b2b08ccb789ce82b7cf0438a74a98"
+    },
+    "required_selective_final_command": {
+      "exception": "PermissionError",
+      "message": "Selective-prediction development analysis is not a final-run command"
+    },
+    "required_subgroup_final_command": {
+      "exception": "PermissionError",
+      "message": "Development subgroup analysis is not a final-run command"
+    }
+  },
+  "followup_probes": {
+    "panel_missingness": {
+      "pidd": {
+        "cohort_n": 768,
+        "eligible_by_panel": {
+          "full": 392,
+          "no_insulin_or_skinfold": 724,
+          "routine_clinic": 724,
+          "core_metabolic": 752,
+          "non_laboratory": 757,
+          "minimal_glucose_age": 763
+        },
+        "any_supported": 768
+      },
+      "sylhet": {
+        "cohort_n": 520,
+        "eligible_by_panel": {
+          "full": 520,
+          "core_questionnaire": 520,
+          "core_symptoms": 520,
+          "classic_symptoms": 520,
+          "minimal_polyuria_polydipsia": 520
+        },
+        "any_supported": 520
+      },
+      "brfss": {
+        "cohort_n": 429360,
+        "eligible_by_panel": {
+          "full": 247071,
+          "cardiometabolic_health": 321411,
+          "routine_survey": 265765,
+          "health_status": 376388,
+          "demographics_health": 349056,
+          "minimal_general_health_age": 423094
+        },
+        "any_supported": 423094
+      },
+      "hospital130": {
+        "cohort_n": 99343,
+        "eligible_by_panel": {
+          "full": 0,
+          "encounter_utilization": 99343,
+          "admission_clinical": 294,
+          "prior_utilization": 99343,
+          "minimal_inpatient_history": 99343
+        },
+        "any_supported": 99343
+      }
+    },
+    "actual_readiness": {
+      "schema_version": "1.0",
+      "target_readiness": "conference_submission",
+      "status": "not_ready",
+      "ready_for_submission": false,
+      "blocker_count": 15,
+      "warning_count": 1,
+      "checks": [
+        {
+          "id": "primary_dataset_coverage",
+          "status": "pass",
+          "severity": "blocker",
+          "evidence": "expected=['brfss', 'pidd', 'sylhet'] supplied=['brfss', 'pidd', 'sylhet'] duplicates=[]",
+          "remediation": ""
+        },
+        {
+          "id": "brfss_final_profile",
+          "status": "fail",
+          "severity": "blocker",
+          "evidence": "profile=development",
+          "remediation": "Run the full prespecified final profile; pilot and smoke estimates cannot enter the paper's primary table."
+        },
+        {
+          "id": "brfss_profile_locked",
+          "status": "fail",
+          "severity": "blocker",
+          "evidence": "locked=False",
+          "remediation": "Freeze the protocol and set locked=true before the one permitted final run."
+        },
+        {
+          "id": "brfss_full_sample",
+          "status": "pass",
+          "severity": "blocker",
+          "evidence": "sample_limit_per_partition=None",
+          "remediation": ""
+        },
+        {
+          "id": "brfss_test_access",
+          "status": "fail",
+          "severity": "blocker",
+          "evidence": "test_access=development_test_previously_accessed_not_final_eligible",
+          "remediation": "For holdout studies, create a fresh locked final study whose test set is accessed exactly once after every choice is frozen; nested-CV studies must report test_access=not_applicable."
+        },
+        {
+          "id": "brfss_required_artifacts",
+          "status": "pass",
+          "severity": "blocker",
+          "evidence": "missing=[]",
+          "remediation": ""
+        },
+        {
+          "id": "pidd_final_profile",
+          "status": "fail",
+          "severity": "blocker",
+          "evidence": "profile=development",
+          "remediation": "Run the full prespecified final profile; pilot and smoke estimates cannot enter the paper's primary table."
+        },
+        {
+          "id": "pidd_profile_locked",
+          "status": "fail",
+          "severity": "blocker",
+          "evidence": "locked=False",
+          "remediation": "Freeze the protocol and set locked=true before the one permitted final run."
+        },
+        {
+          "id": "pidd_full_sample",
+          "status": "pass",
+          "severity": "blocker",
+          "evidence": "sample_limit_per_partition=None",
+          "remediation": ""
+        },
+        {
+          "id": "pidd_test_access",
+          "status": "pass",
+          "severity": "blocker",
+          "evidence": "test_access=not_applicable",
+          "remediation": ""
+        },
+        {
+          "id": "pidd_required_artifacts",
+          "status": "pass",
+          "severity": "blocker",
+          "evidence": "missing=[]",
+          "remediation": ""
+        },
+        {
+          "id": "sylhet_final_profile",
+          "status": "fail",
+          "severity": "blocker",
+          "evidence": "profile=development",
+          "remediation": "Run the full prespecified final profile; pilot and smoke estimates cannot enter the paper's primary table."
+        },
+        {
+          "id": "sylhet_profile_locked",
+          "status": "fail",
+          "severity": "blocker",
+          "evidence": "locked=False",
+          "remediation": "Freeze the protocol and set locked=true before the one permitted final run."
+        },
+        {
+          "id": "sylhet_full_sample",
+          "status": "pass",
+          "severity": "blocker",
+          "evidence": "sample_limit_per_partition=None",
+          "remediation": ""
+        },
+        {
+          "id": "sylhet_test_access",
+          "status": "pass",
+          "severity": "blocker",
+          "evidence": "test_access=not_applicable",
+          "remediation": ""
+        },
+        {
+          "id": "sylhet_required_artifacts",
+          "status": "pass",
+          "severity": "blocker",
+          "evidence": "missing=[]",
+          "remediation": ""
+        },
+        {
+          "id": "leakage_demonstrations",
+          "status": "pass",
+          "severity": "blocker",
+          "evidence": "missing=[]",
+          "remediation": ""
+        },
+        {
+          "id": "protocol_frozen",
+          "status": "fail",
+          "severity": "blocker",
+          "evidence": "protocol_frozen=False",
+          "remediation": "Approve and freeze the statistical analysis plan before final execution."
+        },
+        {
+          "id": "novelty_review_complete",
+          "status": "fail",
+          "severity": "blocker",
+          "evidence": "novelty_review_complete=False",
+          "remediation": "Complete the structured literature matrix and narrow the novelty claim."
+        },
+        {
+          "id": "claim_evidence_table_complete",
+          "status": "fail",
+          "severity": "blocker",
+          "evidence": "claim_evidence_table_complete=False",
+          "remediation": "Link every abstract/conclusion claim to a frozen result, figure, or citation."
+        },
+        {
+          "id": "tripod_ai_checklist_complete",
+          "status": "fail",
+          "severity": "blocker",
+          "evidence": "tripod_ai_checklist_complete=False",
+          "remediation": "Complete the TRIPOD+AI checklist and manuscript crosswalk."
+        },
+        {
+          "id": "probast_ai_assessment_complete",
+          "status": "fail",
+          "severity": "blocker",
+          "evidence": "probast_ai_assessment_complete=False",
+          "remediation": "Complete and disclose the PROBAST+AI risk-of-bias/applicability assessment."
+        },
+        {
+          "id": "ablation_study_complete",
+          "status": "fail",
+          "severity": "blocker",
+          "evidence": "ablation_study_complete=False",
+          "remediation": "Complete the prespecified component ablations on identical folds and tuning budgets."
+        },
+        {
+          "id": "selective_prediction_evaluation_complete",
+          "status": "fail",
+          "severity": "blocker",
+          "evidence": "selective_prediction_evaluation_complete=False",
+          "remediation": "Report risk-coverage behavior and performance at prespecified acceptance levels."
+        },
+        {
+          "id": "subgroup_analysis_complete",
+          "status": "fail",
+          "severity": "blocker",
+          "evidence": "subgroup_analysis_complete=False",
+          "remediation": "Report supported subgroup performance and abstention coverage with uncertainty."
+        },
+        {
+          "id": "mixed_router_claim_scope",
+          "status": "pass",
+          "severity": "blocker",
+          "evidence": "mixed_router_role=software_demonstration_only selector_validated=False",
+          "remediation": ""
+        },
+        {
+          "id": "dynamic_model_selection_claim_scope",
+          "status": "pass",
+          "severity": "blocker",
+          "evidence": "dynamic_model_selection_role=secondary_negative_result",
+          "remediation": ""
+        },
+        {
+          "id": "external_or_temporal_validation",
+          "status": "warn",
+          "severity": "warning",
+          "evidence": "external_or_temporal_validation_complete=False",
+          "remediation": "Add independent or temporal validation before journal-strength, transportability, or clinical-generalization claims."
+        }
+      ],
+      "blockers": [
+        "brfss_final_profile",
+        "brfss_profile_locked",
+        "brfss_test_access",
+        "pidd_final_profile",
+        "pidd_profile_locked",
+        "sylhet_final_profile",
+        "sylhet_profile_locked",
+        "protocol_frozen",
+        "novelty_review_complete",
+        "claim_evidence_table_complete",
+        "tripod_ai_checklist_complete",
+        "probast_ai_assessment_complete",
+        "ablation_study_complete",
+        "selective_prediction_evaluation_complete",
+        "subgroup_analysis_complete"
+      ],
+      "warnings": [
+        "external_or_temporal_validation"
+      ],
+      "protocol_path": "/Users/pranavprabhu/Codex/Minor Proj/T2DM/config/publication_protocol.yaml",
+      "study_directories": [
+        "/Users/pranavprabhu/Codex/Minor Proj/T2DM/outputs/publication_pipeline/studies/pidd_development_072cd2104089",
+        "/Users/pranavprabhu/Codex/Minor Proj/T2DM/outputs/publication_pipeline/studies/sylhet_development_b52477910fe6",
+        "/Users/pranavprabhu/Codex/Minor Proj/T2DM/outputs/publication_pipeline/studies/brfss_development_holdout_56407ef53bba"
+      ],
+      "pipeline_source_tree_sha256": "c9da8635ffcfee10c718b6c36a2981c07c1b2b08ccb789ce82b7cf0438a74a98"
+    },
+    "invalid_hospital_target_only": {
+      "accepted": true,
+      "encoded_as": 0
+    },
+    "real_hospital_unknown_category": {
+      "status": "predicted",
+      "reason": null,
+      "selected_scenario": "admission_clinical"
+    },
+    "source_history": {
+      "targets": {
+        "b81aed549be9b19296d32da93b13a2fa1cd005739203b70b8da438189d586bf2": [
+          "pidd",
+          "sylhet"
+        ],
+        "772edea034d6e455409541d212fe0184244f0a7db6780da1875a55647f34fe31": [
+          "brfss"
+        ],
+        "a972b35e66b0b23c5ee2441a513213fa13c02c8cf28726ac5283956de0d6ee7f": [
+          "hospital130"
+        ]
+      },
+      "matching_commits": {
+        "b81aed549be9b19296d32da93b13a2fa1cd005739203b70b8da438189d586bf2": "25994fe8029bfa9ecdb77d44e2f0954d034bc8d5"
+      },
+      "commits_checked": 13
+    }
+  },
+  "artifact_probes": {
+    "pidd": {
+      "primary_prediction_rows": 3840,
+      "primary": {
+        "catboost": {
+          "n": 768,
+          "events": 268,
+          "auroc": 0.8443656716417911,
+          "average_precision": 0.7091573923972183,
+          "brier_score": 0.15174277381027645,
+          "log_loss": 0.4619896735389393
+        },
+        "lightgbm": {
+          "n": 768,
+          "events": 268,
+          "auroc": 0.8386567164179104,
+          "average_precision": 0.7131476437450774,
+          "brier_score": 0.1539048975650804,
+          "log_loss": 0.46797430758087377
+        },
+        "logistic_regression": {
+          "n": 768,
+          "events": 268,
+          "auroc": 0.8376417910447762,
+          "average_precision": 0.7116962822489822,
+          "brier_score": 0.1556514452107551,
+          "log_loss": 0.4748828510119438
+        },
+        "random_forest": {
+          "n": 768,
+          "events": 268,
+          "auroc": 0.8395,
+          "average_precision": 0.709533535464541,
+          "brier_score": 0.1539299376340578,
+          "log_loss": 0.46802467361751604
+        },
+        "xgboost": {
+          "n": 768,
+          "events": 268,
+          "auroc": 0.8383059701492538,
+          "average_precision": 0.705888934371648,
+          "brier_score": 0.15397174183245974,
+          "log_loss": 0.46898348053775596
+        }
+      },
+      "selective_source_consistency": {
+        "current_participants": 768,
+        "saved_participants": 768,
+        "matched": 768,
+        "different_probabilities_gt_1e_12": 0,
+        "max_probability_difference": 1.1102230246251565e-16,
+        "current_brier": 0.1523640108405904,
+        "current_auroc": 0.8425298507462686,
+        "saved_brier": 0.1523640108405904,
+        "current_repeat_counts": {
+          "5": 768
+        }
+      },
+      "local_shap_repeat_mix": {
+        "records": 19200,
+        "explanations": 3840,
+        "mixing_repeats": 3840
+      }
+    },
+    "sylhet": {
+      "primary_prediction_rows": 2600,
+      "primary": {
+        "catboost": {
+          "n": 520,
+          "events": 320,
+          "auroc": 0.969625,
+          "average_precision": 0.9837684192582934,
+          "brier_score": 0.06089164477806655,
+          "log_loss": 0.21332032700091094
+        },
+        "lightgbm": {
+          "n": 520,
+          "events": 320,
+          "auroc": 0.9607812499999999,
+          "average_precision": 0.9782718884644384,
+          "brier_score": 0.07205049199952253,
+          "log_loss": 0.24517244821422532
+        },
+        "logistic_regression": {
+          "n": 520,
+          "events": 320,
+          "auroc": 0.955265625,
+          "average_precision": 0.9738086141353768,
+          "brier_score": 0.08053706723874281,
+          "log_loss": 0.2618385964572325
+        },
+        "random_forest": {
+          "n": 520,
+          "events": 320,
+          "auroc": 0.968171875,
+          "average_precision": 0.981203309762926,
+          "brier_score": 0.06739011545854154,
+          "log_loss": 0.22638501280274728
+        },
+        "xgboost": {
+          "n": 520,
+          "events": 320,
+          "auroc": 0.96103125,
+          "average_precision": 0.9766769220590317,
+          "brier_score": 0.0748575038980793,
+          "log_loss": 0.24465838650020183
+        }
+      },
+      "selective_source_consistency": {
+        "current_participants": 520,
+        "saved_participants": 520,
+        "matched": 520,
+        "different_probabilities_gt_1e_12": 0,
+        "max_probability_difference": 1.1102230246251565e-16,
+        "current_brier": 0.062304302993537584,
+        "current_auroc": 0.96771875,
+        "saved_brier": 0.062304302993537584,
+        "current_repeat_counts": {
+          "5": 520
+        }
+      },
+      "local_shap_repeat_mix": {
+        "records": 13000,
+        "explanations": 2600,
+        "mixing_repeats": 2554
+      }
+    },
+    "brfss": {
+      "primary_prediction_rows": 429360,
+      "primary": {
+        "catboost": {
+          "n": 85872,
+          "events": 11451,
+          "auroc": 0.8429771739379548,
+          "average_precision": 0.4420969059702756,
+          "brier_score": 0.0915269455074879,
+          "log_loss": 0.2958351797599468
+        },
+        "lightgbm": {
+          "n": 85872,
+          "events": 11451,
+          "auroc": 0.8427972174453512,
+          "average_precision": 0.44315288336031616,
+          "brier_score": 0.09153977045654967,
+          "log_loss": 0.2959903397896307
+        },
+        "logistic_regression": {
+          "n": 85872,
+          "events": 11451,
+          "auroc": 0.8329008436381448,
+          "average_precision": 0.4043169450262154,
+          "brier_score": 0.09400331312866501,
+          "log_loss": 0.30311119010023285
+        },
+        "random_forest": {
+          "n": 85872,
+          "events": 11451,
+          "auroc": 0.839617895329952,
+          "average_precision": 0.43706404280845734,
+          "brier_score": 0.0920734114631815,
+          "log_loss": 0.2981009389073336
+        },
+        "xgboost": {
+          "n": 85872,
+          "events": 11451,
+          "auroc": 0.8429867169430546,
+          "average_precision": 0.44356321900582657,
+          "brier_score": 0.09149650575812307,
+          "log_loss": 0.2958076924080451
+        }
+      },
+      "selective_source_consistency": {
+        "current_participants": 85872,
+        "saved_participants": 85872,
+        "matched": 85872,
+        "different_probabilities_gt_1e_12": 0,
+        "max_probability_difference": 0.0,
+        "current_brier": 0.09153977045654965,
+        "current_auroc": 0.8427972174453512,
+        "saved_brier": 0.09153977045654965,
+        "current_repeat_counts": {
+          "1": 85872
+        }
+      }
+    },
+    "hospital130": {
+      "primary_prediction_rows": 99340,
+      "primary": {
+        "catboost": {
+          "n": 19868,
+          "events": 2262,
+          "auroc": 0.6780619861426952,
+          "average_precision": 0.22874665332227478,
+          "brier_score": 0.09589098454084766,
+          "log_loss": 0.33304705969016857
+        },
+        "lightgbm": {
+          "n": 19868,
+          "events": 2262,
+          "auroc": 0.6791883704946258,
+          "average_precision": 0.22876195469757535,
+          "brier_score": 0.0958395432490492,
+          "log_loss": 0.3327112791909387
+        },
+        "logistic_regression": {
+          "n": 19868,
+          "events": 2262,
+          "auroc": 0.6609576320989358,
+          "average_precision": 0.20070274248412937,
+          "brier_score": 0.09714541829462231,
+          "log_loss": 0.33768665746989945
+        },
+        "random_forest": {
+          "n": 19868,
+          "events": 2262,
+          "auroc": 0.6728853588916968,
+          "average_precision": 0.22807374881880826,
+          "brier_score": 0.09603919792989435,
+          "log_loss": 0.3339318446667391
+        },
+        "xgboost": {
+          "n": 19868,
+          "events": 2262,
+          "auroc": 0.6781198019162545,
+          "average_precision": 0.22689425952697778,
+          "brier_score": 0.09594163679477252,
+          "log_loss": 0.33308384641993966
+        }
+      },
+      "selective_source_consistency": {
+        "current_participants": 19868,
+        "saved_participants": 19868,
+        "matched": 19868,
+        "different_probabilities_gt_1e_12": 0,
+        "max_probability_difference": 0.0,
+        "current_brier": 0.09583939116044472,
+        "current_auroc": 0.6791883704946258,
+        "saved_brier": 0.09583939116044471,
+        "current_repeat_counts": {
+          "1": 19868
+        }
+      }
+    }
+  },
+  "final_preflight": {
+    "analysis_configuration_sha256": "f8cf297439c8e4569d45db816c9060301a10e6d06bde824f4143463d794f43c2",
+    "authorized": false,
+    "dataset": "brfss",
+    "models": [
+      "logistic_regression",
+      "random_forest",
+      "xgboost",
+      "lightgbm",
+      "catboost"
+    ],
+    "outcome_accessed": false,
+    "profile": "final",
+    "raw_data_sha256": "a7d3380aca5aeae94186770983c3089fb6c4b2074aa112418112c11891d16420",
+    "reason": "Final study execution denied: final experiment profile is not locked; protocol_frozen=false; novelty_review_complete=false; ablation_study_complete=false; selective_prediction_evaluation_complete=false; subgroup_analysis_complete=false; analysis_plan.status is not frozen; final execution is not authorized; authorized raw-data SHA-256 is not configured for brfss; authorized analysis-configuration SHA-256 is not configured for brfss; profile seed does not match the authorized final holdout seed; final authorization record is not configured; final concealed manifest path/hash is not configured"
+  },
+  "test_result": "................................................................. [ 60%]\n..........................................                               [100%]\n=============================== warnings summary ===============================\n.venv-pipeline/lib/python3.12/site-packages/shap/plots/colors/_colors.py:47\n  /Users/pranavprabhu/Codex/Minor Proj/T2DM/.venv-pipeline/lib/python3.12/site-packages/shap/plots/colors/_colors.py:47: PendingDeprecationWarning: The set_bad function will be deprecated in a future version. Use cmap.with_extremes(bad=...) or Colormap(bad=...) instead.\n    red_blue.set_bad(gray_rgb.tolist(), 1.0)\n\n.venv-pipeline/lib/python3.12/site-packages/shap/plots/colors/_colors.py:48\n  /Users/pranavprabhu/Codex/Minor Proj/T2DM/.venv-pipeline/lib/python3.12/site-packages/shap/plots/colors/_colors.py:48: PendingDeprecationWarning: The set_over function will be deprecated in a future version. Use cmap.with_extremes(over=...) or Colormap(over=...) instead.\n    red_blue.set_over(gray_rgb.tolist(), 1.0)\n\n.venv-pipeline/lib/python3.12/site-packages/shap/plots/colors/_colors.py:49\n  /Users/pranavprabhu/Codex/Minor Proj/T2DM/.venv-pipeline/lib/python3.12/site-packages/shap/plots/colors/_colors.py:49: PendingDeprecationWarning: The set_under function will be deprecated in a future version. Use cmap.with_extremes(under=...) or Colormap(under=...) instead.\n    red_blue.set_under(gray_rgb.tolist(), 1.0)  # \"under\" is incorrectly used instead of \"bad\" in the scatter plot\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n107 passed, 3 warnings, 7 subtests passed in 27.83s\n",
+  "python_syntax_files_passed": 104,
+  "conference_manifest": {
+    "files_checked": 48,
+    "failures": []
+  },
+  "test_inventory": {
+    "test_repeated_cv_inference.py": [
+      "test_aggregation_returns_one_row_per_model_and_participant",
+      "test_missing_repeat_is_rejected",
+      "test_participant_inference_uses_cluster_resampling",
+      "test_empty_group_ids_use_individual_resampling"
+    ],
+    "test_configs.py": [
+      "test_all_dataset_contracts_load",
+      "test_experiment_profiles_load",
+      "test_draft_publication_protocol_cannot_authorize_final_execution",
+      "test_every_dataset_has_a_valid_availability_contract",
+      "test_development_evidence_role_cannot_imply_final_lock"
+    ],
+    "test_survey_sensitivity.py": [
+      "test_equal_weights_reproduce_standard_binary_quantities",
+      "test_weights_change_population_estimand",
+      "test_psu_bootstrap_keeps_rows_in_one_cluster_together"
+    ],
+    "test_release_governance.py": [
+      "test_role_migration_only_changes_exact_legacy_label",
+      "test_canonical_readiness_audit_matches_authoritative_primary_ids",
+      "test_development_table_uses_primary_estimands"
+    ],
+    "test_missingness_stress.py": [
+      "test_mcar_masks_are_reproducible_and_retain_a_feature",
+      "test_structured_block_masks_identical_columns_for_every_row",
+      "test_invalid_severity_is_rejected",
+      "test_applicability_guard_reports_coverage_and_event_retention"
+    ],
+    "test_explainability.py": [
+      "test_transformed_feature_plot_filename_is_path_safe",
+      "test_positive_class_shap_output_is_selected",
+      "test_raw_feature_matrix_maps_missing_indicators",
+      "test_stability_tables_use_only_fold_importance",
+      "test_one_hot_and_missing_components_group_to_original_feature"
+    ],
+    "test_leakage_demonstrations.py": [
+      "test_grouped_cross_validation_covers_rows_without_group_overlap"
+    ],
+    "test_reporting_ablations.py": [
+      "test_panel_size_fit_preserves_named_panel_residuals"
+    ],
+    "test_data_validation.py": [
+      "test_small_datasets_load_without_global_imputation",
+      "test_hospital_cohort_excludes_non_readmission_dispositions"
+    ],
+    "test_feature_ontology.py": [
+      "test_every_configured_feature_is_covered_once",
+      "test_similarly_named_measurements_retain_distinct_semantics"
+    ],
+    "test_splits.py": [
+      "test_pidd_repeated_split_is_reproducible",
+      "test_sylhet_profiles_do_not_cross_outer_folds",
+      "test_hospital_patients_never_cross_holdout_or_development_folds"
+    ],
+    "test_publication_readiness.py": [
+      "test_current_development_and_smoke_artifacts_cannot_pass_gate"
+    ],
+    "test_metrics_calibration.py": [
+      "test_metrics_reconcile_confusion_counts",
+      "test_sigmoid_calibrator_returns_probabilities",
+      "test_calibration_selection_is_cross_fitted_and_deterministic",
+      "test_small_sample_isotonic_can_be_predeclared_ineligible",
+      "test_threshold_policies_use_development_probabilities",
+      "test_bootstrap_and_decision_curve_are_well_formed",
+      "test_paired_comparisons_include_holm_adjustment"
+    ],
+    "test_decision_curve_inference.py": [
+      "test_returns_intervals_and_paired_contrasts",
+      "test_identical_models_have_zero_paired_difference",
+      "test_cluster_resampling_is_reported",
+      "test_misaligned_models_are_rejected"
+    ],
+    "test_subgroup_analysis.py": [
+      "test_hospital_membership_supports_age_gender_and_race",
+      "test_small_cells_are_suppressed_and_supported_cells_are_estimated"
+    ],
+    "test_holdout_evaluation.py": [
+      "test_nested_evidence_tiers_are_explicit_and_fail_closed",
+      "test_final_nested_execution_receipt_is_one_time_only",
+      "test_holdout_evidence_tiers_are_explicit_and_fail_closed",
+      "test_final_test_access_receipt_is_one_time_only",
+      "test_predefined_manifest_folds_cover_every_development_row",
+      "test_cluster_bootstrap_resamples_complete_clusters",
+      "test_paired_bootstrap_comparison_preserves_pairing"
+    ],
+    "test_routing.py": [
+      "test_cross_fitted_scenario_probabilities_cover_every_row",
+      "test_cross_fitted_routing_masks_integer_columns",
+      "test_patient_router_selects_supported_panel_or_abstains"
+    ],
+    "test_preprocessing.py": [
+      "test_numeric_imputer_fits_training_values_only",
+      "test_unknown_categories_are_ignored"
+    ],
+    "test_retraining_ablations.py": [
+      "test_indicator_improvement_has_consistent_orientation",
+      "test_grouped_indicator_contrast_uses_cluster_resampling",
+      "test_numerically_equivalent_predictions_are_exact_null",
+      "test_missing_variant_is_rejected"
+    ],
+    "test_artifact_reload.py": [
+      "test_round_trip_preserves_probabilities"
+    ],
+    "test_ablations.py": [
+      "test_calibration_ablation_orients_lower_losses_as_improvement",
+      "test_model_family_ablation_uses_logistic_reference",
+      "test_selector_predictions_use_development_scores_only"
+    ],
+    "test_panel_contrasts.py": [
+      "test_aggregation_returns_one_prediction_per_panel_participant",
+      "test_reduced_panel_has_positive_degradation",
+      "test_grouped_panels_use_cluster_resampling",
+      "test_holdout_predictions_keep_one_holdout_test_row",
+      "test_missing_full_panel_is_rejected"
+    ],
+    "test_models.py": [
+      "test_all_models_fit_and_return_positive_probability"
+    ],
+    "test_patient_results.py": [
+      "test_probability_first_result_contains_ensemble_shap_and_context",
+      "test_missing_panel_and_out_of_range_inputs_abstain",
+      "test_mixed_patient_selects_one_expert_and_reserves_age_target",
+      "test_mixed_patient_rejects_readmission_endpoint"
+    ],
+    "test_selective_prediction.py": [
+      "test_repeated_predictions_are_aggregated_per_participant",
+      "test_coverage_analysis_rejects_least_certain_rows",
+      "test_grouped_acceptance_keeps_clusters_intact"
+    ],
+    "test_research_audit.py": [
+      "test_weighted_prevalence_uses_only_positive_finite_weights",
+      "test_weighted_prevalence_is_nan_without_eligible_rows"
+    ],
+    "test_concealment.py": [
+      "test_sanitized_manifest_has_no_outcome_column",
+      "test_current_protocol_denies_final_execution",
+      "test_current_protocol_denies_final_manifest_creation",
+      "test_analysis_fingerprint_binds_model_bank_and_profile",
+      "test_smoke_path_does_not_require_final_authorization",
+      "test_fully_bound_final_authorization_passes",
+      "test_authorized_nested_final_does_not_require_holdout_manifest",
+      "test_final_manifest_creation_is_outcome_blind_and_non_overwritable",
+      "test_final_authorization_rejects_changed_data_or_analysis",
+      "test_final_authorization_rejects_development_profile_disguised_as_final",
+      "test_final_authorization_rejects_wrong_seed_and_manifest_purpose",
+      "test_final_authorization_rejects_changed_authorization_record",
+      "test_final_authorization_rejects_modified_manifest"
+    ],
+    "test_reproducibility.py": [
+      "test_pidd_openml_reconstruction_is_byte_deterministic",
+      "test_data_source_manifest_covers_every_dataset_with_sha256",
+      "test_locked_environment_contains_every_direct_dependency",
+      "test_editable_install_points_to_this_repository",
+      "test_authoritative_registry_never_promotes_development_to_final",
+      "test_tracked_registry_matches_authoritative_declarations"
+    ],
+    "test_panel_training_ablations.py": [
+      "test_task_checkpoint_round_trip_and_signature_guard",
+      "test_incomplete_checkpoint_is_ignored",
+      "test_aggregation_returns_one_row_per_strategy_participant",
+      "test_panel_training_improvement_orientation_is_positive",
+      "test_grouped_predictions_use_cluster_resampling",
+      "test_missing_strategy_is_rejected"
+    ]
+  },
+  "tracked_source_config_document_inventory": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "bytes": 1940,
+      "sha256": "961b621f1209b14fb363194246753b7f798bf8311d73660f961e5721ec4dafda"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 416,
+      "sha256": "9600ce7ef59a7e8e3062898da2d62d51d9c5677e1d8a1e800e1deb8cd4de604e"
+    },
+    {
+      "path": "Dockerfile",
+      "bytes": 756,
+      "sha256": "f982337f4be8229336c52cd36b8ed73dc7a402c065461845fdfbcc8aef4f2737"
+    },
+    {
+      "path": "FINAL_RUN_CHECKLIST.md",
+      "bytes": 7169,
+      "sha256": "f9e8097bce357efea203e13e4f3bc185b78a4cfc60ce325ea46761c41531f392"
+    },
+    {
+      "path": "LICENSE_STATUS.md",
+      "bytes": 550,
+      "sha256": "e2e7e142d99e957299af43e6b395630c9a751fa6cd7e960129be13802bcd2d91"
+    },
+    {
+      "path": "PUBLICATION_READINESS.md",
+      "bytes": 544,
+      "sha256": "e9631b87e825d3d88d802edf2a566c1733a046acd2222325aeab3126c1c95f61"
+    },
+    {
+      "path": "README.md",
+      "bytes": 4455,
+      "sha256": "5f27561abef4762243538a0b2930291fc02199a7f5e0e4866b4a15b52fa2494b"
+    },
+    {
+      "path": "conference_package/Author_and_Venue_Inputs.md",
+      "bytes": 1397,
+      "sha256": "5b5996cb9587c20915c99e4b2d4b8af0de01fd491521cea1ff4e07c51b4bd2de"
+    },
+    {
+      "path": "conference_package/Claim_to_Evidence_Development_Crosswalk.md",
+      "bytes": 5258,
+      "sha256": "2d0f1c11d669c7da29995f3f6cec9998a8b46c3b9508398ccf111d5b4a6cecdf"
+    },
+    {
+      "path": "conference_package/Conference_Cover_Letter_Draft.md",
+      "bytes": 1631,
+      "sha256": "23b28b5153386cc852b58b5b61a5e117e8317d2b18386b9fd6876300470f3e16"
+    },
+    {
+      "path": "conference_package/Conference_Manuscript_Development_Draft.md",
+      "bytes": 34235,
+      "sha256": "052ff4d7744250353638aecbf738b3fd3271acdba4910da7bc4d36e8e15e9176"
+    },
+    {
+      "path": "conference_package/Final_Authorization_Record_Template.md",
+      "bytes": 2477,
+      "sha256": "1ceaab52d76d61e809d67751efc0acd128cc82f104b9162d06597f69a184c833"
+    },
+    {
+      "path": "conference_package/PROBAST_AI_Development_Assessment.md",
+      "bytes": 4697,
+      "sha256": "83de69890593717381317ce1c4e215526ee78a4f98e86ed03307848d43dfe835"
+    },
+    {
+      "path": "conference_package/README.md",
+      "bytes": 4470,
+      "sha256": "e54c91f1edb8a59f106e264c5d17b974ea3c9e4b6c966ca1c919fdbe0d9a93d7"
+    },
+    {
+      "path": "conference_package/Reproducibility_and_Final_Run_Handoff.md",
+      "bytes": 3776,
+      "sha256": "ff15868980658205cc557e15be488cfb9cda2027693c01404e45cb0fd9b68742"
+    },
+    {
+      "path": "conference_package/Submission_Readiness_and_Handoff.md",
+      "bytes": 5704,
+      "sha256": "68598ac97cfbd787aed4c65be0624d97082759371fea07fa3040aae6730572a1"
+    },
+    {
+      "path": "conference_package/Supplementary_Appendix_Development_Draft.md",
+      "bytes": 17932,
+      "sha256": "c8780f87ae64bb606271087adc5dcf0ebeaf69abbfa664274b991f2877a1926a"
+    },
+    {
+      "path": "conference_package/TRIPOD_AI_Development_Crosswalk.md",
+      "bytes": 5525,
+      "sha256": "ce4130e860fd70c229300f4dbaeb5942dfb1f2f5124ea3dbaaed9067fb516c4c"
+    },
+    {
+      "path": "conference_package/qa/Publication_Readiness_Audit.md",
+      "bytes": 4019,
+      "sha256": "0864eff82c45aa4940d723f5eb2c2bb4fa219b2c4ee9e7795f00969cf1d8803b"
+    },
+    {
+      "path": "conference_package/qa/QA_REPORT.md",
+      "bytes": 2211,
+      "sha256": "317c713d0e28dc147ad7a3af3a2ba667a3dc1083533174db498dcab479585837"
+    },
+    {
+      "path": "config/authoritative_studies.yaml",
+      "bytes": 1189,
+      "sha256": "115f1c96644735e9dc781b7f9894f576b74d12d90ae20852a85f008b5e5e7001"
+    },
+    {
+      "path": "config/availability_scenarios.yaml",
+      "bytes": 8511,
+      "sha256": "d767b80e15ced4c3b3201077c2736f559bc93b9a48fc8907435b0d30e5ff0288"
+    },
+    {
+      "path": "config/data_sources.yaml",
+      "bytes": 3293,
+      "sha256": "3d1fe3b2f75326a2b1e755303e04c1c62b43be52886d26e27a91fc680f8872e4"
+    },
+    {
+      "path": "config/datasets.yaml",
+      "bytes": 5794,
+      "sha256": "eb5be0f09aeb1eaaf811a23a5a2ae5a631d9ec0670b66eaef080c4aecc2f68db"
+    },
+    {
+      "path": "config/experiments/development.yaml",
+      "bytes": 404,
+      "sha256": "8af81b19c56ba1f92cfab1ddddae8b904d4405e6825b0161f7624db0ecab3ae7"
+    },
+    {
+      "path": "config/experiments/development_pilot.yaml",
+      "bytes": 467,
+      "sha256": "047ee371ab3916faca1d9fc210cd2d3ee9334daea53537f2503793b6b4f58e83"
+    },
+    {
+      "path": "config/experiments/final.yaml",
+      "bytes": 413,
+      "sha256": "0032c7a773cf84ab602296d0697291a6e45c0f25052fd6e779f4423951b8a450"
+    },
+    {
+      "path": "config/experiments/smoke.yaml",
+      "bytes": 443,
+      "sha256": "8d14e53f19de4f46ada64041871b4d6c35491b36ccbedf5360fcbc4493b63578"
+    },
+    {
+      "path": "config/feature_ontology.yaml",
+      "bytes": 5024,
+      "sha256": "8fc0db7300f5b253a05d8d89e1c25dab60f187ede92fe87e57bc12fa1ff95e26"
+    },
+    {
+      "path": "config/output_schemas.yaml",
+      "bytes": 1119,
+      "sha256": "e536ac3e94122abbf7ff53dd601deb1f6ccffe632f9b331551717e36bbfe5f74"
+    },
+    {
+      "path": "config/publication_protocol.yaml",
+      "bytes": 2742,
+      "sha256": "a4307d356580e87549e855e8d8c5d6514b65f90e6b66ffcb2b934c9284b2f883"
+    },
+    {
+      "path": "docs/ARTIFACT_ARCHIVING.md",
+      "bytes": 1734,
+      "sha256": "d94aa31ff23293fff5a327287cef873c607aa4caa4829cb8b346fb54c2eb67ae"
+    },
+    {
+      "path": "docs/DATA_ACQUISITION.md",
+      "bytes": 3250,
+      "sha256": "1d4ad91133559dbb227ba1881c31e66a25859d4980595ab90446c20f9898ce43"
+    },
+    {
+      "path": "docs/DEFINITIVE_PROJECT_CONTEXT.md",
+      "bytes": 177725,
+      "sha256": "07fc42cf8cebecb38847bf44a399036d4115d4a0afaf4292fa2e47fc3b5d84c4"
+    },
+    {
+      "path": "docs/LICENSE_AND_DATA_USE.md",
+      "bytes": 1535,
+      "sha256": "ca265699a21b115657d62c3fca98998d46177e8acd10f76179a318d2150cfea7"
+    },
+    {
+      "path": "docs/NEXT_STEPS_PUBLICATION_ROADMAP.md",
+      "bytes": 40064,
+      "sha256": "109c0dc740033237f21cac0c5d37f38cf800149f831b9a86af875953f2e143c2"
+    },
+    {
+      "path": "docs/PROJECT_STRUCTURE.md",
+      "bytes": 4921,
+      "sha256": "5bff7851dd717ae7ed2636d2f8fc11c957b90fc6554cae04aca25993a323f86b"
+    },
+    {
+      "path": "docs/REPRODUCIBILITY.md",
+      "bytes": 6565,
+      "sha256": "bf144c5cdfd21be479737064671d128a830ee20692d769c7639556b518080d42"
+    },
+    {
+      "path": "docs/RUNBOOK.md",
+      "bytes": 20591,
+      "sha256": "1a22d299ac56159bf606c7d94b3ca60e1d411368d89af6f69513d24a19e3c451"
+    },
+    {
+      "path": "docs/SYSTEM_MODEL_AND_ROUTING_REPORT.md",
+      "bytes": 9749,
+      "sha256": "cc126001a2d0d5b44dfeec33cc94604b464b6ce64046c376acad9c729d6367f3"
+    },
+    {
+      "path": "docs/progress_reports/BLOCK_A_REPORT.md",
+      "bytes": 5352,
+      "sha256": "328f62ecefa35810b273548d3f151c4c5446d0b2b32d2a7af04e0752a8f2050a"
+    },
+    {
+      "path": "docs/progress_reports/BLOCK_C_PIDD_DEVELOPMENT_PILOT_REPORT.md",
+      "bytes": 6914,
+      "sha256": "56da6eed96baedcac392aba5322c3c46c239fb86ef8aad590771b9114ff8f8d6"
+    },
+    {
+      "path": "docs/progress_reports/BLOCK_D_PIDD_SHAP_REPORT.md",
+      "bytes": 4760,
+      "sha256": "96471b6a251bfc1d7151848509df3f5969b11425db5bcf9054ddd5c9503ae100"
+    },
+    {
+      "path": "docs/progress_reports/BLOCK_E_SYLHET_GROUPED_PILOT_REPORT.md",
+      "bytes": 5599,
+      "sha256": "413bace634e3b38e2643a41a95140eb7cf9280635b99ba852e2b5fbeffe71d9d"
+    },
+    {
+      "path": "docs/progress_reports/BLOCK_F_PIDD_AVAILABILITY_ROUTING_REPORT.md",
+      "bytes": 6676,
+      "sha256": "d7e991c5bbdd2527c25f26ef923ac927541a3179c4b5e582741e2471686436ff"
+    },
+    {
+      "path": "docs/progress_reports/BLOCK_G_PATIENT_RESULT_REPORT.md",
+      "bytes": 4726,
+      "sha256": "d25404665fb2ae51da78c27f3fe81fc477cab52ded14d093c8e389e22f7caacd"
+    },
+    {
+      "path": "docs/progress_reports/BLOCK_H_HOLDOUT_ENGINE_REPORT.md",
+      "bytes": 6517,
+      "sha256": "0d164c05558c78dd2d9aef2fa2ef378c8bbec58007d55e7be166794282691a23"
+    },
+    {
+      "path": "docs/progress_reports/BLOCK_I_FEATURE_ONTOLOGY_REPORT.md",
+      "bytes": 3765,
+      "sha256": "aacd56b7b882872bba0c0ae401b6c20db90ac8954990ead0c2c3dfdc22d9ccfa"
+    },
+    {
+      "path": "docs/progress_reports/BLOCK_J_MULTI_DATASET_ROUTING_REPORT.md",
+      "bytes": 2520,
+      "sha256": "20af7bcf2bb0284f34b5344c95c7ec1fffbe68b296aacf91b1385bba0ae82b17"
+    },
+    {
+      "path": "docs/progress_reports/BLOCK_K_RESEARCH_GRADE_AUDIT.md",
+      "bytes": 3597,
+      "sha256": "23f0f2cfd2b241bf4b616e27e87dd414c452961b5ee510287ebc75323790eed6"
+    },
+    {
+      "path": "docs/research/Ablation_Results.md",
+      "bytes": 6210,
+      "sha256": "b77639f5ed84e5b1e6d8966f6740bc4373260aa2cd8227618fbe0def7690d75d"
+    },
+    {
+      "path": "docs/research/Baseline_Reproducibility_Record.md",
+      "bytes": 11293,
+      "sha256": "330dbaa08c5bf4f96a0850a5e53fba2d34bd4ae54dee4b60e1f47f0ed8fd0b90"
+    },
+    {
+      "path": "docs/research/Data_Leakage_and_Applicability_Audit.md",
+      "bytes": 8108,
+      "sha256": "eb9dbb83c69dd61a2b019fac9eb8ccbc5d24c6fc8e925ca26a064fd741ca41e4"
+    },
+    {
+      "path": "docs/research/Decision_Log.md",
+      "bytes": 17003,
+      "sha256": "09a1322b52a1828da0195f3d2aeb6ec4d613b0e5f26642482194cbf5fab454ea"
+    },
+    {
+      "path": "docs/research/Endpoint_and_Claim_Hierarchy.md",
+      "bytes": 8517,
+      "sha256": "08fd6b7cabdc67864dd887da3f4b4f0e3e70ac636d87ebe823050cd7bb6087b4"
+    },
+    {
+      "path": "docs/research/Execution_Status.md",
+      "bytes": 4405,
+      "sha256": "60759364e5bf268ffc61e63d0555fdc6ebd75ac7809987b284a61a8d9f145e3f"
+    },
+    {
+      "path": "docs/research/Literature_Matrix.md",
+      "bytes": 13083,
+      "sha256": "a8e272bc8874cdbd62c6377fb22859095a020962603171f3275cdda333df57a0"
+    },
+    {
+      "path": "docs/research/Literature_Search_Protocol.md",
+      "bytes": 6701,
+      "sha256": "a7b178a75e36d83c3bc82e3e43b5e64b5329aa3734779ad25314995c92c248cc"
+    },
+    {
+      "path": "docs/research/Novelty_Assessment_v0.1.md",
+      "bytes": 4851,
+      "sha256": "327c6b6f645f27f22a11ced208741b02122a0654514a3222d79e98475aa1fa18"
+    },
+    {
+      "path": "docs/research/Publication_Blocker_Register.md",
+      "bytes": 9889,
+      "sha256": "91e5c22446e4a7492ee334b94a0756753b7e994d0f8971e058d505921d900f67"
+    },
+    {
+      "path": "docs/research/Statistical_Analysis_Plan.md",
+      "bytes": 20012,
+      "sha256": "5ce7d51de77e73cfa2b454ee4111ca4b685448b90a4fc849b674650b92fdfdaf"
+    },
+    {
+      "path": "docs/research/Threshold_and_Clinical_Utility_Policy.md",
+      "bytes": 7309,
+      "sha256": "005bc1c604806df3a569e2648d16068a62a27c79481436ea9284885237f4b9cf"
+    },
+    {
+      "path": "docs/research/requirements-baseline-2026-08-23.txt",
+      "bytes": 1086,
+      "sha256": "b98853573072f9e16f3cd4da82ca3c02f9843262a3a944dc8244af54cc4c66ae"
+    },
+    {
+      "path": "evidence/README.md",
+      "bytes": 1601,
+      "sha256": "11c9e6ea594d96ddf50b5bdd77ba5df0f9e490f8a8c843c697bbc4a53b1d4ba7"
+    },
+    {
+      "path": "pyproject.toml",
+      "bytes": 1094,
+      "sha256": "14de79e5222a1925e0543248a4d2e54bf7124bdd7c461fe3bb51e3ac3a08cf3e"
+    },
+    {
+      "path": "scripts/acquire_data.py",
+      "bytes": 5544,
+      "sha256": "04ca780d82105ff249fd1b1d25d54ec6eef10c9933dd554a863fb4d1847c6fde"
+    },
+    {
+      "path": "scripts/build_artifact_release_manifest.py",
+      "bytes": 3119,
+      "sha256": "9469106bebc6ba10526abea4671ab0d8a853d1791490a31aa2478d0b3e37ced8"
+    },
+    {
+      "path": "scripts/build_conference_manifest.py",
+      "bytes": 1628,
+      "sha256": "331665b0b64eed00cc625184f21f0a9ccf0dea28ae75436975b58934ef7c6f27"
+    },
+    {
+      "path": "scripts/build_conference_package.py",
+      "bytes": 29095,
+      "sha256": "34abd13e58e831b24052c04cbc544c5bfec5196bba5f2eff95e5184d8292c946"
+    },
+    {
+      "path": "scripts/build_development_evidence_snapshot.py",
+      "bytes": 6312,
+      "sha256": "aaa986abb2d02e59590b79de2c1fd8cb45c56b3471d50b45d8254066dbfa7c78"
+    },
+    {
+      "path": "scripts/build_study_registry.py",
+      "bytes": 8024,
+      "sha256": "7196a7c05d1c267c42ed7c9c16abcd0c0cf782b36003bd28c45d8e61ff3d7ea5"
+    },
+    {
+      "path": "scripts/build_system_model_routing_report.py",
+      "bytes": 45616,
+      "sha256": "e4d28d689cce897a9956c6171a149752cc9ee826c25a272643a721ebaf2f9b92"
+    },
+    {
+      "path": "scripts/final_preflight.py",
+      "bytes": 2577,
+      "sha256": "ec5020559630bdd00cf5db820b5715ee9e54d1c92a90a5465b595d175df0c40a"
+    },
+    {
+      "path": "scripts/migrate_development_evaluation_roles.py",
+      "bytes": 2595,
+      "sha256": "6c890e2baa0efae10b146944747c0eb480054db26e1fe5b3691508795d19875c"
+    },
+    {
+      "path": "scripts/render_docx_with_word.scpt",
+      "bytes": 314,
+      "sha256": "d585ac5f7eec36b2610204cdb44fafdc1ef17cfc8423c033ceab1e36a4a93984"
+    },
+    {
+      "path": "scripts/run_publication_readiness_audit.py",
+      "bytes": 1417,
+      "sha256": "6b5b07288951eac949fdf310a6d6ec4084ae9e7d1c2b2a5b2c2b579aa31a2aed"
+    },
+    {
+      "path": "scripts/verify_artifact_release_manifest.py",
+      "bytes": 1902,
+      "sha256": "72a2e3010def0286ef50200c18d6e55307eb1d5b2cd1341e7319f2c5b7fe1878"
+    },
+    {
+      "path": "scripts/verify_environment.py",
+      "bytes": 1643,
+      "sha256": "b4fe395b252bff2c96081737517750eb72f0a34baddbc784e5cf55c9aabe620e"
+    },
+    {
+      "path": "scripts/verify_holdout_bundles.py",
+      "bytes": 3894,
+      "sha256": "eadf5051002eef1cafe966efd5a51602876ba49f4bcedd9ad65c298a98df3cdc"
+    },
+    {
+      "path": "src/diabetes_pipeline/__init__.py",
+      "bytes": 89,
+      "sha256": "e8f0d2e58e248a66da0996ab897205e87d8a8d4e52cbe5308bef2d77e5bc54c7"
+    },
+    {
+      "path": "src/diabetes_pipeline/artifacts/__init__.py",
+      "bytes": 165,
+      "sha256": "126c1a9d244d8fd143d946cff458d387af9def1c593ff0404062908daea7449f"
+    },
+    {
+      "path": "src/diabetes_pipeline/artifacts/bundles.py",
+      "bytes": 1451,
+      "sha256": "c5e0b81f60be928c834f59ec768f2c180cac679566359461521549c3c819f31e"
+    },
+    {
+      "path": "src/diabetes_pipeline/calibration/__init__.py",
+      "bytes": 467,
+      "sha256": "435bbd916dda47c1d312f5f607fb68a9c9b86a4ed047a3f1ec9dac2ebe4a1ff4"
+    },
+    {
+      "path": "src/diabetes_pipeline/calibration/calibrators.py",
+      "bytes": 6519,
+      "sha256": "99ef9958b503a91d7452db9060f13efdae28c4953bae31ffb473ac9a648ee3a6"
+    },
+    {
+      "path": "src/diabetes_pipeline/calibration/thresholds.py",
+      "bytes": 2620,
+      "sha256": "833b3ab2bb339a2fe88cec0688eefe52d514da6015a89821976c89eb797dbc75"
+    },
+    {
+      "path": "src/diabetes_pipeline/cli.py",
+      "bytes": 33466,
+      "sha256": "0f749aabb8febabee96856f9a7bb701c9f28c9cd97c15f8aa3391bc33ab9e43d"
+    },
+    {
+      "path": "src/diabetes_pipeline/contracts.py",
+      "bytes": 1112,
+      "sha256": "4b5d8e7eb3d08752510118c5b07ba87f637edfe944603120588bb4668851714a"
+    },
+    {
+      "path": "src/diabetes_pipeline/data/__init__.py",
+      "bytes": 146,
+      "sha256": "d754a5b7e194a0c2ad476a48a228af5af9082461e055b36548a7197fa3e665c0"
+    },
+    {
+      "path": "src/diabetes_pipeline/data/loaders.py",
+      "bytes": 10449,
+      "sha256": "2b4e4aa9d384a399af327d09bb83684f0703b31ea0045ec21226c624f3611443"
+    },
+    {
+      "path": "src/diabetes_pipeline/data/manifests.py",
+      "bytes": 4725,
+      "sha256": "a178fcd1a90189dd572634965f1d3f16b87c46705b3044248cc450ca429de437"
+    },
+    {
+      "path": "src/diabetes_pipeline/data/research_audit.py",
+      "bytes": 11775,
+      "sha256": "141b58fb2e948dc85fc462b56b513dc03123031338e602687cca2ea31d99eb97"
+    },
+    {
+      "path": "src/diabetes_pipeline/data/validators.py",
+      "bytes": 2285,
+      "sha256": "cde963de434c427a5be370a8e489de618274ad5b5111747fdeaf538969af9036"
+    },
+    {
+      "path": "src/diabetes_pipeline/evaluation/__init__.py",
+      "bytes": 624,
+      "sha256": "b096b098c7fffcafd87ced563bc0c72fd761e42ae020f23098d850ba687526dc"
+    },
+    {
+      "path": "src/diabetes_pipeline/evaluation/ablations.py",
+      "bytes": 25157,
+      "sha256": "46d7484e1e4d55f56e264ddf61785706e5008c2de9e5a3b32a58812edc09851c"
+    },
+    {
+      "path": "src/diabetes_pipeline/evaluation/bootstrap.py",
+      "bytes": 4851,
+      "sha256": "9ab340d036d09f509f7b797feddfe5589d23c40ba4bfe316c2cbf8d619a377a7"
+    },
+    {
+      "path": "src/diabetes_pipeline/evaluation/comparisons.py",
+      "bytes": 9511,
+      "sha256": "e199c9f0403537eafa44b1b52a26a09cc4acdc6854274cf71a2a2478289fe65a"
+    },
+    {
+      "path": "src/diabetes_pipeline/evaluation/decision_curve.py",
+      "bytes": 1465,
+      "sha256": "16dcbe4add5256ea6d5a340cf50a589f06ae2e559edab2f93ba7fd5d9de9f970"
+    },
+    {
+      "path": "src/diabetes_pipeline/evaluation/decision_curve_inference.py",
+      "bytes": 10635,
+      "sha256": "b38cf7c8aa96d210f7028986f17c386c798d3662c2704364a89865651ff2481c"
+    },
+    {
+      "path": "src/diabetes_pipeline/evaluation/leakage_demonstrations.py",
+      "bytes": 7840,
+      "sha256": "033c3ad9795e054a0caf289ccd7a8979114a908bfe68ec4bd981e02cebf157c0"
+    },
+    {
+      "path": "src/diabetes_pipeline/evaluation/metrics.py",
+      "bytes": 4669,
+      "sha256": "c825b234cf50da6f3743a72bbddae592915b890c6ace0b616ae3436646dfa58f"
+    },
+    {
+      "path": "src/diabetes_pipeline/evaluation/missingness_stress.py",
+      "bytes": 13167,
+      "sha256": "e7a9956eea9bc6e04969e1101bbfa4188fcdcc16967732667b9fc6a20c4b1a4e"
+    },
+    {
+      "path": "src/diabetes_pipeline/evaluation/panel_training_ablations.py",
+      "bytes": 26425,
+      "sha256": "d69c8f95532295702b275ce6cdb692135b75e8e39009177aa7f181c13fcfd9e3"
+    },
+    {
+      "path": "src/diabetes_pipeline/evaluation/plots.py",
+      "bytes": 6754,
+      "sha256": "98eb3b10f069d32079a9ae34e46c76197ac1f108352c2ea2beec6e4fca373a8a"
+    },
+    {
+      "path": "src/diabetes_pipeline/evaluation/repeated_cv.py",
+      "bytes": 5427,
+      "sha256": "c2e5a65849367e37dfb10c4a45e58f051fa7e4f6a04f0872b9054710e427074a"
+    },
+    {
+      "path": "src/diabetes_pipeline/evaluation/reporting_ablations.py",
+      "bytes": 5899,
+      "sha256": "aa54f425fde094fa5e922cc67b4d221528db5065dd441265c76444d99f18d13d"
+    },
+    {
+      "path": "src/diabetes_pipeline/evaluation/retraining_ablations.py",
+      "bytes": 19135,
+      "sha256": "533a5e43cbef64a5a390f866e5bf3af2e96d450670f282b08b88fe53fdd380a9"
+    },
+    {
+      "path": "src/diabetes_pipeline/evaluation/selective_prediction.py",
+      "bytes": 13426,
+      "sha256": "830cc5a9e4788939be99b2a3559c4e488a822bf8859417fb1e98dabd8b05d5be"
+    },
+    {
+      "path": "src/diabetes_pipeline/evaluation/subgroup_analysis.py",
+      "bytes": 11789,
+      "sha256": "928b1f9dd4e718f6a2f4f7be7cbe080a6f3b711d13b87589b00da62ea16bbcd6"
+    },
+    {
+      "path": "src/diabetes_pipeline/evaluation/survey_sensitivity.py",
+      "bytes": 22581,
+      "sha256": "d7404c53e9a95141e977b2ba6f075734ba0481856ee330413c425106c48facc2"
+    },
+    {
+      "path": "src/diabetes_pipeline/explainability/__init__.py",
+      "bytes": 370,
+      "sha256": "d606158e47e6ee6d96009527c40576721e5492eeec6b060472939a6c22cc6822"
+    },
+    {
+      "path": "src/diabetes_pipeline/explainability/holdout_shap.py",
+      "bytes": 13390,
+      "sha256": "22805dd1cd9f2ddd0345146e36fc741975e3334067d0af747b436f63185c06ed"
+    },
+    {
+      "path": "src/diabetes_pipeline/explainability/plots.py",
+      "bytes": 7725,
+      "sha256": "2fd289ab6380f08af85053420d361a23b8d33cb6cb65f8510c7f430d0bbbe996"
+    },
+    {
+      "path": "src/diabetes_pipeline/explainability/shap_analysis.py",
+      "bytes": 22973,
+      "sha256": "803ed1d880acc3b36420f7dd7915493b6898fdfaba50fcafccf738e465584688"
+    },
+    {
+      "path": "src/diabetes_pipeline/explainability/stability.py",
+      "bytes": 5169,
+      "sha256": "0838385a22c2a659c6e64bbb0082bd4167bb1ffe581e4defc1d8733c71df0b13"
+    },
+    {
+      "path": "src/diabetes_pipeline/features/__init__.py",
+      "bytes": 172,
+      "sha256": "e590b8144bfcd68757330ba770a460a5a646cc0eb617cb59db47530ed4408b4d"
+    },
+    {
+      "path": "src/diabetes_pipeline/features/ontology.py",
+      "bytes": 8755,
+      "sha256": "634a57393047e938bc7827e7fb80ae5bce7109b68b4fee74cb71975a9ac30100"
+    },
+    {
+      "path": "src/diabetes_pipeline/holdout_runner.py",
+      "bytes": 35728,
+      "sha256": "7752c21787b59a6b010434969b9fd3abcf967a059ed068a189deb05e26984d5a"
+    },
+    {
+      "path": "src/diabetes_pipeline/models/__init__.py",
+      "bytes": 207,
+      "sha256": "0bdff018d8b07e596e09c2e09ef96da5a34a4724d8afb7b2caf10f284e45e26b"
+    },
+    {
+      "path": "src/diabetes_pipeline/models/base.py",
+      "bytes": 1123,
+      "sha256": "04a8ebc64bc8c2d3540416deb23470014166a24deeddee1463b548521c24e8b3"
+    },
+    {
+      "path": "src/diabetes_pipeline/models/registry.py",
+      "bytes": 6419,
+      "sha256": "b01265d7cb0f495e3f640b46d9354e6f9785d3b10fdb258888663d757e9ca1ce"
+    },
+    {
+      "path": "src/diabetes_pipeline/preprocessing/__init__.py",
+      "bytes": 206,
+      "sha256": "a1137bb3a7828765a9be251fa69a9e6259768f84589e0005273f156fa97e5a14"
+    },
+    {
+      "path": "src/diabetes_pipeline/preprocessing/builders.py",
+      "bytes": 2799,
+      "sha256": "84fec95e7d5814e146490fad860db68f604349b71e45c684d415b4d800f9b5fa"
+    },
+    {
+      "path": "src/diabetes_pipeline/reporting/__init__.py",
+      "bytes": 726,
+      "sha256": "ea8897460856f0ae460b836601cb7285fc021a282804f180ec055efbfc93d213"
+    },
+    {
+      "path": "src/diabetes_pipeline/reporting/mixed_patient_results.py",
+      "bytes": 14979,
+      "sha256": "3e073d671dc946b95d4d12aa8bbb60bf87e70dc1982e1e638874c8a7c0731389"
+    },
+    {
+      "path": "src/diabetes_pipeline/reporting/patient_results.py",
+      "bytes": 28576,
+      "sha256": "3521a7e9dc65ba35cd5ca27ffdf94fa3f16e2f73e7b6682566f7b6b3d0c99728"
+    },
+    {
+      "path": "src/diabetes_pipeline/reporting/publication_readiness.py",
+      "bytes": 14725,
+      "sha256": "4bda86418083587db70449de35a782d56e8194690d4c34b8cf2005a6cfc4fa9b"
+    },
+    {
+      "path": "src/diabetes_pipeline/routing/__init__.py",
+      "bytes": 267,
+      "sha256": "ccff14f3b597c99b8ea5ce688b26333acc2b11815ee46e93bb5479acaecbcf2a"
+    },
+    {
+      "path": "src/diabetes_pipeline/routing/evaluator.py",
+      "bytes": 23967,
+      "sha256": "0858c7ec30e4bf8f97e1770cbcfafda2d58b5ce68baf269b85e020962a14dee5"
+    },
+    {
+      "path": "src/diabetes_pipeline/routing/holdout_evaluator.py",
+      "bytes": 18216,
+      "sha256": "8028ebbf2a091624ca485924f1d02069778aad8d9f22b7f9c9b291b5b4f294f9"
+    },
+    {
+      "path": "src/diabetes_pipeline/routing/inference.py",
+      "bytes": 3641,
+      "sha256": "bdab26371395c0b1be74ec5ca6b58db75a404cf12524f9d53b9c111f2a13b729"
+    },
+    {
+      "path": "src/diabetes_pipeline/routing/panel_contrasts.py",
+      "bytes": 15309,
+      "sha256": "ade92de6791d5996ee4f0040dcdab3f079ca8b5c55efeb08eea8e182693f3bcb"
+    },
+    {
+      "path": "src/diabetes_pipeline/routing/plots.py",
+      "bytes": 4066,
+      "sha256": "ecbf67554a73a6c13fc22b6ee7f80529498b109a4d8f6eeec0ffd37485eee16d"
+    },
+    {
+      "path": "src/diabetes_pipeline/runner.py",
+      "bytes": 33062,
+      "sha256": "14e5fdfd9718d4fa4172562c7144274c9a66221896d7afe146a0d3cf9600a6ba"
+    },
+    {
+      "path": "src/diabetes_pipeline/settings.py",
+      "bytes": 3813,
+      "sha256": "718ac42d99f2c15adfd7c8b79742d52070d1742d97910d5a21ba510b266a6e89"
+    },
+    {
+      "path": "src/diabetes_pipeline/splitting/__init__.py",
+      "bytes": 175,
+      "sha256": "84adc4e017ce791a779bcece4a29d595b0b3614ce0871e4ec8948ba48c3821aa"
+    },
+    {
+      "path": "src/diabetes_pipeline/splitting/concealment.py",
+      "bytes": 18564,
+      "sha256": "1e87ddc5efda989450fd00b4ce3b39ccc2ff9bd9e536f8ed82f6dd705dd6c64b"
+    },
+    {
+      "path": "src/diabetes_pipeline/splitting/registry.py",
+      "bytes": 5568,
+      "sha256": "c040653c9e8e02808cf64dc6309c426950dcbf99fa388d78abd58538179213a8"
+    },
+    {
+      "path": "src/diabetes_pipeline/splitting/strategies.py",
+      "bytes": 5793,
+      "sha256": "ed1465d44a83f3bbbaedb297e018a1fa1833515aaee2bcb734feadb2be7a9aac"
+    },
+    {
+      "path": "src/diabetes_pipeline/training/__init__.py",
+      "bytes": 190,
+      "sha256": "a118d3ff85319ade0daecb5f2fd1d0859ef42678c51e5c6098afa18ab126f390"
+    },
+    {
+      "path": "src/diabetes_pipeline/training/tuning.py",
+      "bytes": 8904,
+      "sha256": "54703c15374c4b45326ea0ac1b4ee8e8107422f1d9ce4b26985bf08aec575292"
+    },
+    {
+      "path": "tests/__init__.py",
+      "bytes": 40,
+      "sha256": "36dce14a6c5424d4e9ba0fe688bed8f9225d7f3d0514525d7b68b0ff79a5482c"
+    },
+    {
+      "path": "tests/test_ablations.py",
+      "bytes": 4016,
+      "sha256": "639e58156cc00fdecd5328da1d832009d9c61f655efe5ecf2a29855bd16520f6"
+    },
+    {
+      "path": "tests/test_artifact_reload.py",
+      "bytes": 1883,
+      "sha256": "0e8cf4fcc204661f3f8bf5410685615608473b09ddc1cf09cdb6c8fccec62222"
+    },
+    {
+      "path": "tests/test_concealment.py",
+      "bytes": 14095,
+      "sha256": "1e94819867f062db37c5c072d1917023202d0b54bd228058b9b71c18a611165e"
+    },
+    {
+      "path": "tests/test_configs.py",
+      "bytes": 3704,
+      "sha256": "f13e6225689d0e8dddb8d8f4cb2b5cac8d389063112504b9e2dca947e522de89"
+    },
+    {
+      "path": "tests/test_data_validation.py",
+      "bytes": 1768,
+      "sha256": "5fef0d19ab129466b220bbb16697a3ca4dde6f90d357d5124277574613f7ba58"
+    },
+    {
+      "path": "tests/test_decision_curve_inference.py",
+      "bytes": 3117,
+      "sha256": "a87d941bf89599b006e775b46837975d7dcb407560ab4292d8e25b90bf6a27c7"
+    },
+    {
+      "path": "tests/test_explainability.py",
+      "bytes": 3686,
+      "sha256": "d930d6ff51d3c84499915136c1a28cc900b1d4bcfd31106b732a65720256c16b"
+    },
+    {
+      "path": "tests/test_feature_ontology.py",
+      "bytes": 1566,
+      "sha256": "c48fb6f81e61fb6acdf21b3eb803a083c523badc85845857fbfc577c0b37e110"
+    },
+    {
+      "path": "tests/test_holdout_evaluation.py",
+      "bytes": 5426,
+      "sha256": "63f2fa15247b6e9365e3112b42085f087b340b808f95c0d3f0edf61822daea02"
+    },
+    {
+      "path": "tests/test_leakage_demonstrations.py",
+      "bytes": 1044,
+      "sha256": "2a96691ab08dbe3a9f99e4f3ca0fe72fb5e2a816a6d54fe1f0b084dff7bdf77a"
+    },
+    {
+      "path": "tests/test_metrics_calibration.py",
+      "bytes": 5378,
+      "sha256": "8c1c3620fa8a5c9e7611e6bfcc2eaf61a10076d9ad49836a67181878e17ac878"
+    },
+    {
+      "path": "tests/test_missingness_stress.py",
+      "bytes": 2128,
+      "sha256": "9f63f8fe457f3004700983e231d10b4ddb33a282e3728f4d7cff0cdd6e37708d"
+    },
+    {
+      "path": "tests/test_models.py",
+      "bytes": 1367,
+      "sha256": "99c278669820b50a3c5bddfee4adce5cd2e05d0dcd72de24b985791fc2927c7c"
+    },
+    {
+      "path": "tests/test_panel_contrasts.py",
+      "bytes": 3504,
+      "sha256": "c7bf8fac5e759640781d5a4011adbed3569f2f6fc967b52663b41835da10d3c9"
+    },
+    {
+      "path": "tests/test_panel_training_ablations.py",
+      "bytes": 4695,
+      "sha256": "b0b6e7665b9c030000ee459aa792cfcec389f08139b07c07b0e7e89f87a3851e"
+    },
+    {
+      "path": "tests/test_patient_results.py",
+      "bytes": 7670,
+      "sha256": "95c92c9b6b6c87b1c5264da2787579cab79f1a3c98707bb8f0d6545b95117d0a"
+    },
+    {
+      "path": "tests/test_preprocessing.py",
+      "bytes": 1527,
+      "sha256": "631263c63a5b2c710d66f8b5e314535fb761b972da4e395b7c137be73cda1ba0"
+    },
+    {
+      "path": "tests/test_publication_readiness.py",
+      "bytes": 1636,
+      "sha256": "47d296d04c8591b9edbfaaa889c56f144b3f290a6a8284cda7467d70d765b3c5"
+    },
+    {
+      "path": "tests/test_release_governance.py",
+      "bytes": 3089,
+      "sha256": "bfe0e7088c7bbce4112bd66c5b0b6e5d83419f0b570456ab3853240a3e5766e6"
+    },
+    {
+      "path": "tests/test_repeated_cv_inference.py",
+      "bytes": 2776,
+      "sha256": "4508c00bf578c117a6101e89f190e48e04af9f9abf9b617f882408885c02f9bf"
+    },
+    {
+      "path": "tests/test_reporting_ablations.py",
+      "bytes": 878,
+      "sha256": "391048093ba016295acad717a4eff328d68646ef026730ca1f553908354441de"
+    },
+    {
+      "path": "tests/test_reproducibility.py",
+      "bytes": 4875,
+      "sha256": "e1b9aad96e29d5eed5654536395138535c12012f5ec23fe66944691e8a52320d"
+    },
+    {
+      "path": "tests/test_research_audit.py",
+      "bytes": 752,
+      "sha256": "9bf02bc463cf01055a270f06e972acb91c414faab5776ee52f4b452d46f8c3fb"
+    },
+    {
+      "path": "tests/test_retraining_ablations.py",
+      "bytes": 3509,
+      "sha256": "be7ccaa664d4ae4c31c5a4e803fff3ed614e65fb704d32df318c65af3a79460a"
+    },
+    {
+      "path": "tests/test_routing.py",
+      "bytes": 3853,
+      "sha256": "a328a7e0e5c66075f6a1fafd020a9fbad536589acfc2704d3b43742e8a1830a8"
+    },
+    {
+      "path": "tests/test_selective_prediction.py",
+      "bytes": 2709,
+      "sha256": "408262f56a47eb244bec07dce5383d9d788360ac9779895c7f3e6145d20adf17"
+    },
+    {
+      "path": "tests/test_splits.py",
+      "bytes": 1680,
+      "sha256": "5432cb651f9327732713980bd164fd0006a48786695e1246b82d8d355fd66c0e"
+    },
+    {
+      "path": "tests/test_subgroup_analysis.py",
+      "bytes": 2923,
+      "sha256": "176363b41a5444692b6f33171ae93156250cf9003f23fe850a8198e82b10b60e"
+    },
+    {
+      "path": "tests/test_survey_sensitivity.py",
+      "bytes": 2325,
+      "sha256": "c0dd652404e63de7a445c23af6ca424a99767fc6e1a9423ef9856f241bf5e78c"
+    }
+  ],
+  "primary_snapshot_recalculation": {
+    "estimates_checked": 80,
+    "differences_gt_1e_12": []
+  }
+}

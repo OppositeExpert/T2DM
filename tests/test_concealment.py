@@ -74,7 +74,7 @@ class ConcealmentTests(unittest.TestCase):
         }
         protocol_path = root / "protocol.yaml"
         protocol_path.write_text(yaml.safe_dump(protocol))
-        return protocol_path, {"name": "final", "seed": 901, "locked": True}, manifest_path
+        return protocol_path, {**load_experiment_profile("final"), "seed": 901, "locked": True}, manifest_path
 
     def test_sanitized_manifest_has_no_outcome_column(self) -> None:
         manifest = pd.DataFrame(

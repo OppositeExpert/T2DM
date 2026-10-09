@@ -4,6 +4,7 @@ evaluation_roles_by_evidence_tier:
   execution_only_smoke: smoke_test
   full_development: development_test
   final_locked: locked_final_test
+  final_internal_validation: locked_internal_validation
 
 prediction_columns:
   - experiment_id

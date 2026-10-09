@@ -55,6 +55,9 @@ from diabetes_pipeline.training.tuning import (
     positive_class_weight,
     tune_model,
 )
+from diabetes_pipeline.publication.governance import (
+    assert_final_internal_validation_authorized,
+)
 
 
 LOGGER = logging.getLogger(__name__)
@@ -107,6 +110,10 @@ def _holdout_evidence_tier(profile_name: str, profile: dict[str, Any]) -> str:
         return "full_development"
     if profile_name == "final" and bool(profile.get("locked", False)):
         return "final_locked"
+    if profile_name == "final_internal_validation" and bool(
+        profile.get("locked", False)
+    ):
+        return "final_internal_validation"
     raise ValueError(
         "Holdout studies support only smoke, development, or an authorized locked final profile"
     )
@@ -244,6 +251,7 @@ def run_holdout_benchmark(
         "smoke": "smoke_test",
         "development": "development_test",
         "final": "locked_final_test",
+        "final_internal_validation": "locked_internal_validation",
     }[profile_name]
     run_started_at_utc = datetime.now(timezone.utc).isoformat()
     raw_data_sha256 = _sha256_file(Path(dataset_cfg["raw_path"]))
@@ -267,7 +275,7 @@ def run_holdout_benchmark(
     audit_path, audit_markdown_path, audit = write_audit(dataset)
     if str(audit["raw_sha256"]) != raw_data_sha256:
         raise RuntimeError("Raw data changed between authorization and dataset audit")
-    if profile_name in {"smoke", "development"}:
+    if profile_name in {"smoke", "development", "final_internal_validation"}:
         split_path, split_metadata_path, manifest = create_and_write_split_manifest(
             dataset, seed=int(profile["seed"])
         )
@@ -314,6 +322,19 @@ def run_holdout_benchmark(
     split_manifest_sha256 = json.loads(
         split_metadata_path.read_text(encoding="utf-8")
     )["manifest_sha256"]
+    protocol_id = None
+    if profile_name == "final_internal_validation":
+        protocol_id = assert_final_internal_validation_authorized(
+            dataset_name=dataset_name,
+            profile=profile,
+            models=models,
+            raw_data_sha256=raw_data_sha256,
+            split_manifest_sha256=str(split_manifest_sha256),
+            dataset_configuration_sha256=configuration_sha256(dataset_cfg),
+            analysis_configuration_sha256=analysis_configuration_sha256,
+            source_tree_sha256=source_tree_sha256(),
+            requirements_lock_sha256=_sha256_file(PROJECT_ROOT / "requirements.lock"),
+        )
     experiment_id = _experiment_id(
         dataset_cfg,
         profile,
@@ -532,7 +553,7 @@ def run_holdout_benchmark(
     # No test feature or label is used before all model, calibration, threshold,
     # and champion choices above have been locked from development data.
     final_access_receipt = None
-    if profile_name == "final":
+    if profile_name in {"final", "final_internal_validation"}:
         final_access_receipt = _claim_final_test_access(output_dir, experiment_id)
     test_positions = test_manifest["row_position"].to_numpy(dtype=int)
     X_test = dataset.X.iloc[test_positions].reset_index(drop=True)
@@ -794,7 +815,11 @@ def run_holdout_benchmark(
         json.dumps(
             {
                 "experiment_id": experiment_id,
-                "runner": "development_locked_holdout",
+                "runner": (
+                    "locked_internal_validation_holdout"
+                    if profile_name == "final_internal_validation"
+                    else "development_locked_holdout"
+                ),
                 "dataset": dataset_name,
                 "task": dataset_cfg["task"],
                 "endpoint": dataset_cfg["endpoint"],
@@ -823,12 +848,14 @@ def run_holdout_benchmark(
                 "profile": profile,
                 "evidence_tier": evidence_tier,
                 "evaluation_role": evaluation_role,
+                "protocol_id": protocol_id,
                 "models": list(models),
                 "development_selected_champion": champion,
                 "test_access": {
                     "smoke": "smoke_path_check_not_for_scientific_inference",
                     "development": "development_test_previously_accessed_not_final_eligible",
                     "final": "single_locked_final_evaluation",
+                    "final_internal_validation": "prespecified_reanalysis_of_previously_accessed_partition_not_independent_test",
                 }[profile_name],
                 "final_test_access_receipt": (
                     str(final_access_receipt.relative_to(output_dir))

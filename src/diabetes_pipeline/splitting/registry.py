@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import Any
 
 import pandas as pd
+import numpy as np
 
 from diabetes_pipeline.contracts import LoadedDataset
 from diabetes_pipeline.settings import (
@@ -42,7 +43,37 @@ def validate_split_manifest(
     cfg: dict[str, Any],
 ) -> None:
     strategy = cfg["evaluation_strategy"]
+    required = {"dataset", "strategy", "row_position", "row_id", "group_id",
+                "target", "role", "repeat", "outer_fold"}
+    if required - set(manifest):
+        raise ValueError(f"{dataset.name}: incomplete split identity contract")
+    if manifest.empty or not manifest["dataset"].eq(dataset.name).all():
+        raise ValueError(f"{dataset.name}: split dataset identity mismatch")
+    if not manifest["strategy"].eq(strategy).all():
+        raise ValueError(f"{dataset.name}: split strategy mismatch")
+    numeric_positions = pd.to_numeric(manifest["row_position"], errors="coerce")
+    if (numeric_positions.isna().any() or
+            not numeric_positions.between(0, len(dataset.X) - 1).all() or
+            not numeric_positions.eq(np.floor(numeric_positions)).all()):
+        raise ValueError(f"{dataset.name}: invalid row positions")
+    positions = numeric_positions.to_numpy(dtype=int)
+    for column, expected in (
+        ("row_id", dataset.row_ids.iloc[positions].astype(str).to_numpy()),
+        ("target", dataset.y.iloc[positions].to_numpy()),
+        ("group_id", dataset.groups.iloc[positions].astype(str).to_numpy()
+         if dataset.groups is not None else np.full(len(manifest), "")),
+    ):
+        actual = (manifest[column].fillna("").astype(str).to_numpy()
+                  if column != "target" else manifest[column].to_numpy())
+        if not np.array_equal(actual, expected):
+            raise ValueError(f"{dataset.name}: {column} does not match row positions")
+    if manifest.duplicated(["repeat", "outer_fold", "row_position"]).any():
+        raise ValueError(f"{dataset.name}: duplicate row within a split")
     if strategy in {"stratified_holdout_cv", "stratified_group_holdout_cv"}:
+        if manifest["row_position"].duplicated().any() or set(positions) != set(range(len(dataset.X))):
+            raise ValueError(f"{dataset.name}: holdout positions must cover each record once")
+        if set(manifest["repeat"]) != {0} or set(manifest.loc[manifest["role"] == "development", "outer_fold"]) != set(range(int(cfg["cv_folds"]))):
+            raise ValueError(f"{dataset.name}: incomplete development folds")
         if len(manifest) != len(dataset.X):
             raise ValueError(f"{dataset.name}: holdout manifest must contain one row per record")
         if set(manifest["role"]) != {"development", "test"}:
@@ -75,6 +106,15 @@ def validate_split_manifest(
 
     repeats = int(cfg["repeats"])
     outer_folds = int(cfg["outer_folds"])
+    if (set(manifest["role"]) != {"train", "validation"} or
+            set(manifest["repeat"]) != set(range(repeats)) or
+            set(manifest["outer_fold"]) != set(range(outer_folds))):
+        raise ValueError(f"{dataset.name}: invalid repeated-CV roles or folds")
+    for _, frame in manifest.groupby(["repeat", "outer_fold"]):
+        if (len(frame) != len(dataset.X) or
+                set(frame["row_position"]) != set(range(len(dataset.X))) or
+                set(frame["role"]) != {"train", "validation"}):
+            raise ValueError(f"{dataset.name}: incomplete or overlapping outer split")
     expected_rows = len(dataset.X) * repeats * outer_folds
     if len(manifest) != expected_rows:
         raise ValueError(
@@ -114,7 +154,9 @@ def create_and_write_split_manifest(
     output_dir.mkdir(parents=True, exist_ok=True)
     csv_path = output_dir / f"splits_seed_{seed}.csv"
     metadata_path = output_dir / f"splits_seed_{seed}.json"
-    manifest.to_csv(csv_path, index=False)
+    payload = manifest.to_csv(index=False, lineterminator="\n")
+    if csv_path.exists() and csv_path.read_text(encoding="utf-8") != payload:
+        raise RuntimeError("Existing split manifest differs; overwrite is prohibited")
 
     metadata = {
         "dataset": dataset.name,
@@ -125,5 +167,13 @@ def create_and_write_split_manifest(
         "manifest_sha256": _frame_sha256(manifest),
         "partitions": _partition_summary(manifest),
     }
-    metadata_path.write_text(json.dumps(metadata, indent=2, sort_keys=True), encoding="utf-8")
+    if metadata_path.exists():
+        if json.loads(metadata_path.read_text(encoding="utf-8")) != metadata:
+            raise RuntimeError("Existing split metadata differs; overwrite is prohibited")
+    if not csv_path.exists():
+        with csv_path.open("x", encoding="utf-8") as handle:
+            handle.write(payload)
+    if not metadata_path.exists():
+        with metadata_path.open("x", encoding="utf-8") as handle:
+            handle.write(json.dumps(metadata, indent=2, sort_keys=True))
     return csv_path, metadata_path, manifest

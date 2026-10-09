@@ -54,6 +54,10 @@ def aggregate_routing_predictions(predictions: pd.DataFrame) -> pd.DataFrame:
     frame = predictions.copy()
     if "repeat" not in frame:
         frame["repeat"] = 0
+    if "status" not in frame:
+        frame["status"] = "predicted"
+    if "abstention_reason" not in frame:
+        frame["abstention_reason"] = ""
     frame["row_id"] = frame["row_id"].astype(str)
     frame["group_id"] = frame["group_id"].fillna("").astype(str)
     keys = ["system", "scenario", "row_id", "repeat"]
@@ -62,9 +66,14 @@ def aggregate_routing_predictions(predictions: pd.DataFrame) -> pd.DataFrame:
     stability = frame.groupby(["system", "scenario", "row_id"], sort=False).agg(
         outcomes=("target", "nunique"),
         groups=("group_id", "nunique"),
+        statuses=("status", "nunique"),
     )
-    if stability["outcomes"].ne(1).any() or stability["groups"].ne(1).any():
-        raise ValueError("Participant outcome or group changed across repeats")
+    if (
+        stability["outcomes"].ne(1).any()
+        or stability["groups"].ne(1).any()
+        or stability["statuses"].ne(1).any()
+    ):
+        raise ValueError("Participant outcome, group, or support status changed across repeats")
     return (
         frame.groupby(["system", "scenario", "row_id"], as_index=False, sort=True)
         .agg(
@@ -72,6 +81,8 @@ def aggregate_routing_predictions(predictions: pd.DataFrame) -> pd.DataFrame:
             group_id=("group_id", "first"),
             target=("target", "first"),
             probability_calibrated=("probability_calibrated", "mean"),
+            status=("status", "first"),
+            base_abstention_reason=("abstention_reason", "first"),
             repeat_count=("repeat", "nunique"),
         )
         .reset_index(drop=True)
@@ -82,10 +93,16 @@ def _accepted_mask(frame: pd.DataFrame, target_coverage: float) -> np.ndarray:
     if not 0.0 < target_coverage <= 1.0:
         raise ValueError("Coverage levels must be in (0, 1]")
     target_rows = int(np.ceil(len(frame) * target_coverage))
-    groups = frame["group_id"].fillna("").astype(str)
+    eligible = frame[
+        frame["status"].eq("predicted")
+        & frame["probability_calibrated"].notna()
+    ].copy()
+    if eligible.empty:
+        return np.zeros(len(frame), dtype=bool)
+    groups = eligible["group_id"].fillna("").astype(str)
     if groups.str.len().gt(0).any():
         group_frame = (
-            frame.assign(_group=groups)
+            eligible.assign(_group=groups)
             .groupby("_group", as_index=False)
             .agg(confidence=("confidence", "mean"), rows=("row_id", "size"))
             .sort_values(["confidence", "_group"], ascending=[False, True])
@@ -95,8 +112,9 @@ def _accepted_mask(frame: pd.DataFrame, target_coverage: float) -> np.ndarray:
             group_frame["cumulative_rows"].shift(fill_value=0).lt(target_rows),
             "_group",
         ]
-        return groups.isin(set(accepted_groups)).to_numpy()
-    ordered = frame.sort_values(
+        accepted_index = eligible.index[groups.isin(set(accepted_groups))]
+        return frame.index.isin(accepted_index)
+    ordered = eligible.sort_values(
         ["confidence", "row_id"], ascending=[False, True]
     ).index[:target_rows]
     return frame.index.isin(ordered)
@@ -112,8 +130,10 @@ def selective_prediction_analysis(
     """Evaluate outcome-blind probability certainty at fixed coverage levels."""
 
     aggregated = aggregate_routing_predictions(predictions)
-    aggregated["confidence"] = (
-        2.0 * (aggregated["probability_calibrated"] - 0.5).abs()
+    aggregated["confidence"] = np.where(
+        aggregated["status"].eq("predicted"),
+        2.0 * (aggregated["probability_calibrated"] - 0.5).abs(),
+        -np.inf,
     )
     decision_frames: list[pd.DataFrame] = []
     metric_records: list[dict[str, Any]] = []
@@ -130,7 +150,13 @@ def selective_prediction_analysis(
             decisions["accepted"] = accepted
             decisions["abstained"] = ~accepted
             decisions["abstention_reason"] = np.where(
-                accepted, "accepted", "low_probability_certainty"
+                accepted,
+                "accepted",
+                np.where(
+                    decisions["status"].ne("predicted"),
+                    decisions["base_abstention_reason"],
+                    "low_probability_certainty",
+                ),
             )
             decision_frames.append(decisions)
             retained = decisions[decisions["accepted"]].reset_index(drop=True)
@@ -211,7 +237,11 @@ def selective_prediction_analysis(
 def _render_report(metadata: dict[str, Any], metrics: pd.DataFrame) -> str:
     estimated = metrics[metrics["status"] == "estimated"].copy()
     lines = [
-        "# Selective Prediction Development Analysis",
+        (
+            "# Final Internal-Validation Selective Prediction Analysis"
+            if metadata.get("evidence_tier") == "final_internal_validation"
+            else "# Selective Prediction Development Analysis"
+        ),
         "",
         f"**Dataset:** `{metadata['dataset']}`",
         "",
@@ -242,9 +272,16 @@ def _render_report(metadata: dict[str, Any], metrics: pd.DataFrame) -> str:
     lines.extend(
         [
             "",
-            "This is development-only evidence. Reduced-coverage performance must "
-            "always be interpreted with both abstention rate and positive-event "
-            "coverage; certainty selection can preferentially retain low-risk cases.",
+            (
+                "This is finalized internal-validation evidence, not an independent "
+                "external or untouched test. Reduced-coverage performance must always "
+                "be interpreted with both abstention rate and positive-event coverage; "
+                "certainty selection can preferentially retain low-risk cases."
+                if metadata.get("evidence_tier") == "final_internal_validation"
+                else "This is development-only evidence. Reduced-coverage performance "
+                "must always be interpreted with both abstention rate and positive-event "
+                "coverage; certainty selection can preferentially retain low-risk cases."
+            ),
             "",
         ]
     )
@@ -264,9 +301,22 @@ def run_selective_prediction_analysis(
         (study_dir / "experiment_metadata.json").read_text(encoding="utf-8")
     )
     profile = dict(study_metadata["profile"])
-    if str(profile.get("name")) == "final" or bool(profile.get("locked", False)):
+    is_final_internal = (
+        str(profile.get("name")) == "final_internal_validation"
+        and bool(profile.get("locked", False))
+        and study_metadata.get("evidence_tier") == "final_internal_validation"
+    )
+    if str(profile.get("name")) == "final" or (
+        bool(profile.get("locked", False)) and not is_final_internal
+    ):
         raise PermissionError("Selective-prediction development analysis is not a final-run command")
-    source_path = study_dir / "availability_routing" / "system_predictions.csv"
+    source_path = (
+        study_dir
+        / "runtime_policy_evaluation"
+        / "participant_policy_predictions.csv"
+        if is_final_internal
+        else study_dir / "availability_routing" / "system_predictions.csv"
+    )
     if not source_path.exists():
         raise FileNotFoundError(f"Run availability routing first: {source_path}")
     source = pd.read_csv(source_path, low_memory=False)
@@ -277,6 +327,9 @@ def run_selective_prediction_analysis(
             f"None of the requested systems are available: {sorted(available_systems)}"
         )
     filtered = source[source["system"].isin(selected_systems)].copy()
+    if is_final_internal:
+        filtered["selected_scenario"] = filtered["scenario"]
+        filtered["scenario"] = "runtime_fallback_policy"
     decisions, metrics, intervals = selective_prediction_analysis(
         filtered,
         coverages=coverages,
@@ -291,7 +344,9 @@ def run_selective_prediction_analysis(
         "source_study": str(study_dir),
         "profile": str(profile["name"]),
         "evidence_tier": (
-            "execution_only"
+            "final_internal_validation"
+            if is_final_internal
+            else "execution_only"
             if str(profile["name"]) == "smoke"
             else "development_only"
         ),
@@ -303,7 +358,8 @@ def run_selective_prediction_analysis(
             decisions["group_id"].fillna("").astype(str).str.len().gt(0).any()
         ),
         "source_tree_sha256": source_tree_sha256(),
-        "selective_prediction_evaluation_complete": False,
+        "selective_prediction_evaluation_complete": is_final_internal,
+        "publication_evidence_eligible": is_final_internal,
         "final_outcome_access_authorized": False,
     }
     decisions_path = output_dir / "acceptance_decisions.csv"

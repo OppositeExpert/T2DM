@@ -1,0 +1,97 @@
+{
+  "artifacts": {
+    "availability_routing/calibration_selection.csv": "1f4e22caafa73b516f1f43f133410b0739c8d9a86e131558ff922bd003e5f28e",
+    "availability_routing/confidence_intervals.csv": "b8f79b4ae019b18b7f6fa45b3dd5e9e1a573a4dbf4581b5543b36f3e2cc0ddd5",
+    "availability_routing/development_scores.csv": "1401df80b7bc5398810f98d8fa1835aa794f6744069431c25704104434e0b6a2",
+    "availability_routing/figures/routing_average_precision.png": "ef8ab8c7cb5b567a3f42803f79e1cdc8684a3416d9bbdcbe2e6481decad71a1e",
+    "availability_routing/figures/routing_average_precision.svg": "576968c6c8b7aaa17269021abc10a7176b202d81fa8a02faa63caeefad05200a",
+    "availability_routing/figures/routing_brier_score.png": "4709dcfa78b95cb23a53d10b5b75e12e3fdcb7b330faa1b7fde1e0a1f9bf3528",
+    "availability_routing/figures/routing_brier_score.svg": "7b8adc50231adac429ae0f74eb8f0b95ded50c51cad1feb03be9c9fbd1cd62c7",
+    "availability_routing/figures/routing_selection_heatmap.png": "699ef2d1bdda365d96cf52a96b0740832277581cc08d6c8e5f003875d30e4dde",
+    "availability_routing/figures/routing_selection_heatmap.svg": "f76de63bb549aed6b4e69e45b2eaeff360e5a8f74a8b94a0bcfe11f3031a6f99",
+    "availability_routing/fold_metrics.csv": "7d62668524a4d9d2873db2f718f67dee2c3284075b405c9ecc383663ccc6be88",
+    "availability_routing/paired_system_comparisons.csv": "9c47b28d9569bcee493939e48d5f9a984b962a0f5a80ee3e5bef5236e7cfa2e2",
+    "availability_routing/router_gains.csv": "7f9c35316a48350ba2748a9590712af8435a000f1abaa47697a99624ba60df56",
+    "availability_routing/router_selections.csv": "b33197d6d18cd46ab4409af97b65552356d7cf700f4f8b9926dbd9d1c2935784",
+    "availability_routing/stress_predictions.csv": "5b0a1a684e2a60838000953fc031ba07aab8444b33b02aea475bee3c07e95b58",
+    "availability_routing/summary_metrics.csv": "2fab30980286c60c1acde5c674090ffee4feef5b113e5d30079b3fc6d5c0beca",
+    "availability_routing/system_predictions.csv": "fd77de663ec73d84809dc1618211fd5825b69872dc065f1de1eeed5e84650864"
+  },
+  "dataset": "pidd",
+  "development_only_selection": true,
+  "experiment_id": "pidd_final_internal_validation_5739531d61c3",
+  "model_study_source_tree_sha256": "7d5347cf4c10e50dceb201ad36527f6d1c3e2770bba364c15c9093bf97cc6a94",
+  "router_models": [
+    "random_forest",
+    "xgboost",
+    "lightgbm",
+    "catboost"
+  ],
+  "routing_source_tree_sha256": "7d5347cf4c10e50dceb201ad36527f6d1c3e2770bba364c15c9093bf97cc6a94",
+  "scenarios": {
+    "core_metabolic": {
+      "available_features": [
+        "Glucose",
+        "BMI",
+        "DiabetesPedigreeFunction",
+        "Age"
+      ],
+      "description": "Four high-value metabolic and demographic predictors."
+    },
+    "full": {
+      "available_features": [
+        "Pregnancies",
+        "Glucose",
+        "BloodPressure",
+        "SkinThickness",
+        "Insulin",
+        "BMI",
+        "DiabetesPedigreeFunction",
+        "Age"
+      ],
+      "description": "All eight PIDD predictors are available."
+    },
+    "minimal_glucose_age": {
+      "available_features": [
+        "Glucose",
+        "Age"
+      ],
+      "description": "Only glucose and age are available; used as a severe-degradation scenario."
+    },
+    "no_insulin_or_skinfold": {
+      "available_features": [
+        "Pregnancies",
+        "Glucose",
+        "BloodPressure",
+        "BMI",
+        "DiabetesPedigreeFunction",
+        "Age"
+      ],
+      "description": "Insulin and skinfold measurements are unavailable."
+    },
+    "non_laboratory": {
+      "available_features": [
+        "Pregnancies",
+        "BMI",
+        "DiabetesPedigreeFunction",
+        "Age"
+      ],
+      "description": "No glucose, blood-pressure, insulin, or skinfold measurement."
+    },
+    "routine_clinic": {
+      "available_features": [
+        "Pregnancies",
+        "Glucose",
+        "BloodPressure",
+        "BMI",
+        "Age"
+      ],
+      "description": "Routine history and measurements, without insulin, skinfold, or pedigree score."
+    }
+  },
+  "selection_order": [
+    "minimum_brier_score",
+    "minimum_log_loss",
+    "maximum_average_precision"
+  ]
+}

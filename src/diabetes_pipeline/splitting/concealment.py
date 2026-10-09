@@ -18,6 +18,7 @@ from diabetes_pipeline.settings import (
     configuration_sha256,
     get_dataset_config,
     source_tree_sha256,
+    validate_final_profile,
 )
 from diabetes_pipeline.splitting.registry import validate_split_manifest
 from diabetes_pipeline.splitting.strategies import build_split_manifest
@@ -317,6 +318,10 @@ def assert_final_execution_authorized(
     if profile_name == "smoke":
         return None
     failures: list[str] = []
+    try:
+        validate_final_profile(profile)
+    except ValueError as exc:
+        failures.append(str(exc))
     if profile_name != "final":
         failures.append("holdout scientific execution requires the final profile")
     if str(profile.get("name")) != "final":
