@@ -32,9 +32,23 @@ superiority; that negative result remains preserved.
    filenames, conversion steps and exact input hashes.
 5. [Contribution instructions](CONTRIBUTING.md) describe safe collaboration and
    the remaining mentor-requested analyses.
-6. [Runbook](docs/RUNBOOK.md) lists the supported development commands.
-7. [Cleanup report](REPOSITORY_CLEANUP_REPORT.md) records preservation, the
-   complete file inventory, changes, checks and outstanding review items.
+6. [Runbook](docs/RUNBOOK.md) maps execution commands to research workflows.
+7. [Manuscript review](docs/MANUSCRIPT_REVIEW.md) preserves review scaffolds and
+   unresolved journal decisions.
+8. [Simplification report](REPOSITORY_SIMPLIFICATION_REPORT.md) records local
+   archives, active Git scope, validation and remaining concerns.
+
+## Branch under review
+
+PR #1 contains this simplified tree. Until it is merged, use the review branch:
+
+```bash
+git clone --branch chore/repository-cleanup https://github.com/OppositeExpert/T2DM.git
+cd T2DM
+```
+
+The private repository requires your own authorized GitHub access. After review
+and merge, use the agreed shared base branch.
 
 ## Install and verify
 
@@ -63,7 +77,8 @@ test path launches final training.
 and its [summary](results/final_publication/FINAL_RESULTS_SUMMARY.md) identify the
 frozen `t2dm-final-internal-validation-v1` studies. The reviewed aggregate package
 is tracked: tables, figure data, PNG/PDF/SVG figures, protocol, execution records,
-correction provenance and superseded summaries. Publication fingerprints are
+correction provenance. Essential original correction inputs and executed-code
+snapshots are retained in `evidence/publication_correction/`. Publication fingerprints are
 verified without modifying those files.
 
 Raw records, row-level predictions, split assignments and fitted models stay
@@ -73,10 +88,11 @@ artifact restoration and exact retraining are not established by a clone alone.
 The historical training source fingerprint differs from the retained packaging
 source; final-execution guards must remain intact. See the reproducibility guide.
 
-Historical conference drafts and progress reports remain at their original paths
-for traceability. They are dated development evidence, not current journal
-results. Frozen metadata retains the earlier journal/title; current submission
-metadata needs author review without rewriting the frozen protocol.
+Historical conference packages, progress reports and superseded full exports
+are archived outside active Git tracking. New contributors can install, run
+portable tests and verify current results without those archives. Original Git
+history remains available. Frozen metadata retains the earlier journal/title;
+current submission metadata needs author review without rewriting the protocol.
 
 ## Governance
 

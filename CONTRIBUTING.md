@@ -43,3 +43,17 @@ retrospective decision curves as clinical validation.
 Licensing, the approved author list in `CITATION.cff`, declarations and immutable
 artifact/source archival remain human release decisions. Current code remains a
 research prototype; maintain the limitation record when reporting new results.
+
+## Active Git scope
+
+Historical conference packages, block reports, old cleanup bookkeeping and full
+superseded exports are local archives. Do not force-add ignored historical paths.
+New scientific aggregate outputs are reviewed individually; no broad result
+ignore or generated-language rule substitutes for privacy/provenance review.
+Current frozen CSV/Markdown/TeX/figure exports remain byte-identical. Only genuine
+exporter-generated table TeX is marked generated for GitHub Linguist.
+
+Use [MANUSCRIPT_REVIEW.md](docs/MANUSCRIPT_REVIEW.md) for preserved claim/reporting
+scaffolds, author inputs and unresolved scientific review. The exact dependency
+lock remains intact even though archived Word/conference builders no longer
+appear in the active scripts. New environment changes need successor provenance.

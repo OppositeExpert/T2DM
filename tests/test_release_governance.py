@@ -73,7 +73,7 @@ class ReleaseGovernanceTests(unittest.TestCase):
         import pandas as pd
 
         table = pd.read_csv(
-            ROOT / "conference_package/generated/development_model_performance.csv"
+            ROOT / "evidence/development_reference/development_model_performance.csv"
         )
         self.assertTrue(
             table[table["dataset"].isin(["pidd", "sylhet"])]["estimand"]
@@ -83,7 +83,7 @@ class ReleaseGovernanceTests(unittest.TestCase):
         self.assertTrue(table[table["dataset"].eq("pidd")]["n"].eq(768).all())
         self.assertTrue(table[table["dataset"].eq("sylhet")]["n"].eq(520).all())
         manuscript = (
-            ROOT / "conference_package/Conference_Manuscript_Development_Draft.md"
+            ROOT / "docs/MANUSCRIPT_REVIEW.md"
         ).read_text(encoding="utf-8")
         self.assertNotIn("mean across 25 outer evaluations", manuscript)
         self.assertIn("PIDD calibrated participant-level", manuscript)

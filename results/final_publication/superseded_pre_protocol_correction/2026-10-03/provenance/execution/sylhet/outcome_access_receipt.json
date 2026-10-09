@@ -1,6 +1,0 @@
-{
-  "analysis_configuration_sha256": "3cb0ebf9313d1db928453f73a60bd15f6c4e1ee5c6c7137dd7f67d04e42e4578",
-  "dataset": "sylhet",
-  "started_at_utc": "2026-09-10T13:00:19.156430+00:00",
-  "warning": "Presence of this receipt prohibits automatic final re-execution."
-}

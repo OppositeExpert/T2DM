@@ -1,32 +1,24 @@
-# Evidence indexes
+# Scientific evidence index
 
-The aggregate publication package is now tracked under
-`results/final_publication/`. `study_registry.json` maps the four finalized
-internal-validation studies to private local artifacts; its recorded presence
-flags reflect its generation date and must not be read as proof of external
-upload. Frozen metadata is preserved unchanged.
-
-| Inventory | Scope |
+| File/directory | Why it remains active |
 |---|---|
-| `artifact_release_manifest.json` | Historical development snapshot: 1,962 artifacts, retained unchanged |
-| `final_artifact_release_manifest.json` | Cleanup-time inventory of final study artifacts and input/split/execution dependencies, including checkpoints; hashes only |
-| `docs/audits/repository-cleanup-2026-10-09/file_classification.csv.gz` | Every original local file, category, purpose, reference evidence, retention decision and SHA-256 |
+| `study_registry.json` | Four final study identities, endpoint/evidence boundaries and artifact hashes |
+| `final_artifact_release_manifest.json` | 1,304 final-study/input/split/execution artifacts, including checkpoints |
+| `artifact_release_manifest.json` | 1,962 development artifact hashes supporting negative findings and ongoing mentor analyses |
+| `development_reference/` | Unchanged historical 20-row primary-estimand regression table and its source provenance; development only |
+| `publication_correction/` | Ten original panel derivatives, two executed correction-code snapshots, original 87-entry publication checksum list and supersession mapping |
+| `repository_simplification_manifest.json` | Verified local archive fingerprints, removed-path ledger and exact promotion mappings |
 
-Verify without regenerating or overwriting results:
+`publication_correction/retained_checksums.json` verifies all 14 retained support
+files. The original publication checksum list is unchanged; its paths are relative
+to the restored superseded package, not this support directory. Supersession-map
+original/replacement paths retain their historical meaning. Current replacements
+are under `results/final_publication/`; the complete original package is locally
+archived. Code snapshots are provenance, not the source entrypoint to rerun.
 
-```bash
-python scripts/verify_publication_results.py
-python scripts/verify_artifact_release_manifest.py --manifest evidence/final_artifact_release_manifest.json
-```
-
-The second command needs restored private artifacts. Empty archive URI/identifier
-fields mean no immutable deposit is recorded. A manifest never replaces the
-models, predictions, raw inputs, splits or exact executed source. The complete
-private local pre-cleanup snapshot is documented in the cleanup report; it must
-not be published because it includes raw and row-level data.
-
-`scripts/build_study_registry.py` and `build_artifact_release_manifest.py` are
-retained builders that write tracked indexes. Their defaults do not preserve an
-older manifest automatically. Do not rerun them over historical indexes; prepare
-successor inventories in a separate working copy and review the evidence scope.
-See [ARTIFACT_ARCHIVING.md](../docs/ARTIFACT_ARCHIVING.md).
+The manifests contain hashes and paths rather than raw records, fitted models
+or participant predictions. Private artifacts require approved restoration;
+null archive identifiers mean no external deposit is established. See
+[artifact restoration](../docs/ARTIFACT_ARCHIVING.md) and the
+[results guide](../docs/RESULTS_GUIDE.md). Neither hashes nor passing tests prove
+external, clinical or causal validity.

@@ -14,8 +14,8 @@ applicable model/fold and 2,000 bootstrap replicates. BRFSS is internal validati
 only; Hospital130 remains patient-grouped 30-day readmission. No untouched,
 external, temporal, prospective, clinical or causal validation is claimed.
 Dynamic model-family switching did not establish consistent multiplicity-corrected
-superiority. Historical development findings and superseded summaries remain
-available for comparison.
+superiority. Necessary development and correction evidence remains tracked; full historical
+packages are preserved locally and in Git history.
 
 Cleanup verifies preservation and engineering checks; it does not certify
 journal acceptance or independent scientific review. Remaining work includes:
@@ -30,5 +30,5 @@ journal acceptance or independent scientific review. Remaining work includes:
 
 Frozen records retain the earlier journal name and historical source fingerprints.
 Do not rewrite them to match current submission metadata. See the
-[cleanup report](REPOSITORY_CLEANUP_REPORT.md) for executed validation and remaining
+[simplification report](REPOSITORY_SIMPLIFICATION_REPORT.md) for executed validation and remaining
 portability, archival and manuscript limits.

@@ -1,37 +1,40 @@
-# Project structure
+# Project structure and research workflow
 
-Paths remain stable; cleanup does not rename research APIs or configuration keys.
-
-| Path | Purpose and status |
+| Path | Active purpose |
 |---|---|
-| `src/diabetes_pipeline/data/`, `contracts.py` | Dataset loading, validation, immutable input fingerprints |
-| `splitting/`, `preprocessing/` | Group-aware split contracts and training-fold transformations |
-| `models/`, `training/` | Five-family registry, search spaces and seeded Optuna tuning |
-| `calibration/` | Identity/sigmoid/isotonic selection and development-selected thresholds |
-| `evaluation/` | Metrics, bootstrap inference, Holm comparisons, DCA, subgroups, missingness, ablations and selective prediction |
-| `routing/` | Prespecified dataset-native panels, fitted routing bundles, actual fallback evaluation and abstention |
-| `explainability/`, `reporting/` | Held-out SHAP, reconstruction/stability and research-facing reports |
-| `features/` | Semantic feature ontology and endpoint constraints |
-| `publication/` | Final governance, exporter, source selection, protocol corrections and consolidated figure |
-| `runner.py`, `holdout_runner.py`, `cli.py` | Repeated nested-CV and holdout-shaped internal evaluation; CLI |
-| `config/` | Dataset, source, feature, availability, output and frozen protocol contracts |
-| `scripts/` | Acquisition, verification, final orchestration, export and historical report builders |
-| `tests/`, `.github/workflows/ci.yml` | Unit/research-control tests and lightweight CI |
-| `results/final_publication/` | Tracked aggregate current publication evidence and existing superseded archive |
-| `evidence/` | Tracked artifact hashes; final and historical inventories are distinct |
-| `docs/` | Current contributor guides plus dated research/progress/audit records |
-| `conference_package/` | Historical development drafts and their original QA/render evidence; retained in place |
+| `src/diabetes_pipeline/data/`, `contracts.py` | Loading, validation, cohort flow and immutable input fingerprints |
+| `splitting/`, `preprocessing/` | Group-aware splits, outcome-blind controls and fold-fitted transforms |
+| `models/`, `training/` | Logistic Regression, Random Forest, XGBoost, LightGBM, CatBoost and seeded Optuna tuning |
+| `calibration/` | Calibration selection and development-selected thresholds |
+| `evaluation/` | Metrics, paired bootstrap intervals, Holm correction, DCA, subgroups, missingness, ablations and selective prediction |
+| `routing/` | Availability panels, fitted routing bundles, runtime fallback, policy coverage and abstention |
+| `explainability/`, `reporting/` | Held-out SHAP, stability, research reports and readiness controls |
+| `features/` | Dataset-native measurement semantics and endpoint ontology |
+| `publication/` | Frozen governance, final export, protocol corrections, leakage audit and consolidated figure |
+| `runner.py`, `holdout_runner.py`, `cli.py` | Repeated nested-CV and holdout-shaped internal evaluation; command interface |
+| `config/` | Dataset/source, feature, availability, output-schema, study and protocol contracts |
+| `scripts/` | Acquisition, verification, final orchestration, export/correction, registry and migration tools |
+| `tests/`, `.github/workflows/` | Research-contract, control and portable validation |
 | `examples/` | Explicit synthetic inputs |
-| `data/raw/` | Ignored immutable cohort records; acquire separately |
-| `outputs/publication_pipeline/` | Ignored studies, model bundles, predictions, splits, trials, logs, receipts and checkpoints |
-| `.venv-pipeline/` | Ignored local environment; recreate for each checkout |
+| `results/final_publication/` | Current frozen aggregate metrics, tables, visualizations and provenance |
+| `evidence/` | Final/development artifact inventories, registry, unique correction evidence and historical estimand reference |
+| `docs/` | Installation, acquisition, command, result and manuscript-review guides |
+| `docs/research/` | Scientifically relevant plans, decisions, literature, ablation findings and execution deviations |
+| `docs/audits/2026-09-05/` | Retained integrity findings/evidence requiring explicit closure review |
+| `data/raw/`, `outputs/` | Ignored local cohort records, fitted models, predictions, splits, trials, logs and checkpoints |
 
-The source flow is input contract → immutable splitting → fold-fitted
-preprocessing → five model families → calibration/thresholds → panel/router
-policies → metrics/uncertainty/explanations. Unsupported input abstains.
-Hospital130 remains an isolated readmission endpoint throughout.
+The end-to-end flow is dataset contracts → immutable/group-aware splits →
+fold-fitted preprocessing → five-family tuning/training → calibration/thresholds
+→ fixed panels and runtime routing/abstention → paired statistical analysis,
+selective/subgroup/missingness/ablation analysis → explanations → locked final
+provenance → publication tables and figures. Tests cover each source subsystem.
 
-Authoritative study IDs and evidence tiers are declared in
-`config/authoritative_studies.yaml`. Current tables and source selection are
-explained in [RESULTS_GUIDE.md](RESULTS_GUIDE.md). Earlier reports may describe
-pre-final code or superseded findings; their dates are part of their meaning.
+Hospital130 is separate patient-grouped 30-day readmission. Other cohorts retain
+their own recorded diabetes-status endpoints and measurement environments;
+probabilities are not pooled. See [RESULTS_GUIDE.md](RESULTS_GUIDE.md).
+
+The active tree has no conference package, block progress-report directory,
+first-cleanup audit inventory or complete superseded publication package.
+Their originals remain locally preserved and recoverable from prior commits.
+The [simplification report](../REPOSITORY_SIMPLIFICATION_REPORT.md) identifies
+archives and the few historical scientific records deliberately retained.

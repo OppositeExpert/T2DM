@@ -17,7 +17,7 @@ COPY scripts ./scripts
 COPY tests ./tests
 COPY docs ./docs
 COPY evidence ./evidence
-COPY conference_package ./conference_package
-COPY README.md FINAL_RUN_CHECKLIST.md PUBLICATION_READINESS.md ./
+COPY results/final_publication ./results/final_publication
+COPY README.md FINAL_RUN_CHECKLIST.md PUBLICATION_READINESS.md CONTRIBUTING.md LICENSE_STATUS.md CITATION.cff ./
 
 CMD ["python", "-m", "diabetes_pipeline.cli", "--help"]

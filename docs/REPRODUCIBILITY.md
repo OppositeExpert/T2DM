@@ -32,8 +32,10 @@ python scripts/verify_publication_results.py
 python -m diabetes_pipeline.cli --help
 ```
 
-The checksum verifier reads the current and superseded publication manifests;
-it does not load patient records or rewrite tables. CI runs all data-independent tests, source compilation, feature-map validation
+The checksum verifier checks the unchanged 101-entry current publication
+manifest and the 14 retained correction-support fingerprints. Complete
+superseded packages are optional local archives; see ARTIFACT_ARCHIVING.md for
+explicit historical verification. It does not load patient records or rewrite tables. CI runs all data-independent tests, source compilation, feature-map validation
 and publication verification. Seven checks carry the `local_research_data` marker because they require raw
 cohort files or historical study artifacts. After acquisition and restoration,
 run `python -m pytest -q` for the complete suite.
@@ -68,7 +70,8 @@ python scripts/verify_artifact_release_manifest.py --manifest evidence/final_art
 
 For a separate restored tree, add `--artifact-root /path/to/restored/repository`.
 A manifest is not proof of external deposit. No public artifact archive or DOI
-has been created by cleanup. A private full local snapshot exists for the owner;
+has been created by cleanup. Historical conference files are not required by a fresh clone. A verified
+pre-simplification tracked archive and a private full local snapshot exist for the owner;
 it contains raw/row-level records and must not be uploaded to GitHub.
 
 ## What the current results reproduce
@@ -112,5 +115,5 @@ model-family, matched-panel, selective, subgroup and runtime-policy code remains
 preserved. The mentor-analysis gaps are listed in [CONTRIBUTING.md](../CONTRIBUTING.md).
 
 An optional CPU container is defined by `Dockerfile`. Container build/run and a
-fresh network installation of every locked dependency were not established by
-this local cleanup; consult the cleanup report for executed checks.
+fresh network installation of every locked dependency are separate checks;
+consult REPOSITORY_SIMPLIFICATION_REPORT.md for what was actually executed.

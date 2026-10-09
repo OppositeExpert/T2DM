@@ -1,3 +1,7 @@
+> Retained for integrity review. Findings describe the dated source state below;
+> current closure must be checked against final artifacts. Probe files are
+> preserved in the verified local archive and the linked prior Git commit.
+
 # Final repository-wide technical and research audit
 
 **Audit date:** 5 September 2026  
@@ -6,7 +10,7 @@
 **Remote configured locally:** `git@github.com:OppositeExpert/T2DM.git`  
 **Scope:** source, configuration, CLI, tests, research protocol, reporting scripts, tracked evidence, and relevant ignored raw data/model/prediction artifacts. This is an audit of the local checkout; no remote synchronization was performed.  
 **Pre-existing working-tree change:** `docs/DEFINITIVE_PROJECT_CONTEXT.md`. It was read as a working document and preserved.  
-**Evidence:** [machine-readable audit evidence](audit_evidence.json), [probe instructions](probes/README.md). No full-development or final experiment was launched.
+**Evidence:** [machine-readable audit evidence](audit_evidence.json), [historical probe instructions](https://github.com/OppositeExpert/T2DM/blob/fb1e35d9df1113bc82fd75f9c0c640932735c87d/docs/audits/2026-09-05/probes/README.md). No full-development or final experiment was launched.
 
 ## Executive summary
 

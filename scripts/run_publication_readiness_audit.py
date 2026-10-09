@@ -17,7 +17,7 @@ from diabetes_pipeline.reporting.publication_readiness import (
 ROOT = Path(__file__).resolve().parents[1]
 CONFIG = ROOT / "config" / "authoritative_studies.yaml"
 PROTOCOL = ROOT / "config" / "publication_protocol.yaml"
-QA = ROOT / "conference_package" / "qa"
+QA = ROOT / "outputs" / "publication_pipeline" / "reports" / "publication_readiness"
 
 
 def main() -> None:
