@@ -1,0 +1,311 @@
+datasets:
+  pidd:
+    scenarios:
+      full:
+        description: All eight PIDD predictors are available.
+        available_features:
+          - Pregnancies
+          - Glucose
+          - BloodPressure
+          - SkinThickness
+          - Insulin
+          - BMI
+          - DiabetesPedigreeFunction
+          - Age
+      no_insulin_or_skinfold:
+        description: Insulin and skinfold measurements are unavailable.
+        available_features:
+          - Pregnancies
+          - Glucose
+          - BloodPressure
+          - BMI
+          - DiabetesPedigreeFunction
+          - Age
+      routine_clinic:
+        description: Routine history and measurements, without insulin, skinfold, or pedigree score.
+        available_features:
+          - Pregnancies
+          - Glucose
+          - BloodPressure
+          - BMI
+          - Age
+      core_metabolic:
+        description: Four high-value metabolic and demographic predictors.
+        available_features:
+          - Glucose
+          - BMI
+          - DiabetesPedigreeFunction
+          - Age
+      non_laboratory:
+        description: No glucose, blood-pressure, insulin, or skinfold measurement.
+        available_features:
+          - Pregnancies
+          - BMI
+          - DiabetesPedigreeFunction
+          - Age
+      minimal_glucose_age:
+        description: Only glucose and age are available; used as a severe-degradation scenario.
+        available_features:
+          - Glucose
+          - Age
+    router_models:
+      - random_forest
+      - xgboost
+      - lightgbm
+      - catboost
+    selection_metric: brier_score
+    selection_tiebreak_metrics:
+      - log_loss
+      - negative_average_precision
+    minimum_supported_features: 2
+
+  sylhet:
+    scenarios:
+      full:
+        description: All sixteen Sylhet demographic and symptom predictors are available.
+        available_features:
+          - Age
+          - Gender
+          - Polyuria
+          - Polydipsia
+          - sudden weight loss
+          - weakness
+          - Polyphagia
+          - Genital thrush
+          - visual blurring
+          - Itching
+          - Irritability
+          - delayed healing
+          - partial paresis
+          - muscle stiffness
+          - Alopecia
+          - Obesity
+      core_questionnaire:
+        description: Demographics plus common early-stage diabetes symptoms.
+        available_features:
+          - Age
+          - Gender
+          - Polyuria
+          - Polydipsia
+          - sudden weight loss
+          - weakness
+          - Polyphagia
+          - visual blurring
+          - delayed healing
+          - Obesity
+      core_symptoms:
+        description: Six symptom-only questionnaire fields.
+        available_features:
+          - Polyuria
+          - Polydipsia
+          - sudden weight loss
+          - weakness
+          - Polyphagia
+          - delayed healing
+      classic_symptoms:
+        description: The four classic symptom indicators in this cohort.
+        available_features:
+          - Polyuria
+          - Polydipsia
+          - sudden weight loss
+          - Polyphagia
+      minimal_polyuria_polydipsia:
+        description: Severe-degradation panel with polyuria and polydipsia only.
+        available_features:
+          - Polyuria
+          - Polydipsia
+    router_models:
+      - random_forest
+      - xgboost
+      - lightgbm
+      - catboost
+    selection_metric: brier_score
+    selection_tiebreak_metrics:
+      - log_loss
+      - negative_average_precision
+    minimum_supported_features: 2
+
+  brfss:
+    scenarios:
+      full:
+        description: All twenty-one configured BRFSS screening predictors are available.
+        available_features:
+          - HighBP
+          - HighChol
+          - CholCheck
+          - BMI
+          - Smoker
+          - Stroke
+          - HeartDiseaseorAttack
+          - PhysActivity
+          - Fruits
+          - Veggies
+          - HvyAlcoholConsump
+          - AnyHealthcare
+          - NoDocbcCost
+          - GenHlth
+          - MentHlth
+          - PhysHlth
+          - DiffWalk
+          - Sex
+          - Age
+          - Education
+          - Income
+      cardiometabolic_health:
+        description: Cardiometabolic history, BMI, general health, mobility, and age.
+        available_features:
+          - HighBP
+          - HighChol
+          - BMI
+          - Stroke
+          - HeartDiseaseorAttack
+          - GenHlth
+          - PhysHlth
+          - DiffWalk
+          - Age
+      routine_survey:
+        description: Common self-reported health, lifestyle, demographic, and access fields.
+        available_features:
+          - HighBP
+          - HighChol
+          - BMI
+          - Smoker
+          - PhysActivity
+          - GenHlth
+          - PhysHlth
+          - DiffWalk
+          - Sex
+          - Age
+          - Education
+          - Income
+      health_status:
+        description: Compact health-status and demographic panel.
+        available_features:
+          - HighBP
+          - BMI
+          - GenHlth
+          - PhysHlth
+          - DiffWalk
+          - Age
+      demographics_health:
+        description: General health plus demographic and socioeconomic fields.
+        available_features:
+          - GenHlth
+          - Sex
+          - Age
+          - Education
+          - Income
+      minimal_general_health_age:
+        description: Severe-degradation panel with general health and age group only.
+        available_features:
+          - GenHlth
+          - Age
+    router_models:
+      - random_forest
+      - xgboost
+      - lightgbm
+      - catboost
+    selection_metric: brier_score
+    selection_tiebreak_metrics:
+      - log_loss
+      - negative_average_precision
+    minimum_supported_features: 2
+
+  hospital130:
+    scenarios:
+      full:
+        description: All configured encounter, diagnosis, and medication predictors are available.
+        available_features:
+          - age
+          - time_in_hospital
+          - num_lab_procedures
+          - num_procedures
+          - num_medications
+          - number_outpatient
+          - number_emergency
+          - number_inpatient
+          - number_diagnoses
+          - admission_type_id
+          - discharge_disposition_id
+          - admission_source_id
+          - race
+          - gender
+          - payer_code
+          - medical_specialty
+          - diag_1
+          - diag_2
+          - diag_3
+          - max_glu_serum
+          - A1Cresult
+          - metformin
+          - repaglinide
+          - nateglinide
+          - chlorpropamide
+          - glimepiride
+          - acetohexamide
+          - glipizide
+          - glyburide
+          - tolbutamide
+          - pioglitazone
+          - rosiglitazone
+          - acarbose
+          - miglitol
+          - troglitazone
+          - tolazamide
+          - examide
+          - citoglipton
+          - insulin
+          - glyburide-metformin
+          - glipizide-metformin
+          - glimepiride-pioglitazone
+          - metformin-rosiglitazone
+          - metformin-pioglitazone
+          - change
+          - diabetesMed
+      encounter_utilization:
+        description: Numeric encounter intensity and prior healthcare utilization.
+        available_features:
+          - age
+          - time_in_hospital
+          - num_lab_procedures
+          - num_procedures
+          - num_medications
+          - number_outpatient
+          - number_emergency
+          - number_inpatient
+          - number_diagnoses
+      admission_clinical:
+        description: Admission context, diagnoses, and diabetes laboratory result categories.
+        available_features:
+          - age
+          - admission_type_id
+          - discharge_disposition_id
+          - admission_source_id
+          - diag_1
+          - diag_2
+          - diag_3
+          - max_glu_serum
+          - A1Cresult
+      prior_utilization:
+        description: Age and prior-year outpatient, emergency, and inpatient use.
+        available_features:
+          - age
+          - number_outpatient
+          - number_emergency
+          - number_inpatient
+          - number_diagnoses
+      minimal_inpatient_history:
+        description: Severe-degradation panel with age and prior inpatient use.
+        available_features:
+          - age
+          - number_inpatient
+    router_models:
+      - random_forest
+      - xgboost
+      - lightgbm
+      - catboost
+    selection_metric: brier_score
+    selection_tiebreak_metrics:
+      - log_loss
+      - negative_average_precision
+    minimum_supported_features: 2

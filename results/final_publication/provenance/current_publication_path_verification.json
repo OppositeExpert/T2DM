@@ -1,0 +1,74 @@
+{
+  "verified_on": "2026-10-03",
+  "scope": "Current production publication path and supporting documents after authorized Findings A-D; no ML experiments rerun",
+  "git_head": "c964664ddaa1e4a1fbc6dd72fde9dfb66fc88cfc",
+  "working_source_status": "Uncommitted scientific implementation and publication corrections; Git HEAD alone is not a reproducible paper release",
+  "current_code_sha256": {
+    "src/diabetes_pipeline/publication/protocol_correction.py": "209735f4bb01d8afe72f960b0c01a56ea629f9eab513386b616077288ad17b7e",
+    "src/diabetes_pipeline/publication/exporter.py": "9d8de9267fd71ad8f45692d9a5eb86aa4699795e3d21a47c5e1f467b8521d2a5",
+    "src/diabetes_pipeline/publication/figure.py": "f8de730b63d2ccc85c4d4f70cb4cfb36fe849ffa9826f4c21bf00c8d87268f4e",
+    "scripts/correct_publication_protocol_summaries.py": "c370a997835fce17de015c4fafa8780859f8d4539d9e9597218993bd221cd345",
+    "tests/test_publication_protocol_correction.py": "e9980ad75e87529dfc935cc360c79baf7113de3d6597ce6758e98667e4bd66a5"
+  },
+  "original_execution_record": "protocol_correction.json (preserved unchanged)",
+  "original_execution_record_sha256": "14ccae6f5acd2c49d02dce5a08baa1eba82af0e591f7eaa346766a4eea9a5cce",
+  "frozen_protocol_sha256": "7c1c5191a1d98f70b6e6aa1081a894f41d0ecbe88b05b9ef7fcaab4f3fdd3b31",
+  "recorded_repository_test_result": {
+    "passed_tests": 129,
+    "passed_subtests": 7,
+    "warnings": "3 existing SHAP PendingDeprecationWarning entries"
+  },
+  "recorded_targeted_test_result": {
+    "passed_tests": 21
+  },
+  "analytical_verification": {
+    "status": "passed",
+    "date": "2026-10-03",
+    "checks": [
+      "All 24 correction-source predictions, thresholds and historical summary/inference files retain their execution fingerprints.",
+      "Frozen protocol and both snapshots are byte-identical to the pre-correction fingerprint.",
+      "pidd: production publication path verifies five-repeat record aggregation, saved probabilities, probability metrics and appropriate 2,000-resample inference; benchmark intervals match completed source bytes.",
+      "sylhet: production publication path verifies five-repeat record aggregation, saved probabilities, probability metrics and appropriate 2,000-resample inference; benchmark intervals match completed source bytes.",
+      "All 22 panel rows and full-minus-panel AUROC/AP reductions agree exactly with Figure 1(c) data.",
+      "All 87 original registered publication files are preserved and verified; only 17 authorized derived tables, Figure 1(c) artwork/data and metadata overlay differ.",
+      "Runtime metrics/CI, selective and subgroup sources are unchanged; fixed-cohort benchmark files match original sources.",
+      "No router-vs-robust AUROC adjusted P is below 0.05; original negative switching inference remains supported."
+    ],
+    "changed_registered_publication_files": [
+      "FINAL_RESULTS.json",
+      "figure/consolidated_results.pdf",
+      "figure/consolidated_results.png",
+      "figure/consolidated_results.svg",
+      "figure/data/panel_c_availability_degradation.csv",
+      "tables/availability_panel_degradation.csv",
+      "tables/availability_panel_degradation.md",
+      "tables/availability_panel_degradation.tex",
+      "tables/full_panel_model_performance.csv",
+      "tables/full_panel_model_performance.md",
+      "tables/full_panel_model_performance.tex",
+      "tables/model_performance_confidence_intervals.csv",
+      "tables/model_performance_confidence_intervals.md",
+      "tables/model_performance_confidence_intervals.tex",
+      "tables/threshold_performance.csv",
+      "tables/threshold_performance.md",
+      "tables/threshold_performance.tex"
+    ],
+    "no_new_substantive_protocol_discrepancy_identified_in_checked_scope": true
+  },
+  "editorial_verification": {
+    "status": "passed",
+    "date": "2026-10-03",
+    "matched_table_cells": 1016,
+    "checks": [
+      "Main Tables 2\u20133 match exact runtime-policy and corrected stress sources, including counts, intervals and degradation.",
+      "All 20 five-family benchmark rows and 22 stress rows in Tables S3\u2013S4 match their source metrics and estimand-specific intervals; fixed stress rows are point-only.",
+      "Tables S5\u2013S9 match retained threshold choices, runtime diagnostics, selective/event coverage, subgroup status and Holm comparisons at the declared display precision.",
+      "Tables S10\u2013S11 match unchanged model-specific SHAP ranks/counts and separate survey sensitivity estimates.",
+      "All 26 numbered references are cited exactly as a unique bibliography; tables have repeated semantic headers, images have alt text, no tracked changes/comments/template tokens remain, and document body/table text is 12 pt or larger.",
+      "Only the institutionally verified corresponding-author email and ORCID appear; missing author and declaration facts remain TODOs, and protocol/software DOI placeholders are not replaced with invented records.",
+      "The abstract and Results use corrected equal-count and Sylhet-panel claims; Methods accurately state masking, non-missing eligibility and the five-family/four-family distinction.",
+      "All requested deliverables and every named supplementary table/data/figure reference resolve to an actual supplied file; raw datasets/prediction records are not presented as publicly deposited."
+    ]
+  },
+  "public_release_status": "Prepared locally; author approval, software license, actual release and protocol/code persistent records pending"
+}

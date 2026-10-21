@@ -1,0 +1,3 @@
+estimand,estimate,ci_lower,ci_upper,evaluation_n,positive_events,bootstrap_seed,n_bootstrap
+forced_core_metabolic,0.8373955223880597,0.8087492537313432,0.8654427238805971,768,268,1700042,2000
+runtime_fallback_policy,0.836865671641791,0.807267723880597,0.8630309701492538,768,268,1600042,2000

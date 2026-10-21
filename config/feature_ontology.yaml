@@ -1,0 +1,146 @@
+version: 1
+
+endpoint_contracts:
+  diabetes_screening:
+    datasets: [pidd, sylhet, brfss]
+    comparability: related_but_not_identical_labels_and_populations
+    probability_pooling: prohibited_without_a_separately_validated_harmonized_model
+    notes:
+      - PIDD uses a small population-specific diabetes label with laboratory measurements.
+      - Sylhet uses an early-stage symptom questionnaire label from a small clinical cohort.
+      - BRFSS uses cross-sectional self-reported diagnosed diabetes in a survey population.
+  hospital_readmission:
+    datasets: [hospital130]
+    comparability: separate_prediction_task
+    probability_pooling: prohibited
+    notes:
+      - The endpoint is readmission within 30 days among encounters involving patients with diabetes.
+      - Results must never be presented as probability of having or developing diabetes.
+
+routing_constraints:
+  - Select the endpoint before considering dataset, feature panel, or model family.
+  - A dataset model is eligible only for a feature panel explicitly evaluated for that dataset.
+  - Proxy and binned variables must retain their original measurement semantics.
+  - Missingness must not be converted into a fabricated cross-dataset measurement.
+  - Probabilities from different dataset cohorts must not be averaged without validation of a harmonized model.
+
+shared_mappings:
+  age:
+    domain: demographics
+    mappings:
+      pidd:
+        feature: Age
+        relation: direct
+        measurement_scale: years
+        harmonization: within_endpoint_with_conversion
+      sylhet:
+        feature: Age
+        relation: direct
+        measurement_scale: years
+        harmonization: within_endpoint_with_conversion
+      brfss:
+        feature: Age
+        relation: binned
+        measurement_scale: ordered_5_year_age_group_code
+        harmonization: within_endpoint_with_conversion
+      hospital130:
+        feature: age
+        relation: binned
+        measurement_scale: ordered_10_year_age_group_code
+        harmonization: prohibited_across_endpoints
+  body_mass_index:
+    domain: anthropometrics
+    mappings:
+      pidd:
+        feature: BMI
+        relation: direct
+        measurement_scale: kg_per_m2
+        harmonization: within_endpoint_with_conversion
+      brfss:
+        feature: BMI
+        relation: direct
+        measurement_scale: kg_per_m2
+        harmonization: within_endpoint_with_conversion
+      sylhet:
+        feature: Obesity
+        relation: proxy
+        measurement_scale: binary_self_reported_obesity_indicator
+        harmonization: prohibited_as_numeric_bmi
+  sex_gender:
+    domain: demographics
+    mappings:
+      sylhet:
+        feature: Gender
+        relation: direct
+        measurement_scale: binary_recorded_gender
+        harmonization: cohort_specific_encoding_required
+      brfss:
+        feature: Sex
+        relation: direct
+        measurement_scale: binary_recorded_sex
+        harmonization: cohort_specific_encoding_required
+      hospital130:
+        feature: gender
+        relation: direct
+        measurement_scale: recorded_gender_category
+        harmonization: prohibited_across_endpoints
+  blood_pressure:
+    domain: vital_signs
+    mappings:
+      pidd:
+        feature: BloodPressure
+        relation: direct
+        measurement_scale: diastolic_mmHg
+        harmonization: prohibited_with_binary_history
+      brfss:
+        feature: HighBP
+        relation: proxy
+        measurement_scale: binary_high_blood_pressure_status
+        harmonization: prohibited_with_continuous_measurement
+  glycemia:
+    domain: laboratory
+    mappings:
+      pidd:
+        feature: Glucose
+        relation: direct
+        measurement_scale: plasma_glucose_concentration
+        harmonization: prohibited_with_categorical_test_result
+      hospital130:
+        feature: max_glu_serum
+        relation: proxy
+        measurement_scale: categorical_max_serum_glucose_result
+        harmonization: prohibited_across_endpoints
+  insulin:
+    domain: laboratory_or_treatment
+    mappings:
+      pidd:
+        feature: Insulin
+        relation: direct
+        measurement_scale: serum_insulin_measurement
+        harmonization: prohibited_with_medication_exposure
+      hospital130:
+        feature: insulin
+        relation: not_comparable
+        measurement_scale: inpatient_medication_change_category
+        harmonization: prohibited
+  physical_activity:
+    domain: lifestyle
+    mappings:
+      brfss:
+        feature: PhysActivity
+        relation: direct
+        measurement_scale: binary_recent_activity_indicator
+        harmonization: dataset_specific
+  healthcare_utilization:
+    domain: healthcare_use
+    mappings:
+      hospital130:
+        feature: number_inpatient
+        relation: direct
+        measurement_scale: prior_year_inpatient_visit_count
+        harmonization: dataset_specific_endpoint
+      brfss:
+        feature: AnyHealthcare
+        relation: not_comparable
+        measurement_scale: binary_health_coverage_indicator
+        harmonization: prohibited

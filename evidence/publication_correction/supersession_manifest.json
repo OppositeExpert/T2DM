@@ -1,0 +1,155 @@
+[
+  {
+    "original_path": "figure/consolidated_results.pdf",
+    "original_checksum": "da27f543b90c83dcaf443ada350b6eefa467eb5f463ce90df0ef04ff1f209cb5",
+    "replacement_path": "figure/consolidated_results.pdf",
+    "replacement_checksum": "a97a8a7e3b1fe26bec3133f3ce462151f7a9db0e322074a8a2c62a147e856761",
+    "date": "2026-10-03",
+    "finding": "A/B",
+    "reason": "Derived publication summary/source selection corrected to frozen protocol"
+  },
+  {
+    "original_path": "figure/consolidated_results.png",
+    "original_checksum": "aea5634000d9270ba93dabb2df2a96b9b703320a428365a2afcd301c3892f0d4",
+    "replacement_path": "figure/consolidated_results.png",
+    "replacement_checksum": "00f2a9750597f3213f186e98507dee8d909724ed7cda34f32d5709562921f94d",
+    "date": "2026-10-03",
+    "finding": "A/B",
+    "reason": "Derived publication summary/source selection corrected to frozen protocol"
+  },
+  {
+    "original_path": "figure/consolidated_results.svg",
+    "original_checksum": "f60ea3a1d61702ccbf144c3f2060ed7aab8e2ce7ec6d2746de824c8b6b3e8a66",
+    "replacement_path": "figure/consolidated_results.svg",
+    "replacement_checksum": "b478dfdbd8b176743cdaa6e2483585048e14dfb3707dd362209380be370637cc",
+    "date": "2026-10-03",
+    "finding": "A/B",
+    "reason": "Derived publication summary/source selection corrected to frozen protocol"
+  },
+  {
+    "original_path": "figure/data/panel_c_availability_degradation.csv",
+    "original_checksum": "b52c9c2c902b917bf7adfbe62e015919fb980aa872e4087814f8620bb3e687dd",
+    "replacement_path": "figure/data/panel_c_availability_degradation.csv",
+    "replacement_checksum": "545073c6c7462d227d4c6f216f38489509a4b7ae8b61c42b615a4cd78c633d11",
+    "date": "2026-10-03",
+    "finding": "A/B",
+    "reason": "Derived publication summary/source selection corrected to frozen protocol"
+  },
+  {
+    "original_path": "tables/availability_panel_degradation.csv",
+    "original_checksum": "46a33cd9af2a83434f1d5134eb318b5d419cd63a7b030e9a35cccf94f04dc728",
+    "replacement_path": "tables/availability_panel_degradation.csv",
+    "replacement_checksum": "cd9f5e406212da471d4a9a8cf27b957fd07f797c2aabad752ec036e520ca6098",
+    "date": "2026-10-03",
+    "finding": "A/B",
+    "reason": "Derived publication summary/source selection corrected to frozen protocol"
+  },
+  {
+    "original_path": "tables/availability_panel_degradation.md",
+    "original_checksum": "93bc544294b859f11d86289e3f2ac5fc87cb4a5a83d82cb07d33147f9ae24007",
+    "replacement_path": "tables/availability_panel_degradation.md",
+    "replacement_checksum": "077065a6742a8f8a361bbd5b068a22d9999fb813f1f553786edb30602ca0f1bd",
+    "date": "2026-10-03",
+    "finding": "A/B",
+    "reason": "Derived publication summary/source selection corrected to frozen protocol"
+  },
+  {
+    "original_path": "tables/availability_panel_degradation.tex",
+    "original_checksum": "c2118710b92f64e9818d91e363f90f34f1ad48a952e9de0ef09aecf217e0a7ec",
+    "replacement_path": "tables/availability_panel_degradation.tex",
+    "replacement_checksum": "c73742ea16fad9cf0a2f6ffe1152cc7cccb6701f9b49ff1e18169760ca0d7cf0",
+    "date": "2026-10-03",
+    "finding": "A/B",
+    "reason": "Derived publication summary/source selection corrected to frozen protocol"
+  },
+  {
+    "original_path": "tables/full_panel_model_performance.csv",
+    "original_checksum": "3ef60ac3cc65c5b66c65c11aafccd677ea5a73e002c11d0534bb3ed89839d5e9",
+    "replacement_path": "tables/full_panel_model_performance.csv",
+    "replacement_checksum": "437b397e17ba78e6393b8c919490148f3298e071ed7d93b17d47fc1a044d549a",
+    "date": "2026-10-03",
+    "finding": "C/D",
+    "reason": "Derived publication summary/source selection corrected to frozen protocol"
+  },
+  {
+    "original_path": "tables/full_panel_model_performance.md",
+    "original_checksum": "b41624f4bd680013f19229a27b06881c19c1a8325f7b183767fd2b608bc7a264",
+    "replacement_path": "tables/full_panel_model_performance.md",
+    "replacement_checksum": "dbdc1bc9da03968996051697f98981b7dbdd08cbda3d42410345a46e232366d7",
+    "date": "2026-10-03",
+    "finding": "C/D",
+    "reason": "Derived publication summary/source selection corrected to frozen protocol"
+  },
+  {
+    "original_path": "tables/full_panel_model_performance.tex",
+    "original_checksum": "6a0f760003a36cb6a302a8cecb9c602dec0b1b088d9cb90c5f8a4af749d591b8",
+    "replacement_path": "tables/full_panel_model_performance.tex",
+    "replacement_checksum": "38b9733c12c7ba0e0ca290dbf0175c8ebaf4b41e53d1fd75e400fafbb87c680d",
+    "date": "2026-10-03",
+    "finding": "C/D",
+    "reason": "Derived publication summary/source selection corrected to frozen protocol"
+  },
+  {
+    "original_path": "tables/model_performance_confidence_intervals.csv",
+    "original_checksum": "da358db927580c8f3c31a4aea71c2fa536bfe701820aa2d39dc775cef8e1b6f2",
+    "replacement_path": "tables/model_performance_confidence_intervals.csv",
+    "replacement_checksum": "9880dff7f79256286ccc57e07ad6ddc16bea4f277754549af8edb8334ded9012",
+    "date": "2026-10-03",
+    "finding": "C/D",
+    "reason": "Derived publication summary/source selection corrected to frozen protocol"
+  },
+  {
+    "original_path": "tables/model_performance_confidence_intervals.md",
+    "original_checksum": "1c4a6b10e8ef6b40d5500df41cebf114a0efebb65658e022fe2a4ca61db9c16a",
+    "replacement_path": "tables/model_performance_confidence_intervals.md",
+    "replacement_checksum": "e6699204542e220ebe8bfb15d5cb6a876ea0c6cd6eeee9bca5865d53ca8a36cd",
+    "date": "2026-10-03",
+    "finding": "C/D",
+    "reason": "Derived publication summary/source selection corrected to frozen protocol"
+  },
+  {
+    "original_path": "tables/model_performance_confidence_intervals.tex",
+    "original_checksum": "e5afa696df1e6651c3989a9f1cf8b1b30aceee7ef3e38c3b6f9f787cc8e1fd60",
+    "replacement_path": "tables/model_performance_confidence_intervals.tex",
+    "replacement_checksum": "b40f2db1296bdda8f6b8d3fe55d1c2ebf27bf7f583849ecf7418e68db32798bb",
+    "date": "2026-10-03",
+    "finding": "C/D",
+    "reason": "Derived publication summary/source selection corrected to frozen protocol"
+  },
+  {
+    "original_path": "tables/threshold_performance.csv",
+    "original_checksum": "bfd283103a9f3afae7a0b57a362122d52f61860cae3eb227b27c4fa73bba363a",
+    "replacement_path": "tables/threshold_performance.csv",
+    "replacement_checksum": "b12e0d71a6d97fc43925d379344bef1191a6b9623927178a65a924fba48882b0",
+    "date": "2026-10-03",
+    "finding": "C/D",
+    "reason": "Derived publication summary/source selection corrected to frozen protocol"
+  },
+  {
+    "original_path": "tables/threshold_performance.md",
+    "original_checksum": "8bc224b1b16728ca2829dab213f506c9c44d834a276a29b376f44d58824f1490",
+    "replacement_path": "tables/threshold_performance.md",
+    "replacement_checksum": "1ccc243038f3a817f0c249236527082961532f7af4727ba50227cbe8b67e714b",
+    "date": "2026-10-03",
+    "finding": "C/D",
+    "reason": "Derived publication summary/source selection corrected to frozen protocol"
+  },
+  {
+    "original_path": "tables/threshold_performance.tex",
+    "original_checksum": "8879dae9d424be5e3acfc396ca903212ab8ccdac7b88795da9a64d284e9698fb",
+    "replacement_path": "tables/threshold_performance.tex",
+    "replacement_checksum": "7ad4ac4a21b7e46696f48dbb6ea9a0cd69936743da6860d131bf3bafed149661",
+    "date": "2026-10-03",
+    "finding": "C/D",
+    "reason": "Derived publication summary/source selection corrected to frozen protocol"
+  },
+  {
+    "original_path": "FINAL_RESULTS.json",
+    "original_checksum": "a579539799c5b9ea030cd96242c23a553f29af77fc865f2f845649deb2b61af7",
+    "replacement_path": "FINAL_RESULTS.json",
+    "replacement_checksum": "fdb534385e778b174d84ba7fff854feea73a08e2e3710920455fb53cb66e3c2b",
+    "date": "2026-10-03",
+    "finding": "A/B/C/D",
+    "reason": "Historical source bindings retained with explicit publication correction overlay"
+  }
+]

@@ -1,0 +1,71 @@
+[
+  {
+    "path": "results/final_publication/figure/consolidated_results.svg",
+    "type": "aggregate_figure_svg",
+    "private_path_flags": 0
+  },
+  {
+    "path": "results/final_publication/figure/consolidated_results.pdf",
+    "type": "aggregate_figure_pdf",
+    "pages": 1,
+    "text_and_metadata_private_path_or_key_flags": 0,
+    "encrypted": false
+  },
+  {
+    "path": "results/final_publication/figure/consolidated_results.png",
+    "type": "aggregate_figure_png",
+    "size": [
+      8469,
+      2854
+    ],
+    "private_path_metadata_flags": 0
+  },
+  {
+    "path": "publication_release/paper_evidence/figures/Figure_3_Availability.png",
+    "type": "aggregate_figure_png",
+    "size": [
+      1420,
+      1060
+    ],
+    "private_path_metadata_flags": 0
+  },
+  {
+    "path": "publication_release/paper_evidence/figures/Figure_3_Availability.pdf",
+    "type": "aggregate_figure_pdf",
+    "pages": 1,
+    "text_and_metadata_private_path_or_key_flags": 0,
+    "encrypted": false
+  },
+  {
+    "path": "publication_release/paper_evidence/figures/Figure_2_Decision_Curves.png",
+    "type": "aggregate_figure_png",
+    "size": [
+      1420,
+      1280
+    ],
+    "private_path_metadata_flags": 0
+  },
+  {
+    "path": "publication_release/paper_evidence/figures/Figure_2_Decision_Curves.pdf",
+    "type": "aggregate_figure_pdf",
+    "pages": 1,
+    "text_and_metadata_private_path_or_key_flags": 0,
+    "encrypted": false
+  },
+  {
+    "path": "publication_release/paper_evidence/figures/Figure_1_Calibration.pdf",
+    "type": "aggregate_figure_pdf",
+    "pages": 1,
+    "text_and_metadata_private_path_or_key_flags": 0,
+    "encrypted": false
+  },
+  {
+    "path": "publication_release/paper_evidence/figures/Figure_1_Calibration.png",
+    "type": "aggregate_figure_png",
+    "size": [
+      1420,
+      1280
+    ],
+    "private_path_metadata_flags": 0
+  }
+]

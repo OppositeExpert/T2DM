@@ -1,0 +1,101 @@
+{
+  "artifacts": {
+    "availability_routing/calibration_selection.csv": "ceae62ad56b3861e97a73b2feb4118ae36c94adea723a95a2abaed42aa65b0ad",
+    "availability_routing/confidence_intervals.csv": "e5dfaf002191883e3089932eb133b0cb5eb4bf94b70f60d75f4ab638155d201a",
+    "availability_routing/development_scores.csv": "d15555078d700c7affee64be0e21bb48f8ef081f85260aeb0169c8d959bd8eb8",
+    "availability_routing/figures/routing_average_precision.png": "76099ec1b8a4f250751aac68321bcfb1bd82be867ca6e42ca8b15a4b7fcaea22",
+    "availability_routing/figures/routing_average_precision.svg": "e684d3de31602ef5c35f6dbae027fec84402b6ae94df507c396ee4512217d32b",
+    "availability_routing/figures/routing_brier_score.png": "7c61a8c0ea9aabf53506c4abae963bd8b33b974bfbcaafa0a96246c280f76706",
+    "availability_routing/figures/routing_brier_score.svg": "d05bd0b25854e666d66b0041876632d814939b00a4c4de807082f9671392c320",
+    "availability_routing/figures/routing_selection_heatmap.png": "8679ac5e99d0aef956fed8ad7b82f8b25343f41b4757fd52918d308adfa6c5b5",
+    "availability_routing/figures/routing_selection_heatmap.svg": "f9eae84087bce90f7503c42431520d848c6f364e0fb721d1f9507cadfd316530",
+    "availability_routing/fold_metrics.csv": "c116e37c56150095af53d3d282d663ec158b645e870eb8a67a1617550c45c6fb",
+    "availability_routing/paired_system_comparisons.csv": "df1a5b786886260f811a9bf3f86f34739811089e70e38fcaf997f103f2d1007a",
+    "availability_routing/router_gains.csv": "800075d86cae1449ac05f80fe947ea5f813125d9a99c7b0fb1fd2bf7206791bc",
+    "availability_routing/router_selections.csv": "7f06ca246a2d8fed6253a1182eb71c410c0fe566b118bd037096e7ebe4aa47f5",
+    "availability_routing/stress_predictions.csv": "1c8cae92bc9af886f58c0492c9ec4326833c04338375a15da2ac5c828ed4826f",
+    "availability_routing/summary_metrics.csv": "6c67b9c521b809aa84dc8ac5131ca22903bad6b74a112f6652a8224b4927f6e6",
+    "availability_routing/system_predictions.csv": "c34f89746af3215590b06f088bf8172e1912888a699e8fe291455a4ccc0b2907"
+  },
+  "dataset": "sylhet",
+  "development_only_selection": true,
+  "experiment_id": "sylhet_final_internal_validation_5d98677ca7d9",
+  "model_study_source_tree_sha256": "7d5347cf4c10e50dceb201ad36527f6d1c3e2770bba364c15c9093bf97cc6a94",
+  "router_models": [
+    "random_forest",
+    "xgboost",
+    "lightgbm",
+    "catboost"
+  ],
+  "routing_source_tree_sha256": "7d5347cf4c10e50dceb201ad36527f6d1c3e2770bba364c15c9093bf97cc6a94",
+  "scenarios": {
+    "classic_symptoms": {
+      "available_features": [
+        "Polyuria",
+        "Polydipsia",
+        "sudden weight loss",
+        "Polyphagia"
+      ],
+      "description": "The four classic symptom indicators in this cohort."
+    },
+    "core_questionnaire": {
+      "available_features": [
+        "Age",
+        "Gender",
+        "Polyuria",
+        "Polydipsia",
+        "sudden weight loss",
+        "weakness",
+        "Polyphagia",
+        "visual blurring",
+        "delayed healing",
+        "Obesity"
+      ],
+      "description": "Demographics plus common early-stage diabetes symptoms."
+    },
+    "core_symptoms": {
+      "available_features": [
+        "Polyuria",
+        "Polydipsia",
+        "sudden weight loss",
+        "weakness",
+        "Polyphagia",
+        "delayed healing"
+      ],
+      "description": "Six symptom-only questionnaire fields."
+    },
+    "full": {
+      "available_features": [
+        "Age",
+        "Gender",
+        "Polyuria",
+        "Polydipsia",
+        "sudden weight loss",
+        "weakness",
+        "Polyphagia",
+        "Genital thrush",
+        "visual blurring",
+        "Itching",
+        "Irritability",
+        "delayed healing",
+        "partial paresis",
+        "muscle stiffness",
+        "Alopecia",
+        "Obesity"
+      ],
+      "description": "All sixteen Sylhet demographic and symptom predictors are available."
+    },
+    "minimal_polyuria_polydipsia": {
+      "available_features": [
+        "Polyuria",
+        "Polydipsia"
+      ],
+      "description": "Severe-degradation panel with polyuria and polydipsia only."
+    }
+  },
+  "selection_order": [
+    "minimum_brier_score",
+    "minimum_log_loss",
+    "maximum_average_precision"
+  ]
+}

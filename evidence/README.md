@@ -1,0 +1,3 @@
+# Public evidence boundary
+
+study_registry.json preserves four endpoint-separated study identities. development_reference is explicitly historical development evidence used for regression checks. publication_correction retains 14 safe aggregate/code provenance files byte-identically. Private artifact inventories, original execution metadata, individual data and the original research Git history are not included. Public fingerprint verification covers the 85 retained publication artifacts and these 14 retained correction files; it does not certify every file in the original 101-file research export. See publication_release/SNAPSHOT_PROVENANCE.json and REPRODUCIBILITY.md.

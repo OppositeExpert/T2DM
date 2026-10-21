@@ -1,0 +1,69 @@
+version: 2
+
+evaluation_roles_by_evidence_tier:
+  execution_only_smoke: smoke_test
+  full_development: development_test
+  final_locked: locked_final_test
+  final_internal_validation: locked_internal_validation
+
+prediction_columns:
+  - experiment_id
+  - dataset
+  - task
+  - endpoint
+  - model
+  - row_id
+  - group_id
+  - repeat
+  - outer_fold
+  - evaluation_role
+  - target
+  - probability_raw
+  - probability_calibrated
+  - threshold_policy
+  - threshold
+  - prediction
+
+metric_identity_columns:
+  - experiment_id
+  - dataset
+  - task
+  - endpoint
+  - model
+  - repeat
+  - outer_fold
+  - evaluation_role
+  - probability_version
+  - threshold_policy
+
+metric_value_columns:
+  - n
+  - positives
+  - prevalence
+  - auroc
+  - average_precision
+  - brier_score
+  - scaled_brier_score
+  - log_loss
+  - calibration_intercept
+  - calibration_slope
+  - observed_expected_ratio
+  - expected_calibration_error
+  - accuracy
+  - balanced_accuracy
+  - sensitivity
+  - specificity
+  - false_positive_rate
+  - false_negative_rate
+  - ppv
+  - npv
+  - f1
+  - mcc
+  - youden_index
+  - positive_likelihood_ratio
+  - negative_likelihood_ratio
+  - diagnostic_odds_ratio
+  - tn
+  - fp
+  - fn
+  - tp

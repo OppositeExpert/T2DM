@@ -1,0 +1,16 @@
+{
+  "executed_correction_code/correct_publication_protocol_summaries.py": "599fdb89e43b4b5af7f2f5f537c4af495a221ca4a29ba7308a849c32cd5fb5d8",
+  "executed_correction_code/protocol_correction.py": "98a38ad62af69a8f39fdfc4eb2c871e20e9067fffcb1c75d3bd2512b418a91b5",
+  "original_publication_checksums.json": "548fc724576421b662d86e94ecad1c0e87fc774d11ac4c371527943ec902ea9e",
+  "original_study_derivatives/pidd/availability_routing/confidence_intervals.csv": "b8f79b4ae019b18b7f6fa45b3dd5e9e1a573a4dbf4581b5543b36f3e2cc0ddd5",
+  "original_study_derivatives/pidd/availability_routing/paired_system_comparisons.csv": "9c47b28d9569bcee493939e48d5f9a984b962a0f5a80ee3e5bef5236e7cfa2e2",
+  "original_study_derivatives/pidd/availability_routing/router_gains.csv": "7f9c35316a48350ba2748a9590712af8435a000f1abaa47697a99624ba60df56",
+  "original_study_derivatives/pidd/availability_routing/routing_metadata.json": "c4cf4146a318d60a82436cafa786ed1e6b61a0f80fdabc4dc7f7ceaef467dc7b",
+  "original_study_derivatives/pidd/availability_routing/summary_metrics.csv": "2fab30980286c60c1acde5c674090ffee4feef5b113e5d30079b3fc6d5c0beca",
+  "original_study_derivatives/sylhet/availability_routing/confidence_intervals.csv": "e5dfaf002191883e3089932eb133b0cb5eb4bf94b70f60d75f4ab638155d201a",
+  "original_study_derivatives/sylhet/availability_routing/paired_system_comparisons.csv": "df1a5b786886260f811a9bf3f86f34739811089e70e38fcaf997f103f2d1007a",
+  "original_study_derivatives/sylhet/availability_routing/router_gains.csv": "800075d86cae1449ac05f80fe947ea5f813125d9a99c7b0fb1fd2bf7206791bc",
+  "original_study_derivatives/sylhet/availability_routing/routing_metadata.json": "4b61d53ffe7852cac0d87b03ada5dcb5e01349ea847aff26063351210eb795b8",
+  "original_study_derivatives/sylhet/availability_routing/summary_metrics.csv": "6c67b9c521b809aa84dc8ac5131ca22903bad6b74a112f6652a8224b4927f6e6",
+  "supersession_manifest.json": "1093f54682eb476a4ec20f78b907998e58c17be643093e609130eaf1f1731978"
+}

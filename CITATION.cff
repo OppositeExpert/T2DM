@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: "Local paper-release candidate: approved creator metadata and final release identifiers must be confirmed before publication."
+title: "Availability-Aware and Leakage-Controlled Evaluation of Predictive Models Across Heterogeneous Feature Schemas: Case Studies in Diabetes Status and 30-Day Readmission"
+type: software
+authors:
+  - name: "T2DM Project Contributors"
+repository-code: "https://github.com/OppositeExpert/T2DM"
+license: MIT
+keywords:
+  - feature availability
+  - calibration
+  - diabetes status
+  - hospital readmission

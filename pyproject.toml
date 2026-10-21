@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "diabetes-publication-pipeline"
+version = "0.1.0"
+description = "Leakage-free multi-model diabetes screening benchmark pipeline"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "numpy==2.5.2",
+  "pandas==3.0.5",
+  "scikit-learn==1.9.0",
+  "scipy==1.18.0",
+  "joblib==1.5.3",
+  "PyYAML==6.0.3",
+  "optuna==4.9.0",
+  "xgboost==3.4.1",
+  "lightgbm==4.7.0",
+  "catboost==1.2.10",
+  "shap==0.52.0",
+  "matplotlib==3.11.1",
+  "seaborn==0.13.2",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest==9.1.1",
+  "pytest-cov==7.1.0",
+]
+
+[project.scripts]
+diabetes-pipeline = "diabetes_pipeline.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["diabetes_pipeline*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["local_research_data: requires local raw data or preserved private study artifacts"]
+addopts = "-ra"
+filterwarnings = [
+  "ignore:Setting the shape on a NumPy array has been deprecated:DeprecationWarning:joblib.numpy_pickle",
+]

@@ -1,0 +1,205 @@
+version: 1
+
+datasets:
+  brfss:
+    display_name: BRFSS 2015
+    task: diabetes_screening
+    endpoint: self_reported_diagnosed_diabetes
+    source_url: https://www.cdc.gov/brfss/annual_data/2015/pdf/codebook15_llcp.pdf
+    raw_path: data/raw/brfss.csv
+    loader: brfss
+    target_name: Diabetes_binary
+    target_encoding:
+      positive_raw_values: [1]
+      negative_raw_values: [3]
+      excluded_raw_values: [2, 4, 7, 9]
+    row_id_source: source_row_index
+    group_strategy: none
+    evaluation_strategy: stratified_holdout_cv
+    test_size: 0.20
+    cv_folds: 5
+    numeric_features:
+      - HighBP
+      - HighChol
+      - CholCheck
+      - BMI
+      - Smoker
+      - Stroke
+      - HeartDiseaseorAttack
+      - PhysActivity
+      - Fruits
+      - Veggies
+      - HvyAlcoholConsump
+      - AnyHealthcare
+      - NoDocbcCost
+      - GenHlth
+      - MentHlth
+      - PhysHlth
+      - DiffWalk
+      - Sex
+      - Age
+      - Education
+      - Income
+    categorical_features: []
+    applicability_notes:
+      - Cross-sectional, self-reported screening endpoint; not future incidence.
+      - Prediabetes/borderline and pregnancy-only diabetes responses are excluded from the primary endpoint.
+      - Survey-derived population data; predictions inherit sampling and reporting limitations.
+
+  pidd:
+    display_name: Pima Indians Diabetes Database
+    task: diabetes_screening
+    endpoint: diabetes_positive_label
+    raw_path: data/raw/pidd.csv
+    loader: pidd
+    target_name: Outcome
+    target_encoding:
+      positive_raw_values: [1]
+      negative_raw_values: [0]
+    row_id_source: source_row_index
+    group_strategy: none
+    evaluation_strategy: repeated_nested_stratified_cv
+    outer_folds: 5
+    inner_folds: 5
+    repeats: 5
+    numeric_features:
+      - Pregnancies
+      - Glucose
+      - BloodPressure
+      - SkinThickness
+      - Insulin
+      - BMI
+      - DiabetesPedigreeFunction
+      - Age
+    categorical_features: []
+    zero_as_missing:
+      - Glucose
+      - BloodPressure
+      - SkinThickness
+      - Insulin
+      - BMI
+    applicability_notes:
+      - Small, population-specific cohort; repeated nested validation is required.
+      - Probability estimates should not be generalized beyond compatible populations without external validation.
+
+  sylhet:
+    display_name: Sylhet Early Stage Diabetes Risk Prediction
+    task: diabetes_screening
+    endpoint: early_stage_diabetes_positive_label
+    source_url: https://archive.ics.uci.edu/dataset/529/early+stage+diabetes+risk+prediction
+    raw_path: data/raw/sylhet.csv
+    loader: sylhet
+    target_name: class
+    target_encoding:
+      positive_raw_values: [Positive, 1]
+      negative_raw_values: [Negative, 0]
+    row_id_source: source_row_index
+    group_strategy: identical_feature_profile
+    evaluation_strategy: repeated_nested_stratified_group_cv
+    outer_folds: 5
+    inner_folds: 5
+    repeats: 5
+    numeric_features:
+      - Age
+      - Gender
+      - Polyuria
+      - Polydipsia
+      - sudden weight loss
+      - weakness
+      - Polyphagia
+      - Genital thrush
+      - visual blurring
+      - Itching
+      - Irritability
+      - delayed healing
+      - partial paresis
+      - muscle stiffness
+      - Alopecia
+      - Obesity
+    categorical_features: []
+    applicability_notes:
+      - Small symptom-questionnaire cohort with extensive exact duplicate profiles.
+      - Duplicate profiles must remain in the same outer evaluation fold.
+
+  hospital130:
+    display_name: Diabetes 130-US Hospitals
+    task: hospital_readmission
+    endpoint: readmission_within_30_days
+    source_url: https://archive.ics.uci.edu/dataset/296/diabetes+130-us+hospitals+for+years+1999-2008
+    raw_path: data/raw/hospital130.csv
+    loader: hospital130
+    target_name: readmitted_binary
+    target_encoding:
+      positive_raw_values: ["<30"]
+      negative_raw_values: [">30", "NO"]
+    row_id_source: encounter_id
+    group_column: patient_nbr
+    group_strategy: patient
+    evaluation_strategy: stratified_group_holdout_cv
+    test_folds: 5
+    cv_folds: 5
+    excluded_features:
+      - encounter_id
+      - patient_nbr
+      - weight
+      - readmitted
+    excluded_discharge_disposition_ids:
+      - 11
+      - 13
+      - 14
+      - 19
+      - 20
+      - 21
+    numeric_features:
+      - age
+      - time_in_hospital
+      - num_lab_procedures
+      - num_procedures
+      - num_medications
+      - number_outpatient
+      - number_emergency
+      - number_inpatient
+      - number_diagnoses
+    categorical_features:
+      - admission_type_id
+      - discharge_disposition_id
+      - admission_source_id
+      - race
+      - gender
+      - payer_code
+      - medical_specialty
+      - diag_1
+      - diag_2
+      - diag_3
+      - max_glu_serum
+      - A1Cresult
+      - metformin
+      - repaglinide
+      - nateglinide
+      - chlorpropamide
+      - glimepiride
+      - acetohexamide
+      - glipizide
+      - glyburide
+      - tolbutamide
+      - pioglitazone
+      - rosiglitazone
+      - acarbose
+      - miglitol
+      - troglitazone
+      - tolazamide
+      - examide
+      - citoglipton
+      - insulin
+      - glyburide-metformin
+      - glipizide-metformin
+      - glimepiride-pioglitazone
+      - metformin-rosiglitazone
+      - metformin-pioglitazone
+      - change
+      - diabetesMed
+    applicability_notes:
+      - Separate 30-day readmission endpoint among hospital encounters involving patients with diabetes.
+      - Patient grouping is mandatory and results must not be presented as diabetes detection.
+      - Encounters ending in death or hospice are excluded because ordinary post-discharge readmission is not an applicable outcome.
+      - Admission, discharge-disposition, and admission-source identifiers are categorical codes rather than continuous quantities.

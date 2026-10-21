@@ -1,0 +1,59 @@
+version: 1
+
+# Raw files are intentionally excluded from Git. The hashes below identify the
+# exact byte-level inputs used by the recorded development studies.
+datasets:
+  pidd:
+    expected_path: data/raw/pidd.csv
+    expected_filename: pidd.csv
+    expected_sha256: 6bfe5d0f379d17a0e0819b996407e3c09bf80febd4287f2ed212190dfff154af
+    acquisition: openml_reconstruction
+    source_page: https://www.openml.org/d/37
+    download_url: https://www.openml.org/data/get_csv/37/dataset_37_diabetes.arff
+    historical_uci_url: https://archive.ics.uci.edu/ml/machine-learning-databases/pima-indians-diabetes/pima-indians-diabetes.data
+    notes:
+      - The original UCI file URL returned HTTP 404 when rechecked on 2026-08-28.
+      - The helper reconstructs the exact historical nine-column file from OpenML dataset 37 and verifies the final SHA-256.
+      - Original owners are the US National Institute of Diabetes and Digestive and Kidney Diseases; the historical UCI record names Vincent Sigillito as donor.
+
+  sylhet:
+    expected_path: data/raw/sylhet.csv
+    expected_filename: sylhet.csv
+    expected_sha256: 7889d9d0beb7dd1ccc58da99f72763f16afb259b5dbbaa086f8195366ff66137
+    acquisition: zip_member
+    source_page: https://archive.ics.uci.edu/dataset/529/early+stage+diabetes+risk+prediction
+    doi: https://doi.org/10.24432/C5VG8H
+    license: CC BY 4.0
+    download_url: https://archive.ics.uci.edu/static/public/529/early%2Bstage%2Bdiabetes%2Brisk%2Bprediction%2Bdataset.zip
+    archive_sha256: 67594c0f11257688b57493798e70737b7156ba37a2e6ac75507ae3a35221a388
+    archive_member: diabetes_data_upload.csv
+
+  hospital130:
+    expected_path: data/raw/hospital130.csv
+    expected_filename: hospital130.csv
+    expected_sha256: 0689e7ec031237dc63031b938805c48377748761a3b26acab621567afa24df97
+    acquisition: zip_member
+    source_page: https://archive.ics.uci.edu/dataset/296/diabetes+130-us+hospitals+for+years+1999-2008
+    doi: https://doi.org/10.24432/C5230J
+    license: CC BY 4.0
+    download_url: https://archive.ics.uci.edu/static/public/296/diabetes%2B130-us%2Bhospitals%2Bfor%2Byears%2B1999-2008.zip
+    archive_sha256: f82ac129da2ddd2299391ff6fbae3a6a58b3edcf59ac9d7bd480c00fe453112a
+    archive_member: diabetic_data.csv
+    notes:
+      - Contains potentially sensitive demographic fields even though it is publicly licensed.
+      - The configured loader predicts 30-day readmission and excludes death/hospice dispositions.
+
+  brfss:
+    expected_path: data/raw/brfss.csv
+    expected_filename: brfss.csv
+    expected_sha256: a7d3380aca5aeae94186770983c3089fb6c4b2074aa112418112c11891d16420
+    acquisition: sas_transport_to_csv
+    source_page: https://www.cdc.gov/brfss/annual_data/annual_2015.html
+    documentation: https://www.cdc.gov/brfss/annual_data/2015/pdf/codebook15_llcp.pdf
+    download_url: https://www.cdc.gov/brfss/annual_data/2015/files/LLCP2015XPT.zip
+    archive_sha256: 38bfd48c64b99328c67feac36cedfff6f2991d49e89c4ffd549083cb626764f0
+    archive_member: LLCP2015.XPT
+    notes:
+      - CDC reports 441456 records and 330 variables in the 2015 transport file.
+      - The helper preserves byte-valued SAS strings because that matches the verified project CSV.
+      - Use _LLCPWT, _STSTR, and _PSU for the prespecified survey sensitivity analysis.

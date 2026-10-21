@@ -1,0 +1,24 @@
+{
+  "independent_holdout_claim_allowed": false,
+  "datasets_are_endpoint_separated": true,
+  "cross_cohort_probability_pooling": false,
+  "dynamic_model_switching": {
+    "multiplicity_corrected_superiority_established": false
+  },
+  "studies": {
+    "brfss": {
+      "experiment_id": "brfss_final_internal_validation_holdout_2cfa4a7e2a3a"
+    },
+    "hospital130": {
+      "experiment_id": "hospital130_final_internal_validation_holdout_26b332f2e8a8"
+    },
+    "pidd": {
+      "experiment_id": "pidd_final_internal_validation_5739531d61c3"
+    },
+    "sylhet": {
+      "experiment_id": "sylhet_final_internal_validation_5d98677ca7d9"
+    }
+  },
+  "source_baseline": "12d3f9b3676d8d5638d27794bf11e01b36027310",
+  "scope": "Public identity/claim projection; authoritative numerical tables are separately hash-verified."
+}

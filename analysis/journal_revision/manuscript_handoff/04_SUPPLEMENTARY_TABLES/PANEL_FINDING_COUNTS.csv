@@ -1,0 +1,17 @@
+dataset,metric,reduced_panels,retrained_point_estimate_better,retrained_holm_significant_better,masked_holm_significant_better
+brfss,auroc,5,5,5,0
+brfss,average_precision,5,5,5,0
+brfss,brier_score,5,5,5,0
+brfss,log_loss,5,5,5,0
+hospital130,auroc,4,2,1,1
+hospital130,average_precision,4,2,1,2
+hospital130,brier_score,4,2,1,2
+hospital130,log_loss,4,2,2,1
+pidd,auroc,5,5,0,0
+pidd,average_precision,5,3,0,0
+pidd,brier_score,5,4,0,0
+pidd,log_loss,5,5,0,0
+sylhet,auroc,4,2,0,0
+sylhet,average_precision,4,2,0,0
+sylhet,brier_score,4,3,0,0
+sylhet,log_loss,4,3,0,0

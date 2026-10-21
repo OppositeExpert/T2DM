@@ -1,0 +1,9 @@
+dataset,batch_n,A_median_ms,D_median_ms,D_over_A_median_ratio,environment_id,source
+pidd,1,2.1237505,2.1356244999999996,1.005591052244602,L_prior_local,06_COMPUTATIONAL_COST.csv; matched input/environment within each row
+pidd,256,5.9847085,6.271583000000001,1.0479345819432977,N_A4_supplement,06_COMPUTATIONAL_COST.csv; matched input/environment within each row
+sylhet,1,27.980541499999998,28.033500000000004,1.0018926903183774,L_prior_local,06_COMPUTATIONAL_COST.csv; matched input/environment within each row
+sylhet,256,53.3730415,52.932812500000004,0.9917518472317154,N_A4_supplement,06_COMPUTATIONAL_COST.csv; matched input/environment within each row
+brfss,1,2.10675,2.1465835,1.0189075590364307,L_prior_local,06_COMPUTATIONAL_COST.csv; matched input/environment within each row
+brfss,256,9.9888545,11.2605005,1.127306489447814,L_prior_local,06_COMPUTATIONAL_COST.csv; matched input/environment within each row
+hospital130,1,4.901646,30.6045835,6.243735981749803,L_prior_local,06_COMPUTATIONAL_COST.csv; matched input/environment within each row
+hospital130,256,8.955770500000002,45.909083,5.126201369273587,L_prior_local,06_COMPUTATIONAL_COST.csv; matched input/environment within each row

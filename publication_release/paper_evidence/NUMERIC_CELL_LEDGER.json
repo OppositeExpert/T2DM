@@ -1,0 +1,7271 @@
+[
+  {
+    "source": "03_MAIN_TEXT_TABLES/09_pidd_estimands.csv",
+    "row_keys": {
+      "estimand": "forced_core_metabolic"
+    },
+    "column": "estimate",
+    "source_value": "0.8373955223880597",
+    "display": "0.8374",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/09_pidd_estimands.csv",
+    "row_keys": {
+      "estimand": "forced_core_metabolic"
+    },
+    "column": "ci_lower",
+    "source_value": "0.8087492537313432",
+    "display": "0.8087",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/09_pidd_estimands.csv",
+    "row_keys": {
+      "estimand": "forced_core_metabolic"
+    },
+    "column": "ci_upper",
+    "source_value": "0.8654427238805971",
+    "display": "0.8654",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/09_pidd_estimands.csv",
+    "row_keys": {
+      "estimand": "runtime_fallback_policy"
+    },
+    "column": "estimate",
+    "source_value": "0.836865671641791",
+    "display": "0.8369",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/09_pidd_estimands.csv",
+    "row_keys": {
+      "estimand": "runtime_fallback_policy"
+    },
+    "column": "ci_lower",
+    "source_value": "0.807267723880597",
+    "display": "0.8073",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/09_pidd_estimands.csv",
+    "row_keys": {
+      "estimand": "runtime_fallback_policy"
+    },
+    "column": "ci_upper",
+    "source_value": "0.8630309701492538",
+    "display": "0.8630",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_routing_fallback_performance.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "system": "availability_router"
+    },
+    "column": "total_n",
+    "source_value": "768",
+    "display": "768",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_routing_fallback_performance.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "system": "availability_router"
+    },
+    "column": "total_positive_events",
+    "source_value": "268",
+    "display": "268",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_routing_fallback_performance.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "system": "availability_router"
+    },
+    "column": "total_n",
+    "source_value": "520",
+    "display": "520",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_routing_fallback_performance.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "system": "availability_router"
+    },
+    "column": "total_positive_events",
+    "source_value": "320",
+    "display": "320",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_routing_fallback_performance.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "system": "availability_router"
+    },
+    "column": "total_n",
+    "source_value": "85872",
+    "display": "85,872",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_routing_fallback_performance.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "system": "availability_router"
+    },
+    "column": "total_positive_events",
+    "source_value": "11451",
+    "display": "11,451",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_routing_fallback_performance.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "system": "availability_router"
+    },
+    "column": "total_n",
+    "source_value": "19868",
+    "display": "19,868",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_routing_fallback_performance.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "system": "availability_router"
+    },
+    "column": "total_positive_events",
+    "source_value": "2262",
+    "display": "2,262",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/06_selective_prediction.csv",
+    "row_keys": {
+      "dataset": "pidd"
+    },
+    "column": "positive_event_coverage",
+    "source_value": "0.5485074626865671",
+    "display": "54.85\\%",
+    "decimals": 2,
+    "percent": true,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/06_selective_prediction.csv",
+    "row_keys": {
+      "dataset": "pidd"
+    },
+    "column": "accepted_prevalence",
+    "source_value": "0.2732342007434944",
+    "display": "27.32\\%",
+    "decimals": 2,
+    "percent": true,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/06_selective_prediction.csv",
+    "row_keys": {
+      "dataset": "pidd"
+    },
+    "column": "rejected_prevalence",
+    "source_value": "0.5260869565217391",
+    "display": "52.61\\%",
+    "decimals": 2,
+    "percent": true,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/06_selective_prediction.csv",
+    "row_keys": {
+      "dataset": "pidd"
+    },
+    "column": "auroc",
+    "source_value": "0.8745411207961447",
+    "display": "0.8745",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/06_selective_prediction.csv",
+    "row_keys": {
+      "dataset": "sylhet"
+    },
+    "column": "positive_event_coverage",
+    "source_value": "0.76875",
+    "display": "76.88\\%",
+    "decimals": 2,
+    "percent": true,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/06_selective_prediction.csv",
+    "row_keys": {
+      "dataset": "sylhet"
+    },
+    "column": "accepted_prevalence",
+    "source_value": "0.6758241758241759",
+    "display": "67.58\\%",
+    "decimals": 2,
+    "percent": true,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/06_selective_prediction.csv",
+    "row_keys": {
+      "dataset": "sylhet"
+    },
+    "column": "rejected_prevalence",
+    "source_value": "0.47435897435897434",
+    "display": "47.44\\%",
+    "decimals": 2,
+    "percent": true,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/06_selective_prediction.csv",
+    "row_keys": {
+      "dataset": "sylhet"
+    },
+    "column": "auroc",
+    "source_value": "0.9956593633732946",
+    "display": "0.9957",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/06_selective_prediction.csv",
+    "row_keys": {
+      "dataset": "brfss"
+    },
+    "column": "positive_event_coverage",
+    "source_value": "0.26940878525892936",
+    "display": "26.94\\%",
+    "decimals": 2,
+    "percent": true,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/06_selective_prediction.csv",
+    "row_keys": {
+      "dataset": "brfss"
+    },
+    "column": "accepted_prevalence",
+    "source_value": "0.051321721481925105",
+    "display": "5.13\\%",
+    "decimals": 2,
+    "percent": true,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/06_selective_prediction.csv",
+    "row_keys": {
+      "dataset": "brfss"
+    },
+    "column": "rejected_prevalence",
+    "source_value": "0.3247544738170102",
+    "display": "32.48\\%",
+    "decimals": 2,
+    "percent": true,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/06_selective_prediction.csv",
+    "row_keys": {
+      "dataset": "brfss"
+    },
+    "column": "auroc",
+    "source_value": "0.7779726850972637",
+    "display": "0.7780",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/06_selective_prediction.csv",
+    "row_keys": {
+      "dataset": "hospital130"
+    },
+    "column": "positive_event_coverage",
+    "source_value": "0.3859416445623342",
+    "display": "38.59\\%",
+    "decimals": 2,
+    "percent": true,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/06_selective_prediction.csv",
+    "row_keys": {
+      "dataset": "hospital130"
+    },
+    "column": "accepted_prevalence",
+    "source_value": "0.06276060388209921",
+    "display": "6.28\\%",
+    "decimals": 2,
+    "percent": true,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/06_selective_prediction.csv",
+    "row_keys": {
+      "dataset": "hospital130"
+    },
+    "column": "rejected_prevalence",
+    "source_value": "0.23313192346424974",
+    "display": "23.31\\%",
+    "decimals": 2,
+    "percent": true,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/06_selective_prediction.csv",
+    "row_keys": {
+      "dataset": "hospital130"
+    },
+    "column": "auroc",
+    "source_value": "0.5058003913612337",
+    "display": "0.5058",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/PANEL_DEFINITIONS.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "panel": "full"
+    },
+    "column": "predictor_count",
+    "source_value": "8",
+    "display": "8",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/PANEL_DEFINITIONS.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "panel": "no_insulin_or_skinfold"
+    },
+    "column": "predictor_count",
+    "source_value": "6",
+    "display": "6",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/PANEL_DEFINITIONS.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "panel": "routine_clinic"
+    },
+    "column": "predictor_count",
+    "source_value": "5",
+    "display": "5",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/PANEL_DEFINITIONS.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "panel": "non_laboratory"
+    },
+    "column": "predictor_count",
+    "source_value": "4",
+    "display": "4",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/PANEL_DEFINITIONS.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "panel": "core_metabolic"
+    },
+    "column": "predictor_count",
+    "source_value": "4",
+    "display": "4",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/PANEL_DEFINITIONS.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "panel": "minimal_glucose_age"
+    },
+    "column": "predictor_count",
+    "source_value": "2",
+    "display": "2",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/PANEL_DEFINITIONS.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "panel": "full"
+    },
+    "column": "predictor_count",
+    "source_value": "16",
+    "display": "16",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/PANEL_DEFINITIONS.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "panel": "core_questionnaire"
+    },
+    "column": "predictor_count",
+    "source_value": "10",
+    "display": "10",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/PANEL_DEFINITIONS.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "panel": "core_symptoms"
+    },
+    "column": "predictor_count",
+    "source_value": "6",
+    "display": "6",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/PANEL_DEFINITIONS.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "panel": "classic_symptoms"
+    },
+    "column": "predictor_count",
+    "source_value": "4",
+    "display": "4",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/PANEL_DEFINITIONS.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "panel": "minimal_polyuria_polydipsia"
+    },
+    "column": "predictor_count",
+    "source_value": "2",
+    "display": "2",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/PANEL_DEFINITIONS.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "full"
+    },
+    "column": "predictor_count",
+    "source_value": "21",
+    "display": "21",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/PANEL_DEFINITIONS.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "routine_survey"
+    },
+    "column": "predictor_count",
+    "source_value": "12",
+    "display": "12",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/PANEL_DEFINITIONS.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "cardiometabolic_health"
+    },
+    "column": "predictor_count",
+    "source_value": "9",
+    "display": "9",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/PANEL_DEFINITIONS.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "health_status"
+    },
+    "column": "predictor_count",
+    "source_value": "6",
+    "display": "6",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/PANEL_DEFINITIONS.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "demographics_health"
+    },
+    "column": "predictor_count",
+    "source_value": "5",
+    "display": "5",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/PANEL_DEFINITIONS.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "minimal_general_health_age"
+    },
+    "column": "predictor_count",
+    "source_value": "2",
+    "display": "2",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/PANEL_DEFINITIONS.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "panel": "full"
+    },
+    "column": "predictor_count",
+    "source_value": "46",
+    "display": "46",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/PANEL_DEFINITIONS.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "panel": "encounter_utilization"
+    },
+    "column": "predictor_count",
+    "source_value": "9",
+    "display": "9",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/PANEL_DEFINITIONS.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "panel": "admission_clinical"
+    },
+    "column": "predictor_count",
+    "source_value": "9",
+    "display": "9",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/PANEL_DEFINITIONS.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "panel": "prior_utilization"
+    },
+    "column": "predictor_count",
+    "source_value": "5",
+    "display": "5",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/PANEL_DEFINITIONS.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "panel": "minimal_inpatient_history"
+    },
+    "column": "predictor_count",
+    "source_value": "2",
+    "display": "2",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_dataset_characteristics.csv",
+    "row_keys": {
+      "dataset": "pidd"
+    },
+    "column": "n",
+    "source_value": "768",
+    "display": "768",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_dataset_characteristics.csv",
+    "row_keys": {
+      "dataset": "pidd"
+    },
+    "column": "positive_events",
+    "source_value": "268",
+    "display": "268",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_dataset_characteristics.csv",
+    "row_keys": {
+      "dataset": "pidd"
+    },
+    "column": "prevalence",
+    "source_value": "0.3489583333333333",
+    "display": "34.90\\%",
+    "decimals": 2,
+    "percent": true,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_dataset_characteristics.csv",
+    "row_keys": {
+      "dataset": "pidd"
+    },
+    "column": "predictor_count",
+    "source_value": "8",
+    "display": "8",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_routing_fallback_performance.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "system": "availability_router"
+    },
+    "column": "total_n",
+    "source_value": "768",
+    "display": "768",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_routing_fallback_performance.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "system": "availability_router"
+    },
+    "column": "total_positive_events",
+    "source_value": "268",
+    "display": "268",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_dataset_characteristics.csv",
+    "row_keys": {
+      "dataset": "sylhet"
+    },
+    "column": "n",
+    "source_value": "520",
+    "display": "520",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_dataset_characteristics.csv",
+    "row_keys": {
+      "dataset": "sylhet"
+    },
+    "column": "positive_events",
+    "source_value": "320",
+    "display": "320",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_dataset_characteristics.csv",
+    "row_keys": {
+      "dataset": "sylhet"
+    },
+    "column": "prevalence",
+    "source_value": "0.6153846153846154",
+    "display": "61.54\\%",
+    "decimals": 2,
+    "percent": true,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_dataset_characteristics.csv",
+    "row_keys": {
+      "dataset": "sylhet"
+    },
+    "column": "predictor_count",
+    "source_value": "16",
+    "display": "16",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_routing_fallback_performance.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "system": "availability_router"
+    },
+    "column": "total_n",
+    "source_value": "520",
+    "display": "520",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_routing_fallback_performance.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "system": "availability_router"
+    },
+    "column": "total_positive_events",
+    "source_value": "320",
+    "display": "320",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_dataset_characteristics.csv",
+    "row_keys": {
+      "dataset": "brfss"
+    },
+    "column": "n",
+    "source_value": "429360",
+    "display": "429,360",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_dataset_characteristics.csv",
+    "row_keys": {
+      "dataset": "brfss"
+    },
+    "column": "positive_events",
+    "source_value": "57256",
+    "display": "57,256",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_dataset_characteristics.csv",
+    "row_keys": {
+      "dataset": "brfss"
+    },
+    "column": "prevalence",
+    "source_value": "0.13335196571641514",
+    "display": "13.34\\%",
+    "decimals": 2,
+    "percent": true,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_dataset_characteristics.csv",
+    "row_keys": {
+      "dataset": "brfss"
+    },
+    "column": "predictor_count",
+    "source_value": "21",
+    "display": "21",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_routing_fallback_performance.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "system": "availability_router"
+    },
+    "column": "total_n",
+    "source_value": "85872",
+    "display": "85,872",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_routing_fallback_performance.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "system": "availability_router"
+    },
+    "column": "total_positive_events",
+    "source_value": "11451",
+    "display": "11,451",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_dataset_characteristics.csv",
+    "row_keys": {
+      "dataset": "hospital130"
+    },
+    "column": "n",
+    "source_value": "99343",
+    "display": "99,343",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_dataset_characteristics.csv",
+    "row_keys": {
+      "dataset": "hospital130"
+    },
+    "column": "positive_events",
+    "source_value": "11314",
+    "display": "11,314",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_dataset_characteristics.csv",
+    "row_keys": {
+      "dataset": "hospital130"
+    },
+    "column": "prevalence",
+    "source_value": "0.11388824577474005",
+    "display": "11.39\\%",
+    "decimals": 2,
+    "percent": true,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_dataset_characteristics.csv",
+    "row_keys": {
+      "dataset": "hospital130"
+    },
+    "column": "predictor_count",
+    "source_value": "46",
+    "display": "46",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_routing_fallback_performance.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "system": "availability_router"
+    },
+    "column": "total_n",
+    "source_value": "19868",
+    "display": "19,868",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_routing_fallback_performance.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "system": "availability_router"
+    },
+    "column": "total_positive_events",
+    "source_value": "2262",
+    "display": "2,262",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_routing_fallback_performance.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "system": "availability_router"
+    },
+    "column": "coverage",
+    "source_value": "1.0",
+    "display": "100.00\\%",
+    "decimals": 2,
+    "percent": true,
+    "integer": false
+  },
+  {
+    "source": "runtime_intervals/pidd.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "system": "availability_router",
+      "metric": "auroc"
+    },
+    "column": "estimate",
+    "source_value": "0.836865671641791",
+    "display": "0.8369",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "runtime_intervals/pidd.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "system": "availability_router",
+      "metric": "auroc"
+    },
+    "column": "ci_lower",
+    "source_value": "0.8072677238805971",
+    "display": "0.8073",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "runtime_intervals/pidd.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "system": "availability_router",
+      "metric": "auroc"
+    },
+    "column": "ci_upper",
+    "source_value": "0.8630309701492539",
+    "display": "0.8630",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "runtime_intervals/pidd.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "system": "availability_router",
+      "metric": "average_precision"
+    },
+    "column": "estimate",
+    "source_value": "0.7072195016657863",
+    "display": "0.7072",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "runtime_intervals/pidd.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "system": "availability_router",
+      "metric": "average_precision"
+    },
+    "column": "ci_lower",
+    "source_value": "0.6570563447606887",
+    "display": "0.6571",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "runtime_intervals/pidd.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "system": "availability_router",
+      "metric": "average_precision"
+    },
+    "column": "ci_upper",
+    "source_value": "0.7616447470679567",
+    "display": "0.7616",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "runtime_intervals/pidd.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "system": "availability_router",
+      "metric": "brier_score"
+    },
+    "column": "estimate",
+    "source_value": "0.15486815823500974",
+    "display": "0.1549",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "runtime_intervals/pidd.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "system": "availability_router",
+      "metric": "brier_score"
+    },
+    "column": "ci_lower",
+    "source_value": "0.14255363006749142",
+    "display": "0.1426",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "runtime_intervals/pidd.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "system": "availability_router",
+      "metric": "brier_score"
+    },
+    "column": "ci_upper",
+    "source_value": "0.1683570269817703",
+    "display": "0.1684",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_routing_fallback_performance.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "system": "availability_router"
+    },
+    "column": "coverage",
+    "source_value": "1.0",
+    "display": "100.00\\%",
+    "decimals": 2,
+    "percent": true,
+    "integer": false
+  },
+  {
+    "source": "runtime_intervals/sylhet.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "system": "availability_router",
+      "metric": "auroc"
+    },
+    "column": "estimate",
+    "source_value": "0.9726406249999999",
+    "display": "0.9726",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "runtime_intervals/sylhet.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "system": "availability_router",
+      "metric": "auroc"
+    },
+    "column": "ci_lower",
+    "source_value": "0.9460305897215427",
+    "display": "0.9460",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "runtime_intervals/sylhet.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "system": "availability_router",
+      "metric": "auroc"
+    },
+    "column": "ci_upper",
+    "source_value": "0.9910023015088927",
+    "display": "0.9910",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "runtime_intervals/sylhet.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "system": "availability_router",
+      "metric": "average_precision"
+    },
+    "column": "estimate",
+    "source_value": "0.9840684123169169",
+    "display": "0.9841",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "runtime_intervals/sylhet.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "system": "availability_router",
+      "metric": "average_precision"
+    },
+    "column": "ci_lower",
+    "source_value": "0.9689271851146724",
+    "display": "0.9689",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "runtime_intervals/sylhet.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "system": "availability_router",
+      "metric": "average_precision"
+    },
+    "column": "ci_upper",
+    "source_value": "0.9948838562772545",
+    "display": "0.9949",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "runtime_intervals/sylhet.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "system": "availability_router",
+      "metric": "brier_score"
+    },
+    "column": "estimate",
+    "source_value": "0.06027878569241927",
+    "display": "0.0603",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "runtime_intervals/sylhet.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "system": "availability_router",
+      "metric": "brier_score"
+    },
+    "column": "ci_lower",
+    "source_value": "0.03613281455296443",
+    "display": "0.0361",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "runtime_intervals/sylhet.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "system": "availability_router",
+      "metric": "brier_score"
+    },
+    "column": "ci_upper",
+    "source_value": "0.08986731618414388",
+    "display": "0.0899",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_routing_fallback_performance.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "system": "availability_router"
+    },
+    "column": "coverage",
+    "source_value": "0.985559903111608",
+    "display": "98.56\\%",
+    "decimals": 2,
+    "percent": true,
+    "integer": false
+  },
+  {
+    "source": "runtime_intervals/brfss.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "system": "availability_router",
+      "metric": "auroc"
+    },
+    "column": "estimate",
+    "source_value": "0.835889240286256",
+    "display": "0.8359",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "runtime_intervals/brfss.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "system": "availability_router",
+      "metric": "auroc"
+    },
+    "column": "ci_lower",
+    "source_value": "0.8323883528072556",
+    "display": "0.8324",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "runtime_intervals/brfss.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "system": "availability_router",
+      "metric": "auroc"
+    },
+    "column": "ci_upper",
+    "source_value": "0.8393071248303199",
+    "display": "0.8393",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "runtime_intervals/brfss.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "system": "availability_router",
+      "metric": "average_precision"
+    },
+    "column": "estimate",
+    "source_value": "0.4297312089310451",
+    "display": "0.4297",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "runtime_intervals/brfss.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "system": "availability_router",
+      "metric": "average_precision"
+    },
+    "column": "ci_lower",
+    "source_value": "0.4217575080107655",
+    "display": "0.4218",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "runtime_intervals/brfss.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "system": "availability_router",
+      "metric": "average_precision"
+    },
+    "column": "ci_upper",
+    "source_value": "0.43839148391182725",
+    "display": "0.4384",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "runtime_intervals/brfss.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "system": "availability_router",
+      "metric": "brier_score"
+    },
+    "column": "estimate",
+    "source_value": "0.09309344516962662",
+    "display": "0.0931",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "runtime_intervals/brfss.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "system": "availability_router",
+      "metric": "brier_score"
+    },
+    "column": "ci_lower",
+    "source_value": "0.09240093494457256",
+    "display": "0.0924",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "runtime_intervals/brfss.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "system": "availability_router",
+      "metric": "brier_score"
+    },
+    "column": "ci_upper",
+    "source_value": "0.09377078876099758",
+    "display": "0.0938",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_routing_fallback_performance.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "system": "availability_router"
+    },
+    "column": "coverage",
+    "source_value": "1.0",
+    "display": "100.00\\%",
+    "decimals": 2,
+    "percent": true,
+    "integer": false
+  },
+  {
+    "source": "runtime_intervals/hospital130.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "system": "availability_router",
+      "metric": "auroc"
+    },
+    "column": "estimate",
+    "source_value": "0.6271401126916685",
+    "display": "0.6271",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "runtime_intervals/hospital130.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "system": "availability_router",
+      "metric": "auroc"
+    },
+    "column": "ci_lower",
+    "source_value": "0.6136318274683705",
+    "display": "0.6136",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "runtime_intervals/hospital130.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "system": "availability_router",
+      "metric": "auroc"
+    },
+    "column": "ci_upper",
+    "source_value": "0.6408032678920234",
+    "display": "0.6408",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "runtime_intervals/hospital130.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "system": "availability_router",
+      "metric": "average_precision"
+    },
+    "column": "estimate",
+    "source_value": "0.1874022434565866",
+    "display": "0.1874",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "runtime_intervals/hospital130.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "system": "availability_router",
+      "metric": "average_precision"
+    },
+    "column": "ci_lower",
+    "source_value": "0.17234008954920388",
+    "display": "0.1723",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "runtime_intervals/hospital130.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "system": "availability_router",
+      "metric": "average_precision"
+    },
+    "column": "ci_upper",
+    "source_value": "0.2049365125546973",
+    "display": "0.2049",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "runtime_intervals/hospital130.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "system": "availability_router",
+      "metric": "brier_score"
+    },
+    "column": "estimate",
+    "source_value": "0.098315176027925",
+    "display": "0.0983",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "runtime_intervals/hospital130.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "system": "availability_router",
+      "metric": "brier_score"
+    },
+    "column": "ci_lower",
+    "source_value": "0.09452084424888978",
+    "display": "0.0945",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "runtime_intervals/hospital130.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "system": "availability_router",
+      "metric": "brier_score"
+    },
+    "column": "ci_upper",
+    "source_value": "0.10221918182510055",
+    "display": "0.1022",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "scenario": "full",
+      "system": "availability_router",
+      "estimation_scope": "participant_mean_across_repeats"
+    },
+    "column": "available_feature_count",
+    "source_value": "8",
+    "display": "8",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "scenario": "full",
+      "system": "availability_router",
+      "estimation_scope": "participant_mean_across_repeats"
+    },
+    "column": "auroc",
+    "source_value": "0.841358208955224",
+    "display": "0.8414",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "scenario": "full",
+      "system": "availability_router",
+      "estimation_scope": "participant_mean_across_repeats"
+    },
+    "column": "average_precision",
+    "source_value": "0.7150232943089062",
+    "display": "0.7150",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "scenario": "full",
+      "system": "availability_router",
+      "estimation_scope": "participant_mean_across_repeats"
+    },
+    "column": "auroc_degradation_from_full",
+    "source_value": "0.0",
+    "display": "0.0000",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "scenario": "full",
+      "system": "availability_router",
+      "estimation_scope": "participant_mean_across_repeats"
+    },
+    "column": "average_precision_degradation_from_full",
+    "source_value": "0.0",
+    "display": "0.0000",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "scenario": "core_metabolic",
+      "system": "availability_router",
+      "estimation_scope": "participant_mean_across_repeats"
+    },
+    "column": "available_feature_count",
+    "source_value": "4",
+    "display": "4",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "scenario": "core_metabolic",
+      "system": "availability_router",
+      "estimation_scope": "participant_mean_across_repeats"
+    },
+    "column": "auroc",
+    "source_value": "0.8373955223880596",
+    "display": "0.8374",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "scenario": "core_metabolic",
+      "system": "availability_router",
+      "estimation_scope": "participant_mean_across_repeats"
+    },
+    "column": "average_precision",
+    "source_value": "0.7190080027186532",
+    "display": "0.7190",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "scenario": "core_metabolic",
+      "system": "availability_router",
+      "estimation_scope": "participant_mean_across_repeats"
+    },
+    "column": "auroc_degradation_from_full",
+    "source_value": "0.003962686567164364",
+    "display": "0.0040",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "scenario": "core_metabolic",
+      "system": "availability_router",
+      "estimation_scope": "participant_mean_across_repeats"
+    },
+    "column": "average_precision_degradation_from_full",
+    "source_value": "-0.003984708409746962",
+    "display": "-0.0040",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "scenario": "non_laboratory",
+      "system": "availability_router",
+      "estimation_scope": "participant_mean_across_repeats"
+    },
+    "column": "available_feature_count",
+    "source_value": "4",
+    "display": "4",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "scenario": "non_laboratory",
+      "system": "availability_router",
+      "estimation_scope": "participant_mean_across_repeats"
+    },
+    "column": "auroc",
+    "source_value": "0.7598059701492538",
+    "display": "0.7598",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "scenario": "non_laboratory",
+      "system": "availability_router",
+      "estimation_scope": "participant_mean_across_repeats"
+    },
+    "column": "average_precision",
+    "source_value": "0.5971133423790297",
+    "display": "0.5971",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "scenario": "non_laboratory",
+      "system": "availability_router",
+      "estimation_scope": "participant_mean_across_repeats"
+    },
+    "column": "auroc_degradation_from_full",
+    "source_value": "0.08155223880597018",
+    "display": "0.0816",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "scenario": "non_laboratory",
+      "system": "availability_router",
+      "estimation_scope": "participant_mean_across_repeats"
+    },
+    "column": "average_precision_degradation_from_full",
+    "source_value": "0.11790995192987652",
+    "display": "0.1179",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "scenario": "minimal_glucose_age",
+      "system": "availability_router",
+      "estimation_scope": "participant_mean_across_repeats"
+    },
+    "column": "available_feature_count",
+    "source_value": "2",
+    "display": "2",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "scenario": "minimal_glucose_age",
+      "system": "availability_router",
+      "estimation_scope": "participant_mean_across_repeats"
+    },
+    "column": "auroc",
+    "source_value": "0.8088059701492538",
+    "display": "0.8088",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "scenario": "minimal_glucose_age",
+      "system": "availability_router",
+      "estimation_scope": "participant_mean_across_repeats"
+    },
+    "column": "average_precision",
+    "source_value": "0.6754650846823318",
+    "display": "0.6755",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "scenario": "minimal_glucose_age",
+      "system": "availability_router",
+      "estimation_scope": "participant_mean_across_repeats"
+    },
+    "column": "auroc_degradation_from_full",
+    "source_value": "0.032552238805970135",
+    "display": "0.0326",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "scenario": "minimal_glucose_age",
+      "system": "availability_router",
+      "estimation_scope": "participant_mean_across_repeats"
+    },
+    "column": "average_precision_degradation_from_full",
+    "source_value": "0.039558209626574414",
+    "display": "0.0396",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "scenario": "full",
+      "system": "availability_router",
+      "estimation_scope": "participant_mean_across_repeats"
+    },
+    "column": "available_feature_count",
+    "source_value": "16",
+    "display": "16",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "scenario": "full",
+      "system": "availability_router",
+      "estimation_scope": "participant_mean_across_repeats"
+    },
+    "column": "auroc",
+    "source_value": "0.9726406249999999",
+    "display": "0.9726",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "scenario": "full",
+      "system": "availability_router",
+      "estimation_scope": "participant_mean_across_repeats"
+    },
+    "column": "average_precision",
+    "source_value": "0.9840684123169169",
+    "display": "0.9841",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "scenario": "full",
+      "system": "availability_router",
+      "estimation_scope": "participant_mean_across_repeats"
+    },
+    "column": "auroc_degradation_from_full",
+    "source_value": "0.0",
+    "display": "0.0000",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "scenario": "full",
+      "system": "availability_router",
+      "estimation_scope": "participant_mean_across_repeats"
+    },
+    "column": "average_precision_degradation_from_full",
+    "source_value": "0.0",
+    "display": "0.0000",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "scenario": "core_questionnaire",
+      "system": "availability_router",
+      "estimation_scope": "participant_mean_across_repeats"
+    },
+    "column": "available_feature_count",
+    "source_value": "10",
+    "display": "10",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "scenario": "core_questionnaire",
+      "system": "availability_router",
+      "estimation_scope": "participant_mean_across_repeats"
+    },
+    "column": "auroc",
+    "source_value": "0.94184375",
+    "display": "0.9418",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "scenario": "core_questionnaire",
+      "system": "availability_router",
+      "estimation_scope": "participant_mean_across_repeats"
+    },
+    "column": "average_precision",
+    "source_value": "0.9659254995943207",
+    "display": "0.9659",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "scenario": "core_questionnaire",
+      "system": "availability_router",
+      "estimation_scope": "participant_mean_across_repeats"
+    },
+    "column": "auroc_degradation_from_full",
+    "source_value": "0.030796874999999946",
+    "display": "0.0308",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "scenario": "core_questionnaire",
+      "system": "availability_router",
+      "estimation_scope": "participant_mean_across_repeats"
+    },
+    "column": "average_precision_degradation_from_full",
+    "source_value": "0.01814291272259616",
+    "display": "0.0181",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "scenario": "minimal_polyuria_polydipsia",
+      "system": "availability_router",
+      "estimation_scope": "participant_mean_across_repeats"
+    },
+    "column": "available_feature_count",
+    "source_value": "2",
+    "display": "2",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "scenario": "minimal_polyuria_polydipsia",
+      "system": "availability_router",
+      "estimation_scope": "participant_mean_across_repeats"
+    },
+    "column": "auroc",
+    "source_value": "0.8815312499999999",
+    "display": "0.8815",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "scenario": "minimal_polyuria_polydipsia",
+      "system": "availability_router",
+      "estimation_scope": "participant_mean_across_repeats"
+    },
+    "column": "average_precision",
+    "source_value": "0.9393150331844149",
+    "display": "0.9393",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "scenario": "minimal_polyuria_polydipsia",
+      "system": "availability_router",
+      "estimation_scope": "participant_mean_across_repeats"
+    },
+    "column": "auroc_degradation_from_full",
+    "source_value": "0.09110937500000005",
+    "display": "0.0911",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "scenario": "minimal_polyuria_polydipsia",
+      "system": "availability_router",
+      "estimation_scope": "participant_mean_across_repeats"
+    },
+    "column": "average_precision_degradation_from_full",
+    "source_value": "0.04475337913250199",
+    "display": "0.0448",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "scenario": "full",
+      "system": "availability_router",
+      "estimation_scope": ""
+    },
+    "column": "available_feature_count",
+    "source_value": "21",
+    "display": "21",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "scenario": "full",
+      "system": "availability_router",
+      "estimation_scope": ""
+    },
+    "column": "auroc",
+    "source_value": "0.8429759060354637",
+    "display": "0.8430",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "scenario": "full",
+      "system": "availability_router",
+      "estimation_scope": ""
+    },
+    "column": "average_precision",
+    "source_value": "0.4431143545446987",
+    "display": "0.4431",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "scenario": "full",
+      "system": "availability_router",
+      "estimation_scope": ""
+    },
+    "column": "auroc_degradation_from_full",
+    "source_value": "0.0",
+    "display": "0.0000",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "scenario": "full",
+      "system": "availability_router",
+      "estimation_scope": ""
+    },
+    "column": "average_precision_degradation_from_full",
+    "source_value": "0.0",
+    "display": "0.0000",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "scenario": "routine_survey",
+      "system": "availability_router",
+      "estimation_scope": ""
+    },
+    "column": "available_feature_count",
+    "source_value": "12",
+    "display": "12",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "scenario": "routine_survey",
+      "system": "availability_router",
+      "estimation_scope": ""
+    },
+    "column": "auroc",
+    "source_value": "0.8390623891703756",
+    "display": "0.8391",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "scenario": "routine_survey",
+      "system": "availability_router",
+      "estimation_scope": ""
+    },
+    "column": "average_precision",
+    "source_value": "0.4351283087347347",
+    "display": "0.4351",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "scenario": "routine_survey",
+      "system": "availability_router",
+      "estimation_scope": ""
+    },
+    "column": "auroc_degradation_from_full",
+    "source_value": "0.0039135168650881",
+    "display": "0.0039",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "scenario": "routine_survey",
+      "system": "availability_router",
+      "estimation_scope": ""
+    },
+    "column": "average_precision_degradation_from_full",
+    "source_value": "0.007986045809964",
+    "display": "0.0080",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "scenario": "minimal_general_health_age",
+      "system": "availability_router",
+      "estimation_scope": ""
+    },
+    "column": "available_feature_count",
+    "source_value": "2",
+    "display": "2",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "scenario": "minimal_general_health_age",
+      "system": "availability_router",
+      "estimation_scope": ""
+    },
+    "column": "auroc",
+    "source_value": "0.7820888768292059",
+    "display": "0.7821",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "scenario": "minimal_general_health_age",
+      "system": "availability_router",
+      "estimation_scope": ""
+    },
+    "column": "average_precision",
+    "source_value": "0.3105893591757379",
+    "display": "0.3106",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "scenario": "minimal_general_health_age",
+      "system": "availability_router",
+      "estimation_scope": ""
+    },
+    "column": "auroc_degradation_from_full",
+    "source_value": "0.0608870292062577",
+    "display": "0.0609",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "scenario": "minimal_general_health_age",
+      "system": "availability_router",
+      "estimation_scope": ""
+    },
+    "column": "average_precision_degradation_from_full",
+    "source_value": "0.1325249953689608",
+    "display": "0.1325",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "scenario": "full",
+      "system": "availability_router",
+      "estimation_scope": ""
+    },
+    "column": "available_feature_count",
+    "source_value": "46",
+    "display": "46",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "scenario": "full",
+      "system": "availability_router",
+      "estimation_scope": ""
+    },
+    "column": "auroc",
+    "source_value": "0.6790688971176031",
+    "display": "0.6791",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "scenario": "full",
+      "system": "availability_router",
+      "estimation_scope": ""
+    },
+    "column": "average_precision",
+    "source_value": "0.2319411228120849",
+    "display": "0.2319",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "scenario": "full",
+      "system": "availability_router",
+      "estimation_scope": ""
+    },
+    "column": "auroc_degradation_from_full",
+    "source_value": "0.0",
+    "display": "0.0000",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "scenario": "full",
+      "system": "availability_router",
+      "estimation_scope": ""
+    },
+    "column": "average_precision_degradation_from_full",
+    "source_value": "0.0",
+    "display": "0.0000",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "scenario": "admission_clinical",
+      "system": "availability_router",
+      "estimation_scope": ""
+    },
+    "column": "available_feature_count",
+    "source_value": "9",
+    "display": "9",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "scenario": "admission_clinical",
+      "system": "availability_router",
+      "estimation_scope": ""
+    },
+    "column": "auroc",
+    "source_value": "0.5925929343675841",
+    "display": "0.5926",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "scenario": "admission_clinical",
+      "system": "availability_router",
+      "estimation_scope": ""
+    },
+    "column": "average_precision",
+    "source_value": "0.1670113537149049",
+    "display": "0.1670",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "scenario": "admission_clinical",
+      "system": "availability_router",
+      "estimation_scope": ""
+    },
+    "column": "auroc_degradation_from_full",
+    "source_value": "0.086475962750019",
+    "display": "0.0865",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "scenario": "admission_clinical",
+      "system": "availability_router",
+      "estimation_scope": ""
+    },
+    "column": "average_precision_degradation_from_full",
+    "source_value": "0.06492976909718",
+    "display": "0.0649",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "scenario": "encounter_utilization",
+      "system": "availability_router",
+      "estimation_scope": ""
+    },
+    "column": "available_feature_count",
+    "source_value": "9",
+    "display": "9",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "scenario": "encounter_utilization",
+      "system": "availability_router",
+      "estimation_scope": ""
+    },
+    "column": "auroc",
+    "source_value": "0.6271401126916685",
+    "display": "0.6271",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "scenario": "encounter_utilization",
+      "system": "availability_router",
+      "estimation_scope": ""
+    },
+    "column": "average_precision",
+    "source_value": "0.1874022434565866",
+    "display": "0.1874",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "scenario": "encounter_utilization",
+      "system": "availability_router",
+      "estimation_scope": ""
+    },
+    "column": "auroc_degradation_from_full",
+    "source_value": "0.0519287844259346",
+    "display": "0.0519",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "04_SUPPLEMENTARY_TABLES/frozen_availability_panel_degradation.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "scenario": "encounter_utilization",
+      "system": "availability_router",
+      "estimation_scope": ""
+    },
+    "column": "average_precision_degradation_from_full",
+    "source_value": "0.0445388793554983",
+    "display": "0.0445",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "metric": "auroc"
+    },
+    "column": "observed_difference_a_minus_b",
+    "source_value": "0.0014552238805970452",
+    "display": "0.00146",
+    "decimals": 5,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "metric": "auroc"
+    },
+    "column": "ci_lower_a_minus_b",
+    "source_value": "-0.0006121268656715973",
+    "display": "-0.00061",
+    "decimals": 5,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "metric": "auroc"
+    },
+    "column": "ci_upper_a_minus_b",
+    "source_value": "0.0036567164179104354",
+    "display": "0.00366",
+    "decimals": 5,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "metric": "auroc"
+    },
+    "column": "holm_adjusted_p_value",
+    "source_value": "0.512743628185907",
+    "display": "0.5127",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "metric": "average_precision"
+    },
+    "column": "observed_difference_a_minus_b",
+    "source_value": "0.0011908807802558652",
+    "display": "0.00119",
+    "decimals": 5,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "metric": "average_precision"
+    },
+    "column": "ci_lower_a_minus_b",
+    "source_value": "-0.006274710257946456",
+    "display": "-0.00627",
+    "decimals": 5,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "metric": "average_precision"
+    },
+    "column": "ci_upper_a_minus_b",
+    "source_value": "0.008518294700864622",
+    "display": "0.00852",
+    "decimals": 5,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "metric": "average_precision"
+    },
+    "column": "holm_adjusted_p_value",
+    "source_value": "1.0",
+    "display": "1.0000",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "metric": "brier_score"
+    },
+    "column": "observed_difference_a_minus_b",
+    "source_value": "-0.000763771991642459",
+    "display": "-0.00076",
+    "decimals": 5,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "metric": "brier_score"
+    },
+    "column": "ci_lower_a_minus_b",
+    "source_value": "-0.001781213356301542",
+    "display": "-0.00178",
+    "decimals": 5,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "metric": "brier_score"
+    },
+    "column": "ci_upper_a_minus_b",
+    "source_value": "0.00017212952414175138",
+    "display": "0.00017",
+    "decimals": 5,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "metric": "brier_score"
+    },
+    "column": "holm_adjusted_p_value",
+    "source_value": "0.39580209895052476",
+    "display": "0.3958",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "metric": "log_loss"
+    },
+    "column": "observed_difference_a_minus_b",
+    "source_value": "-0.0018087105404339665",
+    "display": "-0.00181",
+    "decimals": 5,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "metric": "log_loss"
+    },
+    "column": "ci_lower_a_minus_b",
+    "source_value": "-0.004347553723753711",
+    "display": "-0.00435",
+    "decimals": 5,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "metric": "log_loss"
+    },
+    "column": "ci_upper_a_minus_b",
+    "source_value": "0.0006688894830591472",
+    "display": "0.00067",
+    "decimals": 5,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "metric": "log_loss"
+    },
+    "column": "holm_adjusted_p_value",
+    "source_value": "0.49775112443778113",
+    "display": "0.4978",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "metric": "auroc"
+    },
+    "column": "observed_difference_a_minus_b",
+    "source_value": "0.005796875000000035",
+    "display": "0.00580",
+    "decimals": 5,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "metric": "auroc"
+    },
+    "column": "ci_lower_a_minus_b",
+    "source_value": "-0.0003496402402723475",
+    "display": "-0.00035",
+    "decimals": 5,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "metric": "auroc"
+    },
+    "column": "ci_upper_a_minus_b",
+    "source_value": "0.013514508383116467",
+    "display": "0.01351",
+    "decimals": 5,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "metric": "auroc"
+    },
+    "column": "holm_adjusted_p_value",
+    "source_value": "0.2008995502248876",
+    "display": "0.2009",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "metric": "average_precision"
+    },
+    "column": "observed_difference_a_minus_b",
+    "source_value": "0.0038228079020801164",
+    "display": "0.00382",
+    "decimals": 5,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "metric": "average_precision"
+    },
+    "column": "ci_lower_a_minus_b",
+    "source_value": "9.548284492236493e-05",
+    "display": "0.00010",
+    "decimals": 5,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "metric": "average_precision"
+    },
+    "column": "ci_upper_a_minus_b",
+    "source_value": "0.009396053568275263",
+    "display": "0.00940",
+    "decimals": 5,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "metric": "average_precision"
+    },
+    "column": "holm_adjusted_p_value",
+    "source_value": "0.13193403298350825",
+    "display": "0.1319",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "metric": "brier_score"
+    },
+    "column": "observed_difference_a_minus_b",
+    "source_value": "-0.008470954921414107",
+    "display": "-0.00847",
+    "decimals": 5,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "metric": "brier_score"
+    },
+    "column": "ci_lower_a_minus_b",
+    "source_value": "-0.01815402868803882",
+    "display": "-0.01815",
+    "decimals": 5,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "metric": "brier_score"
+    },
+    "column": "ci_upper_a_minus_b",
+    "source_value": "-0.0004745872377262251",
+    "display": "-0.00047",
+    "decimals": 5,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "metric": "brier_score"
+    },
+    "column": "holm_adjusted_p_value",
+    "source_value": "0.11394302848575713",
+    "display": "0.1139",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "metric": "log_loss"
+    },
+    "column": "observed_difference_a_minus_b",
+    "source_value": "-0.02688171302171871",
+    "display": "-0.02688",
+    "decimals": 5,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "metric": "log_loss"
+    },
+    "column": "ci_lower_a_minus_b",
+    "source_value": "-0.049153322706466177",
+    "display": "-0.04915",
+    "decimals": 5,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "metric": "log_loss"
+    },
+    "column": "ci_upper_a_minus_b",
+    "source_value": "-0.00734689238452964",
+    "display": "-0.00735",
+    "decimals": 5,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "metric": "log_loss"
+    },
+    "column": "holm_adjusted_p_value",
+    "source_value": "0.026986506746626684",
+    "display": "0.0270",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "metric": "auroc"
+    },
+    "column": "observed_difference_a_minus_b",
+    "source_value": "0.00023094548174407148",
+    "display": "0.00023",
+    "decimals": 5,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "metric": "auroc"
+    },
+    "column": "ci_lower_a_minus_b",
+    "source_value": "-0.00012361040434194503",
+    "display": "-0.00012",
+    "decimals": 5,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "metric": "auroc"
+    },
+    "column": "ci_upper_a_minus_b",
+    "source_value": "0.0005998257672868904",
+    "display": "0.00060",
+    "decimals": 5,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "metric": "auroc"
+    },
+    "column": "holm_adjusted_p_value",
+    "source_value": "0.21389305347326337",
+    "display": "0.2139",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "metric": "average_precision"
+    },
+    "column": "observed_difference_a_minus_b",
+    "source_value": "0.0003373153146165042",
+    "display": "0.00034",
+    "decimals": 5,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "metric": "average_precision"
+    },
+    "column": "ci_lower_a_minus_b",
+    "source_value": "-0.0009341618572314622",
+    "display": "-0.00093",
+    "decimals": 5,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "metric": "average_precision"
+    },
+    "column": "ci_upper_a_minus_b",
+    "source_value": "0.0015976316728339283",
+    "display": "0.00160",
+    "decimals": 5,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "metric": "average_precision"
+    },
+    "column": "holm_adjusted_p_value",
+    "source_value": "0.6216891554222889",
+    "display": "0.6217",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "metric": "brier_score"
+    },
+    "column": "observed_difference_a_minus_b",
+    "source_value": "-5.752636484036844e-05",
+    "display": "-0.00006",
+    "decimals": 5,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "metric": "brier_score"
+    },
+    "column": "ci_lower_a_minus_b",
+    "source_value": "-0.0001324548053414941",
+    "display": "-0.00013",
+    "decimals": 5,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "metric": "brier_score"
+    },
+    "column": "ci_upper_a_minus_b",
+    "source_value": "1.68528031285294e-05",
+    "display": "0.00002",
+    "decimals": 5,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "metric": "brier_score"
+    },
+    "column": "holm_adjusted_p_value",
+    "source_value": "0.15092453773113443",
+    "display": "0.1509",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "metric": "log_loss"
+    },
+    "column": "observed_difference_a_minus_b",
+    "source_value": "-0.00010597170647813625",
+    "display": "-0.00011",
+    "decimals": 5,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "metric": "log_loss"
+    },
+    "column": "ci_lower_a_minus_b",
+    "source_value": "-0.0003460860328161952",
+    "display": "-0.00035",
+    "decimals": 5,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "metric": "log_loss"
+    },
+    "column": "ci_upper_a_minus_b",
+    "source_value": "0.00012801414961927514",
+    "display": "0.00013",
+    "decimals": 5,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "metric": "log_loss"
+    },
+    "column": "holm_adjusted_p_value",
+    "source_value": "0.3888055972013993",
+    "display": "0.3888",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "metric": "auroc"
+    },
+    "column": "observed_difference_a_minus_b",
+    "source_value": "-0.0063714991262222576",
+    "display": "-0.00637",
+    "decimals": 5,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "metric": "auroc"
+    },
+    "column": "ci_lower_a_minus_b",
+    "source_value": "-0.011712947692994866",
+    "display": "-0.01171",
+    "decimals": 5,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "metric": "auroc"
+    },
+    "column": "ci_upper_a_minus_b",
+    "source_value": "-0.0009148541382517277",
+    "display": "-0.00091",
+    "decimals": 5,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "metric": "auroc"
+    },
+    "column": "holm_adjusted_p_value",
+    "source_value": "0.07496251874062967",
+    "display": "0.0750",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "metric": "average_precision"
+    },
+    "column": "observed_difference_a_minus_b",
+    "source_value": "0.006565173806670127",
+    "display": "0.00657",
+    "decimals": 5,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "metric": "average_precision"
+    },
+    "column": "ci_lower_a_minus_b",
+    "source_value": "0.002571967996239333",
+    "display": "0.00257",
+    "decimals": 5,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "metric": "average_precision"
+    },
+    "column": "ci_upper_a_minus_b",
+    "source_value": "0.011677819066107065",
+    "display": "0.01168",
+    "decimals": 5,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "metric": "average_precision"
+    },
+    "column": "holm_adjusted_p_value",
+    "source_value": "0.005997001499250375",
+    "display": "0.0060",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "metric": "brier_score"
+    },
+    "column": "observed_difference_a_minus_b",
+    "source_value": "-3.867194139672847e-05",
+    "display": "-0.00004",
+    "decimals": 5,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "metric": "brier_score"
+    },
+    "column": "ci_lower_a_minus_b",
+    "source_value": "-0.00024945942049872037",
+    "display": "-0.00025",
+    "decimals": 5,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "metric": "brier_score"
+    },
+    "column": "ci_upper_a_minus_b",
+    "source_value": "0.00016224001725997813",
+    "display": "0.00016",
+    "decimals": 5,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "metric": "brier_score"
+    },
+    "column": "holm_adjusted_p_value",
+    "source_value": "0.7086456771614192",
+    "display": "0.7086",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "metric": "log_loss"
+    },
+    "column": "observed_difference_a_minus_b",
+    "source_value": "0.0001352562897003473",
+    "display": "0.00014",
+    "decimals": 5,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "metric": "log_loss"
+    },
+    "column": "ci_lower_a_minus_b",
+    "source_value": "-0.0007451631833161998",
+    "display": "-0.00075",
+    "decimals": 5,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "metric": "log_loss"
+    },
+    "column": "ci_upper_a_minus_b",
+    "source_value": "0.0010069002994442075",
+    "display": "0.00101",
+    "decimals": 5,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/08_main_statistical_comparisons.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "metric": "log_loss"
+    },
+    "column": "holm_adjusted_p_value",
+    "source_value": "0.8115942028985508",
+    "display": "0.8116",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/06_selective_prediction.csv",
+    "row_keys": {
+      "dataset": "pidd"
+    },
+    "column": "actual_observation_coverage",
+    "source_value": "0.7005208333333334",
+    "display": "70.05\\%",
+    "decimals": 2,
+    "percent": true,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/06_selective_prediction.csv",
+    "row_keys": {
+      "dataset": "pidd"
+    },
+    "column": "positive_event_coverage",
+    "source_value": "0.5485074626865671",
+    "display": "54.85\\%",
+    "decimals": 2,
+    "percent": true,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/06_selective_prediction.csv",
+    "row_keys": {
+      "dataset": "pidd"
+    },
+    "column": "accepted_prevalence",
+    "source_value": "0.2732342007434944",
+    "display": "27.32\\%",
+    "decimals": 2,
+    "percent": true,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/06_selective_prediction.csv",
+    "row_keys": {
+      "dataset": "pidd"
+    },
+    "column": "rejected_prevalence",
+    "source_value": "0.5260869565217391",
+    "display": "52.61\\%",
+    "decimals": 2,
+    "percent": true,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/06_selective_prediction.csv",
+    "row_keys": {
+      "dataset": "pidd"
+    },
+    "column": "auroc",
+    "source_value": "0.8745411207961447",
+    "display": "0.8745",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/06_selective_prediction.csv",
+    "row_keys": {
+      "dataset": "pidd"
+    },
+    "column": "average_precision",
+    "source_value": "0.7271867668376617",
+    "display": "0.7272",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/06_selective_prediction.csv",
+    "row_keys": {
+      "dataset": "pidd"
+    },
+    "column": "brier_score",
+    "source_value": "0.1139021513019028",
+    "display": "0.1139",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/06_selective_prediction.csv",
+    "row_keys": {
+      "dataset": "sylhet"
+    },
+    "column": "actual_observation_coverage",
+    "source_value": "0.7",
+    "display": "70.00\\%",
+    "decimals": 2,
+    "percent": true,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/06_selective_prediction.csv",
+    "row_keys": {
+      "dataset": "sylhet"
+    },
+    "column": "positive_event_coverage",
+    "source_value": "0.76875",
+    "display": "76.88\\%",
+    "decimals": 2,
+    "percent": true,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/06_selective_prediction.csv",
+    "row_keys": {
+      "dataset": "sylhet"
+    },
+    "column": "accepted_prevalence",
+    "source_value": "0.6758241758241759",
+    "display": "67.58\\%",
+    "decimals": 2,
+    "percent": true,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/06_selective_prediction.csv",
+    "row_keys": {
+      "dataset": "sylhet"
+    },
+    "column": "rejected_prevalence",
+    "source_value": "0.47435897435897434",
+    "display": "47.44\\%",
+    "decimals": 2,
+    "percent": true,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/06_selective_prediction.csv",
+    "row_keys": {
+      "dataset": "sylhet"
+    },
+    "column": "auroc",
+    "source_value": "0.9956593633732946",
+    "display": "0.9957",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/06_selective_prediction.csv",
+    "row_keys": {
+      "dataset": "sylhet"
+    },
+    "column": "average_precision",
+    "source_value": "0.9980185864463612",
+    "display": "0.9980",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/06_selective_prediction.csv",
+    "row_keys": {
+      "dataset": "sylhet"
+    },
+    "column": "brier_score",
+    "source_value": "0.024708201362083966",
+    "display": "0.0247",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/06_selective_prediction.csv",
+    "row_keys": {
+      "dataset": "brfss"
+    },
+    "column": "actual_observation_coverage",
+    "source_value": "0.7000069871436557",
+    "display": "70.00\\%",
+    "decimals": 2,
+    "percent": true,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/06_selective_prediction.csv",
+    "row_keys": {
+      "dataset": "brfss"
+    },
+    "column": "positive_event_coverage",
+    "source_value": "0.26940878525892936",
+    "display": "26.94\\%",
+    "decimals": 2,
+    "percent": true,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/06_selective_prediction.csv",
+    "row_keys": {
+      "dataset": "brfss"
+    },
+    "column": "accepted_prevalence",
+    "source_value": "0.051321721481925105",
+    "display": "5.13\\%",
+    "decimals": 2,
+    "percent": true,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/06_selective_prediction.csv",
+    "row_keys": {
+      "dataset": "brfss"
+    },
+    "column": "rejected_prevalence",
+    "source_value": "0.3247544738170102",
+    "display": "32.48\\%",
+    "decimals": 2,
+    "percent": true,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/06_selective_prediction.csv",
+    "row_keys": {
+      "dataset": "brfss"
+    },
+    "column": "auroc",
+    "source_value": "0.7779726850972637",
+    "display": "0.7780",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/06_selective_prediction.csv",
+    "row_keys": {
+      "dataset": "brfss"
+    },
+    "column": "average_precision",
+    "source_value": "0.13140895031116503",
+    "display": "0.1314",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/06_selective_prediction.csv",
+    "row_keys": {
+      "dataset": "brfss"
+    },
+    "column": "brier_score",
+    "source_value": "0.046196194340277844",
+    "display": "0.0462",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/06_selective_prediction.csv",
+    "row_keys": {
+      "dataset": "hospital130"
+    },
+    "column": "actual_observation_coverage",
+    "source_value": "0.7001207972619288",
+    "display": "70.01\\%",
+    "decimals": 2,
+    "percent": true,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/06_selective_prediction.csv",
+    "row_keys": {
+      "dataset": "hospital130"
+    },
+    "column": "positive_event_coverage",
+    "source_value": "0.3859416445623342",
+    "display": "38.59\\%",
+    "decimals": 2,
+    "percent": true,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/06_selective_prediction.csv",
+    "row_keys": {
+      "dataset": "hospital130"
+    },
+    "column": "accepted_prevalence",
+    "source_value": "0.06276060388209921",
+    "display": "6.28\\%",
+    "decimals": 2,
+    "percent": true,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/06_selective_prediction.csv",
+    "row_keys": {
+      "dataset": "hospital130"
+    },
+    "column": "rejected_prevalence",
+    "source_value": "0.23313192346424974",
+    "display": "23.31\\%",
+    "decimals": 2,
+    "percent": true,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/06_selective_prediction.csv",
+    "row_keys": {
+      "dataset": "hospital130"
+    },
+    "column": "auroc",
+    "source_value": "0.5058003913612337",
+    "display": "0.5058",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/06_selective_prediction.csv",
+    "row_keys": {
+      "dataset": "hospital130"
+    },
+    "column": "average_precision",
+    "source_value": "0.06034564907924976",
+    "display": "0.0603",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/06_selective_prediction.csv",
+    "row_keys": {
+      "dataset": "hospital130"
+    },
+    "column": "brier_score",
+    "source_value": "0.06027865895923863",
+    "display": "0.0603",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "panel": "core_metabolic",
+      "comparison_arm": "masked"
+    },
+    "column": "auroc",
+    "source_value": "0.8373955223880596",
+    "display": "0.8374",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "panel": "core_metabolic",
+      "comparison_arm": "retrained"
+    },
+    "column": "auroc",
+    "source_value": "0.8430522388059701",
+    "display": "0.8431",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "panel": "core_metabolic",
+      "metric": "auroc"
+    },
+    "column": "observed_difference_a_minus_b",
+    "source_value": "0.0056567164179104346",
+    "display": "0.0057",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "panel": "core_metabolic",
+      "metric": "auroc"
+    },
+    "column": "ci_lower_a_minus_b",
+    "source_value": "0.0005891791044776107",
+    "display": "0.0006",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "panel": "core_metabolic",
+      "metric": "auroc"
+    },
+    "column": "ci_upper_a_minus_b",
+    "source_value": "0.010716604477611929",
+    "display": "0.0107",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "panel": "core_metabolic",
+      "metric": "auroc"
+    },
+    "column": "holm_adjusted_p_value",
+    "source_value": "0.22188905547226387",
+    "display": "0.2219",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "panel": "minimal_glucose_age",
+      "comparison_arm": "masked"
+    },
+    "column": "auroc",
+    "source_value": "0.8088059701492538",
+    "display": "0.8088",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "panel": "minimal_glucose_age",
+      "comparison_arm": "retrained"
+    },
+    "column": "auroc",
+    "source_value": "0.8159253731343283",
+    "display": "0.8159",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "panel": "minimal_glucose_age",
+      "metric": "auroc"
+    },
+    "column": "observed_difference_a_minus_b",
+    "source_value": "0.00711940298507463",
+    "display": "0.0071",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "panel": "minimal_glucose_age",
+      "metric": "auroc"
+    },
+    "column": "ci_lower_a_minus_b",
+    "source_value": "-0.0006289179104477986",
+    "display": "-0.0006",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "panel": "minimal_glucose_age",
+      "metric": "auroc"
+    },
+    "column": "ci_upper_a_minus_b",
+    "source_value": "0.015022947761193997",
+    "display": "0.0150",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "panel": "minimal_glucose_age",
+      "metric": "auroc"
+    },
+    "column": "holm_adjusted_p_value",
+    "source_value": "0.4147926036981509",
+    "display": "0.4148",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "panel": "no_insulin_or_skinfold",
+      "comparison_arm": "masked"
+    },
+    "column": "auroc",
+    "source_value": "0.8396716417910448",
+    "display": "0.8397",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "panel": "no_insulin_or_skinfold",
+      "comparison_arm": "retrained"
+    },
+    "column": "auroc",
+    "source_value": "0.8401791044776119",
+    "display": "0.8402",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "panel": "no_insulin_or_skinfold",
+      "metric": "auroc"
+    },
+    "column": "observed_difference_a_minus_b",
+    "source_value": "0.000507462686567095",
+    "display": "0.0005",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "panel": "no_insulin_or_skinfold",
+      "metric": "auroc"
+    },
+    "column": "ci_lower_a_minus_b",
+    "source_value": "-0.002455410447761222",
+    "display": "-0.0025",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "panel": "no_insulin_or_skinfold",
+      "metric": "auroc"
+    },
+    "column": "ci_upper_a_minus_b",
+    "source_value": "0.003425559701492516",
+    "display": "0.0034",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "panel": "no_insulin_or_skinfold",
+      "metric": "auroc"
+    },
+    "column": "holm_adjusted_p_value",
+    "source_value": "1.0",
+    "display": "1.0000",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "panel": "non_laboratory",
+      "comparison_arm": "masked"
+    },
+    "column": "auroc",
+    "source_value": "0.7598059701492538",
+    "display": "0.7598",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "panel": "non_laboratory",
+      "comparison_arm": "retrained"
+    },
+    "column": "auroc",
+    "source_value": "0.7629999999999999",
+    "display": "0.7630",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "panel": "non_laboratory",
+      "metric": "auroc"
+    },
+    "column": "observed_difference_a_minus_b",
+    "source_value": "0.0031940298507462384",
+    "display": "0.0032",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "panel": "non_laboratory",
+      "metric": "auroc"
+    },
+    "column": "ci_lower_a_minus_b",
+    "source_value": "-0.007172201492537331",
+    "display": "-0.0072",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "panel": "non_laboratory",
+      "metric": "auroc"
+    },
+    "column": "ci_upper_a_minus_b",
+    "source_value": "0.01356231343283587",
+    "display": "0.0136",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "panel": "non_laboratory",
+      "metric": "auroc"
+    },
+    "column": "holm_adjusted_p_value",
+    "source_value": "1.0",
+    "display": "1.0000",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "panel": "routine_clinic",
+      "comparison_arm": "masked"
+    },
+    "column": "auroc",
+    "source_value": "0.8362388059701493",
+    "display": "0.8362",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "panel": "routine_clinic",
+      "comparison_arm": "retrained"
+    },
+    "column": "auroc",
+    "source_value": "0.8372835820895522",
+    "display": "0.8373",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "panel": "routine_clinic",
+      "metric": "auroc"
+    },
+    "column": "observed_difference_a_minus_b",
+    "source_value": "0.0010447761194030125",
+    "display": "0.0010",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "panel": "routine_clinic",
+      "metric": "auroc"
+    },
+    "column": "ci_lower_a_minus_b",
+    "source_value": "-0.002276305970149289",
+    "display": "-0.0023",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "panel": "routine_clinic",
+      "metric": "auroc"
+    },
+    "column": "ci_upper_a_minus_b",
+    "source_value": "0.004268843283582032",
+    "display": "0.0043",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "panel": "routine_clinic",
+      "metric": "auroc"
+    },
+    "column": "holm_adjusted_p_value",
+    "source_value": "1.0",
+    "display": "1.0000",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "panel": "classic_symptoms",
+      "comparison_arm": "masked"
+    },
+    "column": "auroc",
+    "source_value": "0.8936718749999999",
+    "display": "0.8937",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "panel": "classic_symptoms",
+      "comparison_arm": "retrained"
+    },
+    "column": "auroc",
+    "source_value": "0.8887968749999999",
+    "display": "0.8888",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "panel": "classic_symptoms",
+      "metric": "auroc"
+    },
+    "column": "observed_difference_a_minus_b",
+    "source_value": "-0.004874999999999963",
+    "display": "-0.0049",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "panel": "classic_symptoms",
+      "metric": "auroc"
+    },
+    "column": "ci_lower_a_minus_b",
+    "source_value": "-0.031144293423607937",
+    "display": "-0.0311",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "panel": "classic_symptoms",
+      "metric": "auroc"
+    },
+    "column": "ci_upper_a_minus_b",
+    "source_value": "0.019289744187341154",
+    "display": "0.0193",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "panel": "classic_symptoms",
+      "metric": "auroc"
+    },
+    "column": "holm_adjusted_p_value",
+    "source_value": "1.0",
+    "display": "1.0000",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "panel": "core_questionnaire",
+      "comparison_arm": "masked"
+    },
+    "column": "auroc",
+    "source_value": "0.94184375",
+    "display": "0.9418",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "panel": "core_questionnaire",
+      "comparison_arm": "retrained"
+    },
+    "column": "auroc",
+    "source_value": "0.9500468750000001",
+    "display": "0.9500",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "panel": "core_questionnaire",
+      "metric": "auroc"
+    },
+    "column": "observed_difference_a_minus_b",
+    "source_value": "0.008203124999999978",
+    "display": "0.0082",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "panel": "core_questionnaire",
+      "metric": "auroc"
+    },
+    "column": "ci_lower_a_minus_b",
+    "source_value": "-0.0024899129952165753",
+    "display": "-0.0025",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "panel": "core_questionnaire",
+      "metric": "auroc"
+    },
+    "column": "ci_upper_a_minus_b",
+    "source_value": "0.02254759135748646",
+    "display": "0.0225",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "panel": "core_questionnaire",
+      "metric": "auroc"
+    },
+    "column": "holm_adjusted_p_value",
+    "source_value": "0.8195902048975512",
+    "display": "0.8196",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "panel": "core_symptoms",
+      "comparison_arm": "masked"
+    },
+    "column": "auroc",
+    "source_value": "0.901",
+    "display": "0.9010",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "panel": "core_symptoms",
+      "comparison_arm": "retrained"
+    },
+    "column": "auroc",
+    "source_value": "0.906625",
+    "display": "0.9066",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "panel": "core_symptoms",
+      "metric": "auroc"
+    },
+    "column": "observed_difference_a_minus_b",
+    "source_value": "0.005624999999999991",
+    "display": "0.0056",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "panel": "core_symptoms",
+      "metric": "auroc"
+    },
+    "column": "ci_lower_a_minus_b",
+    "source_value": "-0.018436834198704788",
+    "display": "-0.0184",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "panel": "core_symptoms",
+      "metric": "auroc"
+    },
+    "column": "ci_upper_a_minus_b",
+    "source_value": "0.030771256278139876",
+    "display": "0.0308",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "panel": "core_symptoms",
+      "metric": "auroc"
+    },
+    "column": "holm_adjusted_p_value",
+    "source_value": "1.0",
+    "display": "1.0000",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "panel": "minimal_polyuria_polydipsia",
+      "comparison_arm": "masked"
+    },
+    "column": "auroc",
+    "source_value": "0.8815312499999999",
+    "display": "0.8815",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "panel": "minimal_polyuria_polydipsia",
+      "comparison_arm": "retrained"
+    },
+    "column": "auroc",
+    "source_value": "0.8752812499999999",
+    "display": "0.8753",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "panel": "minimal_polyuria_polydipsia",
+      "metric": "auroc"
+    },
+    "column": "observed_difference_a_minus_b",
+    "source_value": "-0.006249999999999978",
+    "display": "-0.0062",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "panel": "minimal_polyuria_polydipsia",
+      "metric": "auroc"
+    },
+    "column": "ci_lower_a_minus_b",
+    "source_value": "-0.0359320100806673",
+    "display": "-0.0359",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "panel": "minimal_polyuria_polydipsia",
+      "metric": "auroc"
+    },
+    "column": "ci_upper_a_minus_b",
+    "source_value": "0.019121205918139365",
+    "display": "0.0191",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "panel": "minimal_polyuria_polydipsia",
+      "metric": "auroc"
+    },
+    "column": "holm_adjusted_p_value",
+    "source_value": "1.0",
+    "display": "1.0000",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "cardiometabolic_health",
+      "comparison_arm": "masked"
+    },
+    "column": "auroc",
+    "source_value": "0.8371999970649904",
+    "display": "0.8372",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "cardiometabolic_health",
+      "comparison_arm": "retrained"
+    },
+    "column": "auroc",
+    "source_value": "0.838182754094515",
+    "display": "0.8382",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "cardiometabolic_health",
+      "metric": "auroc"
+    },
+    "column": "observed_difference_a_minus_b",
+    "source_value": "0.0009827570295244392",
+    "display": "0.0010",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "cardiometabolic_health",
+      "metric": "auroc"
+    },
+    "column": "ci_lower_a_minus_b",
+    "source_value": "0.0005583634725958824",
+    "display": "0.0006",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "cardiometabolic_health",
+      "metric": "auroc"
+    },
+    "column": "ci_upper_a_minus_b",
+    "source_value": "0.0014347842894961102",
+    "display": "0.0014",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "cardiometabolic_health",
+      "metric": "auroc"
+    },
+    "column": "holm_adjusted_p_value",
+    "source_value": "0.005997001499250375",
+    "display": "0.0060",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "demographics_health",
+      "comparison_arm": "masked"
+    },
+    "column": "auroc",
+    "source_value": "0.7849197404991185",
+    "display": "0.7849",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "demographics_health",
+      "comparison_arm": "retrained"
+    },
+    "column": "auroc",
+    "source_value": "0.7909900275614308",
+    "display": "0.7910",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "demographics_health",
+      "metric": "auroc"
+    },
+    "column": "observed_difference_a_minus_b",
+    "source_value": "0.006070287062312163",
+    "display": "0.0061",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "demographics_health",
+      "metric": "auroc"
+    },
+    "column": "ci_lower_a_minus_b",
+    "source_value": "0.005032444524651453",
+    "display": "0.0050",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "demographics_health",
+      "metric": "auroc"
+    },
+    "column": "ci_upper_a_minus_b",
+    "source_value": "0.007156548015060685",
+    "display": "0.0072",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "demographics_health",
+      "metric": "auroc"
+    },
+    "column": "holm_adjusted_p_value",
+    "source_value": "0.005997001499250375",
+    "display": "0.0060",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "health_status",
+      "comparison_arm": "masked"
+    },
+    "column": "auroc",
+    "source_value": "0.8287619059138881",
+    "display": "0.8288",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "health_status",
+      "comparison_arm": "retrained"
+    },
+    "column": "auroc",
+    "source_value": "0.8300667747154278",
+    "display": "0.8301",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "health_status",
+      "metric": "auroc"
+    },
+    "column": "observed_difference_a_minus_b",
+    "source_value": "0.0013048688015396825",
+    "display": "0.0013",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "health_status",
+      "metric": "auroc"
+    },
+    "column": "ci_lower_a_minus_b",
+    "source_value": "0.0008546187465847371",
+    "display": "0.0009",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "health_status",
+      "metric": "auroc"
+    },
+    "column": "ci_upper_a_minus_b",
+    "source_value": "0.0017655513588511304",
+    "display": "0.0018",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "health_status",
+      "metric": "auroc"
+    },
+    "column": "holm_adjusted_p_value",
+    "source_value": "0.005997001499250375",
+    "display": "0.0060",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "minimal_general_health_age",
+      "comparison_arm": "masked"
+    },
+    "column": "auroc",
+    "source_value": "0.7820888768292059",
+    "display": "0.7821",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "minimal_general_health_age",
+      "comparison_arm": "retrained"
+    },
+    "column": "auroc",
+    "source_value": "0.7844756836139184",
+    "display": "0.7845",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "minimal_general_health_age",
+      "metric": "auroc"
+    },
+    "column": "observed_difference_a_minus_b",
+    "source_value": "0.0023868067847124808",
+    "display": "0.0024",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "minimal_general_health_age",
+      "metric": "auroc"
+    },
+    "column": "ci_lower_a_minus_b",
+    "source_value": "0.0014845973239845905",
+    "display": "0.0015",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "minimal_general_health_age",
+      "metric": "auroc"
+    },
+    "column": "ci_upper_a_minus_b",
+    "source_value": "0.0032950748509022686",
+    "display": "0.0033",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "minimal_general_health_age",
+      "metric": "auroc"
+    },
+    "column": "holm_adjusted_p_value",
+    "source_value": "0.005997001499250375",
+    "display": "0.0060",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "routine_survey",
+      "comparison_arm": "masked"
+    },
+    "column": "auroc",
+    "source_value": "0.8390623891703756",
+    "display": "0.8391",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "routine_survey",
+      "comparison_arm": "retrained"
+    },
+    "column": "auroc",
+    "source_value": "0.8399385649435575",
+    "display": "0.8399",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "routine_survey",
+      "metric": "auroc"
+    },
+    "column": "observed_difference_a_minus_b",
+    "source_value": "0.0008761757731817754",
+    "display": "0.0009",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "routine_survey",
+      "metric": "auroc"
+    },
+    "column": "ci_lower_a_minus_b",
+    "source_value": "0.00047651165398763796",
+    "display": "0.0005",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "routine_survey",
+      "metric": "auroc"
+    },
+    "column": "ci_upper_a_minus_b",
+    "source_value": "0.001296653500394029",
+    "display": "0.0013",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "routine_survey",
+      "metric": "auroc"
+    },
+    "column": "holm_adjusted_p_value",
+    "source_value": "0.005997001499250375",
+    "display": "0.0060",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "panel": "admission_clinical",
+      "comparison_arm": "masked"
+    },
+    "column": "auroc",
+    "source_value": "0.5925929343675841",
+    "display": "0.5926",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "panel": "admission_clinical",
+      "comparison_arm": "retrained"
+    },
+    "column": "auroc",
+    "source_value": "0.6215298859714753",
+    "display": "0.6215",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "panel": "admission_clinical",
+      "metric": "auroc"
+    },
+    "column": "observed_difference_a_minus_b",
+    "source_value": "0.028936951603891203",
+    "display": "0.0289",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "panel": "admission_clinical",
+      "metric": "auroc"
+    },
+    "column": "ci_lower_a_minus_b",
+    "source_value": "0.018135717799440128",
+    "display": "0.0181",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "panel": "admission_clinical",
+      "metric": "auroc"
+    },
+    "column": "ci_upper_a_minus_b",
+    "source_value": "0.03982573529353222",
+    "display": "0.0398",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "panel": "admission_clinical",
+      "metric": "auroc"
+    },
+    "column": "holm_adjusted_p_value",
+    "source_value": "0.004997501249375312",
+    "display": "0.0050",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "panel": "encounter_utilization",
+      "comparison_arm": "masked"
+    },
+    "column": "auroc",
+    "source_value": "0.6271401126916685",
+    "display": "0.6271",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "panel": "encounter_utilization",
+      "comparison_arm": "retrained"
+    },
+    "column": "auroc",
+    "source_value": "0.6232223375942993",
+    "display": "0.6232",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "panel": "encounter_utilization",
+      "metric": "auroc"
+    },
+    "column": "observed_difference_a_minus_b",
+    "source_value": "-0.003917775097369014",
+    "display": "-0.0039",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "panel": "encounter_utilization",
+      "metric": "auroc"
+    },
+    "column": "ci_lower_a_minus_b",
+    "source_value": "-0.012175240882046029",
+    "display": "-0.0122",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "panel": "encounter_utilization",
+      "metric": "auroc"
+    },
+    "column": "ci_upper_a_minus_b",
+    "source_value": "0.004474164983082786",
+    "display": "0.0045",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "panel": "encounter_utilization",
+      "metric": "auroc"
+    },
+    "column": "holm_adjusted_p_value",
+    "source_value": "0.7476261869065467",
+    "display": "0.7476",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "panel": "minimal_inpatient_history",
+      "comparison_arm": "masked"
+    },
+    "column": "auroc",
+    "source_value": "0.6222555021783929",
+    "display": "0.6223",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "panel": "minimal_inpatient_history",
+      "comparison_arm": "retrained"
+    },
+    "column": "auroc",
+    "source_value": "0.624728812006758",
+    "display": "0.6247",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "panel": "minimal_inpatient_history",
+      "metric": "auroc"
+    },
+    "column": "observed_difference_a_minus_b",
+    "source_value": "0.0024733098283651334",
+    "display": "0.0025",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "panel": "minimal_inpatient_history",
+      "metric": "auroc"
+    },
+    "column": "ci_lower_a_minus_b",
+    "source_value": "4.2717780367865235e-05",
+    "display": "0.0000",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "panel": "minimal_inpatient_history",
+      "metric": "auroc"
+    },
+    "column": "ci_upper_a_minus_b",
+    "source_value": "0.0050464327514105735",
+    "display": "0.0050",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "panel": "minimal_inpatient_history",
+      "metric": "auroc"
+    },
+    "column": "holm_adjusted_p_value",
+    "source_value": "0.14392803598200898",
+    "display": "0.1439",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "panel": "prior_utilization",
+      "comparison_arm": "masked"
+    },
+    "column": "auroc",
+    "source_value": "0.629222836479767",
+    "display": "0.6292",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "panel": "prior_utilization",
+      "comparison_arm": "retrained"
+    },
+    "column": "auroc",
+    "source_value": "0.6131883065143473",
+    "display": "0.6132",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "panel": "prior_utilization",
+      "metric": "auroc"
+    },
+    "column": "observed_difference_a_minus_b",
+    "source_value": "-0.01603452996541954",
+    "display": "-0.0160",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "panel": "prior_utilization",
+      "metric": "auroc"
+    },
+    "column": "ci_lower_a_minus_b",
+    "source_value": "-0.023800491761484816",
+    "display": "-0.0238",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "panel": "prior_utilization",
+      "metric": "auroc"
+    },
+    "column": "ci_upper_a_minus_b",
+    "source_value": "-0.008766830516777431",
+    "display": "-0.0088",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/01_reduced_schema_effects.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "panel": "prior_utilization",
+      "metric": "auroc"
+    },
+    "column": "holm_adjusted_p_value",
+    "source_value": "0.004997501249375312",
+    "display": "0.0050",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "system": "A"
+    },
+    "column": "auroc",
+    "source_value": "0.8349328358208955",
+    "display": "0.8349",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "system": "A"
+    },
+    "column": "average_precision",
+    "source_value": "0.7029546356092917",
+    "display": "0.7030",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "system": "A"
+    },
+    "column": "brier_score",
+    "source_value": "0.1557361412615998",
+    "display": "0.1557",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "system": "A"
+    },
+    "column": "log_loss",
+    "source_value": "0.4722731174530446",
+    "display": "0.4723",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "system": "B"
+    },
+    "column": "auroc",
+    "source_value": "0.835410447761194",
+    "display": "0.8354",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "system": "B"
+    },
+    "column": "average_precision",
+    "source_value": "0.7060286208855305",
+    "display": "0.7060",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "system": "B"
+    },
+    "column": "brier_score",
+    "source_value": "0.15563193022665225",
+    "display": "0.1556",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "system": "B"
+    },
+    "column": "log_loss",
+    "source_value": "0.4714827091429578",
+    "display": "0.4715",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "system": "C"
+    },
+    "column": "auroc",
+    "source_value": "0.8365522388059702",
+    "display": "0.8366",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "system": "C"
+    },
+    "column": "average_precision",
+    "source_value": "0.7049928677662626",
+    "display": "0.7050",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "system": "C"
+    },
+    "column": "brier_score",
+    "source_value": "0.15494593342206767",
+    "display": "0.1549",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "system": "C"
+    },
+    "column": "log_loss",
+    "source_value": "0.4703653569190301",
+    "display": "0.4704",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "system": "D"
+    },
+    "column": "auroc",
+    "source_value": "0.836865671641791",
+    "display": "0.8369",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "system": "D"
+    },
+    "column": "average_precision",
+    "source_value": "0.7072195016657863",
+    "display": "0.7072",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "system": "D"
+    },
+    "column": "brier_score",
+    "source_value": "0.15486815823500974",
+    "display": "0.1549",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "system": "D"
+    },
+    "column": "log_loss",
+    "source_value": "0.46967399860252373",
+    "display": "0.4697",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "system": "A"
+    },
+    "column": "auroc",
+    "source_value": "0.969140625",
+    "display": "0.9691",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "system": "A"
+    },
+    "column": "average_precision",
+    "source_value": "0.9815791571108616",
+    "display": "0.9816",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "system": "A"
+    },
+    "column": "brier_score",
+    "source_value": "0.06802461519511555",
+    "display": "0.0680",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "system": "A"
+    },
+    "column": "log_loss",
+    "source_value": "0.22417770738240927",
+    "display": "0.2242",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "system": "B"
+    },
+    "column": "auroc",
+    "source_value": "0.96684375",
+    "display": "0.9668",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "system": "B"
+    },
+    "column": "average_precision",
+    "source_value": "0.9802456044148369",
+    "display": "0.9802",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "system": "B"
+    },
+    "column": "brier_score",
+    "source_value": "0.06874974061383338",
+    "display": "0.0687",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "system": "B"
+    },
+    "column": "log_loss",
+    "source_value": "0.23079280188463627",
+    "display": "0.2308",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "system": "C"
+    },
+    "column": "auroc",
+    "source_value": "0.9721249999999999",
+    "display": "0.9721",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "system": "C"
+    },
+    "column": "average_precision",
+    "source_value": "0.9838403291073972",
+    "display": "0.9838",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "system": "C"
+    },
+    "column": "brier_score",
+    "source_value": "0.05992770574846026",
+    "display": "0.0599",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "system": "C"
+    },
+    "column": "log_loss",
+    "source_value": "0.2033166825486517",
+    "display": "0.2033",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "system": "D"
+    },
+    "column": "auroc",
+    "source_value": "0.9726406249999999",
+    "display": "0.9726",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "system": "D"
+    },
+    "column": "average_precision",
+    "source_value": "0.9840684123169169",
+    "display": "0.9841",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "system": "D"
+    },
+    "column": "brier_score",
+    "source_value": "0.06027878569241927",
+    "display": "0.0603",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "system": "D"
+    },
+    "column": "log_loss",
+    "source_value": "0.20391108886291764",
+    "display": "0.2039",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "system": "A"
+    },
+    "column": "auroc",
+    "source_value": "0.8326768636975237",
+    "display": "0.8327",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "system": "A"
+    },
+    "column": "average_precision",
+    "source_value": "0.4246355839222564",
+    "display": "0.4246",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "system": "A"
+    },
+    "column": "brier_score",
+    "source_value": "0.09399340736346597",
+    "display": "0.0940",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "system": "A"
+    },
+    "column": "log_loss",
+    "source_value": "0.303947743654047",
+    "display": "0.3039",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "system": "B"
+    },
+    "column": "auroc",
+    "source_value": "0.8356582948045119",
+    "display": "0.8357",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "system": "B"
+    },
+    "column": "average_precision",
+    "source_value": "0.4293938936164286",
+    "display": "0.4294",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "system": "B"
+    },
+    "column": "brier_score",
+    "source_value": "0.09315097153446705",
+    "display": "0.0932",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "system": "B"
+    },
+    "column": "log_loss",
+    "source_value": "0.3012840321752131",
+    "display": "0.3013",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "system": "C"
+    },
+    "column": "auroc",
+    "source_value": "0.832821824091228",
+    "display": "0.8328",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "system": "C"
+    },
+    "column": "average_precision",
+    "source_value": "0.4255722269138263",
+    "display": "0.4256",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "system": "C"
+    },
+    "column": "brier_score",
+    "source_value": "0.09385520934975866",
+    "display": "0.0939",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "system": "C"
+    },
+    "column": "log_loss",
+    "source_value": "0.3035997698625847",
+    "display": "0.3036",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "system": "D"
+    },
+    "column": "auroc",
+    "source_value": "0.835889240286256",
+    "display": "0.8359",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "system": "D"
+    },
+    "column": "average_precision",
+    "source_value": "0.4297312089310451",
+    "display": "0.4297",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "system": "D"
+    },
+    "column": "brier_score",
+    "source_value": "0.09309344516962662",
+    "display": "0.0931",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "system": "D"
+    },
+    "column": "log_loss",
+    "source_value": "0.3011780604687349",
+    "display": "0.3012",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "system": "A"
+    },
+    "column": "auroc",
+    "source_value": "0.6342621496991873",
+    "display": "0.6343",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "system": "A"
+    },
+    "column": "average_precision",
+    "source_value": "0.18888504802348988",
+    "display": "0.1889",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "system": "A"
+    },
+    "column": "brier_score",
+    "source_value": "0.09884252952985315",
+    "display": "0.0988",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "system": "A"
+    },
+    "column": "log_loss",
+    "source_value": "0.3459588828030291",
+    "display": "0.3460",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "system": "B"
+    },
+    "column": "auroc",
+    "source_value": "0.6335116118178906",
+    "display": "0.6335",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "system": "B"
+    },
+    "column": "average_precision",
+    "source_value": "0.18083706964991644",
+    "display": "0.1808",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "system": "B"
+    },
+    "column": "brier_score",
+    "source_value": "0.09835384796932162",
+    "display": "0.0984",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "system": "B"
+    },
+    "column": "log_loss",
+    "source_value": "0.34312400362867884",
+    "display": "0.3431",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "system": "C"
+    },
+    "column": "auroc",
+    "source_value": "0.6271401126916685",
+    "display": "0.6271",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "system": "C"
+    },
+    "column": "average_precision",
+    "source_value": "0.1874022434565866",
+    "display": "0.1874",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "system": "C"
+    },
+    "column": "brier_score",
+    "source_value": "0.09893526530079563",
+    "display": "0.0989",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "system": "C"
+    },
+    "column": "log_loss",
+    "source_value": "0.3459903230163592",
+    "display": "0.3460",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "system": "D"
+    },
+    "column": "auroc",
+    "source_value": "0.6271401126916685",
+    "display": "0.6271",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "system": "D"
+    },
+    "column": "average_precision",
+    "source_value": "0.1874022434565866",
+    "display": "0.1874",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "system": "D"
+    },
+    "column": "brier_score",
+    "source_value": "0.098315176027925",
+    "display": "0.0983",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/03_calibration_switching.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "system": "D"
+    },
+    "column": "log_loss",
+    "source_value": "0.3432592599183789",
+    "display": "0.3433",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/04_routing.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "panel": "full"
+    },
+    "column": "evaluation_records",
+    "source_value": "392",
+    "display": "392",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/04_routing.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "panel": "full"
+    },
+    "column": "positive_events",
+    "source_value": "130.0",
+    "display": "130",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/04_routing.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "panel": "full"
+    },
+    "column": "population_pct",
+    "source_value": "51.041666666666664",
+    "display": "51.04",
+    "decimals": 2,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/04_routing.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "panel": "full"
+    },
+    "column": "event_pct",
+    "source_value": "48.507462686567166",
+    "display": "48.51",
+    "decimals": 2,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/04_routing.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "panel": "minimal_glucose_age"
+    },
+    "column": "evaluation_records",
+    "source_value": "11",
+    "display": "11",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/04_routing.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "panel": "minimal_glucose_age"
+    },
+    "column": "positive_events",
+    "source_value": "2.0",
+    "display": "2",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/04_routing.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "panel": "minimal_glucose_age"
+    },
+    "column": "population_pct",
+    "source_value": "1.4322916666666667",
+    "display": "1.43",
+    "decimals": 2,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/04_routing.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "panel": "minimal_glucose_age"
+    },
+    "column": "event_pct",
+    "source_value": "0.746268656716418",
+    "display": "0.75",
+    "decimals": 2,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/04_routing.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "panel": "no_insulin_or_skinfold"
+    },
+    "column": "evaluation_records",
+    "source_value": "332",
+    "display": "332",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/04_routing.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "panel": "no_insulin_or_skinfold"
+    },
+    "column": "positive_events",
+    "source_value": "119.0",
+    "display": "119",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/04_routing.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "panel": "no_insulin_or_skinfold"
+    },
+    "column": "population_pct",
+    "source_value": "43.229166666666664",
+    "display": "43.23",
+    "decimals": 2,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/04_routing.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "panel": "no_insulin_or_skinfold"
+    },
+    "column": "event_pct",
+    "source_value": "44.40298507462686",
+    "display": "44.40",
+    "decimals": 2,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/04_routing.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "panel": "non_laboratory"
+    },
+    "column": "evaluation_records",
+    "source_value": "33",
+    "display": "33",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/04_routing.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "panel": "non_laboratory"
+    },
+    "column": "positive_events",
+    "source_value": "17.0",
+    "display": "17",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/04_routing.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "panel": "non_laboratory"
+    },
+    "column": "population_pct",
+    "source_value": "4.296875",
+    "display": "4.30",
+    "decimals": 2,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/04_routing.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "panel": "non_laboratory"
+    },
+    "column": "event_pct",
+    "source_value": "6.343283582089552",
+    "display": "6.34",
+    "decimals": 2,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/04_routing.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "panel": "full"
+    },
+    "column": "evaluation_records",
+    "source_value": "520",
+    "display": "520",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/04_routing.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "panel": "full"
+    },
+    "column": "positive_events",
+    "source_value": "320.0",
+    "display": "320",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/04_routing.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "panel": "full"
+    },
+    "column": "population_pct",
+    "source_value": "100.0",
+    "display": "100.00",
+    "decimals": 2,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/04_routing.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "panel": "full"
+    },
+    "column": "event_pct",
+    "source_value": "100.0",
+    "display": "100.00",
+    "decimals": 2,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/04_routing.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "UNSUPPORTED"
+    },
+    "column": "evaluation_records",
+    "source_value": "1240",
+    "display": "1,240",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/04_routing.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "UNSUPPORTED"
+    },
+    "column": "positive_events",
+    "source_value": "135.0",
+    "display": "135",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/04_routing.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "UNSUPPORTED"
+    },
+    "column": "population_pct",
+    "source_value": "1.4440096888392024",
+    "display": "1.44",
+    "decimals": 2,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/04_routing.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "UNSUPPORTED"
+    },
+    "column": "event_pct",
+    "source_value": "1.1789363374377784",
+    "display": "1.18",
+    "decimals": 2,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/04_routing.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "cardiometabolic_health"
+    },
+    "column": "evaluation_records",
+    "source_value": "11586",
+    "display": "11,586",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/04_routing.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "cardiometabolic_health"
+    },
+    "column": "positive_events",
+    "source_value": "1769.0",
+    "display": "1,769",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/04_routing.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "cardiometabolic_health"
+    },
+    "column": "population_pct",
+    "source_value": "13.492174399105645",
+    "display": "13.49",
+    "decimals": 2,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/04_routing.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "cardiometabolic_health"
+    },
+    "column": "event_pct",
+    "source_value": "15.448432451314297",
+    "display": "15.45",
+    "decimals": 2,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/04_routing.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "demographics_health"
+    },
+    "column": "evaluation_records",
+    "source_value": "5505",
+    "display": "5,505",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/04_routing.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "demographics_health"
+    },
+    "column": "positive_events",
+    "source_value": "837.0",
+    "display": "837",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/04_routing.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "demographics_health"
+    },
+    "column": "population_pct",
+    "source_value": "6.410704304080492",
+    "display": "6.41",
+    "decimals": 2,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/04_routing.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "demographics_health"
+    },
+    "column": "event_pct",
+    "source_value": "7.309405292114226",
+    "display": "7.31",
+    "decimals": 2,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/04_routing.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "full"
+    },
+    "column": "evaluation_records",
+    "source_value": "49403",
+    "display": "49,403",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/04_routing.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "full"
+    },
+    "column": "positive_events",
+    "source_value": "7028.0",
+    "display": "7,028",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/04_routing.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "full"
+    },
+    "column": "population_pct",
+    "source_value": "57.530976336873486",
+    "display": "57.53",
+    "decimals": 2,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/04_routing.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "full"
+    },
+    "column": "event_pct",
+    "source_value": "61.37455244083486",
+    "display": "61.37",
+    "decimals": 2,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/04_routing.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "health_status"
+    },
+    "column": "evaluation_records",
+    "source_value": "10500",
+    "display": "10,500",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/04_routing.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "health_status"
+    },
+    "column": "positive_events",
+    "source_value": "460.0",
+    "display": "460",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/04_routing.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "health_status"
+    },
+    "column": "population_pct",
+    "source_value": "12.227501397428732",
+    "display": "12.23",
+    "decimals": 2,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/04_routing.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "health_status"
+    },
+    "column": "event_pct",
+    "source_value": "4.017116409047245",
+    "display": "4.02",
+    "decimals": 2,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/04_routing.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "minimal_general_health_age"
+    },
+    "column": "evaluation_records",
+    "source_value": "3879",
+    "display": "3,879",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/04_routing.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "minimal_general_health_age"
+    },
+    "column": "positive_events",
+    "source_value": "569.0",
+    "display": "569",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/04_routing.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "minimal_general_health_age"
+    },
+    "column": "population_pct",
+    "source_value": "4.5171883733929565",
+    "display": "4.52",
+    "decimals": 2,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/04_routing.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "minimal_general_health_age"
+    },
+    "column": "event_pct",
+    "source_value": "4.968998340756266",
+    "display": "4.97",
+    "decimals": 2,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/04_routing.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "routine_survey"
+    },
+    "column": "evaluation_records",
+    "source_value": "3759",
+    "display": "3,759",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/04_routing.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "routine_survey"
+    },
+    "column": "positive_events",
+    "source_value": "653.0",
+    "display": "653",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/04_routing.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "routine_survey"
+    },
+    "column": "population_pct",
+    "source_value": "4.377445500279486",
+    "display": "4.38",
+    "decimals": 2,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/04_routing.csv",
+    "row_keys": {
+      "dataset": "brfss",
+      "panel": "routine_survey"
+    },
+    "column": "event_pct",
+    "source_value": "5.702558728495328",
+    "display": "5.70",
+    "decimals": 2,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/04_routing.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "panel": "encounter_utilization"
+    },
+    "column": "evaluation_records",
+    "source_value": "19868",
+    "display": "19,868",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/04_routing.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "panel": "encounter_utilization"
+    },
+    "column": "positive_events",
+    "source_value": "2262.0",
+    "display": "2,262",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/04_routing.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "panel": "encounter_utilization"
+    },
+    "column": "population_pct",
+    "source_value": "100.0",
+    "display": "100.00",
+    "decimals": 2,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/04_routing.csv",
+    "row_keys": {
+      "dataset": "hospital130",
+      "panel": "encounter_utilization"
+    },
+    "column": "event_pct",
+    "source_value": "100.0",
+    "display": "100.00",
+    "decimals": 2,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/05_per_repeat.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "summary": "repeat_metric_mean"
+    },
+    "column": "auroc",
+    "source_value": "0.8326388059701493",
+    "display": "0.8326",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/05_per_repeat.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "summary": "repeat_metric_mean"
+    },
+    "column": "average_precision",
+    "source_value": "0.6992554506237116",
+    "display": "0.6993",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/05_per_repeat.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "summary": "repeat_metric_mean"
+    },
+    "column": "brier_score",
+    "source_value": "0.1573238037841463",
+    "display": "0.1573",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/05_per_repeat.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "summary": "repeat_metric_mean"
+    },
+    "column": "log_loss",
+    "source_value": "0.47649233377604616",
+    "display": "0.4765",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/05_per_repeat.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "summary": "repeat_metric_sample_sd"
+    },
+    "column": "auroc",
+    "source_value": "0.0056925786965600226",
+    "display": "0.0057",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/05_per_repeat.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "summary": "repeat_metric_sample_sd"
+    },
+    "column": "average_precision",
+    "source_value": "0.01588277980911734",
+    "display": "0.0159",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/05_per_repeat.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "summary": "repeat_metric_sample_sd"
+    },
+    "column": "brier_score",
+    "source_value": "0.003328616618950304",
+    "display": "0.0033",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/05_per_repeat.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "summary": "repeat_metric_sample_sd"
+    },
+    "column": "log_loss",
+    "source_value": "0.007260420486852259",
+    "display": "0.0073",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/05_per_repeat.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "summary": "participant_mean_probability_metric"
+    },
+    "column": "auroc",
+    "source_value": "0.836865671641791",
+    "display": "0.8369",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/05_per_repeat.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "summary": "participant_mean_probability_metric"
+    },
+    "column": "average_precision",
+    "source_value": "0.7072195016657863",
+    "display": "0.7072",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/05_per_repeat.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "summary": "participant_mean_probability_metric"
+    },
+    "column": "brier_score",
+    "source_value": "0.15486815823500974",
+    "display": "0.1549",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/05_per_repeat.csv",
+    "row_keys": {
+      "dataset": "pidd",
+      "summary": "participant_mean_probability_metric"
+    },
+    "column": "log_loss",
+    "source_value": "0.46967399860252373",
+    "display": "0.4697",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/05_per_repeat.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "summary": "repeat_metric_mean"
+    },
+    "column": "auroc",
+    "source_value": "0.96294375",
+    "display": "0.9629",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/05_per_repeat.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "summary": "repeat_metric_mean"
+    },
+    "column": "average_precision",
+    "source_value": "0.9784000171629147",
+    "display": "0.9784",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/05_per_repeat.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "summary": "repeat_metric_mean"
+    },
+    "column": "brier_score",
+    "source_value": "0.0665965089069283",
+    "display": "0.0666",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/05_per_repeat.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "summary": "repeat_metric_mean"
+    },
+    "column": "log_loss",
+    "source_value": "0.24106453079610923",
+    "display": "0.2411",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/05_per_repeat.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "summary": "repeat_metric_sample_sd"
+    },
+    "column": "auroc",
+    "source_value": "0.007667120790162226",
+    "display": "0.0077",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/05_per_repeat.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "summary": "repeat_metric_sample_sd"
+    },
+    "column": "average_precision",
+    "source_value": "0.0054537948009017395",
+    "display": "0.0055",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/05_per_repeat.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "summary": "repeat_metric_sample_sd"
+    },
+    "column": "brier_score",
+    "source_value": "0.0041508561035693255",
+    "display": "0.0042",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/05_per_repeat.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "summary": "repeat_metric_sample_sd"
+    },
+    "column": "log_loss",
+    "source_value": "0.030433592039946934",
+    "display": "0.0304",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/05_per_repeat.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "summary": "participant_mean_probability_metric"
+    },
+    "column": "auroc",
+    "source_value": "0.9726406249999999",
+    "display": "0.9726",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/05_per_repeat.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "summary": "participant_mean_probability_metric"
+    },
+    "column": "average_precision",
+    "source_value": "0.9840684123169169",
+    "display": "0.9841",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/05_per_repeat.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "summary": "participant_mean_probability_metric"
+    },
+    "column": "brier_score",
+    "source_value": "0.06027878569241927",
+    "display": "0.0603",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/05_per_repeat.csv",
+    "row_keys": {
+      "dataset": "sylhet",
+      "summary": "participant_mean_probability_metric"
+    },
+    "column": "log_loss",
+    "source_value": "0.20391108886291764",
+    "display": "0.2039",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/07_computational_cost.csv",
+    "row_keys": {
+      "dataset": "pidd"
+    },
+    "column": "reduced_tasks",
+    "source_value": "125",
+    "display": "125",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/07_computational_cost.csv",
+    "row_keys": {
+      "dataset": "pidd"
+    },
+    "column": "successor_final_fit_sum_s",
+    "source_value": "13.025782546959817",
+    "display": "13.03",
+    "decimals": 2,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/07_computational_cost.csv",
+    "row_keys": {
+      "dataset": "pidd"
+    },
+    "column": "successor_calibration_sum_s",
+    "source_value": "0.8895975379273295",
+    "display": "0.89",
+    "decimals": 2,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/07_computational_cost.csv",
+    "row_keys": {
+      "dataset": "pidd"
+    },
+    "column": "D_single_median_ms",
+    "source_value": "2.1356244999999996",
+    "display": "2.14",
+    "decimals": 2,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/07_computational_cost.csv",
+    "row_keys": {
+      "dataset": "pidd"
+    },
+    "column": "D_batch256_median_ms",
+    "source_value": "6.271583000000001",
+    "display": "6.27",
+    "decimals": 2,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/07_computational_cost.csv",
+    "row_keys": {
+      "dataset": "pidd"
+    },
+    "column": "exemplar_model_MiB",
+    "source_value": "0.05548667907714844",
+    "display": "0.0555",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/07_computational_cost.csv",
+    "row_keys": {
+      "dataset": "sylhet"
+    },
+    "column": "reduced_tasks",
+    "source_value": "100",
+    "display": "100",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/07_computational_cost.csv",
+    "row_keys": {
+      "dataset": "sylhet"
+    },
+    "column": "successor_final_fit_sum_s",
+    "source_value": "19.064272206975147",
+    "display": "19.06",
+    "decimals": 2,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/07_computational_cost.csv",
+    "row_keys": {
+      "dataset": "sylhet"
+    },
+    "column": "successor_calibration_sum_s",
+    "source_value": "3.7916725475806743",
+    "display": "3.79",
+    "decimals": 2,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/07_computational_cost.csv",
+    "row_keys": {
+      "dataset": "sylhet"
+    },
+    "column": "D_single_median_ms",
+    "source_value": "28.033500000000004",
+    "display": "28.03",
+    "decimals": 2,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/07_computational_cost.csv",
+    "row_keys": {
+      "dataset": "sylhet"
+    },
+    "column": "D_batch256_median_ms",
+    "source_value": "52.932812500000004",
+    "display": "52.93",
+    "decimals": 2,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/07_computational_cost.csv",
+    "row_keys": {
+      "dataset": "sylhet"
+    },
+    "column": "exemplar_model_MiB",
+    "source_value": "0.8161602020263672",
+    "display": "0.8162",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/07_computational_cost.csv",
+    "row_keys": {
+      "dataset": "brfss"
+    },
+    "column": "reduced_tasks",
+    "source_value": "5",
+    "display": "5",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/07_computational_cost.csv",
+    "row_keys": {
+      "dataset": "brfss"
+    },
+    "column": "successor_final_fit_sum_s",
+    "source_value": "51.458098374539986",
+    "display": "51.46",
+    "decimals": 2,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/07_computational_cost.csv",
+    "row_keys": {
+      "dataset": "brfss"
+    },
+    "column": "successor_calibration_sum_s",
+    "source_value": "3.8013697920832783",
+    "display": "3.80",
+    "decimals": 2,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/07_computational_cost.csv",
+    "row_keys": {
+      "dataset": "brfss"
+    },
+    "column": "D_single_median_ms",
+    "source_value": "2.1465835",
+    "display": "2.15",
+    "decimals": 2,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/07_computational_cost.csv",
+    "row_keys": {
+      "dataset": "brfss"
+    },
+    "column": "D_batch256_median_ms",
+    "source_value": "11.2605005",
+    "display": "11.26",
+    "decimals": 2,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/07_computational_cost.csv",
+    "row_keys": {
+      "dataset": "brfss"
+    },
+    "column": "exemplar_model_MiB",
+    "source_value": "0.7597951889038086",
+    "display": "0.7598",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/07_computational_cost.csv",
+    "row_keys": {
+      "dataset": "hospital130"
+    },
+    "column": "reduced_tasks",
+    "source_value": "4",
+    "display": "4",
+    "decimals": null,
+    "percent": false,
+    "integer": true
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/07_computational_cost.csv",
+    "row_keys": {
+      "dataset": "hospital130"
+    },
+    "column": "successor_final_fit_sum_s",
+    "source_value": "14.696514124050736",
+    "display": "14.70",
+    "decimals": 2,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/07_computational_cost.csv",
+    "row_keys": {
+      "dataset": "hospital130"
+    },
+    "column": "successor_calibration_sum_s",
+    "source_value": "67.07033316604793",
+    "display": "67.07",
+    "decimals": 2,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/07_computational_cost.csv",
+    "row_keys": {
+      "dataset": "hospital130"
+    },
+    "column": "D_single_median_ms",
+    "source_value": "30.6045835",
+    "display": "30.60",
+    "decimals": 2,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/07_computational_cost.csv",
+    "row_keys": {
+      "dataset": "hospital130"
+    },
+    "column": "D_batch256_median_ms",
+    "source_value": "45.909083",
+    "display": "45.91",
+    "decimals": 2,
+    "percent": false,
+    "integer": false
+  },
+  {
+    "source": "03_MAIN_TEXT_TABLES/07_computational_cost.csv",
+    "row_keys": {
+      "dataset": "hospital130"
+    },
+    "column": "exemplar_model_MiB",
+    "source_value": "27.138218879699707",
+    "display": "27.1382",
+    "decimals": 4,
+    "percent": false,
+    "integer": false
+  }
+]

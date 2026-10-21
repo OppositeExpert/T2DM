@@ -1,0 +1,4 @@
+dataset,panel,family,training_n,oof_seconds,fit_seconds,calibration_seconds
+pidd,no_insulin_or_skinfold,catboost,614,0.6751761250197887,0.12284850003197789,0.013518125051632524
+brfss,routine_survey,lightgbm,343488,65.5176409590058,12.837752332910895,0.6158683330286294
+hospital130,encounter_utilization,random_forest,79475,24.307426457991824,5.857687791110948,12.67157212505117

@@ -1,0 +1,301 @@
+dataset,row_type,panel,evaluation_records,positive_events,accepted_records,abstained_records,accepted_events,rejected_events,population_pct,event_pct,coverage,provenance,status,accepted_panel_event_prevalence,selected_families,selected_calibrators,abstention_reason,eligibility,repeat,blocked_panel,missing_predictor,fallback_reason
+pidd,population_total,ALL,768,268.0,768.0,0.0,268.0,0.0,100.0,100.0,1.0,saved assignments independently validated against original inputs,,,,,,,,,,
+pidd,unique_panel,full,392,130.0,,,,,51.041666666666664,48.507462686567166,,,predicted,0.33163265306122447,catboost|catboost|lightgbm|catboost|lightgbm|random_forest|catboost|lightgbm|random_forest|xgboost|catboost|lightgbm|xgboost|catboost|random_forest|catboost|random_forest|xgboost|catboost|xgboost,identity|identity|sigmoid|sigmoid,,all panel predictors observed,,,,
+pidd,unique_panel,minimal_glucose_age,11,2.0,,,,,1.4322916666666667,0.746268656716418,,,predicted,0.18181818181818182,catboost|catboost|random_forest|xgboost|catboost|xgboost,identity|sigmoid|sigmoid,,all panel predictors observed,,,,
+pidd,unique_panel,no_insulin_or_skinfold,332,119.0,,,,,43.229166666666664,44.40298507462686,,,predicted,0.35843373493975905,catboost|catboost|lightgbm|catboost|lightgbm|xgboost|catboost|xgboost|lightgbm|xgboost,identity|sigmoid|sigmoid,,all panel predictors observed,,,,
+pidd,unique_panel,non_laboratory,33,17.0,,,,,4.296875,6.343283582089552,,,predicted,0.5151515151515151,catboost|lightgbm|random_forest|catboost|lightgbm|random_forest|xgboost|catboost|random_forest|catboost|random_forest|xgboost|random_forest|xgboost,identity|sigmoid|sigmoid,,all panel predictors observed,,,,
+pidd,per_repeat_panel_family_calibrator,full,232,76.0,,,,,30.208333333333332,28.35820895522388,,,,,catboost,sigmoid,,,0.0,,,
+pidd,per_repeat_panel_family_calibrator,full,81,27.0,,,,,10.546875,10.074626865671641,,,,,lightgbm,identity,,,0.0,,,
+pidd,per_repeat_panel_family_calibrator,full,79,27.0,,,,,10.286458333333334,10.074626865671641,,,,,lightgbm,sigmoid,,,0.0,,,
+pidd,per_repeat_panel_family_calibrator,minimal_glucose_age,6,0.0,,,,,0.78125,0.0,,,,,catboost,sigmoid,,,0.0,,,
+pidd,per_repeat_panel_family_calibrator,minimal_glucose_age,2,1.0,,,,,0.2604166666666667,0.373134328358209,,,,,random_forest,identity,,,0.0,,,
+pidd,per_repeat_panel_family_calibrator,minimal_glucose_age,3,1.0,,,,,0.390625,0.373134328358209,,,,,xgboost,sigmoid,,,0.0,,,
+pidd,per_repeat_panel_family_calibrator,no_insulin_or_skinfold,197,73.0,,,,,25.651041666666668,27.238805970149254,,,,,catboost,sigmoid,,,0.0,,,
+pidd,per_repeat_panel_family_calibrator,no_insulin_or_skinfold,67,24.0,,,,,8.723958333333334,8.955223880597014,,,,,lightgbm,identity,,,0.0,,,
+pidd,per_repeat_panel_family_calibrator,no_insulin_or_skinfold,68,22.0,,,,,8.854166666666666,8.208955223880597,,,,,lightgbm,sigmoid,,,0.0,,,
+pidd,per_repeat_panel_family_calibrator,non_laboratory,6,3.0,,,,,0.78125,1.1194029850746268,,,,,lightgbm,identity,,,0.0,,,
+pidd,per_repeat_panel_family_calibrator,non_laboratory,5,2.0,,,,,0.6510416666666666,0.746268656716418,,,,,lightgbm,sigmoid,,,0.0,,,
+pidd,per_repeat_panel_family_calibrator,non_laboratory,22,12.0,,,,,2.8645833333333335,4.477611940298507,,,,,random_forest,sigmoid,,,0.0,,,
+pidd,per_repeat_panel_family_calibrator,full,82,26.0,,,,,10.677083333333334,9.701492537313433,,,,,catboost,identity,,,1.0,,,
+pidd,per_repeat_panel_family_calibrator,full,162,55.0,,,,,21.09375,20.52238805970149,,,,,catboost,sigmoid,,,1.0,,,
+pidd,per_repeat_panel_family_calibrator,full,78,23.0,,,,,10.15625,8.582089552238806,,,,,lightgbm,identity,,,1.0,,,
+pidd,per_repeat_panel_family_calibrator,full,70,26.0,,,,,9.114583333333334,9.701492537313433,,,,,random_forest,sigmoid,,,1.0,,,
+pidd,per_repeat_panel_family_calibrator,minimal_glucose_age,3,0.0,,,,,0.390625,0.0,,,,,catboost,sigmoid,,,1.0,,,
+pidd,per_repeat_panel_family_calibrator,minimal_glucose_age,2,1.0,,,,,0.2604166666666667,0.373134328358209,,,,,random_forest,sigmoid,,,1.0,,,
+pidd,per_repeat_panel_family_calibrator,minimal_glucose_age,6,1.0,,,,,0.78125,0.373134328358209,,,,,xgboost,sigmoid,,,1.0,,,
+pidd,per_repeat_panel_family_calibrator,no_insulin_or_skinfold,62,23.0,,,,,8.072916666666666,8.582089552238806,,,,,catboost,identity,,,1.0,,,
+pidd,per_repeat_panel_family_calibrator,no_insulin_or_skinfold,129,46.0,,,,,16.796875,17.16417910447761,,,,,catboost,sigmoid,,,1.0,,,
+pidd,per_repeat_panel_family_calibrator,no_insulin_or_skinfold,67,26.0,,,,,8.723958333333334,9.701492537313433,,,,,lightgbm,sigmoid,,,1.0,,,
+pidd,per_repeat_panel_family_calibrator,no_insulin_or_skinfold,74,24.0,,,,,9.635416666666666,8.955223880597014,,,,,xgboost,sigmoid,,,1.0,,,
+pidd,per_repeat_panel_family_calibrator,non_laboratory,17,10.0,,,,,2.2135416666666665,3.7313432835820897,,,,,catboost,sigmoid,,,1.0,,,
+pidd,per_repeat_panel_family_calibrator,non_laboratory,8,4.0,,,,,1.0416666666666667,1.492537313432836,,,,,xgboost,identity,,,1.0,,,
+pidd,per_repeat_panel_family_calibrator,non_laboratory,8,3.0,,,,,1.0416666666666667,1.1194029850746268,,,,,xgboost,sigmoid,,,1.0,,,
+pidd,per_repeat_panel_family_calibrator,full,76,26.0,,,,,9.895833333333334,9.701492537313433,,,,,catboost,identity,,,2.0,,,
+pidd,per_repeat_panel_family_calibrator,full,158,48.0,,,,,20.572916666666668,17.91044776119403,,,,,catboost,sigmoid,,,2.0,,,
+pidd,per_repeat_panel_family_calibrator,full,158,56.0,,,,,20.572916666666668,20.895522388059703,,,,,xgboost,identity,,,2.0,,,
+pidd,per_repeat_panel_family_calibrator,minimal_glucose_age,5,0.0,,,,,0.6510416666666666,0.0,,,,,catboost,sigmoid,,,2.0,,,
+pidd,per_repeat_panel_family_calibrator,minimal_glucose_age,6,2.0,,,,,0.78125,0.746268656716418,,,,,xgboost,sigmoid,,,2.0,,,
+pidd,per_repeat_panel_family_calibrator,no_insulin_or_skinfold,62,20.0,,,,,8.072916666666666,7.462686567164179,,,,,catboost,identity,,,2.0,,,
+pidd,per_repeat_panel_family_calibrator,no_insulin_or_skinfold,135,57.0,,,,,17.578125,21.26865671641791,,,,,catboost,sigmoid,,,2.0,,,
+pidd,per_repeat_panel_family_calibrator,no_insulin_or_skinfold,135,42.0,,,,,17.578125,15.671641791044776,,,,,xgboost,sigmoid,,,2.0,,,
+pidd,per_repeat_panel_family_calibrator,non_laboratory,5,1.0,,,,,0.6510416666666666,0.373134328358209,,,,,catboost,sigmoid,,,2.0,,,
+pidd,per_repeat_panel_family_calibrator,non_laboratory,16,7.0,,,,,2.0833333333333335,2.611940298507463,,,,,lightgbm,sigmoid,,,2.0,,,
+pidd,per_repeat_panel_family_calibrator,non_laboratory,12,9.0,,,,,1.5625,3.3582089552238807,,,,,xgboost,sigmoid,,,2.0,,,
+pidd,per_repeat_panel_family_calibrator,full,147,47.0,,,,,19.140625,17.53731343283582,,,,,catboost,identity,,,3.0,,,
+pidd,per_repeat_panel_family_calibrator,full,245,83.0,,,,,31.901041666666668,30.970149253731343,,,,,catboost,sigmoid,,,3.0,,,
+pidd,per_repeat_panel_family_calibrator,minimal_glucose_age,6,1.0,,,,,0.78125,0.373134328358209,,,,,catboost,sigmoid,,,3.0,,,
+pidd,per_repeat_panel_family_calibrator,minimal_glucose_age,5,1.0,,,,,0.6510416666666666,0.373134328358209,,,,,xgboost,sigmoid,,,3.0,,,
+pidd,per_repeat_panel_family_calibrator,no_insulin_or_skinfold,72,26.0,,,,,9.375,9.701492537313433,,,,,catboost,identity,,,3.0,,,
+pidd,per_repeat_panel_family_calibrator,no_insulin_or_skinfold,194,73.0,,,,,25.260416666666668,27.238805970149254,,,,,catboost,sigmoid,,,3.0,,,
+pidd,per_repeat_panel_family_calibrator,no_insulin_or_skinfold,66,20.0,,,,,8.59375,7.462686567164179,,,,,xgboost,sigmoid,,,3.0,,,
+pidd,per_repeat_panel_family_calibrator,non_laboratory,8,3.0,,,,,1.0416666666666667,1.1194029850746268,,,,,catboost,identity,,,3.0,,,
+pidd,per_repeat_panel_family_calibrator,non_laboratory,5,4.0,,,,,0.6510416666666666,1.492537313432836,,,,,catboost,sigmoid,,,3.0,,,
+pidd,per_repeat_panel_family_calibrator,non_laboratory,16,10.0,,,,,2.0833333333333335,3.7313432835820897,,,,,random_forest,identity,,,3.0,,,
+pidd,per_repeat_panel_family_calibrator,non_laboratory,4,0.0,,,,,0.5208333333333334,0.0,,,,,random_forest,sigmoid,,,3.0,,,
+pidd,per_repeat_panel_family_calibrator,full,83,26.0,,,,,10.807291666666666,9.701492537313433,,,,,catboost,sigmoid,,,4.0,,,
+pidd,per_repeat_panel_family_calibrator,full,80,32.0,,,,,10.416666666666666,11.940298507462687,,,,,lightgbm,identity,,,4.0,,,
+pidd,per_repeat_panel_family_calibrator,full,69,24.0,,,,,8.984375,8.955223880597014,,,,,lightgbm,sigmoid,,,4.0,,,
+pidd,per_repeat_panel_family_calibrator,full,160,48.0,,,,,20.833333333333332,17.91044776119403,,,,,xgboost,identity,,,4.0,,,
+pidd,per_repeat_panel_family_calibrator,minimal_glucose_age,8,1.0,,,,,1.0416666666666667,0.373134328358209,,,,,catboost,sigmoid,,,4.0,,,
+pidd,per_repeat_panel_family_calibrator,minimal_glucose_age,3,1.0,,,,,0.390625,0.373134328358209,,,,,xgboost,sigmoid,,,4.0,,,
+pidd,per_repeat_panel_family_calibrator,no_insulin_or_skinfold,134,50.0,,,,,17.447916666666668,18.65671641791045,,,,,catboost,sigmoid,,,4.0,,,
+pidd,per_repeat_panel_family_calibrator,no_insulin_or_skinfold,139,43.0,,,,,18.098958333333332,16.044776119402986,,,,,lightgbm,sigmoid,,,4.0,,,
+pidd,per_repeat_panel_family_calibrator,no_insulin_or_skinfold,59,26.0,,,,,7.682291666666667,9.701492537313433,,,,,xgboost,identity,,,4.0,,,
+pidd,per_repeat_panel_family_calibrator,non_laboratory,18,9.0,,,,,2.34375,3.3582089552238807,,,,,catboost,sigmoid,,,4.0,,,
+pidd,per_repeat_panel_family_calibrator,non_laboratory,15,8.0,,,,,1.953125,2.985074626865672,,,,,random_forest,sigmoid,,,4.0,,,
+pidd,larger_panel_missing_feature,minimal_glucose_age,7,,,,,,0.9114583333333334,,,,,,,,,,,full,BloodPressure,larger panel requires this unobserved input; reasons can overlap
+pidd,larger_panel_missing_feature,minimal_glucose_age,9,,,,,,1.171875,,,,,,,,,,,full,SkinThickness,larger panel requires this unobserved input; reasons can overlap
+pidd,larger_panel_missing_feature,minimal_glucose_age,10,,,,,,1.3020833333333333,,,,,,,,,,,full,Insulin,larger panel requires this unobserved input; reasons can overlap
+pidd,larger_panel_missing_feature,minimal_glucose_age,11,,,,,,1.4322916666666667,,,,,,,,,,,full,BMI,larger panel requires this unobserved input; reasons can overlap
+pidd,larger_panel_missing_feature,minimal_glucose_age,7,,,,,,0.9114583333333334,,,,,,,,,,,no_insulin_or_skinfold,BloodPressure,larger panel requires this unobserved input; reasons can overlap
+pidd,larger_panel_missing_feature,minimal_glucose_age,11,,,,,,1.4322916666666667,,,,,,,,,,,no_insulin_or_skinfold,BMI,larger panel requires this unobserved input; reasons can overlap
+pidd,larger_panel_missing_feature,minimal_glucose_age,7,,,,,,0.9114583333333334,,,,,,,,,,,routine_clinic,BloodPressure,larger panel requires this unobserved input; reasons can overlap
+pidd,larger_panel_missing_feature,minimal_glucose_age,11,,,,,,1.4322916666666667,,,,,,,,,,,routine_clinic,BMI,larger panel requires this unobserved input; reasons can overlap
+pidd,larger_panel_missing_feature,minimal_glucose_age,11,,,,,,1.4322916666666667,,,,,,,,,,,non_laboratory,BMI,larger panel requires this unobserved input; reasons can overlap
+pidd,larger_panel_missing_feature,minimal_glucose_age,11,,,,,,1.4322916666666667,,,,,,,,,,,core_metabolic,BMI,larger panel requires this unobserved input; reasons can overlap
+pidd,larger_panel_missing_feature,no_insulin_or_skinfold,192,,,,,,25.0,,,,,,,,,,,full,SkinThickness,larger panel requires this unobserved input; reasons can overlap
+pidd,larger_panel_missing_feature,no_insulin_or_skinfold,332,,,,,,43.229166666666664,,,,,,,,,,,full,Insulin,larger panel requires this unobserved input; reasons can overlap
+pidd,larger_panel_missing_feature,non_laboratory,5,,,,,,0.6510416666666666,,,,,,,,,,,full,Glucose,larger panel requires this unobserved input; reasons can overlap
+pidd,larger_panel_missing_feature,non_laboratory,28,,,,,,3.6458333333333335,,,,,,,,,,,full,BloodPressure,larger panel requires this unobserved input; reasons can overlap
+pidd,larger_panel_missing_feature,non_laboratory,26,,,,,,3.3854166666666665,,,,,,,,,,,full,SkinThickness,larger panel requires this unobserved input; reasons can overlap
+pidd,larger_panel_missing_feature,non_laboratory,32,,,,,,4.166666666666667,,,,,,,,,,,full,Insulin,larger panel requires this unobserved input; reasons can overlap
+pidd,larger_panel_missing_feature,non_laboratory,5,,,,,,0.6510416666666666,,,,,,,,,,,no_insulin_or_skinfold,Glucose,larger panel requires this unobserved input; reasons can overlap
+pidd,larger_panel_missing_feature,non_laboratory,28,,,,,,3.6458333333333335,,,,,,,,,,,no_insulin_or_skinfold,BloodPressure,larger panel requires this unobserved input; reasons can overlap
+pidd,larger_panel_missing_feature,non_laboratory,5,,,,,,0.6510416666666666,,,,,,,,,,,routine_clinic,Glucose,larger panel requires this unobserved input; reasons can overlap
+pidd,larger_panel_missing_feature,non_laboratory,28,,,,,,3.6458333333333335,,,,,,,,,,,routine_clinic,BloodPressure,larger panel requires this unobserved input; reasons can overlap
+sylhet,population_total,ALL,520,320.0,520.0,0.0,320.0,0.0,100.0,100.0,1.0,saved assignments independently validated against original inputs,,,,,,,,,,
+sylhet,unique_panel,full,520,320.0,,,,,100.0,100.0,,,predicted,0.6153846153846154,catboost|catboost|random_forest|catboost|random_forest|xgboost|catboost|xgboost|random_forest|xgboost,identity|identity|sigmoid|sigmoid,,all panel predictors observed,,,,
+sylhet,per_repeat_panel_family_calibrator,full,208,128.0,,,,,40.0,40.0,,,,,catboost,identity,,,0.0,,,
+sylhet,per_repeat_panel_family_calibrator,full,104,64.0,,,,,20.0,20.0,,,,,catboost,sigmoid,,,0.0,,,
+sylhet,per_repeat_panel_family_calibrator,full,104,64.0,,,,,20.0,20.0,,,,,random_forest,identity,,,0.0,,,
+sylhet,per_repeat_panel_family_calibrator,full,104,64.0,,,,,20.0,20.0,,,,,random_forest,sigmoid,,,0.0,,,
+sylhet,per_repeat_panel_family_calibrator,full,104,64.0,,,,,20.0,20.0,,,,,catboost,identity,,,1.0,,,
+sylhet,per_repeat_panel_family_calibrator,full,208,128.0,,,,,40.0,40.0,,,,,catboost,sigmoid,,,1.0,,,
+sylhet,per_repeat_panel_family_calibrator,full,104,64.0,,,,,20.0,20.0,,,,,random_forest,sigmoid,,,1.0,,,
+sylhet,per_repeat_panel_family_calibrator,full,104,64.0,,,,,20.0,20.0,,,,,xgboost,identity,,,1.0,,,
+sylhet,per_repeat_panel_family_calibrator,full,104,64.0,,,,,20.0,20.0,,,,,catboost,identity,,,2.0,,,
+sylhet,per_repeat_panel_family_calibrator,full,104,64.0,,,,,20.0,20.0,,,,,catboost,sigmoid,,,2.0,,,
+sylhet,per_repeat_panel_family_calibrator,full,104,64.0,,,,,20.0,20.0,,,,,random_forest,identity,,,2.0,,,
+sylhet,per_repeat_panel_family_calibrator,full,208,128.0,,,,,40.0,40.0,,,,,random_forest,sigmoid,,,2.0,,,
+sylhet,per_repeat_panel_family_calibrator,full,312,192.0,,,,,60.0,60.0,,,,,catboost,identity,,,3.0,,,
+sylhet,per_repeat_panel_family_calibrator,full,104,64.0,,,,,20.0,20.0,,,,,random_forest,sigmoid,,,3.0,,,
+sylhet,per_repeat_panel_family_calibrator,full,104,64.0,,,,,20.0,20.0,,,,,xgboost,identity,,,3.0,,,
+sylhet,per_repeat_panel_family_calibrator,full,104,64.0,,,,,20.0,20.0,,,,,catboost,identity,,,4.0,,,
+sylhet,per_repeat_panel_family_calibrator,full,208,128.0,,,,,40.0,40.0,,,,,catboost,sigmoid,,,4.0,,,
+sylhet,per_repeat_panel_family_calibrator,full,104,64.0,,,,,20.0,20.0,,,,,random_forest,identity,,,4.0,,,
+sylhet,per_repeat_panel_family_calibrator,full,104,64.0,,,,,20.0,20.0,,,,,random_forest,sigmoid,,,4.0,,,
+brfss,population_total,ALL,85872,11451.0,84632.0,1240.0,11316.0,135.0,100.0,100.0,0.985559903111608,saved assignments independently validated against original inputs,,,,,,,,,,
+brfss,unique_panel,UNSUPPORTED,1240,135.0,,,,,1.4440096888392024,1.1789363374377784,,,abstain,,,,no_supported_feature_panel,no complete supported panel,,,,
+brfss,unique_panel,cardiometabolic_health,11586,1769.0,,,,,13.492174399105645,15.448432451314297,,,predicted,0.1526842741239427,lightgbm,isotonic,,all panel predictors observed,,,,
+brfss,unique_panel,demographics_health,5505,837.0,,,,,6.410704304080492,7.309405292114226,,,predicted,0.15204359673024523,xgboost,isotonic,,all panel predictors observed,,,,
+brfss,unique_panel,full,49403,7028.0,,,,,57.530976336873486,61.37455244083486,,,predicted,0.1422585672934842,catboost,identity,,all panel predictors observed,,,,
+brfss,unique_panel,health_status,10500,460.0,,,,,12.227501397428732,4.017116409047245,,,predicted,0.04380952380952381,xgboost,sigmoid,,all panel predictors observed,,,,
+brfss,unique_panel,minimal_general_health_age,3879,569.0,,,,,4.5171883733929565,4.968998340756266,,,predicted,0.14668729053879867,catboost,isotonic,,all panel predictors observed,,,,
+brfss,unique_panel,routine_survey,3759,653.0,,,,,4.377445500279486,5.702558728495328,,,predicted,0.17371641393987763,lightgbm,sigmoid,,all panel predictors observed,,,,
+brfss,per_repeat_panel_family_calibrator,UNSUPPORTED,1240,135.0,,,,,1.4440096888392024,1.1789363374377784,,,,,,,,,0.0,,,
+brfss,per_repeat_panel_family_calibrator,cardiometabolic_health,11586,1769.0,,,,,13.492174399105645,15.448432451314297,,,,,lightgbm,isotonic,,,0.0,,,
+brfss,per_repeat_panel_family_calibrator,demographics_health,5505,837.0,,,,,6.410704304080492,7.309405292114226,,,,,xgboost,isotonic,,,0.0,,,
+brfss,per_repeat_panel_family_calibrator,full,49403,7028.0,,,,,57.530976336873486,61.37455244083486,,,,,catboost,identity,,,0.0,,,
+brfss,per_repeat_panel_family_calibrator,health_status,10500,460.0,,,,,12.227501397428732,4.017116409047245,,,,,xgboost,sigmoid,,,0.0,,,
+brfss,per_repeat_panel_family_calibrator,minimal_general_health_age,3879,569.0,,,,,4.5171883733929565,4.968998340756266,,,,,catboost,isotonic,,,0.0,,,
+brfss,per_repeat_panel_family_calibrator,routine_survey,3759,653.0,,,,,4.377445500279486,5.702558728495328,,,,,lightgbm,sigmoid,,,0.0,,,
+brfss,larger_panel_missing_feature,UNSUPPORTED,35,,,,,,0.040758337991429104,,,,,,,,,,,full,HighBP,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,UNSUPPORTED,186,,,,,,0.21660145332588038,,,,,,,,,,,full,HighChol,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,UNSUPPORTED,89,,,,,,0.10364263089249115,,,,,,,,,,,full,CholCheck,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,UNSUPPORTED,570,,,,,,0.6637786472889883,,,,,,,,,,,full,BMI,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,UNSUPPORTED,166,,,,,,0.19331097447363518,,,,,,,,,,,full,Smoker,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,UNSUPPORTED,7,,,,,,0.008151667598285822,,,,,,,,,,,full,Stroke,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,UNSUPPORTED,13,,,,,,0.015138811253959382,,,,,,,,,,,full,HeartDiseaseorAttack,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,UNSUPPORTED,290,,,,,,0.33771194335755544,,,,,,,,,,,full,PhysActivity,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,UNSUPPORTED,345,,,,,,0.40176076020122975,,,,,,,,,,,full,Fruits,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,UNSUPPORTED,382,,,,,,0.44484814607788337,,,,,,,,,,,full,Veggies,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,UNSUPPORTED,250,,,,,,0.291130985653065,,,,,,,,,,,full,HvyAlcoholConsump,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,UNSUPPORTED,30,,,,,,0.034935718278367806,,,,,,,,,,,full,AnyHealthcare,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,UNSUPPORTED,11,,,,,,0.01280976336873486,,,,,,,,,,,full,NoDocbcCost,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,UNSUPPORTED,223,,,,,,0.259688839202534,,,,,,,,,,,full,GenHlth,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,UNSUPPORTED,67,,,,,,0.07802310415502142,,,,,,,,,,,full,MentHlth,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,UNSUPPORTED,81,,,,,,0.09432643935159307,,,,,,,,,,,full,PhysHlth,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,UNSUPPORTED,148,,,,,,0.1723495435066145,,,,,,,,,,,full,DiffWalk,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,UNSUPPORTED,1024,,,,,,1.1924725172349544,,,,,,,,,,,full,Age,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,UNSUPPORTED,112,,,,,,0.13042668157257314,,,,,,,,,,,full,Education,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,UNSUPPORTED,701,,,,,,0.8163312837711943,,,,,,,,,,,full,Income,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,UNSUPPORTED,35,,,,,,0.040758337991429104,,,,,,,,,,,routine_survey,HighBP,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,UNSUPPORTED,186,,,,,,0.21660145332588038,,,,,,,,,,,routine_survey,HighChol,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,UNSUPPORTED,570,,,,,,0.6637786472889883,,,,,,,,,,,routine_survey,BMI,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,UNSUPPORTED,166,,,,,,0.19331097447363518,,,,,,,,,,,routine_survey,Smoker,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,UNSUPPORTED,290,,,,,,0.33771194335755544,,,,,,,,,,,routine_survey,PhysActivity,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,UNSUPPORTED,223,,,,,,0.259688839202534,,,,,,,,,,,routine_survey,GenHlth,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,UNSUPPORTED,81,,,,,,0.09432643935159307,,,,,,,,,,,routine_survey,PhysHlth,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,UNSUPPORTED,148,,,,,,0.1723495435066145,,,,,,,,,,,routine_survey,DiffWalk,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,UNSUPPORTED,1024,,,,,,1.1924725172349544,,,,,,,,,,,routine_survey,Age,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,UNSUPPORTED,112,,,,,,0.13042668157257314,,,,,,,,,,,routine_survey,Education,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,UNSUPPORTED,701,,,,,,0.8163312837711943,,,,,,,,,,,routine_survey,Income,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,UNSUPPORTED,35,,,,,,0.040758337991429104,,,,,,,,,,,cardiometabolic_health,HighBP,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,UNSUPPORTED,186,,,,,,0.21660145332588038,,,,,,,,,,,cardiometabolic_health,HighChol,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,UNSUPPORTED,570,,,,,,0.6637786472889883,,,,,,,,,,,cardiometabolic_health,BMI,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,UNSUPPORTED,7,,,,,,0.008151667598285822,,,,,,,,,,,cardiometabolic_health,Stroke,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,UNSUPPORTED,13,,,,,,0.015138811253959382,,,,,,,,,,,cardiometabolic_health,HeartDiseaseorAttack,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,UNSUPPORTED,223,,,,,,0.259688839202534,,,,,,,,,,,cardiometabolic_health,GenHlth,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,UNSUPPORTED,81,,,,,,0.09432643935159307,,,,,,,,,,,cardiometabolic_health,PhysHlth,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,UNSUPPORTED,148,,,,,,0.1723495435066145,,,,,,,,,,,cardiometabolic_health,DiffWalk,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,UNSUPPORTED,1024,,,,,,1.1924725172349544,,,,,,,,,,,cardiometabolic_health,Age,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,UNSUPPORTED,35,,,,,,0.040758337991429104,,,,,,,,,,,health_status,HighBP,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,UNSUPPORTED,570,,,,,,0.6637786472889883,,,,,,,,,,,health_status,BMI,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,UNSUPPORTED,223,,,,,,0.259688839202534,,,,,,,,,,,health_status,GenHlth,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,UNSUPPORTED,81,,,,,,0.09432643935159307,,,,,,,,,,,health_status,PhysHlth,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,UNSUPPORTED,148,,,,,,0.1723495435066145,,,,,,,,,,,health_status,DiffWalk,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,UNSUPPORTED,1024,,,,,,1.1924725172349544,,,,,,,,,,,health_status,Age,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,UNSUPPORTED,223,,,,,,0.259688839202534,,,,,,,,,,,demographics_health,GenHlth,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,UNSUPPORTED,1024,,,,,,1.1924725172349544,,,,,,,,,,,demographics_health,Age,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,UNSUPPORTED,112,,,,,,0.13042668157257314,,,,,,,,,,,demographics_health,Education,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,UNSUPPORTED,701,,,,,,0.8163312837711943,,,,,,,,,,,demographics_health,Income,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,UNSUPPORTED,223,,,,,,0.259688839202534,,,,,,,,,,,minimal_general_health_age,GenHlth,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,UNSUPPORTED,1024,,,,,,1.1924725172349544,,,,,,,,,,,minimal_general_health_age,Age,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,cardiometabolic_health,288,,,,,,0.3353828954723309,,,,,,,,,,,full,CholCheck,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,cardiometabolic_health,587,,,,,,0.6835755543133967,,,,,,,,,,,full,Smoker,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,cardiometabolic_health,3247,,,,,,3.7812092416620087,,,,,,,,,,,full,PhysActivity,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,cardiometabolic_health,2866,,,,,,3.3375256195267373,,,,,,,,,,,full,Fruits,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,cardiometabolic_health,3554,,,,,,4.138718092043972,,,,,,,,,,,full,Veggies,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,cardiometabolic_health,925,,,,,,1.0771846469163406,,,,,,,,,,,full,HvyAlcoholConsump,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,cardiometabolic_health,65,,,,,,0.0756940562697969,,,,,,,,,,,full,AnyHealthcare,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,cardiometabolic_health,45,,,,,,0.05240357741755171,,,,,,,,,,,full,NoDocbcCost,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,cardiometabolic_health,226,,,,,,0.26318241103037077,,,,,,,,,,,full,MentHlth,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,cardiometabolic_health,121,,,,,,0.14090739705608346,,,,,,,,,,,full,Education,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,cardiometabolic_health,8794,,,,,,10.240823551332216,,,,,,,,,,,full,Income,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,cardiometabolic_health,587,,,,,,0.6835755543133967,,,,,,,,,,,routine_survey,Smoker,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,cardiometabolic_health,3247,,,,,,3.7812092416620087,,,,,,,,,,,routine_survey,PhysActivity,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,cardiometabolic_health,121,,,,,,0.14090739705608346,,,,,,,,,,,routine_survey,Education,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,cardiometabolic_health,8794,,,,,,10.240823551332216,,,,,,,,,,,routine_survey,Income,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,demographics_health,121,,,,,,0.14090739705608346,,,,,,,,,,,full,HighBP,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,demographics_health,928,,,,,,1.0806782187441775,,,,,,,,,,,full,HighChol,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,demographics_health,271,,,,,,0.3155859884479225,,,,,,,,,,,full,CholCheck,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,demographics_health,3480,,,,,,4.052543320290665,,,,,,,,,,,full,BMI,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,demographics_health,1203,,,,,,1.4009223029625488,,,,,,,,,,,full,Smoker,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,demographics_health,18,,,,,,0.020961430967020682,,,,,,,,,,,full,Stroke,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,demographics_health,69,,,,,,0.08035215204024594,,,,,,,,,,,full,HeartDiseaseorAttack,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,demographics_health,1475,,,,,,1.7176728153530836,,,,,,,,,,,full,PhysActivity,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,demographics_health,1610,,,,,,1.8748835476057388,,,,,,,,,,,full,Fruits,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,demographics_health,1763,,,,,,2.0530557108254146,,,,,,,,,,,full,Veggies,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,demographics_health,1354,,,,,,1.5767654182970001,,,,,,,,,,,full,HvyAlcoholConsump,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,demographics_health,29,,,,,,0.033771194335755546,,,,,,,,,,,full,AnyHealthcare,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,demographics_health,31,,,,,,0.036100242220980065,,,,,,,,,,,full,NoDocbcCost,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,demographics_health,267,,,,,,0.31092789267747345,,,,,,,,,,,full,MentHlth,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,demographics_health,1141,,,,,,1.3287218185205887,,,,,,,,,,,full,PhysHlth,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,demographics_health,1323,,,,,,1.5406651760760202,,,,,,,,,,,full,DiffWalk,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,demographics_health,121,,,,,,0.14090739705608346,,,,,,,,,,,routine_survey,HighBP,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,demographics_health,928,,,,,,1.0806782187441775,,,,,,,,,,,routine_survey,HighChol,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,demographics_health,3480,,,,,,4.052543320290665,,,,,,,,,,,routine_survey,BMI,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,demographics_health,1203,,,,,,1.4009223029625488,,,,,,,,,,,routine_survey,Smoker,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,demographics_health,1475,,,,,,1.7176728153530836,,,,,,,,,,,routine_survey,PhysActivity,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,demographics_health,1141,,,,,,1.3287218185205887,,,,,,,,,,,routine_survey,PhysHlth,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,demographics_health,1323,,,,,,1.5406651760760202,,,,,,,,,,,routine_survey,DiffWalk,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,demographics_health,121,,,,,,0.14090739705608346,,,,,,,,,,,cardiometabolic_health,HighBP,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,demographics_health,928,,,,,,1.0806782187441775,,,,,,,,,,,cardiometabolic_health,HighChol,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,demographics_health,3480,,,,,,4.052543320290665,,,,,,,,,,,cardiometabolic_health,BMI,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,demographics_health,18,,,,,,0.020961430967020682,,,,,,,,,,,cardiometabolic_health,Stroke,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,demographics_health,69,,,,,,0.08035215204024594,,,,,,,,,,,cardiometabolic_health,HeartDiseaseorAttack,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,demographics_health,1141,,,,,,1.3287218185205887,,,,,,,,,,,cardiometabolic_health,PhysHlth,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,demographics_health,1323,,,,,,1.5406651760760202,,,,,,,,,,,cardiometabolic_health,DiffWalk,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,demographics_health,121,,,,,,0.14090739705608346,,,,,,,,,,,health_status,HighBP,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,demographics_health,3480,,,,,,4.052543320290665,,,,,,,,,,,health_status,BMI,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,demographics_health,1141,,,,,,1.3287218185205887,,,,,,,,,,,health_status,PhysHlth,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,demographics_health,1323,,,,,,1.5406651760760202,,,,,,,,,,,health_status,DiffWalk,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,health_status,10325,,,,,,12.023709707471586,,,,,,,,,,,full,HighChol,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,health_status,1519,,,,,,1.7689118688280232,,,,,,,,,,,full,CholCheck,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,health_status,137,,,,,,0.15953978013787964,,,,,,,,,,,full,Smoker,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,health_status,64,,,,,,0.07452953232718465,,,,,,,,,,,full,Stroke,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,health_status,228,,,,,,0.2655114589155953,,,,,,,,,,,full,HeartDiseaseorAttack,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,health_status,826,,,,,,0.9618967765977269,,,,,,,,,,,full,PhysActivity,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,health_status,987,,,,,,1.1493851313583008,,,,,,,,,,,full,Fruits,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,health_status,1128,,,,,,1.3135830072666295,,,,,,,,,,,full,Veggies,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,health_status,488,,,,,,0.5682876839947829,,,,,,,,,,,full,HvyAlcoholConsump,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,health_status,102,,,,,,0.11878144214645053,,,,,,,,,,,full,AnyHealthcare,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,health_status,36,,,,,,0.041922861934041364,,,,,,,,,,,full,NoDocbcCost,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,health_status,175,,,,,,0.20379168995714553,,,,,,,,,,,full,MentHlth,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,health_status,34,,,,,,0.039593814048816844,,,,,,,,,,,full,Education,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,health_status,2183,,,,,,2.542155766722564,,,,,,,,,,,full,Income,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,health_status,10325,,,,,,12.023709707471586,,,,,,,,,,,routine_survey,HighChol,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,health_status,137,,,,,,0.15953978013787964,,,,,,,,,,,routine_survey,Smoker,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,health_status,826,,,,,,0.9618967765977269,,,,,,,,,,,routine_survey,PhysActivity,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,health_status,34,,,,,,0.039593814048816844,,,,,,,,,,,routine_survey,Education,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,health_status,2183,,,,,,2.542155766722564,,,,,,,,,,,routine_survey,Income,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,health_status,10325,,,,,,12.023709707471586,,,,,,,,,,,cardiometabolic_health,HighChol,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,health_status,64,,,,,,0.07452953232718465,,,,,,,,,,,cardiometabolic_health,Stroke,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,health_status,228,,,,,,0.2655114589155953,,,,,,,,,,,cardiometabolic_health,HeartDiseaseorAttack,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,minimal_general_health_age,107,,,,,,0.12460406185951182,,,,,,,,,,,full,HighBP,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,minimal_general_health_age,722,,,,,,0.8407862865660518,,,,,,,,,,,full,HighChol,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,minimal_general_health_age,316,,,,,,0.3679895658654742,,,,,,,,,,,full,CholCheck,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,minimal_general_health_age,3023,,,,,,3.5203558785168623,,,,,,,,,,,full,BMI,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,minimal_general_health_age,1365,,,,,,1.589575181665735,,,,,,,,,,,full,Smoker,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,minimal_general_health_age,20,,,,,,0.0232904788522452,,,,,,,,,,,full,Stroke,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,minimal_general_health_age,55,,,,,,0.0640488168436743,,,,,,,,,,,full,HeartDiseaseorAttack,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,minimal_general_health_age,1620,,,,,,1.8865287870318614,,,,,,,,,,,full,PhysActivity,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,minimal_general_health_age,1791,,,,,,2.0856623812185577,,,,,,,,,,,full,Fruits,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,minimal_general_health_age,1906,,,,,,2.219582634618968,,,,,,,,,,,full,Veggies,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,minimal_general_health_age,1527,,,,,,1.7782280603689211,,,,,,,,,,,full,HvyAlcoholConsump,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,minimal_general_health_age,68,,,,,,0.07918762809763369,,,,,,,,,,,full,AnyHealthcare,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,minimal_general_health_age,33,,,,,,0.038429290106204585,,,,,,,,,,,full,NoDocbcCost,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,minimal_general_health_age,200,,,,,,0.23290478852245203,,,,,,,,,,,full,MentHlth,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,minimal_general_health_age,588,,,,,,0.6847400782560089,,,,,,,,,,,full,PhysHlth,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,minimal_general_health_age,1388,,,,,,1.6163592323458171,,,,,,,,,,,full,DiffWalk,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,minimal_general_health_age,110,,,,,,0.1280976336873486,,,,,,,,,,,full,Education,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,minimal_general_health_age,3858,,,,,,4.492733370598099,,,,,,,,,,,full,Income,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,minimal_general_health_age,107,,,,,,0.12460406185951182,,,,,,,,,,,routine_survey,HighBP,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,minimal_general_health_age,722,,,,,,0.8407862865660518,,,,,,,,,,,routine_survey,HighChol,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,minimal_general_health_age,3023,,,,,,3.5203558785168623,,,,,,,,,,,routine_survey,BMI,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,minimal_general_health_age,1365,,,,,,1.589575181665735,,,,,,,,,,,routine_survey,Smoker,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,minimal_general_health_age,1620,,,,,,1.8865287870318614,,,,,,,,,,,routine_survey,PhysActivity,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,minimal_general_health_age,588,,,,,,0.6847400782560089,,,,,,,,,,,routine_survey,PhysHlth,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,minimal_general_health_age,1388,,,,,,1.6163592323458171,,,,,,,,,,,routine_survey,DiffWalk,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,minimal_general_health_age,110,,,,,,0.1280976336873486,,,,,,,,,,,routine_survey,Education,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,minimal_general_health_age,3858,,,,,,4.492733370598099,,,,,,,,,,,routine_survey,Income,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,minimal_general_health_age,107,,,,,,0.12460406185951182,,,,,,,,,,,cardiometabolic_health,HighBP,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,minimal_general_health_age,722,,,,,,0.8407862865660518,,,,,,,,,,,cardiometabolic_health,HighChol,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,minimal_general_health_age,3023,,,,,,3.5203558785168623,,,,,,,,,,,cardiometabolic_health,BMI,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,minimal_general_health_age,20,,,,,,0.0232904788522452,,,,,,,,,,,cardiometabolic_health,Stroke,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,minimal_general_health_age,55,,,,,,0.0640488168436743,,,,,,,,,,,cardiometabolic_health,HeartDiseaseorAttack,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,minimal_general_health_age,588,,,,,,0.6847400782560089,,,,,,,,,,,cardiometabolic_health,PhysHlth,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,minimal_general_health_age,1388,,,,,,1.6163592323458171,,,,,,,,,,,cardiometabolic_health,DiffWalk,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,minimal_general_health_age,107,,,,,,0.12460406185951182,,,,,,,,,,,health_status,HighBP,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,minimal_general_health_age,3023,,,,,,3.5203558785168623,,,,,,,,,,,health_status,BMI,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,minimal_general_health_age,588,,,,,,0.6847400782560089,,,,,,,,,,,health_status,PhysHlth,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,minimal_general_health_age,1388,,,,,,1.6163592323458171,,,,,,,,,,,health_status,DiffWalk,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,minimal_general_health_age,110,,,,,,0.1280976336873486,,,,,,,,,,,demographics_health,Education,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,minimal_general_health_age,3858,,,,,,4.492733370598099,,,,,,,,,,,demographics_health,Income,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,routine_survey,499,,,,,,0.5810974473635178,,,,,,,,,,,full,CholCheck,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,routine_survey,94,,,,,,0.10946525060555246,,,,,,,,,,,full,Stroke,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,routine_survey,365,,,,,,0.4250512390534749,,,,,,,,,,,full,HeartDiseaseorAttack,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,routine_survey,933,,,,,,1.0865008384572388,,,,,,,,,,,full,Fruits,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,routine_survey,1277,,,,,,1.487097074715856,,,,,,,,,,,full,Veggies,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,routine_survey,574,,,,,,0.6684367430594373,,,,,,,,,,,full,HvyAlcoholConsump,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,routine_survey,69,,,,,,0.08035215204024594,,,,,,,,,,,full,AnyHealthcare,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,routine_survey,78,,,,,,0.09083286752375629,,,,,,,,,,,full,NoDocbcCost,larger panel requires this unobserved input; reasons can overlap
+brfss,larger_panel_missing_feature,routine_survey,489,,,,,,0.5694522079373951,,,,,,,,,,,full,MentHlth,larger panel requires this unobserved input; reasons can overlap
+hospital130,population_total,ALL,19868,2262.0,19868.0,0.0,2262.0,0.0,100.0,100.0,1.0,saved assignments independently validated against original inputs,,,,,,,,,,
+hospital130,unique_panel,encounter_utilization,19868,2262.0,,,,,100.0,100.0,,,predicted,0.11385141936782767,random_forest,sigmoid,,all panel predictors observed,,,,
+hospital130,per_repeat_panel_family_calibrator,encounter_utilization,19868,2262.0,,,,,100.0,100.0,,,,,random_forest,sigmoid,,,0.0,,,
+hospital130,larger_panel_missing_feature,encounter_utilization,388,,,,,,1.9528890678477955,,,,,,,,,,,full,race,larger panel requires this unobserved input; reasons can overlap
+hospital130,larger_panel_missing_feature,encounter_utilization,7868,,,,,,39.601369035635194,,,,,,,,,,,full,payer_code,larger panel requires this unobserved input; reasons can overlap
+hospital130,larger_panel_missing_feature,encounter_utilization,9775,,,,,,49.199718139722165,,,,,,,,,,,full,medical_specialty,larger panel requires this unobserved input; reasons can overlap
+hospital130,larger_panel_missing_feature,encounter_utilization,18842,,,,,,94.8359170525468,,,,,,,,,,,full,max_glu_serum,larger panel requires this unobserved input; reasons can overlap
+hospital130,larger_panel_missing_feature,encounter_utilization,16534,,,,,,83.21924703040064,,,,,,,,,,,full,A1Cresult,larger panel requires this unobserved input; reasons can overlap

@@ -1,0 +1,9 @@
+work,status,boundary
+Phase 0 audit and artifact preservation,COMPLETE,Original study/input hashes verified; successor paths isolated
+"Per-repeat, routing, selective and statistical analyses",COMPLETE,Saved predictions and original bootstrap definitions independently reconciled
+Reduced-schema retraining and 2x2 ablation,COMPLETE,Declared matched-family/frozen-hyperparameter design; no new tuning
+Controlled local computational benchmark,COMPLETE,"Measured fitting components, inference, routing, storage and actual environment"
+Historical component cost reconstruction,PARTIAL,Original tuning/final-fit timers and valid runner intervals available; original OOF/preprocessing/calibration/inference and peak RAM unavailable
+Exact end-to-end historical training replay,BLOCKED,Complete source matching the historical training fingerprint has not been recovered; guards remain intact
+Testing and evidence handoff,COMPLETE,"Full/portable tests, hash preservation, new task and table/source checks; no claim of fresh network dependency resolution"
+Mentor requirement A4 reporting completeness,COMPLETE,Every cost category addressed with sources/conditions; missing historical measurements disclosed; no new training
